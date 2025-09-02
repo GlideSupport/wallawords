@@ -1,0 +1,26 @@
+{
+	"name": "acf/faqs",
+	"title": "FAQs",
+	"description": "A custom faqs block.",
+	"category": "theme-blocks",
+	"editorScript": ["block-faqs"],
+	"script": ["block-faqs"],
+	"icon": "faqs",
+	"keywords": ["faqs"],
+	"supports": {
+		"align": true
+	},
+	"acf": {
+		"mode": "edit",
+		"renderTemplate": "block-faqs.php"
+	},
+	"example": {
+		"attributes": {
+			"mode": "preview",
+			"data": {
+				"preview": "faqs-preview.webp"
+			}
+		}
+	},
+	"align": "full"
+}

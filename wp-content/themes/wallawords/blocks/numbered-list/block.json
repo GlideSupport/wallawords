@@ -1,0 +1,26 @@
+{
+	"name": "acf/numbered-list",
+	"title": "Numbered List",
+	"description": "A custom numbered-list block.",
+	"category": "theme-blocks",
+	"editorScript": ["block-numbered-list","swiper"],
+	"script": ["block-numbered-list","swiper"],
+	"icon": "numbered-list",
+	"keywords": ["numbered","list"],
+	"supports": {
+		"align": true
+	},
+	"acf": {
+		"mode": "edit",
+		"renderTemplate": "block-numbered-list.php"
+	},
+	"example": {
+		"attributes": {
+			"mode": "preview",
+			"data": {
+				"preview": "numbered-list-preview.webp"
+			}
+		}
+	},
+	"align": "full"
+}

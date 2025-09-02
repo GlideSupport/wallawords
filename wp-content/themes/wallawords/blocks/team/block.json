@@ -1,0 +1,27 @@
+{
+	"name": "acf/team",
+	"title": "Team Members",
+	"description": "A custom team block.",
+	"category": "theme-blocks",
+	"style": ["file:./team.css"],
+	"editorScript": ["block-team"],
+	"script": ["block-team"],
+	"icon": "team",
+	"keywords": ["team","members"],
+	"supports": {
+		"align": true
+	},
+	"acf": {
+		"mode": "edit",
+		"renderTemplate": "block-team.php"
+	},
+	"example": {
+		"attributes": {
+			"mode": "preview",
+			"data": {
+				"preview": "team-preview.webp"
+			}
+		}
+	},
+	"align": "full"
+}

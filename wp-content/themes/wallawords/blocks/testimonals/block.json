@@ -1,0 +1,26 @@
+{
+	"name": "acf/testimonals",
+	"title": "Testimonals",
+	"description": "A custom testimonals block.",
+	"category": "theme-blocks",
+	"editorScript": ["block-testimonals","swiper"],
+	"script": ["block-testimonals","swiper"],
+	"icon": "testimonals",
+	"keywords": ["testimonals","quotes"],
+	"supports": {
+		"align": true
+	},
+	"acf": {
+		"mode": "edit",
+		"renderTemplate": "block-testimonals.php"
+	},
+	"example": {
+		"attributes": {
+			"mode": "preview",
+			"data": {
+				"preview": "testimonals-preview.webp"
+			}
+		}
+	},
+	"align": "full"
+}

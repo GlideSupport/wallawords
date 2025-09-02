@@ -1,0 +1,24 @@
+{
+	"name": "acf/media-alongside-text",
+	"title": "Media Alongside Text",
+	"description": "A custom Media Alongside Text block.",
+	"category": "theme-blocks",
+	"icon": "admin-comments",
+	"keywords": ["media-alongside-text"],
+	"supports": {
+		"align": true
+	},
+	"acf": {
+		"mode": "edit",
+		"renderTemplate": "block-media-alongside-text.php"
+	},
+	"example": {
+		"attributes": {
+			"mode": "preview",
+			"data": {
+				"preview": "media-alongside-text-preview.webp"
+			}
+		}
+	},
+	"align": "full"
+}

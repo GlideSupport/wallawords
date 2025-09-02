@@ -1,0 +1,538 @@
+:root {
+
+	--ww_base_unit: 0.125rem; // 2px
+	--base_unit-half: math.div(var(--ww_base_unit), 2); // 1px
+
+	/*-------------------------------------------------
+	>> Variables for Spaces
+	-------------------------------------------------*/
+
+	--space_base_unit: var(--ww_base_unit);
+
+	/* ------- [ D-2 to M-2 ] - [ gl-s4 ] ------- */
+	--ww_space_1_max: var(--space_base_unit) * 1;
+	--ww_space_1_min: var(--space_base_unit) * 1;
+	--ww_space_1: clamp(var(--ww_space_1_min), 0.125rem + 0vw, var(--ww_space_1_max));
+
+	/* ------- [ D-4 to M-4 ] - [ gl-s12 ] ------- */
+	--ww_space_2_max: var(--space_base_unit) * 2;
+	--ww_space_2_min: var(--space_base_unit) * 2;
+	--ww_space_2: clamp(var(--ww_space_2_min), 0.25rem + 0vw, var(--ww_space_2_max));
+
+	/* ------- [ D-8 to M-6 ] - [ gl-s44 ] ------- */
+	--ww_space_3_max: var(--space_base_unit) * 4;
+	--ww_space_3_min: var(--space_base_unit) * 3;
+	--ww_space_3: clamp(var(--ww_space_3_min), 0.03790613718411551rem + 0.7220216606498195vw, var(--ww_space_3_max));
+
+	/* ------- [ D-12 to M-10 ] - [ gl-s96 ] ------- */
+	--ww_space_4_max: var(--space_base_unit) * 6;
+	--ww_space_4_min: var(--space_base_unit) * 5;
+	--ww_space_4: clamp(var(--ww_space_4_min), 0.2879061371841155rem + 0.7220216606498195vw, var(--ww_space_4_max));
+
+	/* ------- [ D-16 to M-12 ] - [ gl-s240 ] ------- */
+	--ww_space_5_max: var(--space_base_unit) * 8;
+	--ww_space_5_min: var(--space_base_unit) * 6;
+	--ww_space_5: clamp(var(--ww_space_5_min), 0.07581227436823101rem + 1.444043321299639vw, var(--ww_space_5_max));
+
+	/* ------- [ D-20 to M-16 ] - [ gl-s20 ] ------- */
+	--ww_space_6_max: var(--space_base_unit) * 10;
+	--ww_space_6_min: var(--space_base_unit) * 8;
+	--ww_space_6: clamp(var(--ww_space_6_min), 0.325812274368231rem + 1.444043321299639vw, var(--ww_space_6_max));
+
+	/* ------- [ D-36 to M-22 ] - [ gl-s36 ] ------- */
+	--ww_space_7_max: var(--space_base_unit) * 18;
+	--ww_space_7_min: var(--space_base_unit) * 11;
+	--ww_space_7: clamp(var(--ww_space_7_min), -0.9846570397111916rem + 5.054151624548737vw, var(--ww_space_7_max));
+
+	/* ------- [ D-44 to M-28 ] - [ gl-s44 ] ------- */
+	--ww_space_8_max: var(--space_base_unit) * 22;
+	--ww_space_8_min: var(--space_base_unit) * 14;
+	--ww_space_8: clamp(var(--ww_space_8_min), -0.9467509025270759rem + 5.776173285198556vw, var(--ww_space_8_max));
+
+	/* ------- [ D-48 to M-36 ] - [ gl-s48 ] ------- */
+	--ww_space_9_max: var(--space_base_unit) * 24;
+	--ww_space_9_min: var(--space_base_unit) * 18;
+	--ww_space_9: clamp(var(--ww_space_9_min), 0.22743682310469282rem + 4.332129963898917vw, var(--ww_space_9_max));
+
+	/* ------- [ D-60 to M-42 ] - [ gl-s60 ] ------- */
+	--ww_space_10_max: var(--space_base_unit) * 30;
+	--ww_space_10_min: var(--space_base_unit) * 21;
+	--ww_space_10: clamp(var(--ww_space_10_min), -0.40884476534296077rem + 6.498194945848376vw, var(--ww_space_10_max));
+
+	/* ------- [ D-72 to M-48 ] - [ gl-s72 ] ------- */
+	--ww_space_11_max: var(--space_base_unit) * 36;
+	--ww_space_11_min: var(--space_base_unit) * 24;
+	--ww_space_11: clamp(var(--ww_space_11_min), -1.0451263537906144rem + 8.664259927797834vw, var(--ww_space_11_max));
+
+	/* ------- [ D-96 to M-54 ] - [ gl-s96 ] ------- */
+	--ww_space_12_max: var(--space_base_unit) * 48;
+	--ww_space_12_min: var(--space_base_unit) * 27;
+	--ww_space_12: clamp(var(--ww_space_12_min), -3.703971119133575rem + 15.162454873646212vw, var(--ww_space_12_max));
+
+	/* ------- [ D-120 to M-60 ] - [ gl-s120 ] ------- */
+	--ww_space_13_max: var(--space_base_unit) * 60;
+	--ww_space_13_min: var(--space_base_unit) * 30;
+	--ww_space_13: clamp(var(--ww_space_13_min), -6.362815884476534rem + 21.660649819494584vw, var(--ww_space_13_max));
+
+	/* ------- [ D-160 to M-72 ] - [ gl-s160 ] ------- */
+	--ww_space_14_max: var(--space_base_unit) * 80;
+	--ww_space_14_min: var(--space_base_unit) * 36;
+	--ww_space_14: clamp(var(--ww_space_14_min), -10.332129963898918rem + 31.768953068592058vw, var(--ww_space_14_max));
+
+	/* ------- [ D-200 to M-84 ] - [ gl-s200 ] ------- */
+	--ww_space_15_max: var(--space_base_unit) * 100;
+	--ww_space_15_min: var(--space_base_unit) * 42;
+	--ww_space_15: clamp(var(--ww_space_15_min), -14.3014440433213rem + 41.87725631768953vw, var(--ww_space_15_max));
+
+	/* ------- [ D-240 to M-96 ] - [ gl-s240 ] ------- */
+	--ww_space_16_max: var(--space_base_unit) * 120;
+	--ww_space_16_min: var(--space_base_unit) * 48;
+	--ww_space_16: clamp(var(--ww_space_16_min), -18.270758122743686rem + 51.98555956678701vw, var(--ww_space_16_max));
+
+	/* ------- [ D-270 to M-120 ] - [ gl-s270 ] ------- */
+	--ww_space_17_max: var(--space_base_unit) * 135;
+	--ww_space_17_min: var(--space_base_unit) * 60;
+	--ww_space_17: clamp(var(--ww_space_17_min), -18.270758122743686rem + 51.98555956678701vw, var(--ww_space_17_max));
+
+
+	/* -------------------------------------------------
+	>> Font Sizes
+	------------------------------------------------- */
+
+	--font_base_unit: var(--ww_base_unit);
+
+	/* ------- [ D-12 to M-11 ] - [ Text-14 ] ------- */
+	--ww_font_size_1_max: var(--font_base_unit) * 6;
+	--ww_font_size_1_min: var(--font_base_unit) * 5.5;
+	--ww_font_size_1: clamp(var(--ww_font_size_1_min), 0.599906191369606rem + 0.18761726078799248vw, var(--ww_font_size_1_max));
+
+	/* ------- [ D-14 to M-13 ] - [ Text-14 ] ------- */
+	--ww_font_size_2_max: var(--font_base_unit) * 7;
+	--ww_font_size_2_min: var(--font_base_unit) * 6.5;
+	--ww_font_size_2: clamp(var(--ww_font_size_2_min), 0.724906191369606rem + 0.18761726078799248vw, var(--ww_font_size_2_max));
+
+	/* ------- [ D-16 to M-15 ] - [ Text-14 ] ------- */
+	--ww_font_size_3_max: var(--font_base_unit) * 8;
+	--ww_font_size_3_min: var(--font_base_unit) * 7.5;
+	--ww_font_size_3: clamp(var(--ww_font_size_3_min), 0.849624060150376rem + 0.18796992481203006vw, var(--ww_font_size_3_max));
+
+	/* ------- [ D-18 to M-17 ] - [ Text-14 ] ------- */
+	--ww_font_size_4_max: var(--font_base_unit) * 9;
+	--ww_font_size_4_min: var(--font_base_unit) * 8.5;
+	--ww_font_size_4: clamp(var(--ww_font_size_4_min), 0.974624060150376rem + 0.18796992481203006vw, var(--ww_font_size_4_max));
+
+	/* ------- [ D-20 to M-18 ] - [ Text-14 ] ------- */
+	--ww_font_size_5_max: var(--font_base_unit) * 10;
+	--ww_font_size_5_min: var(--font_base_unit) * 9;
+	--ww_font_size_5: clamp(var(--ww_font_size_5_min), 0.9492481203007519rem + 0.37593984962406013vw, var(--ww_font_size_5_max));
+
+	/* ------- [ D-22 to M-20 ] - [ Text-14 ] ------- */
+	--ww_font_size_6_max: var(--font_base_unit) * 11;
+	--ww_font_size_6_min: var(--font_base_unit) * 10;
+	--ww_font_size_6: clamp(var(--ww_font_size_6_min), 1.074248120300752rem + 0.37593984962406013vw, var(--ww_font_size_6_max));
+
+	/* ------- [ D-24 to M-20 ] - [ Text-14 ] ------- */
+	--ww_font_size_7_max: var(--font_base_unit) * 12;
+	--ww_font_size_7_min: var(--font_base_unit) * 10;
+	--ww_font_size_7: clamp(var(--ww_font_size_7_min), 0.575812274368231rem + 1.444043321299639vw, var(--ww_font_size_7_max));
+
+	/* ------- [ D-26 to M-22 ] - [ Text-14 ] ------- */
+	--ww_font_size_8_max: var(--font_base_unit) * 13;
+	--ww_font_size_8_min: var(--font_base_unit) * 11;
+	--ww_font_size_8: clamp(var(--ww_font_size_8_min), 1.0234962406015038rem + 0.7518796992481203vw, var(--ww_font_size_8_max));
+
+	/* ------- [ D-32 to M-24 ] - [ Text-14 ] ------- */
+	--ww_font_size_9_max: var(--font_base_unit) * 16;
+	--ww_font_size_9_min: var(--font_base_unit) * 12;
+	--ww_font_size_9: clamp(var(--ww_font_size_9_min), 0.15162454873646203rem + 2.888086642599278vw, var(--ww_font_size_9_max));
+
+	/* ------- [ D-40 to M-26 ] - [ Text-14 ] ------- */
+	--ww_font_size_10_max: var(--font_base_unit) * 20;
+	--ww_font_size_10_min: var(--font_base_unit) * 13;
+	--ww_font_size_10: clamp(var(--ww_font_size_10_min), -0.7346570397111916rem + 5.054151624548737vw, var(--ww_font_size_10_max));
+
+	/* ------- [ D-48 to M-30 ] - [ Text-14 ] ------- */
+	--ww_font_size_11_max: var(--font_base_unit) * 24;
+	--ww_font_size_11_min: var(--font_base_unit) * 15;
+	--ww_font_size_11: clamp(var(--ww_font_size_11_min), -1.1588447653429608rem + 6.498194945848376vw, var(--ww_font_size_11_max));
+
+	/* ------- [ D-60 to M-45 ] - [ Text-14 ] ------- */
+	--ww_font_size_12_max: var(--font_base_unit) * 30;
+	--ww_font_size_12_min: var(--font_base_unit) * 22.5;
+	--ww_font_size_12: clamp(var(--ww_font_size_12_min), 1.49859287054409rem + 2.8142589118198873vw, var(--ww_font_size_12_max));
+
+	/* ------- [ D-68 to M-55 ] - [ Text-14 ] ------- */
+	--ww_font_size_13_max: var(--font_base_unit) * 34;
+	--ww_font_size_13_min: var(--font_base_unit) * 27.5;
+	--ww_font_size_13: clamp(var(--ww_font_size_13_min), 0.9092960288808665rem + 5.415162454873646vw, var(--ww_font_size_13_max));
+
+
+	/* -------------------------------------------------
+		>> Line Height
+	------------------------------------------------- */
+
+	// Base Line Height
+	--ww_line_height_base_unit: 0.063rem;
+
+	// Fluid Line Heights
+	--line_height_xsmall: calc(var(--ww_line_height_base_unit) * 1);
+	--line_height_small: calc(var(--ww_line_height_base_unit) * 1.1);
+	--line_height_medium: calc(var(--ww_line_height_base_unit) * 1.3);
+	--line_height_large: calc(var(--ww_line_height_base_unit) * 1.4);
+	--line_height_xlarge: calc(var(--ww_line_height_base_unit) * 1.5);
+
+	/* -------------------------------------------------
+		>> Letter Spacing
+	------------------------------------------------- */
+
+	// Base Letter Spacing
+	--ww_letter_spacing_base_unit: 1rem;
+
+	// Fluid Letter Spacings
+	--letter_spacing_xsmall: calc(var(--ww_letter_spacing_base_unit) * 0);
+	--letter_spacing_small: calc(var(--ww_letter_spacing_base_unit) * -0.5);
+	--letter_spacing_medium: normal;
+	--letter_spacing_large: calc(var(--ww_letter_spacing_base_unit) * 1);
+	--letter_spacing_xlarge: calc(var(--ww_letter_spacing_base_unit) * 1.5);
+
+
+	/* -------------------------------------------------
+			>> Border Radius
+		------------------------------------------------- */
+	--border_radius_small: calc(var(--ww_base_unit) * 1);
+	--border_radius_medium: calc(var(--ww_base_unit) * 2);
+	--border_radius_large: calc(var(--ww_base_unit) * 2);
+
+	/* -------------------------------------------------
+	>> Color variables
+	------------------------------------------------- */
+
+	/*
+	>> Base Colors
+	*/
+
+	// Theme Primary
+	--ww_color_primary: #2BC016;
+	--ww_color_on_primary: #ffffff;
+
+	// Theme Secondary
+	--ww_color_secondary: #111;
+
+	// Theme Dark
+	--ww_black: #000000;
+	--ww_black_1: #090719;
+	--ww_black_2: #606364;
+
+	// Theme Light
+	--ww_white: #ffffff;
+	--ww_white_1: #f1f1f1;
+	--ww_white_2: #f1e9e9;
+
+	// Theme Colors
+	--ww_gray: #e0e0e0;
+	--ww_gray_1: #e6e6e6;
+	--ww_gray_2: #eee;
+
+	--ww_blue: #0013ff;
+	--ww_blue_1: #00a4eb;
+	--ww_blue_2: #2ca8dd;
+
+	--ww_navy: #091a17;
+	--ww_navy_1: #15332e;
+	--ww_navy_2: #2f655c;
+
+	--ww_red: #ff0000;
+	--ww_sea_green: #04c3b4;
+
+	--ww_transparent: transparent;
+
+	// Text Variations
+	--ww_regular_text: #A9A6B7;
+	--ww_dark_text: #14191f;
+	--ww_white_text: #f7f7f7;
+	--ww_light_text: #606364;
+
+	// fixed variable Colors
+
+	--ww_success: #198754;
+	--ww_info: #0dcaf0;
+	--ww_warning: #ffc107;
+	--ww_danger: #dc3545;
+	--ww_light: #f8f9fa;
+	--ww_dark: #212529;
+
+
+	--ww_signal: #d14b3c;
+	--ww_signal_bg: #fbede9;
+
+
+	--ww_color_background: #090719;
+	--ww_color_on_background: #fff;
+
+	// Borders
+	--ww_border: #30353c;
+	--ww_border_1: #545454;
+	--ww_border_2: #adadad;
+	--ww_border_3: #e0e0e0;
+
+
+	/* -------------------------------------------------
+	>> Base Colors
+	>> Base colors are used for essential elements
+	such as the logo, tables, links, blockquote,
+	default buttons styling and this should't conflict
+	with theme colors
+	------------------------------------------------- */
+
+	// text Colors
+	--ww_body_color: var(--ww_color_on_background);
+	--ww_body_bg: var(--ww_color_background);
+	--ww_text_strong: var(--ww_black);
+
+	--ww_dark_text: var(--ww_black);
+	--ww_white_text: var(--ww_white);
+
+	--ww_highlight_color: var(--ww_color_on_primary);
+	--ww_highlight_bg: var(--ww_color_primary);
+
+	--ww_caption: var(--ww_black_2);
+
+	// Headings
+
+	--ww_heading_color: inherit;
+	--ww_heading_link_color: var(--ww_dark_text);
+	--ww_heading_link_color_hover: var(--ww_dark_text);
+
+	// link colors
+	--ww_link_color: var(--ww_color_primary);
+	--ww_link_color_hover: var(--ww_color_primary);
+	--ww_link_border_color: var(--ww_color_primary);
+	--ww_link_border_color_hover: transparent;
+
+	// lists Colors
+	--ww_list_ul_marker_color: var(--ww_color_primary);
+	--ww_list_ol_marker_color: var(--ww_color_primary);
+
+
+	// Blockquote Colors
+	--ww_blockquote_color: var(--ww_regular_text);
+	--ww_blockquote_border_color: var(--ww_regular_text);
+	--ww_quote_color: var(--ww_regular_text);
+	--ww_blockqoute_cite_color: var(--ww_light_text);
+
+	// Tables Colors
+	--ww_table_border_color: var(--ww_border);
+	--ww_table_head_border_color: var(--ww_dark_text);
+	--ww_table_foot_border_color: var(--ww_dark_text);
+
+	// Formating
+	--ww_strong_color: var(--ww_regular_text);
+	--ww_underline_border_color: var(--ww_regular_text);
+	--ww_abbr_border_color: var(--ww_regular_text);
+	--ww_delete_color: var(--ww_danger);
+	--ww_insert_color: var(--ww_success);
+	--ww_insert_border_color: var(--ww_success);
+
+	// Code
+	--ww_code_color: var(--ww_white_text);
+	--ww_code_bgcolor: var(--ww_dark_text);
+	--ww_pre_color: var(--ww_white_text);
+	--ww_pre_bgcolor: var(--ww_dark_text);
+	--ww_mark_bgcolor: var(--ww_dark_text);
+	--ww_mark_color: var(--ww_white_text);
+
+	// Graphical elements
+	--ww_hr_color: var(--ww_border_2);
+
+	// Form Fields
+
+	--ww_input_color: var(--ww_regular_text);
+	--ww_input_bg: var(--ww_light_field_bg);
+	--ww_input_border_color: var(--ww_border);
+
+	--ww_input_focus_color: var(--ww_black);
+	--ww_input_focus_bgcolor: var(--ww_white);
+	--ww_input_focus_border_color: var(--ww_border_2);
+
+	--ww_disabled_input_bgcolor: var(--ww_field_bg);
+	--ww_disabled_input_border_color: var(--ww_border_1);
+
+	--ww_placeholder_color: var(--ww_light_text);
+	--ww_range_track_bgcolor: var(--ww_field_bg);
+	--ww_range_thumb_bgcolor: var(--ww_color_primary);
+	--ww_color_field_border_color: var(--ww_border);
+	--ww_color_field_bgcolor: var(--ww_field_bg);
+	--ww_radio_color: var(--ww_regular_text);
+	--ww_radio_border_color: var(--ww_border);
+	--ww_radio_bgcolor: var(--ww_field_bg);
+	--ww_radio_after_bgcolor: var(--ww_color_primary);
+	--ww_checkbox_color: var(--ww_regular_text);
+	--ww_checkbox_border_color: var(--ww_border);
+	--ww_checkbox_bgcolor: var(--ww_field_bg);
+	--ww_checkbox_after_bgcolor: var(--ww_color_primary);
+	--ww_progress_bgcolor: var(--ww_field_bg);
+	--ww_progress_value_bgcolor: var(--ww_color_primary);
+	--ww_meter_bgcolor: var(--ww_field_bg);
+	--ww_meter_value_bgcolor: var(--ww_color_primary);
+
+	// Button
+	--ww_button_color: var(--ww_white_text);
+	--ww_button_bgcolor: var(--ww_color_primary);
+	--ww_button_color_hover: var(--ww_dark_text);
+	--ww_button_bgcolor_hover: var(--ww_black_2);
+	--ww_button_border_color: var(--ww_color_primary);
+	--ww_button_border_color_hover: var(--ww_border);
+
+	--ww_reset_button_bgcolor: var(--ww_button_bgcolor);
+	--ww_reset_button_color: var(--ww_white_text);
+
+	// Buttons layer
+	--ww_theme_btn_color: var(--ww_button_color);
+	--ww_theme_btn_bgcolor: var(--ww_button_bgcolor);
+	--ww_theme_btn_color_hover: var(--ww_button_color_hover);
+	--ww_theme_btn_bgcolor_hover: var(--ww_button_bgcolor_hover);
+	--ww_theme_btn_border_color: var(--ww_button_border_color);
+	--ww_theme_btn_border_color_hover: var(--ww_button_border_color_hover);
+	--ww_theme_btn_gradient: linear-gradient(88deg, #2BC016 0.88%, #26A96C 99.12%);
+
+
+	// --ww_wp_btn_color: var(--ww_white_text);
+	// --ww_wp_btn_bgcolor: var(--ww_button_bg);
+
+	// --ww_wp_outline_btn_color: var(--ww_white_text);
+	// --ww_wp_outline_btn_border_color: var(--ww_dark_text);
+	// --ww_wp_outline_btn_bgcolor: var(--ww_dark_text);
+
+	// Date Picker
+	--ww_datepicker_bg_color: var(--ww_gray);
+	--ww_datepicker_select_bgcolor: var(--ww_white);
+	--ww_datepicker_link_color: var(--ww_color_secondary);
+	--ww_datepicker_link_active_color: var(--ww_color_primary);
+	--ww_datepicker_calendar: var(--ww_white_text);
+	--ww_datepicker_th_bgcolor: var(--ww_border_1);
+	--ww_datepicker_even_tr_td_bgcolor: var(--ww_border_1);
+	--ww_datepicker_border_color: var(--ww_border_1);
+	--ww_datepicker_date_color: var(--ww_dark_text);
+
+	// Errors & Confirmation
+	--ww_valiation_error_bg_color: var(--ww_danger_bg);
+	--ww_valiation_message_color: var(--ww_danger);
+	--ww_error_field_border_color: var(--ww_danger);
+	--ww_valiation_error_color: var(--ww_danger);
+	--ww_confirmation_message_bgcolor: var(--ww_success_bg);
+	--ww_confirmation_message_color: var(--ww_dark_text);
+	--ww_confirmation_message_border_color: var(--ww_danger);
+	--ww_required_text_color: var(--ww_danger);
+	--ww_invalid_error_border_color: var(--ww_danger);
+	--ww_hubspot_error_label_color: var(--ww_danger);
+	--ww_hubspot_required_color: var(--ww_danger);
+	--ww_fileupload_rule_color: var(--ww_light_text);
+	--ww_error_menu_color: var(--ww_dark_text);
+
+	// Accessibility
+	--ww_acc_btn_color: var(--ww_white_text);
+	--ww_acc_btn_bgcolor: var(--ww_button_bg);
+	--ww_acc_btn_shadow: var(--ww_danger);
+
+	// Comments Box
+	--ww_comments_reply_btn_bgcolor: var(--ww_button_bg);
+	--ww_comments_reply_btn_color: var(--ww_white_text);
+	--ww_comments_reply_btn_bgcolor_hover: var(--ww_button_bg_hover);
+	--ww_comments_reply_btn_color_hover: var(--ww_white_text);
+	--ww_comment_meta_color: var(--ww_dark_text);
+	--ww_comment_metadata_color: var(--ww_light_text);
+	--ww_comments_list_border_color: var(--ww_border);
+	--ww_widget_comments_meta_color: var(--ww_light_text);
+
+	// Pagination
+	--ww_pagination_bgcolor: var(--ww_blue_1);
+	--ww_pagination_color: var(--ww_white);
+	--ww_pagination_color_hover: var(--ww_white);
+	--ww_pagination_bgcolor_hover: var(--ww_border_1);
+	--ww_pagination_bgcolor_current: var(--ww_border_1);
+	--ww_pagination_color_current: var(--ww_white);
+	--ww_pagination_first_bgcolor: var(--ww_border_1);
+	--ww_pagination_first_color: var(--ww_dark_text);
+	--ww_pagination_border: var(--ww_transparent);
+
+	// Widgets
+	--ww_widget_latest_post_meta_color: var(--ww_danger);
+	--ww_widget_rss_feed_meta_color: var(--ww_danger);
+	--ww_widget_search_button_color: var(--ww_pure_black);
+	--ww_wp_table_block_stripe_bg_color: var(--ww_gray);
+
+	// Breadcrumbs
+	--ww_breadcrumb_color: var(--ww_pure_black);
+	--ww_breadcrumb_link_color: var(--ww_pure_black);
+	--ww_breadcrumb_border_color: transparent;
+	--ww_breadcrumb_border_color_hover: var(--ww_pure_black);
+	--ww_breadcrumb_span_color: var(--ww_pure_black);
+
+	// Header
+	--ww_header_bgcolor: var(--ww_color_background);
+	--ww_header_color: var(--ww_white);
+	--ww_header_color_hover: var(--ww_black);
+	--ww_header_bgcolor_sticky: var(--ww_color_background);
+	--ww_header_nav_border_color: var(--ww_light_text);
+
+	--ww_header_submenu_bgcolor: var(--ww_gray);
+	--ww_header_submenu_color: var(--ww_header_color);
+	--ww_header_submenu_color_hover: var(--ww_header_color_hover);
+
+	--ww_header_mobile_color: var(--ww_dark_text);
+	--ww_header_mobile_submenu_color: var(--ww_dark_text);
+
+	--ww_nav_overlay_bgcolor: var(--ww_white);
+	--ww_mobile_nav_icon_bgcolor: var(--ww_dark_text);
+	--ww_abbr_border: var(--ww_dark_text);
+
+	// Top Bar
+	--ww_topbar_bgcolor: var(--ww_color_primary);
+	--ww_topbar_color: var(--ww_white);
+	--ww_topbar_link_color: var(--ww_white);
+
+
+	// Footer
+	--ww_footer_bgcolor: var(--ww_color_background);
+	--ww_footer_color: var(--ww_white_text);
+
+	--ww_footer_color_hover: var(--ww_white_text);
+
+	--ww_f_nav_color: var(--ww_footer_color);
+	--ww_f_nav_color_hover: var(--ww_footer_color_hover);
+	--ww_f_nav_border_color: var(--ww_footer_color);
+	--ww_f_nav_border_color_hover: var(--ww_footer_color_hover);
+
+	--ww_copyright_color: var(--ww_white_text);
+	--ww_legal_nav_color: var(--ww_white_text);
+	--ww_legal_nav_border_color: var(--ww_white_text);
+	--ww_legal_nav_border_color_hover: var(--ww_white_text);
+	--ww_legal_text_color: var(--ww_white_text);
+
+	// Containers
+
+	--ww_ctn_red: var(--ww_red);
+	--ww_ctn_black: var(--ww_black);
+	--ww_ctn_sea_green: var(--ww_sea_green);
+
+
+	// style variations
+	--ww_style_bg: #821212;
+	--ww_style_text: #000000;
+	--ww_style_link: #000000;
+	--ww_style_button: #00a4eb;
+
+	//additional block vars
+	--text-85: 85px;
+	--text-75: 75px;
+	--text-70: 70px;
+	--text-55: 55px;
+	--text-34: 34px;
+	--text-26: 26px;
+	--text-22: 22px;
+	--text-20: 20px;
+	--text-18: 18px;
+	--text-16: 16px;
+	--border-20: 20px;
+	--border-30: 30px;
+}

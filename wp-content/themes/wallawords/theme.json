@@ -1,0 +1,207 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/theme.json",
+	"version": 3,
+	"settings": {
+		"appearanceTools": true,
+		"useRootPaddingAwareAlignments": true,
+		"border": {
+			"color": true,
+			"radius": true,
+			"style": true,
+			"width": true
+		},
+		"layout": {
+			"contentSize": "1180px",
+			"wideSize": "1380px"
+		},
+		"spacing": {
+			"margin": false,
+			"padding": false,
+			"customSpacingSize": true,
+			"spacingSizes": [
+				{
+					"name": "20 Pixels",
+					"size": "var(--ww_space_7)",
+					"slug": "20-pixels",
+					"default":true
+				},
+				{
+					"name": "24 Pixels",
+					"size": "var(--ww_space_8)",
+					"slug": "24-pixels"
+				},
+				{
+					"name": "30 Pixels",
+					"size": "var(--ww_space_9)",
+					"slug": "30-pixels"
+				},
+				{
+					"name": "36 Pixels",
+					"size": "var(--ww_space_10)",
+					"slug": "36-pixels"
+				},
+				{
+					"name": "48 Pixels",
+					"size": "var(--ww_space_11)",
+					"slug": "48-pixels"
+				},
+				{
+					"name": "72 Pixels",
+					"size": "var(--ww_space_12)",
+					"slug": "72-pixels"
+				},
+				{
+					"name": "96 Pixels",
+					"size": "var(--ww_space_13)",
+					"slug": "96-pixels"
+				},
+				{
+					"name": "128 Pixels",
+					"size": "var(--ww_space_14)",
+					"slug": "128-pixels"
+				},
+				{
+					"name": "156 Pixels",
+					"size": "var(--ww_space_15)",
+					"slug": "156-pixels"
+				}
+			]
+		},
+		"typography": {
+			"customFontSize": false,
+			"fontStyle": false,
+			"fontWeight": false,
+			"letterSpacing": false,
+			"lineHeight": false,
+			"textDecoration": false,
+			"textTransform": false,
+			"dropCap": false,
+			"fontFamilies": [],
+			"fontSizes": [
+				{
+					"slug": "font-size-1",
+					"size": "var(--ww_font_size_11)",
+					"name": "Heading 1"
+				},
+				{
+					"slug": "font-size-2",
+					"size": "var(--ww_font_size_10)",
+					"name": "Heading 2"
+				},
+				{
+					"slug": "font-size-3",
+					"size": "var(--ww_font_size_9)",
+					"name": "Heading 3"
+				},
+				{
+					"slug": "font-size-4",
+					"size": "var(--ww_font_size_8)",
+					"name": "Heading 4"
+				},
+				{
+					"slug": "font-size-5",
+					"size": "var(--ww_font_size_7)",
+					"name": "Heading 5"
+				},
+				{
+					"slug": "font-size-6",
+					"size": "var(--ww_font_size_6)",
+					"name": "Heading 6"
+				},
+				{
+					"slug": "font-size-7",
+					"size": "var(--ww_font_size_5)",
+					"name": "Large Text"
+				},
+				{
+					"slug": "font-size-8",
+					"size": "var(--ww_font_size_3)",
+					"name": "Small Text"
+				},
+				{
+					"slug": "font-size-9",
+					"size": "var(--ww_font_size_4)",
+					"name": "Regular Text"
+				}
+			]
+		},
+		"blocks": {
+            "core/paragraph": {
+                "spacing": {
+					"padding": true,
+                    "margin": true
+				}
+            },
+			"core/group": {
+				"border": {
+					"radius": true,
+					"color": true,
+					"style": true,
+					"width": true
+				},
+				"spacing": {
+					"padding": true,
+                    "margin": true
+				}
+			},
+			"core/heading": {
+				"spacing": {
+					"padding": true,
+                    "margin": true
+				}
+			},
+			"core/cover": {
+				"border": {
+					"radius": true,
+					"color": true,
+					"style": true,
+					"width": true
+				}
+			},
+			"core/image": {
+				"border": {
+					"radius": true,
+					"color": true,
+					"style": true,
+					"width": true
+				},
+				"spacing": {
+					"padding": true,
+                    "margin": true
+				}
+			},			
+			"acf/section-container": {
+				"border": {
+					"radius": true,
+					"color": true,
+					"style": true,
+					"width": true
+				},
+				"spacing": {
+					"padding": true,
+                    "margin": true
+				}
+			},
+			"acf/icon-grid": {
+				"border": {
+					"radius": true,
+					"color": true,
+					"style": true,
+					"width": true
+				},
+				"spacing": {
+					"padding": true,
+                    "margin": true
+				}
+			}
+        }
+	},
+	"styles": {
+        "typography": {
+            "fontFamily": "-apple-system,BlinkMacSystemFont,\"Segoe UI\",Roboto,Oxygen-Sans,Ubuntu,Cantarell,\"Helvetica Neue\",sans-serif"
+	    },
+		"spacing": { 
+			"blockGap": "24px" 
+		}
+   	}
+}

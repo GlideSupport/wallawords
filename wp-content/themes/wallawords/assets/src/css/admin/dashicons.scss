@@ -1,0 +1,54 @@
+@font-face {
+	font-family: "dashicons";
+	src: url("../fonts/dashicons.eot?kz755u");
+	src: url("../fonts/dashicons.eot?kz755u#iefix") format("embedded-opentype"),
+		url("../fonts/dashicons.ttf?kz755u") format("truetype"),
+		url("../fonts/dashicons.woff?kz755u") format("woff"),
+		url("../fonts/dashicons.svg?kz755u#dashicons") format("svg");
+	font-weight: normal;
+	font-style: normal;
+	font-display: block;
+}
+.dashicons-theme-button:before {
+	content: "\e900";
+}
+
+.dashicons-category-teaser:before {
+	content: "\e901";
+}
+
+.dashicons-faq:before {
+	content: "\e902";
+}
+
+.dashicons-form:before {
+	content: "\e903";
+}
+
+.dashicons-iat:before {
+	content: "\e904";
+}
+
+.dashicons-logo-grid:before {
+	content: "\e905";
+}
+
+.dashicons-midpage-cta:before {
+	content: "\e906";
+}
+
+.dashicons-post-teaser:before {
+	content: "\e907";
+}
+
+.dashicons-review:before {
+	content: "\e908";
+}
+
+.dashicons-spacer-arrow:before {
+	content: "\e909";
+}
+
+.dashicons-title:before {
+	content: "\e90a";
+}

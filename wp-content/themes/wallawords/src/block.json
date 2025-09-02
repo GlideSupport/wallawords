@@ -1,0 +1,41 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "basethemepack/section-container",
+	"version": "1.0.0",
+	"title": "Section Container",
+	"category": "theme-blocks",
+	"icon": "align-center",
+	"description": "Block to Manager Available Sections",
+	"supports": {
+		"html": false,
+		"align": ["wide", "full"]
+	},
+	"attributes": {
+		"bgDesignType": {
+			"type": "string",
+			"default": ""
+		},
+		"bgWidth": {
+			"type": "string",
+			"default": "ctn"
+		},
+		"ctnShape": {
+			"type": "string",
+			"default": ""
+		},
+		"bgImage": {
+			"type": "object",
+			"default": {
+				"title": "",
+				"filename": "",
+				"url": "",
+				"isOverlay": false
+			}
+		}
+	},
+	"textdomain": "section-container",
+	"editorScript": "file:./index.js",
+	"editorStyle": "file:./index.css",
+	"style": "file:./style-index.css"
+}

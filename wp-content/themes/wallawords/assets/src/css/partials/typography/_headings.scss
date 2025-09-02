@@ -1,0 +1,67 @@
+/* -------------------------------------------------
+>> Base Styles
+---------------------------------------------------
+>> Edit these styles as required
+------------------------------------------------- */
+
+h1,
+.heading-1 {
+	@include font(rubik, bold);
+}
+
+h2,
+.heading-2,
+h3,
+.heading-3,
+h4,
+.heading-4,
+h5,
+.heading-5,
+h6,
+.heading-6 {
+
+	@include font(rubik, reg);
+	margin: 0 0 20px;
+	color: var(--ww_heading_color);
+	line-height: 1.3;
+	text-transform: initial;
+
+	a {
+		color: var(--ww_heading_link_color);
+		border-bottom: none;
+
+		&:hover {
+			color: var(--ww_heading_link_color_hover);
+		}
+	}
+}
+
+h1,
+.heading-1 {
+	font-size: var(--ww_font_size_13);
+}
+
+h2,
+.heading-2 {
+	font-size: var(--ww_font_size_11);
+}
+
+h3,
+.heading-3 {
+	font-size: var(--ww_font_size_9);
+}
+
+h4,
+.heading-4 {
+	font-size: var(--ww_font_size_7);
+}
+
+h5,
+.heading-5 {
+	font-size: var(--ww_font_size_5);
+}
+
+h6,
+.heading-6 {
+	font-size: var(--ww_font_size_3);
+}

@@ -1,0 +1,14 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "../../plugins/glide-action-scheduler-extender"
+		},
+		{
+			"path": "../../../wallawords"
+		}
+	],
+	"settings": {}
+}

@@ -1,0 +1,373 @@
+{
+    "key": "group_64b76afd639af",
+    "title": "Block - Image Alongside Text",
+    "fields": [
+        {
+            "key": "field_64b76afd6b399",
+            "label": "Image Alongside Text",
+            "name": "",
+            "aria-label": "",
+            "type": "block_label",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": ""
+        },
+        {
+            "key": "field_64b76d3a7e719",
+            "label": "Kicker",
+            "name": "ww_blkiat_kicker",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_64b774987e721",
+                        "operator": "==",
+                        "value": "left"
+                    }
+                ],
+                [
+                    {
+                        "field": "field_64b774987e721",
+                        "operator": "==",
+                        "value": "left"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_64b76afd6ed69",
+            "label": "Title",
+            "name": "ww_blkiat_title",
+            "aria-label": "",
+            "type": "block_title",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "sub_fields": [
+                {
+                    "ID": 1,
+                    "key": "field_6458ea92f6394",
+                    "label": "Block Title",
+                    "name": "title",
+                    "aria-label": "",
+                    "prefix": "acf",
+                    "type": "text",
+                    "value": null,
+                    "menu_order": 0,
+                    "instructions": "",
+                    "required": "",
+                    "id": "",
+                    "class": "",
+                    "conditional_logic": 0,
+                    "parent": "",
+                    "wrapper": {
+                        "width": "70",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": ""
+                },
+                {
+                    "ID": 2,
+                    "key": "field_6458ea92f6395",
+                    "label": "HTML Tag",
+                    "name": "title_tag",
+                    "aria-label": "",
+                    "prefix": "acf",
+                    "type": "headings",
+                    "value": null,
+                    "is_h1": "no",
+                    "menu_order": 0,
+                    "instructions": "",
+                    "required": "",
+                    "id": "",
+                    "class": "",
+                    "conditional_logic": 0,
+                    "parent": "",
+                    "wrapper": {
+                        "width": "30",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": ""
+                }
+            ],
+            "instructions_title": "",
+            "instructions_title_tag": "",
+            "is_h1": "no"
+        },
+        {
+            "key": "field_64b76afd72966",
+            "label": "Expand for options",
+            "name": "",
+            "aria-label": "",
+            "type": "accordion",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "open": 1,
+            "multi_expand": 0,
+            "endpoint": 0
+        },
+        {
+            "key": "field_64b76afd76a31",
+            "label": "Spacers",
+            "name": "ww_blkiat_spcr",
+            "aria-label": "",
+            "type": "spacers",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "clone": "",
+            "prefix_label": 0,
+            "prefix_name": 0,
+            "sub_fields": [
+                {
+                    "ID": 3,
+                    "key": "field_6458ea92f6396",
+                    "label": "Margin From Top",
+                    "name": "top_spacer",
+                    "aria-label": "",
+                    "prefix": "acf",
+                    "type": "spacer",
+                    "value": null,
+                    "menu_order": 0,
+                    "instructions": "",
+                    "required": "",
+                    "id": "",
+                    "class": "",
+                    "conditional_logic": 0,
+                    "parent": "",
+                    "wrapper": {
+                        "width": "50",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": ""
+                },
+                {
+                    "ID": 4,
+                    "key": "field_6458ea92f6397",
+                    "label": "Margin From Bottom",
+                    "name": "bottom_spacer",
+                    "aria-label": "",
+                    "prefix": "acf",
+                    "type": "spacer",
+                    "value": null,
+                    "menu_order": 0,
+                    "instructions": "",
+                    "required": "",
+                    "id": "",
+                    "class": "",
+                    "conditional_logic": 0,
+                    "parent": "",
+                    "wrapper": {
+                        "width": "50",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": ""
+                }
+            ],
+            "instructions_top": "",
+            "instructions_bottom": ""
+        },
+        {
+            "key": "field_64b774987e721",
+            "label": "Image Position",
+            "name": "ww_blkiat_imgpositon",
+            "aria-label": "",
+            "type": "button_group",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "30",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "left": "Left",
+                "right": "Right"
+            },
+            "default_value": "left",
+            "return_format": "value",
+            "allow_null": 0,
+            "layout": "horizontal"
+        },
+        {
+            "key": "field_64b76afd79fa8",
+            "label": "Text",
+            "name": "ww_blkiat_text",
+            "aria-label": "",
+            "type": "wysiwyg",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "tabs": "all",
+            "toolbar": "full",
+            "media_upload": 0,
+            "delay": 0
+        },
+        {
+            "key": "field_64b77ddef2cc3",
+            "label": "Image \/ Icon Upload Instructions",
+            "name": "",
+            "aria-label": "",
+            "type": "message",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "<div class=\"upload-instructions\">\r\n\r\n<b>Recommended Size:<\/b> Minimum 356px by 531px (Regular Display) - Maximum 534px by 800px (Retina Display) - (width x height)<br \/>\r\n\r\n<b>Recommended Size For Icon :<\/b> Minimum 111px by 110px (Regular Display) - Maximum 222px by 220px (Retina Display) - (width x height)<br \/>\r\n\r\n<b>Image \/ Icon  Height:<\/b> Height of the image \/ icon  can vary slightly due to aspect ratio, but width of image must meet the recommended size.<br \/>\r\n\r\n<b>Resources:<\/b> Make sure to upload a compressed image in <i>.WEBP<\/i> image format. - <a href=\"https:\/\/image.online-convert.com\/convert-to-webp\" target=\"_blank\">Convert Images to WEBP<\/a> - <a href=\"https:\/\/tinypng.com\/\" target=\"_blank\">Compress WEBP Images<\/a>\r\n\r\n<\/div>",
+            "new_lines": "wpautop",
+            "esc_html": 0
+        },
+        {
+            "key": "field_64b76e647e71d",
+            "label": "Upload an icon image",
+            "name": "ww_blkiat_imgicn",
+            "aria-label": "",
+            "type": "image",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "33",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "id",
+            "library": "all",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": "",
+            "preview_size": "admin-square"
+        },
+        {
+            "key": "field_64b76e277e71b",
+            "label": "Upload Image",
+            "name": "ww_blkiat_image",
+            "aria-label": "",
+            "type": "image",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "33",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "id",
+            "library": "all",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": "",
+            "preview_size": "admin-portrait"
+        },
+        {
+            "key": "field_64b76afd7da50",
+            "label": "Button",
+            "name": "ww_blkiat_btn",
+            "aria-label": "",
+            "type": "link",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array"
+        },
+        {
+            "key": "field_64ca5bc8fe3f2",
+            "label": "Link",
+            "name": "ww_blkiat_link",
+            "aria-label": "",
+            "type": "link",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array"
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "block",
+                "operator": "==",
+                "value": "acf\/image-alongside-text"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "modified": 1733946869
+}

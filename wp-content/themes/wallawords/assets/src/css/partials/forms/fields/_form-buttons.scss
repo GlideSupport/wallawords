@@ -1,0 +1,65 @@
+/* -------------------------------------------------
+>> Project Styles
+---------------------------------------------------
+>> Edit these styles as required
+------------------------------------------------- */
+
+input[type="image"] {
+	margin: 0 10px 0 0;
+}
+
+input[type="submit"],
+button,
+input[type="button"],
+input[type="reset"] {
+	padding: 0 30px;
+	display: inline-block;
+	line-height: 1;
+	box-sizing: border-box;
+
+	@include transition(all, 0.4s, ease-in-out);
+
+	background-color: var(--ww_button_bgcolor);
+	border: 1px solid var(--ww_button_bgcolor);
+	color: var(--ww_button_color);
+	outline: none;
+
+
+	@include font(inter, reg);
+
+	font-size: var(--ww_font_size_3);
+	height: 50px;
+	outline: none;
+	cursor: pointer;
+	margin: 0 10px 10px 0;
+}
+
+input[type="submit"]:hover,
+button:hover,
+input[type="button"]:hover {
+	color: var(--ww_button_color_hover);
+	background-color: var(--ww_button_bgcolor_hover);
+}
+
+input[type="reset"] {
+	background-color: var(--ww_theme_btn_bgcolor);
+	color: var(--ww_theme_btn_color);
+
+	&:hover {
+		color: var(--ww_theme_btn_color);
+		background-color: var(--ww_theme_btn_bgcolor_hover);
+	}
+}
+.is-style-fill-boxed {
+	a.wp-block-button__link {
+		border-radius: inherit;
+	}
+}
+.is-style-outline-boxed {
+	a.wp-block-button__link {
+		color: black;
+		border-radius: inherit;
+		background-color: transparent;
+		background-image: none;
+	}
+}

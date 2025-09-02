@@ -1,0 +1,337 @@
+{
+    "key": "group_66fed19ac5ca8",
+    "title": "GLIDE - Action Scheduler Extender",
+    "fields": [
+        {
+            "key": "field_66fedbe7a7659",
+            "label": "About Scheduled Actions",
+            "name": "",
+            "aria-label": "",
+            "type": "message",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "Be careful when managing these tasks! If you are uncertain how to schedule a task or which action to use, please contact support.",
+            "new_lines": "wpautop",
+            "esc_html": 0
+        },
+        {
+            "key": "field_66fed51ba813f",
+            "label": "Manage Scheduled Actions",
+            "name": "manage_gsx_actions",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "100",
+                "class": "gsx-scheduled-actions",
+                "id": ""
+            },
+            "layout": "row",
+            "pagination": 1,
+            "rows_per_page": 10,
+            "min": 0,
+            "max": 0,
+            "collapsed": "field_66fed1d90a24b",
+            "button_label": "Add New Action",
+            "sub_fields": [
+                {
+                    "key": "field_66fed1d90a24b",
+                    "label": "Action Name",
+                    "name": "action_name",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "Label for action",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "33",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_66fed51ba813f"
+                },
+                {
+                    "key": "field_66fed1e30a24c",
+                    "label": "Action Hook",
+                    "name": "action_hook",
+                    "aria-label": "",
+                    "type": "select",
+                    "instructions": "Programming function to run",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "33",
+                        "class": "",
+                        "id": ""
+                    },
+                    "choices": [],
+                    "default_value": false,
+                    "return_format": "value",
+                    "multiple": 0,
+                    "allow_null": 0,
+                    "ui": 0,
+                    "ajax": 0,
+                    "placeholder": "",
+                    "parent_repeater": "field_66fed51ba813f"
+                },
+                {
+                    "key": "field_66fed53ea8140",
+                    "label": "Action Type",
+                    "name": "action_type",
+                    "aria-label": "",
+                    "type": "select",
+                    "instructions": "Frequency",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "33",
+                        "class": "",
+                        "id": ""
+                    },
+                    "choices": {
+                        "One Time": "One Time",
+                        "Repeating": "Repeating"
+                    },
+                    "default_value": "One Time",
+                    "return_format": "value",
+                    "multiple": 0,
+                    "allow_null": 0,
+                    "ui": 0,
+                    "ajax": 0,
+                    "placeholder": "",
+                    "parent_repeater": "field_66fed51ba813f"
+                },
+                {
+                    "key": "field_66fed562a8141",
+                    "label": "Action Start Timer",
+                    "name": "action_timer_start",
+                    "aria-label": "",
+                    "type": "date_time_picker",
+                    "instructions": "The first date and time this action runs.",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "33",
+                        "class": "",
+                        "id": ""
+                    },
+                    "display_format": "m\/d\/Y g:i a",
+                    "return_format": "Y-m-d H:i:s",
+                    "first_day": 1,
+                    "parent_repeater": "field_66fed51ba813f"
+                },
+                {
+                    "key": "field_66fed58ba8142",
+                    "label": "Action Repeats Every",
+                    "name": "action_repeats_day",
+                    "aria-label": "",
+                    "type": "number",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_66fed53ea8140",
+                                "operator": "==",
+                                "value": "Repeating"
+                            }
+                        ]
+                    ],
+                    "wrapper": {
+                        "width": "33",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": 1,
+                    "min": 1,
+                    "max": 365,
+                    "placeholder": "",
+                    "step": 1,
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_66fed51ba813f"
+                },
+                {
+                    "key": "field_66fed5e2a8143",
+                    "label": "Time",
+                    "name": "action_repeats_time",
+                    "aria-label": "",
+                    "type": "select",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_66fed53ea8140",
+                                "operator": "==",
+                                "value": "Repeating"
+                            }
+                        ]
+                    ],
+                    "wrapper": {
+                        "width": "33",
+                        "class": "",
+                        "id": ""
+                    },
+                    "choices": {
+                        "hour": "Hour",
+                        "day": "Day",
+                        "month": "Month",
+                        "year": "Year"
+                    },
+                    "default_value": false,
+                    "return_format": "value",
+                    "multiple": 0,
+                    "allow_null": 0,
+                    "ui": 0,
+                    "ajax": 0,
+                    "placeholder": "",
+                    "parent_repeater": "field_66fed51ba813f"
+                },
+                {
+                    "key": "field_66fed95b2ae69",
+                    "label": "Max Records",
+                    "name": "max_records",
+                    "aria-label": "",
+                    "type": "number",
+                    "instructions": "Max amount of records to pull from API (use -1 for ALL)",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "33",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": -1,
+                    "min": -1,
+                    "max": 10000,
+                    "placeholder": "",
+                    "step": 1,
+                    "prepend": "",
+                    "append": "Per API Pull",
+                    "parent_repeater": "field_66fed51ba813f"
+                },
+                {
+                    "key": "field_66fed9842ae6a",
+                    "label": "Max Timeout",
+                    "name": "max_timeout",
+                    "aria-label": "",
+                    "type": "number",
+                    "instructions": "Max amount of time this task can run (in SECONDS)",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "31",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": 300,
+                    "min": 1,
+                    "max": 1000,
+                    "placeholder": "",
+                    "step": 1,
+                    "prepend": "",
+                    "append": "Per API Pull",
+                    "parent_repeater": "field_66fed51ba813f"
+                },
+                {
+                    "key": "field_66fedaf44f253",
+                    "label": "Show Action Log?",
+                    "name": "show_action_log",
+                    "aria-label": "",
+                    "type": "true_false",
+                    "instructions": "Displays this action's history",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "33",
+                        "class": "",
+                        "id": ""
+                    },
+                    "message": "",
+                    "default_value": 0,
+                    "ui_on_text": "",
+                    "ui_off_text": "",
+                    "ui": 1,
+                    "parent_repeater": "field_66fed51ba813f"
+                },
+                {
+                    "key": "field_66fedb064f254",
+                    "label": "Action Log",
+                    "name": "item_action_log",
+                    "aria-label": "",
+                    "type": "textarea",
+                    "instructions": "Shows last 100 results",
+                    "required": 0,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_66fedaf44f253",
+                                "operator": "==",
+                                "value": "1"
+                            }
+                        ]
+                    ],
+                    "wrapper": {
+                        "width": "100",
+                        "class": "readonly",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "rows": 10,
+                    "placeholder": "",
+                    "new_lines": "",
+                    "parent_repeater": "field_66fed51ba813f"
+                }
+            ]
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "options_page",
+                "operator": "==",
+                "value": "glide-asx-settings"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "acf_after_title",
+    "style": "seamless",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": [
+        "permalink",
+        "the_content",
+        "excerpt",
+        "discussion",
+        "comments",
+        "revisions",
+        "slug",
+        "author",
+        "format",
+        "page_attributes",
+        "featured_image",
+        "categories",
+        "tags",
+        "send-trackbacks"
+    ],
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "modified": 1728927124
+}

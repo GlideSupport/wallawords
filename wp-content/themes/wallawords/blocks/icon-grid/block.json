@@ -1,0 +1,27 @@
+{
+	"name": "acf/icon-grid",
+	"title": "Icon Grid",
+	"description": "A custom icon grid block.",
+	"category": "theme-blocks",
+	"style": ["file:./icon-grid.css"],
+	"editorScript": ["block-icon-grid"],
+	"script": ["block-icon-grid"],
+	"icon": "icon-grid",
+	"keywords": ["icon","grid"],
+	"supports": {
+		"align": true
+	},
+	"acf": {
+		"mode": "edit",
+		"renderTemplate": "block-icon-grid.php"
+	},
+	"example": {
+		"attributes": {
+			"mode": "preview",
+			"data": {
+				"preview": "icon-grid-preview.webp"
+			}
+		}
+	},
+	"align": "full"
+}

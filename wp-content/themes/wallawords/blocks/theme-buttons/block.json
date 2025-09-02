@@ -1,0 +1,16 @@
+{
+  "name": "acf/theme-buttons",
+  "title": "Theme Buttons",
+  "description": "A custom Theme-buttons block.",
+  "category": "theme-blocks",
+  "icon": "button",
+  "keywords": ["theme-buttons", "theme"],
+  "supports": {
+    "align": true
+  },
+  "acf": {
+    "mode": "edit",
+    "renderTemplate": "block-theme-buttons.php"
+  },
+  "align": "full"
+}

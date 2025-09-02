@@ -1,0 +1,24 @@
+{
+	"name": "acf/section-header",
+	"title": "Section Header",
+	"description": "A custom section header block.",
+	"category": "theme-blocks",
+	"icon": "section-header",
+	"keywords": ["section","header"],
+	"supports": {
+		"align": true
+	},
+	"acf": {
+		"mode": "edit",
+		"renderTemplate": "block-section-header.php"
+	},
+	"example": {
+		"attributes": {
+			"mode": "preview",
+			"data": {
+				"preview": "section-header-preview.webp"
+			}
+		}
+	},
+	"align": "full"
+}

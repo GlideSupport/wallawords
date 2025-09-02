@@ -1,0 +1,22 @@
+.two-columns {
+	display: grid;
+	@include fluidColumns(2, 350px, 2%);
+	row-gap: var(--ww_space_6);
+}
+
+.three-columns {
+	display: grid;
+	@include fluidColumns(3, 309px, 2%, 0);
+}
+
+.four-columns {
+	display: grid;
+	@include fluidColumns(4, 250px, 2%);
+	row-gap: var(--ww_space_6);
+}
+
+.five-columns {
+	display: grid;
+	@include fluidColumns(5, 200px, 2%);
+	row-gap: var(--ww_space_6);
+}

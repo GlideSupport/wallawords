@@ -1,0 +1,61 @@
+{
+    "key": "group_64b78e7fd3a13",
+    "title": "Block - Jump Location",
+    "fields": [
+        {
+            "key": "field_64b78e7fdac66",
+            "label": "Jump Location",
+            "name": "",
+            "aria-label": "",
+            "type": "block_label",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": ""
+        },
+        {
+            "key": "field_64b78e7fe98db",
+            "label": "Hash ID",
+            "name": "ww_blkjmplctn_hashid",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "Write id with (-) and small letters e,g jump-link",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "block",
+                "operator": "==",
+                "value": "acf\/jump-location"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "modified": 1733935699
+}

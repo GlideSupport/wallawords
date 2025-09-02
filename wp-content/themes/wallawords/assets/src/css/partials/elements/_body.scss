@@ -1,0 +1,28 @@
+/* -------------------------------------------------
+>> Base Styles
+---------------------------------------------------
+>> Edit these styles as required
+------------------------------------------------- */
+
+body {
+	@include font(inter, reg, family weight);
+	position: relative;
+	font-size: var(--ww_font_size_3);
+	color: var(--ww_body_color);
+	background-color: var(--ww_body_bg);
+	line-height: 1.5;
+}
+
+p {
+	margin: 0 0 30px;
+}
+
+::selection {
+	color: var(--ww_highlight_color);
+	background-color: var(--ww_highlight_bg);
+}
+
+
+strong {
+	color: var(--ww_text_strong) !important;
+}

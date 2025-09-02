@@ -1,0 +1,260 @@
+{
+    "key": "group_64b77fad06a67",
+    "title": "Block - Theme Video",
+    "fields": [
+        {
+            "key": "field_64b77fad0dcd1",
+            "label": "Theme Video",
+            "name": "",
+            "aria-label": "",
+            "type": "block_label",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": ""
+        },
+        {
+            "key": "field_64b77fad11985",
+            "label": "Title",
+            "name": "ww_blkthvdo_title",
+            "aria-label": "",
+            "type": "block_title",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "sub_fields": [
+                {
+                    "ID": 1,
+                    "key": "field_6458ea92f6394",
+                    "label": "Block Title",
+                    "name": "title",
+                    "aria-label": "",
+                    "prefix": "acf",
+                    "type": "text",
+                    "value": null,
+                    "menu_order": 0,
+                    "instructions": "",
+                    "required": "",
+                    "id": "",
+                    "class": "",
+                    "conditional_logic": 0,
+                    "parent": "",
+                    "wrapper": {
+                        "width": "70",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": ""
+                },
+                {
+                    "ID": 2,
+                    "key": "field_6458ea92f6395",
+                    "label": "HTML Tag",
+                    "name": "title_tag",
+                    "aria-label": "",
+                    "prefix": "acf",
+                    "type": "headings",
+                    "value": null,
+                    "is_h1": "no",
+                    "menu_order": 0,
+                    "instructions": "",
+                    "required": "",
+                    "id": "",
+                    "class": "",
+                    "conditional_logic": 0,
+                    "parent": "",
+                    "wrapper": {
+                        "width": "30",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": ""
+                }
+            ],
+            "instructions_title": "",
+            "instructions_title_tag": "",
+            "is_h1": "no"
+        },
+        {
+            "key": "field_64b77fad1534f",
+            "label": "Expand for options",
+            "name": "",
+            "aria-label": "",
+            "type": "accordion",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "open": 1,
+            "multi_expand": 0,
+            "endpoint": 0
+        },
+        {
+            "key": "field_64b77fad18f48",
+            "label": "Spacers",
+            "name": "ww_blkthvdo_spcr",
+            "aria-label": "",
+            "type": "spacers",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "clone": "",
+            "prefix_label": 0,
+            "prefix_name": 0,
+            "sub_fields": [
+                {
+                    "ID": 3,
+                    "key": "field_6458ea92f6396",
+                    "label": "Margin From Top",
+                    "name": "top_spacer",
+                    "aria-label": "",
+                    "prefix": "acf",
+                    "type": "spacer",
+                    "value": null,
+                    "menu_order": 0,
+                    "instructions": "",
+                    "required": "",
+                    "id": "",
+                    "class": "",
+                    "conditional_logic": 0,
+                    "parent": "",
+                    "wrapper": {
+                        "width": "50",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": ""
+                },
+                {
+                    "ID": 4,
+                    "key": "field_6458ea92f6397",
+                    "label": "Margin From Bottom",
+                    "name": "bottom_spacer",
+                    "aria-label": "",
+                    "prefix": "acf",
+                    "type": "spacer",
+                    "value": null,
+                    "menu_order": 0,
+                    "instructions": "",
+                    "required": "",
+                    "id": "",
+                    "class": "",
+                    "conditional_logic": 0,
+                    "parent": "",
+                    "wrapper": {
+                        "width": "50",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": ""
+                }
+            ],
+            "instructions_top": "",
+            "instructions_bottom": ""
+        },
+        {
+            "key": "field_64b7813a85dd8",
+            "label": "Video Thumbnail",
+            "name": "ww_blkthvdo_video_thumb",
+            "aria-label": "",
+            "type": "image",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "33",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "id",
+            "library": "all",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": "",
+            "preview_size": "admin-landscape"
+        },
+        {
+            "key": "field_64d4b5136316b",
+            "label": "Placeholder  Video",
+            "name": "ww_blkthvdo_vupld",
+            "aria-label": "",
+            "type": "file",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "66",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "url",
+            "library": "all",
+            "min_size": "",
+            "max_size": "",
+            "mime_types": ""
+        },
+        {
+            "key": "field_64b77fad1caf3",
+            "label": "Popup Video",
+            "name": "ww_blkthvdo_vid",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "NOTE : For Popup Video give Video ID like \"-4PKi63rZ0g&t=2s\" you can get from URL.\r\nURL : https:\/\/www.youtube.com\/watch?v=-4PKi63rZ0g&t=2s",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "block",
+                "operator": "==",
+                "value": "acf\/theme-video"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "modified": 1733935701
+}

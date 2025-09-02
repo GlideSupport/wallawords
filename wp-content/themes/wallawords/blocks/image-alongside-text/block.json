@@ -1,0 +1,24 @@
+{
+	"name": "acf/image-alongside-text",
+	"title": "Image Alongside Text",
+	"description": "A custom Image Alongside Text block.",
+	"category": "theme-blocks",
+	"icon": "image-alongside-text",
+	"keywords": ["image","alongside","text"],
+	"supports": {
+		"align": true
+	},
+	"acf": {
+		"mode": "edit",
+		"renderTemplate": "block-image-alongside-text.php"
+	},
+	"example": {
+		"attributes": {
+			"mode": "preview",
+			"data": {
+				"preview": "image-alongside-text-preview.webp"
+			}
+		}
+	},
+	"align": "full"
+}

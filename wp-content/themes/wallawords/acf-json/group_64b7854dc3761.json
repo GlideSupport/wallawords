@@ -1,0 +1,364 @@
+{
+    "key": "group_64b7854dc3761",
+    "title": "Block - Icon Grid",
+    "fields": [
+        {
+            "key": "field_64b7854dd0541",
+            "label": "Icon Grid",
+            "name": "",
+            "aria-label": "",
+            "type": "block_label",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": ""
+        },
+        {
+            "key": "field_64b7854dd3fb2",
+            "label": "Title",
+            "name": "ww_blkicngrd_title",
+            "aria-label": "",
+            "type": "block_title",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "sub_fields": [
+                {
+                    "ID": 1,
+                    "key": "field_6458ea92f6394",
+                    "label": "Block Title",
+                    "name": "title",
+                    "aria-label": "",
+                    "prefix": "acf",
+                    "type": "text",
+                    "value": null,
+                    "menu_order": 0,
+                    "instructions": "",
+                    "required": "",
+                    "id": "",
+                    "class": "",
+                    "conditional_logic": 0,
+                    "parent": "",
+                    "wrapper": {
+                        "width": "70",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": ""
+                },
+                {
+                    "ID": 2,
+                    "key": "field_6458ea92f6395",
+                    "label": "HTML Tag",
+                    "name": "title_tag",
+                    "aria-label": "",
+                    "prefix": "acf",
+                    "type": "headings",
+                    "value": null,
+                    "is_h1": "no",
+                    "menu_order": 0,
+                    "instructions": "",
+                    "required": "",
+                    "id": "",
+                    "class": "",
+                    "conditional_logic": 0,
+                    "parent": "",
+                    "wrapper": {
+                        "width": "30",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": ""
+                }
+            ],
+            "instructions_title": "",
+            "instructions_title_tag": "",
+            "is_h1": "no"
+        },
+        {
+            "key": "field_64b7854dd7b46",
+            "label": "Expand for options",
+            "name": "",
+            "aria-label": "",
+            "type": "accordion",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "open": 1,
+            "multi_expand": 0,
+            "endpoint": 0
+        },
+        {
+            "key": "field_64b7854ddb5f0",
+            "label": "Spacers",
+            "name": "ww_blkicngrd_spcr",
+            "aria-label": "",
+            "type": "spacers",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "clone": "",
+            "prefix_label": 0,
+            "prefix_name": 0,
+            "sub_fields": [
+                {
+                    "ID": 3,
+                    "key": "field_6458ea92f6396",
+                    "label": "Margin From Top",
+                    "name": "top_spacer",
+                    "aria-label": "",
+                    "prefix": "acf",
+                    "type": "spacer",
+                    "value": null,
+                    "menu_order": 0,
+                    "instructions": "",
+                    "required": "",
+                    "id": "",
+                    "class": "",
+                    "conditional_logic": 0,
+                    "parent": "",
+                    "wrapper": {
+                        "width": "50",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": ""
+                },
+                {
+                    "ID": 4,
+                    "key": "field_6458ea92f6397",
+                    "label": "Margin From Bottom",
+                    "name": "bottom_spacer",
+                    "aria-label": "",
+                    "prefix": "acf",
+                    "type": "spacer",
+                    "value": null,
+                    "menu_order": 0,
+                    "instructions": "",
+                    "required": "",
+                    "id": "",
+                    "class": "",
+                    "conditional_logic": 0,
+                    "parent": "",
+                    "wrapper": {
+                        "width": "50",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": ""
+                }
+            ],
+            "instructions_top": "",
+            "instructions_bottom": ""
+        },
+        {
+            "key": "field_64cb40e410af5",
+            "label": "Select Content Variations",
+            "name": "ww_blkicngrd_cntnt_var",
+            "aria-label": "",
+            "type": "button_group",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "left": "<img src=\"\/wp-content\/themes\/amplify\/assets\/build\/images\/admin\/left.webp\"><br> Left",
+                "center": "<img src=\"\/wp-content\/themes\/amplify\/assets\/build\/images\/admin\/center.webp\"><br> Center"
+            },
+            "default_value": "center",
+            "return_format": "value",
+            "allow_null": 0,
+            "layout": "horizontal"
+        },
+        {
+            "key": "field_64b7854ddf0b6",
+            "label": "Text",
+            "name": "ww_blkicngrd_text",
+            "aria-label": "",
+            "type": "wysiwyg",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "tabs": "all",
+            "toolbar": "full",
+            "media_upload": 0,
+            "delay": 0
+        },
+        {
+            "key": "field_64b788b054f50",
+            "label": "Icon Upload Instructions",
+            "name": "",
+            "aria-label": "",
+            "type": "message",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "<div class=\"upload-instructions\">\r\n\r\n<b>Recommended Size:<\/b> Minimum 320px by 200px (Regular Display) - Maximum 640px by 400px (Retina Display) - (width x height)<br \/>\r\n\r\n<b>Icon Height:<\/b> Height of the icon can vary slightly due to aspect ratio, but width of icon must meet the recommended size.<br \/>\r\n\r\n<\/div>",
+            "new_lines": "wpautop",
+            "esc_html": 0
+        },
+        {
+            "key": "field_64b7854de2b66",
+            "label": "Icons",
+            "name": "ww_blkicngrd_icons",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "block",
+            "pagination": 0,
+            "min": 0,
+            "max": 0,
+            "collapsed": "",
+            "button_label": "Add Icon",
+            "rows_per_page": 20,
+            "sub_fields": [
+                {
+                    "key": "field_64b786797664d",
+                    "label": "Icon",
+                    "name": "icon",
+                    "aria-label": "",
+                    "type": "image",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "return_format": "id",
+                    "library": "all",
+                    "min_width": "",
+                    "min_height": "",
+                    "min_size": "",
+                    "max_width": "",
+                    "max_height": "",
+                    "max_size": "",
+                    "mime_types": "",
+                    "preview_size": "admin-square",
+                    "parent_repeater": "field_64b7854de2b66"
+                },
+                {
+                    "key": "field_64b7868c7664e",
+                    "label": "Heading",
+                    "name": "heading",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_64b7854de2b66"
+                },
+                {
+                    "key": "field_64b786937664f",
+                    "label": "Text",
+                    "name": "text",
+                    "aria-label": "",
+                    "type": "wysiwyg",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "tabs": "all",
+                    "toolbar": "full",
+                    "media_upload": 0,
+                    "delay": 0,
+                    "parent_repeater": "field_64b7854de2b66"
+                }
+            ]
+        },
+        {
+            "key": "field_64b786b876650",
+            "label": "Button",
+            "name": "ww_blkicngrd_button",
+            "aria-label": "",
+            "type": "link",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array"
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "block",
+                "operator": "==",
+                "value": "acf\/icon-grid"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "modified": 1733935699
+}

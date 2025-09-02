@@ -1,0 +1,24 @@
+{
+	"name": "acf/checklist",
+	"title": "Checklist",
+	"description": "A custom checklist block.",
+	"category": "theme-blocks",
+	"icon": "checklist",
+	"keywords": ["checklist"],
+	"supports": {
+		"align": true
+	},
+	"acf": {
+		"mode": "edit",
+		"renderTemplate": "block-checklist.php"
+	},
+	"example": {
+		"attributes": {
+			"mode": "preview",
+			"data": {
+				"preview": "checklist-preview.webp"
+			}
+		}
+	},
+	"align": "full"
+}

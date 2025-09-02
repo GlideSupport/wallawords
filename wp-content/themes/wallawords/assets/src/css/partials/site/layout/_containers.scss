@@ -1,0 +1,47 @@
+/****
+ *
+ * containers
+ *
+****/
+
+.wrapper {
+	max-width: 1300px;
+	width: 90%;
+	margin: 0 auto;
+}
+
+.ctn-1180 {
+	.wrapper {
+		max-width: 1180px;
+	}
+}
+
+
+.ctn-1080 {
+	.wrapper {
+		max-width: 1080px;
+	}
+}
+
+.ctn-980 {
+	.wrapper {
+		max-width: 980px;
+	}
+}
+
+.ctn-760 {
+	.wrapper {
+		max-width: 760px;
+	}
+}
+
+.full-width-ctn {
+	.wrapper {
+		max-width: 100%;
+		width: 100%;
+	}
+}
+
+.navy-ctn {
+	background-color: var(--wp--preset--color--navy);
+}

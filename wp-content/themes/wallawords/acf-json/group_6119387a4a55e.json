@@ -1,0 +1,311 @@
+{
+    "key": "group_6119387a4a55e",
+    "title": "Block - Theme Buttons",
+    "fields": [
+        {
+            "key": "field_6465c31fcfd57",
+            "label": "Theme Buttons",
+            "name": "",
+            "aria-label": "",
+            "type": "block_label",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": ""
+        },
+        {
+            "key": "field_6465c58079d1c",
+            "label": "Spacers",
+            "name": "amplify_blk_button_sp",
+            "aria-label": "",
+            "type": "spacers",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "clone": "",
+            "prefix_label": 0,
+            "prefix_name": 0,
+            "sub_fields": [
+                {
+                    "ID": 3,
+                    "key": "field_6458ea92f6396",
+                    "label": "Margin From Top",
+                    "name": "top_spacer",
+                    "aria-label": "",
+                    "prefix": "acf",
+                    "type": "spacer",
+                    "value": null,
+                    "menu_order": 0,
+                    "instructions": "",
+                    "required": "",
+                    "id": "",
+                    "class": "",
+                    "conditional_logic": 0,
+                    "parent": "",
+                    "wrapper": {
+                        "width": "50",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": ""
+                },
+                {
+                    "ID": 4,
+                    "key": "field_6458ea92f6397",
+                    "label": "Margin From Bottom",
+                    "name": "bottom_spacer",
+                    "aria-label": "",
+                    "prefix": "acf",
+                    "type": "spacer",
+                    "value": null,
+                    "menu_order": 0,
+                    "instructions": "",
+                    "required": "",
+                    "id": "",
+                    "class": "",
+                    "conditional_logic": 0,
+                    "parent": "",
+                    "wrapper": {
+                        "width": "50",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": ""
+                }
+            ],
+            "instructions_top": "",
+            "instructions_bottom": ""
+        },
+        {
+            "key": "field_6459e23522e94",
+            "label": "Expand for options",
+            "name": "",
+            "aria-label": "",
+            "type": "accordion",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "open": 0,
+            "multi_expand": 0,
+            "endpoint": 0
+        },
+        {
+            "key": "field_6178f0675c647",
+            "label": "Select Variation",
+            "name": "ww_blk_btn_variation",
+            "aria-label": "",
+            "type": "button_group",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "single": "Single",
+                "multiple": "Multiple"
+            },
+            "default_value": "single",
+            "return_format": "value",
+            "allow_null": 0,
+            "layout": "horizontal"
+        },
+        {
+            "key": "field_64cb85a8ea3ef",
+            "label": "Button Positions",
+            "name": "ww_blk_btnpstn",
+            "aria-label": "",
+            "type": "button_group",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "left": "Left",
+                "center": "Center",
+                "right": "Right"
+            },
+            "default_value": "single",
+            "return_format": "value",
+            "allow_null": 0,
+            "layout": "horizontal"
+        },
+        {
+            "key": "field_611938c557c59",
+            "label": "Buttons",
+            "name": "ww_blk_buttons",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_6178f0675c647",
+                        "operator": "==",
+                        "value": "multiple"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "collapsed": "",
+            "min": 0,
+            "max": 0,
+            "layout": "block",
+            "button_label": "Add Button",
+            "rows_per_page": 20,
+            "sub_fields": [
+                {
+                    "key": "field_611938e257c5a",
+                    "label": "Button",
+                    "name": "button",
+                    "aria-label": "",
+                    "type": "link",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "65",
+                        "class": "",
+                        "id": ""
+                    },
+                    "return_format": "array",
+                    "parent_repeater": "field_611938c557c59"
+                },
+                {
+                    "key": "field_611939ceee767",
+                    "label": "Style",
+                    "name": "style",
+                    "aria-label": "",
+                    "type": "radio",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "35",
+                        "class": "",
+                        "id": ""
+                    },
+                    "choices": {
+                        "default": "Default",
+                        "has-arrow": "Has Arrow",
+                        "just-arrow-small": "Just Arrow Small",
+                        "has-icon": "Has Icon",
+                        "text-arrow": "Text Arrow"
+                    },
+                    "default_value": "default",
+                    "return_format": "value",
+                    "allow_null": 0,
+                    "other_choice": 0,
+                    "layout": "horizontal",
+                    "save_other_choice": 0,
+                    "parent_repeater": "field_611938c557c59"
+                }
+            ]
+        },
+        {
+            "key": "field_6178f214fa99f",
+            "label": "Button",
+            "name": "ww_blk_button",
+            "aria-label": "",
+            "type": "link",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_6178f0675c647",
+                        "operator": "==",
+                        "value": "Single"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "65",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array"
+        },
+        {
+            "key": "field_6178f22cfa9a0",
+            "label": "Style",
+            "name": "ww_blk_btn_style",
+            "aria-label": "",
+            "type": "radio",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_6178f0675c647",
+                        "operator": "==",
+                        "value": "single"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "35",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "default": "Default",
+                "has-arrow": "Has Arrow",
+                "just-arrow-small": "Just Arrow Small",
+                "has-icon": "Has Icon",
+                "text-arrow": "Text Arrow"
+            },
+            "default_value": "default",
+            "return_format": "value",
+            "allow_null": 0,
+            "other_choice": 0,
+            "layout": "horizontal",
+            "save_other_choice": 0
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "block",
+                "operator": "==",
+                "value": "acf\/theme-buttons"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "modified": 1733935701
+}

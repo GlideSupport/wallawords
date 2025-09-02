@@ -1,0 +1,36 @@
+
+.checklist-items {
+	ul {
+		margin: 0;
+		padding: 0;
+		column-count: 2;
+		column-gap: 70px;
+
+		li {
+			margin-bottom: 10px;
+			padding: 16px 20px 15px 65px;
+			background-color: var(--ww_black_2);
+			background-image: url(../images/tick-icon.svg);
+			background-repeat: no-repeat;
+			display: block;
+			background-size: 32px;
+			background-position: top 13px left 16px;
+			border-radius: 20px;
+			@include font(inter, med);
+
+			&::before {
+				display: none;
+			}
+
+			span {
+				left: 12px;
+
+				img {
+					max-width: 25px;
+					max-height: 25px;
+					width: 100%;
+				}
+			}
+		}
+	}
+}

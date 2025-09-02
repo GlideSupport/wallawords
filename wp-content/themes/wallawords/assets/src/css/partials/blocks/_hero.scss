@@ -1,0 +1,10 @@
+.wp-block-cover.hero {
+    padding: 0;
+
+    h1 {
+        font-size: var(--text-85) !important;
+        span {
+            color: var(--ww_color_primary);
+        }
+    }
+}

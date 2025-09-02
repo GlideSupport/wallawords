@@ -1,0 +1,24 @@
+{
+	"name": "acf/contact-info",
+	"title": "Contact Info",
+	"description": "A custom contact Info block.",
+	"category": "theme-blocks",
+	"icon": "contact-info",
+	"keywords": ["contact","info"],
+	"supports": {
+		"align": true
+	},
+	"acf": {
+		"mode": "edit",
+		"renderTemplate": "block-contact-info.php"
+	},
+	"example": {
+		"attributes": {
+			"mode": "preview",
+			"data": {
+				"preview": "contact-info-preview.webp"
+			}
+		}
+	},
+	"align": "full"
+}
