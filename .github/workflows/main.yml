@@ -17,5 +17,5 @@ jobs:
         # Deploy Options
         PHP_LINT: TRUE
         CACHE_CLEAR: TRUE
-        SRC_PATH: "wp-content/themes/wallawords"
-        REMOTE_PATH: "wp-content/themes/wallawords"
+        SRC_PATH: "wp-content/themes/wallawords/"
+        REMOTE_PATH: "wp-content/themes/wallawords/"
