@@ -443,9 +443,13 @@ body {
 
             .popup-title {
                 @include font(rubik, eblack);
-                @extend .text-42;
+                @extend .text-48;
                 letter-spacing: -1.44px;
                 text-transform: uppercase;
+                margin-bottom: 24px;
+                max-width: 193px;
+                margin-left: auto;
+                margin-right: auto;
 
                 span {
                     background: linear-gradient(88deg, #2BC016 0.88%, #26A96C 99.12%);
@@ -530,28 +534,13 @@ body {
                 .text {
                     @include font(rubik, med);
                     width: 100%;
-
                     max-width: 330px;
-
                     margin: 0 auto;
-
                     position: relative;
-
                     opacity: 1;
-
                     text-align: center;
+                            color: var(--ww_white);
 
-                    color: #A9A6B7;
-
-                    font-size: 24px;
-
-                    span {
-
-                        color: #fff;
-
-
-
-                    }
 
                     .num {
 
@@ -1174,27 +1163,36 @@ body {
         border-radius: 20px;
         z-index: 9999;
         overflow: hidden;
+            padding: 97px 0 0 0;
         .element-icon{
              position: absolute;
              &.element-01{
                 background-image: url('../images/popup-element-01.svg'); 
                 top:0;
-                right: 0;                 
+                right: 0;         
+                width: 88px;
+                 height: 112px;        
              }
                 &.element-02{
                 background-image: url('../images/popup-element-02.svg'); 
                 top:0;
-                left: 0;                 
+                left: 0;      
+                width: 125px;
+                height: 145px;           
              }
                 &.element-03{
                 background-image: url('../images/popup-element-03.svg'); 
                 top:153px;
-                right: 15px;                 
+                right: 15px;          
+                width: 94px;
+                height: 95px;       
              }
                 &.element-04{
                 background-image: url('../images/popup-element-04.svg'); 
                 top:204px;
-                left: 48px;                 
+                left: 48px;        
+                width: 83px;
+                height: 83px;         
              }
     
         }
