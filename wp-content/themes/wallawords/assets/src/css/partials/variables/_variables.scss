@@ -378,8 +378,8 @@
 	// Button
 	--ww_button_color: var(--ww_white_text);
 	--ww_button_bgcolor: var(--ww_color_primary);
-	--ww_button_color_hover: var(--ww_dark_text);
-	--ww_button_bgcolor_hover: var(--ww_black_2);
+     --ww_button_color_hover: var(--ww_black_1);
+      --ww_button_bgcolor_hover: var(--ww_white);
 	--ww_button_border_color: var(--ww_color_primary);
 	--ww_button_border_color_hover: var(--ww_border);
 
@@ -498,12 +498,12 @@
 
 	--ww_footer_color_hover: var(--ww_white_text);
 
-	--ww_f_nav_color: var(--ww_footer_color);
+	--ww_f_nav_color:var(--ww_black_2);
 	--ww_f_nav_color_hover: var(--ww_footer_color_hover);
 	--ww_f_nav_border_color: var(--ww_footer_color);
 	--ww_f_nav_border_color_hover: var(--ww_footer_color_hover);
 
-	--ww_copyright_color: var(--ww_white_text);
+	--ww_copyright_color: var(--ww_black_2);
 	--ww_legal_nav_color: var(--ww_white_text);
 	--ww_legal_nav_border_color: var(--ww_white_text);
 	--ww_legal_nav_border_color_hover: var(--ww_white_text);

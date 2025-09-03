@@ -266,6 +266,8 @@ a.button:visited,
 span.button,
 .gform_button,
 .is-style-mycustomstyle .wp-element-button {
+     width: -moz-fit-content;
+  width: fit-content;
 	box-sizing: border-box;
 	position: relative;
 	display: inline-block;
@@ -278,24 +280,21 @@ span.button,
 	transition: all 0.35s ease-in-out;
 	margin-right: 9px;
 	text-align: center;
-	border-radius: 30px;
+	border-radius: 300px;
 	line-height: 1.5;
 	box-shadow: 0px -2px 6px 0px rgba(43, 190, 31, 0.50) inset, 0px 0px 40px -40px rgba(43, 191, 28, 0.50);
 	cursor: pointer;
 
-	@include font(inter, bold);
-
-	font-size: var(--ww_font_size_3);
+	@include font(rubik, med);
+	font-size: 18px;
 
 	&:last-child {
 		margin-right: 0;
 	}
 
-	&:hover {
-		background: var(--ww_theme_btn_bgcolor_hover);
-		border: none;
-		color: var(--ww_theme_btn_color_hover);
-		box-shadow: none;
+	&:hover {	
+			color: #fff;
+			background: linear-gradient(224deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0) 72.49%), #29B443;
 	}
 
 	&.outline-btn {
@@ -561,26 +560,11 @@ body.light {
 	background-color: #ECF1EF;
 	color: var(--ww_dark);
 	
-	header {
-		background-color: #fff !important;
-		background: transparent;
-	}
 
 	h1, h2, h3, h4, h5, h6 {
 		color: var(--ww_dark);
 	}
-	
-	.header-section {
-		border: none;
 
-		.icon path {
-			fill: var(--ww_dark);
-		};
-
-		.logo path:first-child {
-			fill: var(--ww_dark);
-		}
-	}
 	
 	.menu {
 

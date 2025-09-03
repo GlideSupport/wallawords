@@ -16,7 +16,7 @@
 			background-size: 32px;
 			background-position: top 13px left 16px;
 			border-radius: 20px;
-			@include font(inter, med);
+			@include font(inter, med); 
 
 			&::before {
 				display: none;
