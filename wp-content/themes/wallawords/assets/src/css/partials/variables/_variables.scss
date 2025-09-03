@@ -166,6 +166,11 @@
 	--ww_font_size_13_min: var(--font_base_unit) * 27.5;
 	--ww_font_size_13: clamp(var(--ww_font_size_13_min), 0.9092960288808665rem + 5.415162454873646vw, var(--ww_font_size_13_max));
 
+		/* ------- [ D-42 to M-28 ] - [ Text-42 ] ------- */
+	--ww_font_size_14_max: 42px;
+	--ww_font_size_14_min: 28px;
+	--ww_font_size_14: clamp(var(--ww_font_size_14_min), calc(1.75rem + ((1vw - 7.68px) * 2.3649)), 4var(--ww_font_size_14_man));
+
 
 	/* -------------------------------------------------
 		>> Line Height
