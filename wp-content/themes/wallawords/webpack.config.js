@@ -5,6 +5,7 @@ const path = require( 'path' );
 const FixStyleOnlyEntriesPlugin = require( 'webpack-fix-style-only-entries' );
 const MiniCssExtractPlugin = require( 'mini-css-extract-plugin' );
 const CopyPlugin = require( 'copy-webpack-plugin' );
+const TerserPlugin = require("terser-webpack-plugin");
 const ImageminPlugin = require( 'imagemin-webpack-plugin' ).default;
 const RemovePlugin = require( 'remove-files-webpack-plugin' );
 
@@ -13,6 +14,7 @@ const isProduction = process.env.NODE_ENV === 'production';
  * WordPress Dependencies
  */
 const defaultConfig = require( '@wordpress/scripts/config/webpack.config.js' );
+
 
 module.exports = {
 	...defaultConfig,
@@ -30,6 +32,7 @@ module.exports = {
 			clean: true,
 		},
 	},
+
 	module: {
 		...defaultConfig.module,
 		rules: [
@@ -68,6 +71,14 @@ module.exports = {
 				},
 			},
 			{
+				    test: /confetti\.min\.js$/, // match exactly this file
+					type: "asset/resource",
+					generator: {
+					   filename: "game/[name][ext]", // keep in game/ folder
+					}
+
+			},
+			{
                 test: /\.svg$/,
                 type: 'asset/resource',
                 generator: {
@@ -76,6 +87,14 @@ module.exports = {
             },
 		],
 	},
+	optimization: {
+    	minimize: true,
+    	minimizer: [
+     	 new TerserPlugin({
+       		 exclude: /confetti\.min\.js/, // <- Don't minify this file
+     	 }),
+   		 ],
+	  },
 	plugins: [
 		...defaultConfig.plugins,
 		new FixStyleOnlyEntriesPlugin(), //removes extra generated files.
@@ -109,7 +128,6 @@ module.exports = {
 					from: 'assets/src/js/vendors',
 					to: 'vendors',
 					noErrorOnMissing: true,
-
 				},
 				{
 					from: 'assets/src/images/admin',
@@ -122,11 +140,22 @@ module.exports = {
 					noErrorOnMissing: true,
 				},
 				{
+					from: 'assets/src/js/game',
+					to: 'game',
+					noErrorOnMissing: true,
+				},
+				{
 					from: 'assets/src/images/social-icons',
 					to: 'images/social-icons',
 					noErrorOnMissing: true,
 				},
+				{
+					from: "assets/src/js/game/confetti.min.js",
+					to: "game/confetti.min.js",
+					noErrorOnMissing: true,
+				},
 			],
+		
 		} ),
 		new RemovePlugin( {
 			after: {
