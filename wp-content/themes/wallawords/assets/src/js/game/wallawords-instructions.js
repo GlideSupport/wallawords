@@ -1,7 +1,8 @@
 // **Tutorial Instructions and Images**
-const instructionScreen = document.getElementById('instruction-screen');
+const instructionScreen = document.getElementById('instruction-screen-wrapper');
 const instructionSteps = document.getElementById('instruction-steps');
 const instructionText = document.getElementById('instruction-text');
+const header = document.querySelector('.instructions-container .header');
 
 const helpButton = document.getElementById('help-button');
 const skipButton = document.getElementById('skip-button');
@@ -9,40 +10,94 @@ const nextButton = document.getElementById('next-button');
 const backButton = document.getElementById('back-button');
 const playButton = document.getElementById('play-button');
 
-
 let totalSlides = 0;
 let instructionSlide = 1;
 
+/*
+instructionText.addEventListener('scroll', () => {
+    if (instructionText.scrollTop > 95) {
+        header.classList.add('scrolled');
+    } else {
+        header.classList.remove('scrolled');
+    }
+});
+*/
+
 helpButton.addEventListener('click', () => {
-    instructionSlide = 0;
-    startInstructions(instructionSlide);
-    instructionScreen.style.display = 'flex';
-    //gameScreen.style.display = 'none';
+    //instructionSlide = 1;
+    //startInstructions(instructionSlide);
+
+    const instructionTextWrapper = document.getElementById('instruction-text');
+    if (!instructionTextWrapper) return;
+
+	let viewportHeight = window.visualViewport ? window.visualViewport.height : window.innerHeight;
+	
+	let offsetVal = 104;
+
+    if(window.innerWidth > 747) {
+        offsetVal = 164; //add 20px for larger size screens    
+    }
+
+    let resetInstructionsHeight = viewportHeight - offsetVal; // Adjust height
+
+    instructionTextWrapper.style.height = `${resetInstructionsHeight}px`;
+
+    //console.log('instruction screen height: '+resetInstructionsHeight);
+
+    document.body.style.overflow = 'hidden';
+
+    var helpScreen = jQuery('#instruction-screen-wrapper');
+
+    if (helpScreen.hasClass('active')) {
+        //gameMenu.css('display','none');
+        helpScreen.fadeOut(250);
+        helpScreen.removeClass('active');
+    } else {
+        //gameMenu.css('display','block');
+        helpScreen.fadeIn(500);
+        helpScreen.addClass('active');
+        jQuery('#instruction-screen-overlay').css('z-index','999');
+    } 
 });
 
 skipButton.addEventListener('click', () => {
+    document.body.style.overflow = 'auto';
+    var helpScreen = jQuery('#instruction-screen-wrapper');
+    helpScreen.fadeOut(250);
+    helpScreen.removeClass('active');
+    //titleScreen.style.display = 'none';
     instructionScreen.style.display = 'none';
-    gameScreen.style.display = 'flex';
     /*
-    if (moveCounterValue > 0) {
-        gameScreen.style.display = 'flex';
-    } else {
+    //instructionSlide = 1;
+    //switchInstructionsSlide(instructionSlide);
+    if(activePoem.length == 0){
         startGame(puzzleCounter);
     }
     */
 });
 
 playButton.addEventListener('click', () => {
+    document.body.style.overflow = 'auto';
+    titleScreen.style.display = 'none';
     instructionScreen.style.display = 'none';
-    gameScreen.style.display = 'flex';
-    if (moveCounterValue > 0) {
-        gameScreen.style.display = 'flex';
-    } else {
-        startGame(puzzleCounter);
-    }
+    instructionSlide = 1;
+    //switchInstructionsSlide(instructionSlide);
+    startGame(puzzleCounter);
+});
+
+// * previous instruction slideshow */
+/*
+backButton.addEventListener('click', (e) => {
+    switchInstructionsSlide(parseInt(instructionSlide)-1);
+});
+
+nextButton.addEventListener('click', (e) => {
+    switchInstructionsSlide(parseInt(instructionSlide)+1);
 });
 
 function startInstructions(slide) {
+
+    /*
 
     jQuery.ajax({
         url: '/wp-admin/admin-ajax.php?action=wallawords_get_instruction_data',
@@ -105,18 +160,13 @@ function startInstructions(slide) {
                
             }
 
-            backButton.addEventListener('click', (e) => {
-                switchInstructionsSlide(parseInt(instructionSlide)-1);
-            });
-        
-            nextButton.addEventListener('click', (e) => {
-                switchInstructionsSlide(parseInt(instructionSlide)+1);
-            });
         }
         
     });
+    
         
 }
+
 
 function switchInstructionsSlide(slideNum) {
 
@@ -161,3 +211,4 @@ function switchInstructionsSlide(slideNum) {
     }
    
 }
+*/
