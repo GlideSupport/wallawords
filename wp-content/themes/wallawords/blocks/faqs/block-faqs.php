@@ -60,12 +60,13 @@ $ww_faq_sp_btm    = ( isset( $block_fields['ww_faq_sp']['bottom_spacer'] ) && ''
 					<div class="faq-heading">
 						<div class="pre-header">FAQS</div>
 						<<?php echo esc_html( $ww_faq_title_tag ); ?> class="heading-2"><?php echo html_entity_decode( $ww_faq_title ); ?><?php echo '</' . esc_html( $ww_faq_title_tag ) . '>'; ?>
+					
+						<?php if ( $ww_faq_txt ) { ?>
+							<div class="faq-text">
+								<?php echo html_entity_decode( $ww_faq_txt ); ?>
+							</div>
+						<?php } ?>
 					</div>
-					<?php if ( $ww_faq_txt ) { ?>
-						<div class="faq-text">
-							<?php echo html_entity_decode( $ww_faq_txt ); ?>
-						</div>
-					<?php } ?>
 				<?php
 			}
 			if ( $ww_faq_faqs ) {

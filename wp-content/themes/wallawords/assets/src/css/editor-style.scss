@@ -133,3 +133,10 @@
 .wp-block-spacer {
 	background: rgba(0, 0, 0, 0.1);
 }
+
+.editor-styles-wrapper {
+	.acf-block-body {
+        margin-block-end: 50px !important;
+        margin-block-start: 50px !important;
+    }
+}
