@@ -29,6 +29,7 @@
 }
 
 .editor-ctn,
+.editor-ctn-1080,
 .editor-ctn-980,
 .editor-ctn-760,
 .editor-full-width-ctn,
@@ -53,7 +54,7 @@
 
 .editor-full-width-ctn {
 	.wp-block {
-		max-width: 1800px !important;
+		max-width: 100% !important;
 	}
 }
 
@@ -62,7 +63,11 @@
 		max-width: 1180px !important;
 	}
 }
-
+.editor-ctn-1080 {
+	.wp-block {
+		max-width: 1080px !important;
+	}
+}
 .editor-ctn-980 {
 	.wp-block {
 		max-width: 980px !important;

@@ -63,6 +63,7 @@ export default function Edit( props ) {
 								options={ [
 
 									{ label: 'Width 1180px (Default)', value: 'ctn' },
+									{ label: 'Width 1080px', value: 'ctn-1080' },
 									{ label: 'Width 980px', value: 'ctn-980' },
 									{ label: 'Width 760px', value: 'ctn-760' },
 								]
