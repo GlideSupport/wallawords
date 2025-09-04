@@ -32,7 +32,7 @@
 .editor-ctn-1080,
 .editor-ctn-980,
 .editor-ctn-760,
-.editor-full-width-ctn,
+.editor-ctn-full-width,
 .wp-block-acf-spacer,
 .wp-block-acf-spacer .acf-input select {
 	max-width: 100% !important;
@@ -52,7 +52,7 @@
 	box-sizing: border-box;
 }
 
-.editor-full-width-ctn {
+.editor-ctn-full-width {
 	.wp-block {
 		max-width: 100% !important;
 	}
