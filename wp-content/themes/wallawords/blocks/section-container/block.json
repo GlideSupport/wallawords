@@ -1,12 +1,12 @@
 {
   "$schema": "https://schemas.wp.org/trunk/block.json",
-  "apiVersion": 2,
-  "name": "acf/section-container",
+  "apiVersion": 3,
+  "name": "basethemepack/section-container",
   "version": "1.0.0",
   "title": "Section Container",
   "category": "theme-blocks",
   "icon": "align-center",
-  "description": "Glide Block to Manage Sections",
+  "description": "Block to Manager Available Sections",
   "supports": {
     "html": false,
     "align": [
@@ -15,10 +15,6 @@
     ]
   },
   "attributes": {
-    "tagName": {
-      "type": "string",
-      "default": "section"
-    },
     "bgDesignType": {
       "type": "string",
       "default": ""
