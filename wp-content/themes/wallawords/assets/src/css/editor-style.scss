@@ -74,6 +74,26 @@
 		max-width: 760px !important;
 	}
 }
+.editor-styles-wrapper {
+	.block-editor-block-list__block {
+		margin-bottom: 35px !important;
+
+		.block-editor-block-list__layout {
+			>.block-editor-block-list__block {
+				margin-bottom: 20px !important;
+
+				figcaption {
+					display: block;
+					width: 100%;
+				}
+			}
+		}
+	}
+
+	table {
+		table-layout: auto;
+	}
+}
 
 
 .acf-field-block-title,
