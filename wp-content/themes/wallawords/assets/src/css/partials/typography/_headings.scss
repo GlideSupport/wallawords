@@ -69,7 +69,7 @@ h3,
 
 h4,
 .heading-4 {
-	font-size: var(--ww_font_size_17);
+	font-size: var(--ww_font_size_9);
 	line-height: 112%;
 	/* 35.84px */
 	letter-spacing: -0.96px;
@@ -95,7 +95,7 @@ h6,
 .heading-6 {
 	font-size: var(--ww_font_size_5);
 }
-
+ 
 .quote {
 	@include font(rubik, reg);
 	font-size: var(--ww_font_size_18);

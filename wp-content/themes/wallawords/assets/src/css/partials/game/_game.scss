@@ -285,7 +285,9 @@ body {
         background-position: top center;
         background-repeat: no-repeat;
         background-size: contain;
+    
         */
+     
 
         .game-stats {
             margin-top: 25px;
@@ -329,7 +331,7 @@ body {
             h1 {
                 width: 100%;
                  margin: 0 auto;
-                 max-width: 315px;
+                 max-width: 316px;
                  @media(max-width:767px){
                      max-width: 182px;
                  }
@@ -435,19 +437,16 @@ body {
 
                 .text {
                     @include font(rubik, med);
-                    width: 100%;
-                    max-width: 330px;
+                    max-width: 350px;
                     margin: 0 auto;
-                    position: relative;
-                    opacity: 1;
                     text-align: center;
-                    color: #A9A6B7;
-                    font-size: 24px;
-
-                    span {
-                        color: #fff;
+                    color: var(--ww-white);
+                  	font-size: var(--ww_font_size_9);
+                    letter-spacing: -0.72px;
+                    line-height: 112%;
+                    @media(max-width:767px){
+                         max-width: 250px;
                     }
-
                     .num {
                         color: #8A8997;
                         @include font(inter, reg);
@@ -612,7 +611,42 @@ body {
         align-items: center;
         width: 100%;
         box-sizing: border-box;
-        padding: 0;
+        padding: 96px 15px 48px;
+           position: relative;
+        .piece{
+             position: absolute;
+             background-position: center;
+             background-repeat: no-repeat;
+             background-size: contain;
+              &.piece-left-top{
+                 left: -11px;
+                 top:0;
+                 background-image: url(../images/piece-left-top.svg);
+                 width:142px;
+                 height: 142px;
+             }
+              &.piece-right-top{
+                 right: -11px;
+                 top:0;
+                 background-image: url(../images/piece-right-top.svg);
+                 width:106px;
+                 height: 106px;
+             }
+                &.piece-left-bottom{
+                 left: 48px;
+                 top:204px;
+                 background-image: url(../images/piece-left-bottom.svg);
+                 width:72px;
+                 height: 72px;
+             }
+                  &.piece-right-bottom{
+                 right:14px;
+                 top:153px;
+                 background-image: url(../images/piece-right-bottom.svg);
+                 width:62px;
+                 height: 62px;
+             }
+        }
     }
 
     .game-row {

@@ -295,6 +295,10 @@ $page_template = basename(get_page_template());
         <div id="instruction-screen" class="instruction-screen">
 
             <div class="game-container instructions-container">
+				<div class="piece piece-left-top"></div>
+				<div class="piece  piece-right-top"></div>
+				<div class="piece  piece-left-bottom"></div>
+				<div class="piece  piece-right-bottom"></div>
                 <div class="header">
 
                     <div class="close-button" id="skip-button">

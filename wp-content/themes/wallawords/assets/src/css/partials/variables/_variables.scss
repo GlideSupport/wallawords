@@ -182,12 +182,6 @@
 	--ww_font_size_16_min: 32px;
 	--ww_font_size_16: clamp(var(--ww_font_size_16_min), calc(2rem + ((1vw - 7.68px) * 2.7027)), var(--ww_font_size_16_max));
 
-
-		/* ------- [ D-32 to M-24 ] - [ Text-32] ------- */
-	--ww_font_size_17_max: 32px;
-	--ww_font_size_17_min: 24px;
-	--ww_font_size_17: clamp(var(--ww_font_size_17_min), calc(1.5rem + ((1vw - 7.68px) * 1.3514)), var(--ww_font_size_17_max));
-
 	
 		/* ------- [ D-44 to M-34 ] - [ Text-44] ------- */
 	--ww_font_size_18_max: 44px;
