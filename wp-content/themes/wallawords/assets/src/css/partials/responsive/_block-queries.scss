@@ -657,6 +657,12 @@
 		height: auto;
 	}
 	}
+	.team-members {
+		.single-team-member{
+			flex: 33% 0 0;	
+			justify-content: left;
+		}
+	}
 }
 
 @media only screen and (max-width: 747px) {
