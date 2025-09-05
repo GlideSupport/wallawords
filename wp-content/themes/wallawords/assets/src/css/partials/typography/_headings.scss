@@ -6,7 +6,7 @@
 
 h1,
 .heading-1 {
-	@include font(rubik, bold);
+	@include font(rubik, rblack);
 }
 
 h2,
@@ -20,7 +20,7 @@ h5,
 h6,
 .heading-6 {
 
-	@include font(rubik, reg);
+	@include font(rubik, med);
 	margin: 0 0 20px;
 	color: var(--ww_heading_color);
 	line-height: 1.3;
@@ -38,30 +38,123 @@ h6,
 
 h1,
 .heading-1 {
-	font-size: var(--ww_font_size_13);
+	//font-size: var(--ww_font_size_13);
+	font-size: var(--ww_font_size_14);
+	line-height: 80%;
+	/* 67.2px */
+	letter-spacing: -2.52px;
+	text-transform: uppercase;
+
+	@media(max-width:991px) {
+		letter-spacing: -1.44px;
+	}
 }
 
 h2,
 .heading-2 {
-	font-size: var(--ww_font_size_11);
+	font-size: var(--ww_font_size_15);
+	line-height: 112%;
 }
 
 h3,
 .heading-3 {
-	font-size: var(--ww_font_size_9);
+	font-size: var(--ww_font_size_16);
+	line-height: 112%;
+	letter-spacing: -1.44px;
+
+	@media(max-width:991px) {
+		letter-spacing: -0.96px;
+	}
 }
 
 h4,
 .heading-4 {
-	font-size: var(--ww_font_size_7);
+	font-size: var(--ww_font_size_17);
+	line-height: 112%;
+	/* 35.84px */
+	letter-spacing: -0.96px;
+
+	@media(max-width:991px) {
+		letter-spacing: -0.72px;
+	}
 }
 
 h5,
 .heading-5 {
-	font-size: var(--ww_font_size_5);
+	font-size: var(--ww_font_size_7);
+	line-height: 135%;
+	/* 32.4px */
+	letter-spacing: -0.72px;
+
+	@media(max-width:991px) {
+		letter-spacing: -0.4px;
+	}
 }
 
 h6,
 .heading-6 {
-	font-size: var(--ww_font_size_3);
+	font-size: var(--ww_font_size_5);
+}
+
+.quote {
+	@include font(rubik, reg);
+	font-size: var(--ww_font_size_18);
+	line-height: 120%;
+	/* 52.8px */
+	letter-spacing: -1.32px;
+
+	@media(max-width:991px) {
+		letter-spacing: -1.02px;
+	}
+}
+
+.p1{
+		@include font(inter, reg);
+	 font-size: 20px;
+	 line-height: 145%; /* 29px */
+     letter-spacing: -0.24px;
+}
+
+.p1-semibold{
+		@include font(inter, sbold);
+	font-size: 20px;
+	 line-height: 145%; /* 29px */
+     letter-spacing: -0.24px;
+}
+
+.p2{
+		@include font(inter, reg);
+	 font-size: 18px;
+	 line-height: 170%; /* 30.6px */
+}
+
+.p2-semibold{
+		@include font(inter, sbold);
+	 font-size: 18px;
+	 line-height: 170%; /* 30.6px */
+}
+
+.p3{
+		@include font(inter, reg);
+	 font-size: 16px;
+	 line-height: 170%; /* 30.6px */
+}
+
+.p3-semibold{
+		@include font(inter, sbold);
+	 font-size: 16px;
+	 line-height: 170%; /* 30.6px */
+}
+
+
+.p4{
+		@include font(inter, reg);
+	 font-size: 16px;
+	 line-height: 170%; /* 30.6px */
+}
+
+.p4-semibold{
+		@include font(inter, sbold);
+	 font-size: 14px;
+	 line-height: 170%; /* 30.6px */
 }

@@ -101,7 +101,7 @@
 
 	--font_base_unit: var(--ww_base_unit);
 
-	/* ------- [ D-12 to M-11 ] - [ Text-14 ] ------- */
+	/* ------- [ D-12 to M-11 ] - [ Text-12 ] ------- */
 	--ww_font_size_1_max: var(--font_base_unit) * 6;
 	--ww_font_size_1_min: var(--font_base_unit) * 5.5;
 	--ww_font_size_1: clamp(var(--ww_font_size_1_min), 0.599906191369606rem + 0.18761726078799248vw, var(--ww_font_size_1_max));
@@ -111,60 +111,101 @@
 	--ww_font_size_2_min: var(--font_base_unit) * 6.5;
 	--ww_font_size_2: clamp(var(--ww_font_size_2_min), 0.724906191369606rem + 0.18761726078799248vw, var(--ww_font_size_2_max));
 
-	/* ------- [ D-16 to M-15 ] - [ Text-14 ] ------- */
+	/* ------- [ D-16 to M-15 ] - [ Text-16 ] ------- */
 	--ww_font_size_3_max: var(--font_base_unit) * 8;
 	--ww_font_size_3_min: var(--font_base_unit) * 7.5;
 	--ww_font_size_3: clamp(var(--ww_font_size_3_min), 0.849624060150376rem + 0.18796992481203006vw, var(--ww_font_size_3_max));
 
-	/* ------- [ D-18 to M-17 ] - [ Text-14 ] ------- */
+	/* ------- [ D-18 to M-17 ] - [ Text-18 ] ------- */
 	--ww_font_size_4_max: var(--font_base_unit) * 9;
 	--ww_font_size_4_min: var(--font_base_unit) * 8.5;
 	--ww_font_size_4: clamp(var(--ww_font_size_4_min), 0.974624060150376rem + 0.18796992481203006vw, var(--ww_font_size_4_max));
 
-	/* ------- [ D-20 to M-18 ] - [ Text-14 ] ------- */
+	/* ------- [ D-20 to M-18 ] - [ Text-20 ] ------- */
 	--ww_font_size_5_max: var(--font_base_unit) * 10;
 	--ww_font_size_5_min: var(--font_base_unit) * 9;
 	--ww_font_size_5: clamp(var(--ww_font_size_5_min), 0.9492481203007519rem + 0.37593984962406013vw, var(--ww_font_size_5_max));
 
-	/* ------- [ D-22 to M-20 ] - [ Text-14 ] ------- */
+	/* ------- [ D-22 to M-20 ] - [ Text-22 ] ------- */
 	--ww_font_size_6_max: var(--font_base_unit) * 11;
 	--ww_font_size_6_min: var(--font_base_unit) * 10;
 	--ww_font_size_6: clamp(var(--ww_font_size_6_min), 1.074248120300752rem + 0.37593984962406013vw, var(--ww_font_size_6_max));
 
-	/* ------- [ D-24 to M-20 ] - [ Text-14 ] ------- */
+	/* ------- [ D-24 to M-20 ] - [ Text-24 ] ------- */
 	--ww_font_size_7_max: var(--font_base_unit) * 12;
 	--ww_font_size_7_min: var(--font_base_unit) * 10;
 	--ww_font_size_7: clamp(var(--ww_font_size_7_min), 0.575812274368231rem + 1.444043321299639vw, var(--ww_font_size_7_max));
 
-	/* ------- [ D-26 to M-22 ] - [ Text-14 ] ------- */
+	/* ------- [ D-26 to M-22 ] - [ Text-26 ] ------- */
 	--ww_font_size_8_max: var(--font_base_unit) * 13;
 	--ww_font_size_8_min: var(--font_base_unit) * 11;
 	--ww_font_size_8: clamp(var(--ww_font_size_8_min), 1.0234962406015038rem + 0.7518796992481203vw, var(--ww_font_size_8_max));
 
-	/* ------- [ D-32 to M-24 ] - [ Text-14 ] ------- */
+	/* ------- [ D-32 to M-24 ] - [ Text-32 ] ------- */
 	--ww_font_size_9_max: var(--font_base_unit) * 16;
 	--ww_font_size_9_min: var(--font_base_unit) * 12;
 	--ww_font_size_9: clamp(var(--ww_font_size_9_min), 0.15162454873646203rem + 2.888086642599278vw, var(--ww_font_size_9_max));
 
-	/* ------- [ D-40 to M-26 ] - [ Text-14 ] ------- */
+	/* ------- [ D-40 to M-26 ] - [ Text-40 ] ------- */
 	--ww_font_size_10_max: var(--font_base_unit) * 20;
 	--ww_font_size_10_min: var(--font_base_unit) * 13;
 	--ww_font_size_10: clamp(var(--ww_font_size_10_min), -0.7346570397111916rem + 5.054151624548737vw, var(--ww_font_size_10_max));
 
-	/* ------- [ D-48 to M-30 ] - [ Text-14 ] ------- */
+	/* ------- [ D-48 to M-30 ] - [ Text-48 ] ------- */
 	--ww_font_size_11_max: var(--font_base_unit) * 24;
 	--ww_font_size_11_min: var(--font_base_unit) * 15;
 	--ww_font_size_11: clamp(var(--ww_font_size_11_min), -1.1588447653429608rem + 6.498194945848376vw, var(--ww_font_size_11_max));
 
-	/* ------- [ D-60 to M-45 ] - [ Text-14 ] ------- */
+	/* ------- [ D-60 to M-45 ] - [ Text-60 ] ------- */
 	--ww_font_size_12_max: var(--font_base_unit) * 30;
 	--ww_font_size_12_min: var(--font_base_unit) * 22.5;
 	--ww_font_size_12: clamp(var(--ww_font_size_12_min), 1.49859287054409rem + 2.8142589118198873vw, var(--ww_font_size_12_max));
 
-	/* ------- [ D-68 to M-55 ] - [ Text-14 ] ------- */
+	/* ------- [ D-68 to M-55 ] - [ Text-68 ] ------- */
 	--ww_font_size_13_max: var(--font_base_unit) * 34;
 	--ww_font_size_13_min: var(--font_base_unit) * 27.5;
 	--ww_font_size_13: clamp(var(--ww_font_size_13_min), 0.9092960288808665rem + 5.415162454873646vw, var(--ww_font_size_13_max));
+
+
+	/* ------- [ D-84 to M-48 ] - [ Text-84 ] ------- */
+	--ww_font_size_14_max: 84px;
+	--ww_font_size_14_min: 48px;
+	--ww_font_size_14: clamp(var(--ww_font_size_14_min), calc(3rem + ((1vw - 7.68px) * 6.0811)), var(--ww_font_size_14_max));
+
+	/* ------- [ D-62 to M-42 ] - [ Text-62 ] ------- */
+	--ww_font_size_15_max: 62px;
+	--ww_font_size_15_min: 42px;
+	--ww_font_size_15: clamp(var(--ww_font_size_15_min), calc(2.625rem + ((1vw - 7.68px) * 3.3784)), var(--ww_font_size_15_max));
+
+	/* ------- [ D-48 to M-32 ] - [ Text-48 ] ------- */
+	--ww_font_size_16_max: 48px;
+	--ww_font_size_16_min: 32px;
+	--ww_font_size_16: clamp(var(--ww_font_size_16_min), calc(2rem + ((1vw - 7.68px) * 2.7027)), var(--ww_font_size_16_max));
+
+
+		/* ------- [ D-32 to M-24 ] - [ Text-32] ------- */
+	--ww_font_size_17_max: 32px;
+	--ww_font_size_17_min: 24px;
+	--ww_font_size_17: clamp(var(--ww_font_size_17_min), calc(1.5rem + ((1vw - 7.68px) * 1.3514)), var(--ww_font_size_17_max));
+
+	
+		/* ------- [ D-44 to M-34 ] - [ Text-44] ------- */
+	--ww_font_size_18_max: 44px;
+	--ww_font_size_18_min: 34px;
+	--ww_font_size_18: clamp(var(--ww_font_size_18_min), calc(2.125rem + ((1vw - 7.68px) * 1.6892)), var(--ww_font_size_18_max));
+
+			/* ------- [ D-20 to M-16 ] - [ Text-20] ------- */
+	--ww_font_size_19_max: 20px;
+	--ww_font_size_19_min: 16px;
+	--ww_font_size_19: clamp(var(--ww_font_size_19_mix), calc(1rem + ((1vw - 7.68px) * 0.6757)), var(--ww_font_size_19_max));
+
+		
+
+
+
+
+
+
 
 
 	/* -------------------------------------------------
