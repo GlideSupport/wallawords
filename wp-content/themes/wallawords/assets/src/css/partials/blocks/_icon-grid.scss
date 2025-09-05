@@ -1,33 +1,9 @@
 .icon-grid {
 	&__cols {
-		&.two-columns,
-		&.three-columns{
-			display: flex;
-			flex-wrap: wrap;
-			gap: 20px;
+		&.three-columns {
 			justify-content: center;
 			row-gap: 90px;
 		}
-		&.two-columns {
-			.column{
-				flex: 0 0 calc(50% - 20px);
-				@media (max-width: 767px) {
-					flex: 0 0 100%;
-				}
-			}
-		}
-		&.three-columns {
-			.column{
-				flex: 0 0 calc(33.333% - 15px);
-				@media (max-width: 991px) {
-					flex: 0 0 calc(50% - 20px);
-				}
-				@media (max-width: 767px) {
-					flex: 0 0 100%;
-				}
-			}
-		}
-
 	}
 
 	&__col {
@@ -59,7 +35,6 @@
 	&__text {
 		p {
 			color: var(--ww_regular_text);
-			margin-bottom: 0px;
 		}
 
 		ul {
@@ -71,7 +46,6 @@
 	&__btn {
 		margin-top: 62px;
 		line-height: 0.65;
-		text-align: center;
 	}
 }
 

@@ -16,6 +16,8 @@ jQuery( document ).on( 'scroll', function() {
 
 
 /* custom cookie handler */
+
+/*
 const CookieService = {
 
     setCookie(name, value, days) {
@@ -43,6 +45,40 @@ const CookieService = {
         return null;
     }
 }
+*/
+
+//replace w/ localstorage version
+const StorageService = {
+
+    setItem(name, value, days) {
+        const item = {
+            value: value,
+            expiry: days ? new Date().getTime() + days * 24 * 60 * 60 * 1000 : null
+        };
+        localStorage.setItem(name, JSON.stringify(item));
+    },
+
+    getItem(name) {
+        const itemStr = localStorage.getItem(name);
+
+        if (!itemStr) return null;
+
+        const item = JSON.parse(itemStr);
+
+        // Check if the item has expired
+        if (item.expiry && new Date().getTime() > item.expiry) {
+            localStorage.removeItem(name);
+            return null;
+        }
+
+        return item.value;
+    },
+
+    removeItem(name) {
+        localStorage.removeItem(name);
+    }
+};
+
 
 // Header Section Data Sets
 let lastScrollTop = 0,
@@ -92,6 +128,7 @@ adjustHeader();
 // Function to handle load event
 function handleLoad() {
     adjustTopBar();
+	adjustGameHeight();
 }
 
 // Function to handle resize event
@@ -100,6 +137,10 @@ function handleResize() {
     if (!jQuery('.top-bar').hasClass('hide-top-bar')) {
         adjustTopBar();
     }
+
+	adjustGameHeight();
+	adjustInstructionsHeight();
+	finalScoreResizer(toggled);
 }
 
 // Function to handle click event on top bar cross
@@ -112,6 +153,32 @@ function adjustTopBar() {
     // Your existing code to adjust top bar goes here
 }
 
+function adjustGameHeight() {
+	const pageSize = visualViewport ? window.visualViewport.height : window.innerHeight;
+    const mainSection = document.querySelector('.main-section');
+	const gameWrapper = document.querySelector('.game-wrapper');
+
+    let mainHeight = pageSize - 108; // resize to page minus padding
+
+	console.log('starter height '+mainHeight);
+	
+	if(mainHeight <= 400) {
+		mainHeight = 400;
+	}
+
+    if (gameWrapper) {
+        gameWrapper.style.height = `${mainHeight-60}px`;
+		console.log(`game area height: ${mainHeight-60}`);
+	}
+
+	if (mainSection) {
+        mainSection.style.height = `${mainHeight}px`;
+		console.log('main area height: '+mainHeight);
+    }
+
+    
+}
+
 // Function to show top bar
 function adjustHeader() {
     const $topBar = jQuery('.top-bar');
@@ -120,6 +187,49 @@ function adjustHeader() {
 
     $headerSection.css('top', '0');
     jQuery('.hero-section').css('padding-top', $headerSection.outerHeight() + 'px');
+}
+
+function adjustScoreTable() {
+
+	const pageSize = visualViewport ? window.visualViewport.height : window.innerHeight;
+
+    const scoreTableElement = document.querySelector('.score-table');
+
+	let offsetVal = 312;
+
+    if(window.innerWidth > 747) {
+        offsetVal = 332; //add 20px for larger size screens    
+    }
+
+    const scoreHeight = pageSize - offsetVal; // resize to page minus padding
+
+    if (scoreTableElement) {
+        scoreTableElement.style.height = `${scoreHeight}px`;
+    }
+
+    console.log('score area height: '+scoreHeight);
+	
+}
+
+function adjustInstructionsHeight() {
+
+	const instructionTextWrapper = document.getElementById('instruction-text');
+    if (!instructionTextWrapper) return;
+
+	let viewportHeight = window.visualViewport ? window.visualViewport.height : window.innerHeight;
+	
+	let offsetVal = 104;
+
+    if(window.innerWidth > 747) {
+        offsetVal = 164; //add 20px for larger size screens    
+    }
+
+    let resetInstructionsHeight = viewportHeight - offsetVal; // Adjust height
+
+    instructionTextWrapper.style.height = `${resetInstructionsHeight}px`;
+
+   // console.log('instruction screen height: '+resetInstructionsHeight);
+
 }
 
 // Function to hide top bar
@@ -205,6 +315,17 @@ jQuery('.top-bar-cross').on('click', handleTopBarCrossClick);
 // } );
 
 jQuery( function() {
+
+	//check theme skin setting
+	if(StorageService.getItem('ww-skin-toggle')){
+        var gameSkinSetting = StorageService.getItem('ww-skin-toggle');
+        document.body.classList.add(gameSkinSetting);
+    } else {
+        var gameSkinSetting = 'dark';
+    }   
+
+    console.log('WW skin set to:'+gameSkinSetting);
+
 	/**
 	 * Toggle menu for mobile
 	 */
@@ -224,6 +345,7 @@ jQuery( function() {
 		jQuery( '.header-nav ul li.active' ).removeClass( 'active' );
 		jQuery( '.header-nav ul.sub-menu' ).slideUp();
 	} );
+
 	jQuery.noConflict();
 
 	/**
@@ -261,35 +383,35 @@ jQuery( function() {
 		var gameMenu = jQuery('#game-nav');
 		
 		if (gameMenu.hasClass('active')) {
-			//gameMenu.css('display','none');
-			gameMenu.fadeIn(500);
+			gameMenu.fadeOut(250);
+			jQuery('#menu-icon-open').css('display','block');
+			jQuery('#menu-icon-close').css('display','none');				
 			gameMenu.removeClass('active');
 		} else {
-			//gameMenu.css('display','block');
-			gameMenu.fadeOut(250);
+			gameMenu.fadeIn(500);
 			gameMenu.addClass('active');
+			jQuery('#menu-icon-open').css('display','none');
+			jQuery('#menu-icon-close').css('display','block');
 		}    
 		
 	});
-	
+
 	jQuery('#skin-toggle-button').on('click', () => {
 		if (document.body.classList.contains('light')) {
 			document.body.classList.remove('light');
-			CookieService.setCookie('ww-skin-toggle', 'dark', 2000);
+			//CookieService.setCookie('ww-skin-toggle', 'dark', 2000);
+			StorageService.setItem('ww-skin-toggle', 'dark', 2000);
+			gameSkinSetting = 'dark';
 		} else {
 			document.body.classList.add('light');
-			CookieService.setCookie('ww-skin-toggle', 'light', 2000);
-		}    		
+			//CookieService.setCookie('ww-skin-toggle', 'light', 2000);
+			StorageService.setItem('ww-skin-toggle', 'light', 2000);
+			gameSkinSetting = 'light';
+		}   
+		
+		console.log('WW skin set to:'+gameSkinSetting);
 	});
 
-	if(CookieService.getCookie('ww-skin-toggle')){
-        var gameSkinSetting = CookieService.getCookie('ww-skin-toggle');
-        document.body.classList.add(gameSkinSetting);
-    } else {
-        var gameSkinSetting = 'dark';
-    }   
-
-    console.log(gameSkinSetting);
 
 } );
 

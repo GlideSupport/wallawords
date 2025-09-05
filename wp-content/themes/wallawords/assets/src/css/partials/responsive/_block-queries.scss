@@ -1871,7 +1871,6 @@
 
 @media only screen and (max-width: 550px) {
 
-
 	// code will be starts from here
 	.gallery__slide {
 		max-width: 123px;
@@ -1894,6 +1893,12 @@
 			img {
 				border-radius: 10px;
 			}
+		}
+	}
+
+	.start-buttons, .finish-buttons {
+		.button {
+			width: 100%;
 		}
 	}
 

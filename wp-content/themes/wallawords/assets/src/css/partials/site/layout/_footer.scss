@@ -1,17 +1,16 @@
 .footer-section {
-  position: absolute;
-  width: 100%;
-  text-align: center;
-  bottom: 49px;
-  z-index: -1;
+	position: absolute;
+	width: 100%;
+	text-align: center;
+	bottom: 49px;
+	z-index: -1;
 }
 
 .footer-ctn {
- display: inline-block;
-  padding: 0 44px 0 0;
-  max-width: 400px;
-  box-sizing: border-box;
-
+	display: inline-block;
+	padding: 0 44px 0 0;
+	max-width: 400px;
+	box-sizing: border-box;
 	h1,
 	h2,
 	h3,
@@ -48,12 +47,12 @@
 }
 
 .footer-nav {
-  width: 100%;
-  margin: 0 auto;
-  display: flex;
-  justify-content: right;
-  text-align: right;
-  align-items: center;
+	width: 100%;
+	margin: 0 auto;
+	display: flex;
+	justify-content: right;
+	text-align: right;
+	align-items: center;
 
 	> * {
 		flex: 1 1 auto;
@@ -92,11 +91,12 @@
 					transform-origin: bottom right;
 					transition: transform 0.3s;
 				}
+
+				&:hover {
+					color: var(--ww_f_nav_color_hover);
+				}
 			}
-			a:hover,
-			a:visited:hover {
-				 color: var(--ww_f_nav_color_hover);
-			}
+
 		}
 
 		ul {

@@ -166,11 +166,6 @@
 	--ww_font_size_13_min: var(--font_base_unit) * 27.5;
 	--ww_font_size_13: clamp(var(--ww_font_size_13_min), 0.9092960288808665rem + 5.415162454873646vw, var(--ww_font_size_13_max));
 
-		/* ------- [ D-48 to M-28 ] - [ Text-48 ] ------- */
-	--ww_font_size_14_max: 48px;
-	--ww_font_size_14_min: 28px;
-	--ww_font_size_14: clamp(var(--ww_font_size_14_min), calc(1.75rem + ((1vw - 7.68px) * 3.3784)), 4var(--ww_font_size_14_max));
-
 
 	/* -------------------------------------------------
 		>> Line Height
@@ -383,8 +378,8 @@
 	// Button
 	--ww_button_color: var(--ww_white_text);
 	--ww_button_bgcolor: var(--ww_color_primary);
-     --ww_button_color_hover: var(--ww_black_1);
-      --ww_button_bgcolor_hover: var(--ww_white);
+	--ww_button_color_hover: var(--ww_black_1);
+	--ww_button_bgcolor_hover: var(--ww_white);
 	--ww_button_border_color: var(--ww_color_primary);
 	--ww_button_border_color_hover: var(--ww_border);
 
@@ -399,7 +394,6 @@
 	--ww_theme_btn_border_color: var(--ww_button_border_color);
 	--ww_theme_btn_border_color_hover: var(--ww_button_border_color_hover);
 	--ww_theme_btn_gradient: linear-gradient(88deg, #2BC016 0.88%, #26A96C 99.12%);
-
 
 	// --ww_wp_btn_color: var(--ww_white_text);
 	// --ww_wp_btn_bgcolor: var(--ww_button_bg);
@@ -503,7 +497,7 @@
 
 	--ww_footer_color_hover: var(--ww_white_text);
 
-	--ww_f_nav_color:var(--ww_black_2);
+	--ww_f_nav_color: var(--ww_black_2);
 	--ww_f_nav_color_hover: var(--ww_footer_color_hover);
 	--ww_f_nav_border_color: var(--ww_footer_color);
 	--ww_f_nav_border_color_hover: var(--ww_footer_color_hover);
