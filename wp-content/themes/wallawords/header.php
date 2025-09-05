@@ -340,6 +340,9 @@ $page_template = basename(get_page_template());
                     <div class="button-container">
                         <a id="play-button" class="button">Start Playing</a>
                     </div>
+                    <div class="button-container">
+						<a id="play-button" class="button">Skip to Today's Puzzle</a>
+                    </div>
 
                 </div>
                 <?php endif;?>
