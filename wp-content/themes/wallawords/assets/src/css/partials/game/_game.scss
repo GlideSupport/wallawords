@@ -329,6 +329,10 @@ body {
             h1 {
                 width: 100%;
                  margin: 0 auto;
+                 max-width: 315px;
+                 @media(max-width:767px){
+                     max-width: 182px;
+                 }
         
                 span {
    
