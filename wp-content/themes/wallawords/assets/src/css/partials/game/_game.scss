@@ -328,19 +328,10 @@ body {
 
             h1 {
                 width: 100%;
-                max-width: 96px;
-                margin: 0 auto;
-                font-size: 22px;
-                line-height: 80%;
-                //color: var(--ww_black_2);
-                
-                text-transform: uppercase;
-                @include font(rubik, bold);
-
-                //transition: all 0.2s ease-in-out;
+                 margin: 0 auto;
         
                 span {
-                    //color: var(--ww_color_primary);
+   
                     background: linear-gradient(88deg, #2BC016 0.88%, #26A96C 99.12%);
                     background-clip: text;
                     -webkit-background-clip: text;
