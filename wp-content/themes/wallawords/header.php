@@ -269,10 +269,6 @@ $page_template = basename(get_page_template());
 	<div id="instruction-screen-wrapper" class="instruction-screen-wrapper" style="display: none;">
 
     <div id="instruction-screen" class="instruction-screen">
-		<div class="element-01 element-icon"></div>
-		<div class="element-02 element-icon"></div>
-		<div class="element-03 element-icon"></div>
-		<div class="element-04 element-icon"></div>
 
         <div class="game-container instructions-container">
 				<div class="header">
@@ -284,7 +280,7 @@ $page_template = basename(get_page_template());
 					</svg>
 				</div>
 
-				<h2 class="popup-title">How to <span>Play</span></h2>
+				<h1>How to <span>Play</span></h1>
 			</div>
 
 			<?php
