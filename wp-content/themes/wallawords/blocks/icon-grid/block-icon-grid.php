@@ -75,7 +75,8 @@ $ww_blkicngrd_cntnt_var = ( isset( $block_fields['ww_blkicngrd_cntnt_var'] ) && 
 				<?php
 				if ( $ww_blkicngrd_icons ) {
 					$amp_num_icons          = count( $ww_blkicngrd_icons );
-					$amp_grid_columns_class = ( 0 === $amp_num_icons % 4 ) ? 'four-columns' : 'three-columns';
+					$amp_grid_columns_class = ($amp_num_icons === 1) ? 'one-columns'
+                        : (($amp_num_icons === 2) ? 'two-columns' : 'three-columns');
 					?>
 					<div class="icon-grid__cols <?php echo esc_html( $amp_grid_columns_class ); ?>">
 						<?php
