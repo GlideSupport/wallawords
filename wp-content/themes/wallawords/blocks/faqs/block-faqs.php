@@ -46,6 +46,7 @@ if ( $block['name'] ) {
 $ww_faq_title     = ( isset( $block_fields['ww_faq_title']['title'] ) && '' !== $block_fields['ww_faq_title']['title'] ) ? $block_fields['ww_faq_title']['title'] : null;
 $ww_faq_title_tag = ( isset( $block_fields['ww_faq_title']['title_tag'] ) && '' !== $block_fields['ww_faq_title']['title_tag'] ) ? $block_fields['ww_faq_title']['title_tag'] : null;
 $ww_faq_faqs      = ( isset( $block_fields['ww_faq_faqs'] ) && '' !== $block_fields['ww_faq_faqs'] ) ? $block_fields['ww_faq_faqs'] : null;
+$ww_faq_kicker       = ( isset( $block_fields['ww_faq_kicker'] ) && '' !== $block_fields['ww_faq_kicker'] ) ? $block_fields['ww_faq_kicker'] : null;
 $ww_faq_txt       = ( isset( $block_fields['ww_faq_txt'] ) && '' !== $block_fields['ww_faq_txt'] ) ? $block_fields['ww_faq_txt'] : null;
 $ww_faq_btxt      = ( isset( $block_fields['ww_faq_btxt'] ) && '' !== $block_fields['ww_faq_btxt'] ) ? $block_fields['ww_faq_btxt'] : null;
 $ww_faq_sp_tp     = ( isset( $block_fields['ww_faq_sp']['top_spacer'] ) && '' !== $block_fields['ww_faq_sp']['top_spacer'] ) ? $block_fields['ww_faq_sp']['top_spacer'] : null;
@@ -58,7 +59,7 @@ $ww_faq_sp_btm    = ( isset( $block_fields['ww_faq_sp']['bottom_spacer'] ) && ''
 		<div class="faq-block">
 			<?php if ( $ww_faq_title || $ww_faq_txt ) { ?>
 					<div class="faq-heading">
-						<div class="pre-header">FAQS</div>
+						<?php if ( $ww_faq_kicker ) { ?><div class="pre-header"><?php echo esc_html( $ww_faq_kicker ); ?></div><?php } ?>
 						<<?php echo esc_html( $ww_faq_title_tag ); ?> class="heading-2"><?php echo html_entity_decode( $ww_faq_title ); ?><?php echo '</' . esc_html( $ww_faq_title_tag ) . '>'; ?>
 					
 					<?php if ( $ww_faq_txt ) { ?>

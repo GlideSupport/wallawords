@@ -173,6 +173,27 @@
             "instructions_bottom": ""
         },
         {
+            "key": "field_68bad4ca1b122",
+            "label": "Kicker",
+            "name": "ww_faq_kicker",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "allow_in_bindings": 0,
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
             "key": "field_64eec91f8031f",
             "label": "Text",
             "name": "ww_faq_txt",
@@ -319,5 +340,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1733935698
+    "modified": 1757074660
 }
