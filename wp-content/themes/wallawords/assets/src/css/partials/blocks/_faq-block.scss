@@ -169,7 +169,6 @@
 
 .faq__content {
 	padding-right: 30px;
-
 	width: 100%;
 	display: inline-block;
 	position: relative;
@@ -177,6 +176,7 @@
 	border-radius: 20px;
 	background: #232130;
 	padding: 22px;
+	box-sizing: border-box;
 	margin: 4px auto;
 
 	p {
