@@ -395,6 +395,17 @@ jQuery( function() {
 		}    
 		
 	});
+	jQuery(document).on('click', function(event) {
+		var $target = jQuery(event.target);
+		var $menu = jQuery('#game-nav');
+		var $button = jQuery('#game-menu-btn');
+
+		if ($menu.hasClass('active') && !$menu.is($target) && $menu.has($target).length === 0 && !$button.is($target) && $button.has($target).length === 0) {
+			$menu.fadeOut(250).removeClass('active');
+			jQuery('#menu-icon-open').css('display','block');
+			jQuery('#menu-icon-close').css('display','none');
+		}
+	});
 
 	jQuery('#skin-toggle-button').on('click', () => {
 		if (document.body.classList.contains('light')) {
