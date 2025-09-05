@@ -88,19 +88,11 @@ class WP_Theme_Scripts {
 				'strategy'  => 'defer',
 			)
 		);
-
-		/*
-		BaseTheme::enqueue_script('assets/build/game/wallawords-game.js', array( 'jquery' ), 
-		args:array(
-			'in_footer' => false,
-			'strategy'  => 'defer',
-		));
-		*/
 		
 		BaseTheme::enqueue_script('assets/build/game/wallawords-instructions.js', 
 		array( 'jquery' ), 
 		args:array(
-			'in_footer' => false,
+			'in_footer' => true,
 			'strategy'  => 'defer',
 		));
 

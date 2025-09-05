@@ -47,7 +47,7 @@
                 },
                 {
                     "key": "field_67a242f56c450",
-                    "label": "Step Image (dark)",
+                    "label": "Step Image",
                     "name": "step_image",
                     "aria-label": "",
                     "type": "image",
@@ -68,34 +68,6 @@
                     "max_height": "",
                     "max_size": "",
                     "mime_types": "",
-                    "allow_in_bindings": 1,
-                    "preview_size": "medium",
-                    "parent_repeater": "field_67a242b46c44e"
-                },
-                {
-                    "key": "field_67db3937fd41c",
-                    "label": "Step Image (light)",
-                    "name": "step_image_light",
-                    "aria-label": "",
-                    "type": "image",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "return_format": "array",
-                    "library": "all",
-                    "min_width": "",
-                    "min_height": "",
-                    "min_size": "",
-                    "max_width": "",
-                    "max_height": "",
-                    "max_size": "",
-                    "mime_types": "",
-                    "allow_in_bindings": 1,
                     "preview_size": "medium",
                     "parent_repeater": "field_67a242b46c44e"
                 }
@@ -120,5 +92,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1742420291
+    "modified": 1738688013
 }
