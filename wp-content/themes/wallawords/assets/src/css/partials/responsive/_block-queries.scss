@@ -1055,8 +1055,8 @@
 			padding-top: 22px;
 		}
 		
-		.single-team-member:not(.leadership) {
-			flex: 1 1 50%;
+		.single-team-member{
+			flex: 50% 0 0;
 			justify-content: left;
 		}
 	}
@@ -1911,6 +1911,25 @@
 			width: 100%;
 		}
 	}
+	.team-members {
+		.single-team-member{
+			flex: 100% 0 0;	
+			justify-content: center;
+			.member-bio{
+				padding-top: 0px;
+				text-align: center;
+			}
+			.member-img{
+				margin: 16px auto;
+			}
+			&.leadership{
+				.member-img{
+					margin-top: 0px;
+				}
+			}
+		}
+	}
+	
 }
 
 @media only screen and (max-width: 374px) {
