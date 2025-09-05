@@ -71,7 +71,7 @@ module.exports = {
 				},
 			},
 			{
-					test: /confetti\.min\.js$/, // match exactly this file
+				    test: /confetti\.min\.js$/, // match exactly this file
 					type: "asset/resource",
 					generator: {
 					   filename: "game/[name][ext]", // keep in game/ folder
@@ -79,21 +79,21 @@ module.exports = {
 
 			},
 			{
-				test: /\.svg$/,
-				type: 'asset/resource',
-				generator: {
-					filename: 'images/[name][hash][ext]'
-				}
-			},
+                test: /\.svg$/,
+                type: 'asset/resource',
+                generator: {
+                    filename: 'images/[name][hash][ext]'
+                }
+            },
 		],
 	},
 	optimization: {
-		minimize: true,
-		minimizer: [
-		 new TerserPlugin({
-			 exclude: /confetti\.min\.js/, // <- Don't minify this file
-		 }),
-		 ],
+    	minimize: true,
+    	minimizer: [
+     	 new TerserPlugin({
+       		 exclude: /confetti\.min\.js/, // <- Don't minify this file
+     	 }),
+   		 ],
 	  },
 	plugins: [
 		...defaultConfig.plugins,
