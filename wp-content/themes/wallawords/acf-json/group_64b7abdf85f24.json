@@ -213,6 +213,30 @@
             "delay": 0
         },
         {
+            "key": "field_68bae7cc80f9f",
+            "label": "Image Layout",
+            "name": "www_blkteam_image_layout",
+            "aria-label": "",
+            "type": "button_group",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "small": "Small",
+                "large": "Large"
+            },
+            "default_value": "small",
+            "return_format": "value",
+            "allow_null": 0,
+            "allow_in_bindings": 0,
+            "layout": "horizontal"
+        },
+        {
             "key": "field_64b7abdfa06a4",
             "label": "Select Team Members",
             "name": "ww_blkteam_tem_membrs",
@@ -262,5 +286,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1733947262
+    "modified": 1757079640
 }

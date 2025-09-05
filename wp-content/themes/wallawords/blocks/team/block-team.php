@@ -49,7 +49,10 @@ $ww_blkteam_spcr_tp    = ( isset( $block_fields['ww_blkteam_spcr']['top_spacer']
 $ww_blkteam_spcr_btm   = ( isset( $block_fields['ww_blkteam_spcr']['bottom_spacer'] ) && '' !== $block_fields['ww_blkteam_spcr']['bottom_spacer'] ) ? $block_fields['ww_blkteam_spcr']['bottom_spacer'] : null;
 $ww_blkteam_dsgn_vari  = ( isset( $block_fields['ww_blkteam_dsgn_vari'] ) && '' !== $block_fields['ww_blkteam_dsgn_vari'] ) ? $block_fields['ww_blkteam_dsgn_vari'] : null;
 $ww_blkteam_text       = ( isset( $block_fields['ww_blkteam_text'] ) && '' !== $block_fields['ww_blkteam_text'] ) ? $block_fields['ww_blkteam_text'] : null;
+$www_blkteam_image_layout = ( isset( $block_fields['www_blkteam_image_layout'] ) && '' !== $block_fields['www_blkteam_image_layout'] ) ? $block_fields['www_blkteam_image_layout'] : 'small';
 $ww_blkteam_tem_membrs = ( isset( $block_fields['ww_blkteam_tem_membrs'] ) && '' !== $block_fields['ww_blkteam_tem_membrs'] ) ? $block_fields['ww_blkteam_tem_membrs'] : null;
+
+$img_layout = ($www_blkteam_image_layout === 'small') ? 'sm-leadership' : 'leadership';
 
 ?>
 <div id="<?php echo esc_html( $amp_id ); ?>" class="<?php echo esc_html( $amp_align_class . ' ' . $amp_class_name . ' ' . $amp_name ); ?> block-<?php echo esc_html( $block_name ); ?>">
@@ -106,7 +109,7 @@ $ww_blkteam_tem_membrs = ( isset( $block_fields['ww_blkteam_tem_membrs'] ) && ''
 								$amp_class = '';
 							}
 							?>
-							<div class="single-team-member column <?php if($count < 3){ echo 'leadership';}?>">
+							<div class="single-team-member column <?php echo esc_attr($img_layout);?>">
 								<div class="single-team-member__details">
 									<div class="member-img">
 									<?php
