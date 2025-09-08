@@ -422,7 +422,18 @@ jQuery( function() {
 		
 		console.log('WW skin set to:'+gameSkinSetting);
 	});
+	
+   var $scrollArea = jQuery("#instruction-text");
+    var $progressBar = jQuery("#progress-bar");
 
+    $scrollArea.on("scroll", function(){
+        var scrollTop = $scrollArea.scrollTop();
+        var scrollHeight = $scrollArea.prop("scrollHeight");
+        var clientHeight = $scrollArea.innerHeight();
+
+        var scrollPercent = (scrollTop / (scrollHeight - clientHeight)) * 100;
+        $progressBar.css("height", scrollPercent + "%");
+    });
 
 } );
 

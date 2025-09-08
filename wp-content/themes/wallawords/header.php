@@ -339,12 +339,11 @@ $page_template = basename(get_page_template());
                     </div>
                     <?php endforeach;?>
 
-                    <div class="button-container">
+                    <div class="button-container flex-button">
                         <a id="play-button" class="button">Start Playing</a>
+                        <a id="play-button" class="button">Skip to Today's Puzzle</a>
                     </div>
-                    <div class="button-container">
-						<a id="play-button" class="button">Skip to Today's Puzzle</a>
-                    </div>
+              
 
                 </div>
                 <?php endif;?>
