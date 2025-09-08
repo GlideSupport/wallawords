@@ -97,10 +97,7 @@ body.light {
 	background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
-
-	h1 {
-		margin-bottom: 32px;
-	}
+	position: relative;
 	&::before{
 		content: " ";
 		position: absolute;
@@ -125,6 +122,19 @@ body.light {
 	.hero-alongside-block{
 		position: relative;
 	}
+	h1 {
+        font-size: var(--text-85) !important;
+		margin-bottom: 32px;
+        span {
+            color: var(--ww_color_primary);
+        }
+    }
+
+    .banner-text{
+        p{
+            font-size: var(--ww_font_size_5);
+        }
+    }
 }
 
 .hero-text {
