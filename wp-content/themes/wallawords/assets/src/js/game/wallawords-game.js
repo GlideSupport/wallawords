@@ -269,10 +269,10 @@ function startGame(puzzleCounterValue) {
 
     if(jQuery('#puzzle_id').length) {
         hasID = jQuery('#puzzle_id').val();
-        url = '/wp-admin/admin-ajax.php?action=wallawords_get_puzzle_data&gameID='+hasID;
+        url = localVars.ajax_url + '?action=wallawords_get_puzzle_data&gameID='+hasID;
         currentPuzzleID = hasID;
     } else {
-        url = '/wp-admin/admin-ajax.php?action=wallawords_get_puzzle_data';
+        url = localVars.ajax_url + '?action=wallawords_get_puzzle_data';
     }
 
     if(completedSessionPuzzles){
