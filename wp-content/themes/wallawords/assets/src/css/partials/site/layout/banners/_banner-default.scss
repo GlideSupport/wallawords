@@ -94,9 +94,36 @@ body.light {
 
 .hero-default {
 	padding: 100px 0 80px;
+	background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
 
 	h1 {
 		margin-bottom: 32px;
+	}
+	&::before{
+		content: " ";
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		top: 0;
+		left: 0;
+		background: #000;
+		opacity: 0.5;
+	}
+	&:after{
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		top: 0;
+		left: 0;
+		background-image: url(../images/hero-banner-pattern.png);
+		background-size: cover;
+		background-position: center;
+		content: " ";
+	}
+	.hero-alongside-block{
+		position: relative;
 	}
 }
 
