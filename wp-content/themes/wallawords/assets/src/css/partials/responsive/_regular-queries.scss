@@ -655,11 +655,6 @@
 		position: absolute;
 	}
 
-	.validation_message {
-		position: relative;
-		bottom: 15px;
-		display: inline;
-	}
 
 	.notification-bar.left-side,
 	.notification-bar.right-side {
@@ -1863,9 +1858,7 @@
 			width: 100%;
 		}
 
-		.validation_message {
-			position: initial;
-		}
+	
 	}
 
 	.post-box__title {

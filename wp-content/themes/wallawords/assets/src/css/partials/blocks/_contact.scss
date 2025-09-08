@@ -64,7 +64,9 @@
 		padding: 44px;
 		border-radius: 20px;
 		background: #232130;
-	
+		@media(max-width:1200px){
+			 padding: 44px 25px;
+		}
 		.gform-body {
 		
 			.gfield {
@@ -82,12 +84,7 @@
 				&.gfield_error {
 					border: 1px solid #EE0A4A;
 					background: rgba(238, 10, 74, 0.05);
-					margin-bottom: 40px;
-
-					.validation_message {
-						bottom: -28px !important;
-					}
-
+					margin-bottom: 50px;
 				}
 			}
 
