@@ -26,6 +26,8 @@ function register_acf_blocks() {
 	register_acf_block( 'theme-buttons' );
 	// Register a block - Image alongside Text.
 	register_acf_block( 'image-alongside-text' );
+	// Register a block - Hero.
+	register_acf_block( 'hero' );
 	// Register a block - FAQs.
 	register_acf_block(
 		'faqs',

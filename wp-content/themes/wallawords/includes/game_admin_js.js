@@ -342,7 +342,7 @@ jQuery(document).ready(function(){
             //do ajax
             jQuery.ajax({
                 type: "GET",
-                url: "/wp-admin/admin-ajax.php",
+                url: localVars.ajax_url,
                 data:"action=output_game_grid_for_admin&isAjax=1&postID="+postID+"&fullPoem="+fullPoem+resetText,
                 success: function(response) {
                     if(response){	

@@ -437,3 +437,9 @@ jQuery( function() {
 
 } );
 
+document.addEventListener("click", function (event) {
+	const lightboxElement = event.target.closest("[data-lightbox]");
+	if (lightboxElement) {
+		lity(event);
+	}
+});
