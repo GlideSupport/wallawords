@@ -31,7 +31,7 @@
 }
 
 .single-team-member {
-	flex: 1 1 25%;
+	flex: 25% 0 0;
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: center;
@@ -125,7 +125,7 @@
 	}
 		
 	&.leadership {
-		flex: 1 1 33%;	
+		flex: 33% 0 0;	
 
 		h4 {
 			font-size: var(--ww_font_size_9);

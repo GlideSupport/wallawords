@@ -1,10 +1,10 @@
 {
     "key": "group_64b7dddd1bae5",
-    "title": "Block - Contact Info",
+    "title": "Block - Theme Form",
     "fields": [
         {
             "key": "field_64b7dddd2641b",
-            "label": "Contact Info",
+            "label": "Theme Form",
             "name": "",
             "aria-label": "",
             "type": "block_label",
@@ -16,7 +16,7 @@
                 "class": "",
                 "id": ""
             },
-            "default_value": ""
+            "allow_in_bindings": 1
         },
         {
             "key": "field_64b7dddd2d935",
@@ -253,5 +253,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1734029429
+    "modified": 1757080063
 }
