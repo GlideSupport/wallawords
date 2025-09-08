@@ -322,11 +322,11 @@ body {
             width: 100%;
             top: 0;
             left: 0;  
-            padding: 24px 0;
+            padding: 0;
             text-align: center;    
             transition: all 0.2s ease-in-out;
-            //background:#121021;
             background: transparent;
+            margin-bottom: 24px;
 
             h1 {
                 width: 100%;
@@ -348,36 +348,29 @@ body {
             }
 
         }
-
-
-        /*
-        .instruction-steps {
-            width: 100%;
-            display: flex;
-            gap: 2px 5px;
-            max-width: 400px;
-            position: absolute;
-            top: 32px;
-            z-index: 999;
-
-            .step {
-                flex: 1 1 25%;
-                height: 3px;
-                border-radius: 60px;
-                background: rgba(255, 255, 255, 0.20);
-                cursor: pointer;
-
-                &.active {
-                    background: var(--ww_white);
+        #progress-container {
+        position: relative;
+        top: 0;
+        height: 73px;
+        width: 1px;
+        background: var(--ww_black_3);
+        border-radius: 3px;
+        overflow: hidden;
+        margin-bottom: 24px;
+        /* Progress fill */
+                #progress-bar {
+                height: 0;
+                width: 100%;
+                background: var(--ww_white);
+                border-radius: 3px;
+                transition: height 0.2s ease-out;
                 }
-            }
 
         }
-            */
+
 
         #instruction-text {
             width: 100%;
-            min-height: 70vh;
             margin: 0;
             position: relative;
             overflow-x: hidden;
@@ -611,7 +604,7 @@ body {
         align-items: center;
         width: 100%;
         box-sizing: border-box;
-        padding: 96px 15px 48px;
+        padding: 96px 15px;
            position: relative;
         .piece{
              position: absolute;
@@ -960,8 +953,10 @@ body {
         //height: 85vh;
         width: 100%;
         top: 50px;
-        left: 50%;
-        margin-left: -330px;
+        bottom:50px;
+        left: 0%;
+        right:0;
+        margin: 0 auto;
         max-width: 660px;
         background-color: #121021;
         text-align: center;

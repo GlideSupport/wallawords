@@ -314,7 +314,9 @@ $page_template = basename(get_page_template());
 
                     <h1>How to <span>Play</span></h1>
                 </div>
-
+                   <div id="progress-container">
+                    <div id="progress-bar"></div>
+                </div>
                 <?php
 				$instructions = get_field('ww_game_instructions','options');
 				if(is_array($instructions)):?>

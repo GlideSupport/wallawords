@@ -1337,6 +1337,9 @@
 
                     <h1>How to <span>Play</span></h1>
                 </div>
+            <div id="progress-container">
+                    <div id="progress-bar"></div>
+                </div>
 
                 <div id="instruction-text">
                     <div class="content">
@@ -1351,7 +1354,7 @@
                     <div class="content">
                         <div class="text">
                             <div class="num">02.</div>
-                            This sentence reads from <span>left to right</span>
+                            This sentence readsfrom <span>left to right</span>
                         </div>
                         <img src="https://playground1stg.wpengine.com/wp-content/uploads/Instructions-2-1.png"
                             class="dark">
@@ -1360,7 +1363,7 @@
                     <div class="content">
                         <div class="text">
                             <div class="num">03.</div>
-                            This sentence reads from <span>top to bottom</span>.
+                            This sentence readsfrom <span>top to bottom</span>.
                         </div>
                         <img src="https://playground1stg.wpengine.com/wp-content/uploads/Instructions-3-1.png"
                             class="dark">
@@ -1369,7 +1372,7 @@
                     <div class="content">
                         <div class="text">
                             <div class="num">04.</div>
-                            <span>Punctuation only applies to left to right.</span>
+                            <span>Punctuation onlyapplies to left to right.</span>
                         </div>
                         <img src="https://playground1stg.wpengine.com/wp-content/uploads/Instructions-4-2.png"
                             class="dark">
@@ -1593,10 +1596,25 @@
             </script>
         </footer>
     </main>
+    <script>jQuery(document).ready(function(){
+    var $scrollArea = jQuery("#instruction-text");
+    var $progressBar = jQuery("#progress-bar");
+
+    $scrollArea.on("scroll", function(){
+        var scrollTop = $scrollArea.scrollTop();
+        var scrollHeight = $scrollArea.prop("scrollHeight");
+        var clientHeight = $scrollArea.innerHeight();
+
+        var scrollPercent = (scrollTop / (scrollHeight - clientHeight)) * 100;
+        $progressBar.css("height", scrollPercent + "%");
+    });
+});
+
+    </script>
 
     <script type="speculationrules">
         {"prefetch":[{"source":"document","where":{"and":[{"href_matches":"\/*"},{"not":{"href_matches":["\/wp-*.php","\/wp-admin\/*","\/wp-content\/uploads\/*","\/wp-content\/*","\/wp-content\/plugins\/*","\/wp-content\/themes\/wallawords\/*","\/*\\?(.+)"]}},{"not":{"selector_matches":"a[rel~=\"nofollow\"]"}},{"not":{"selector_matches":".no-prefetch, .no-prefetch a"}}]},"eagerness":"conservative"}]}
-</script>
+     </script>
     <script id="ckyBannerTemplate" type="text/template">
         <div class="cky-overlay cky-hide"></div><div class="cky-consent-container cky-hide" tabindex="0"> <div class="cky-consent-bar" data-cky-tag="notice" style="background-color:#121021;border-color:#161425">  <div class="cky-notice"> <p class="cky-title" role="heading" aria-level="1" data-cky-tag="title" style="color:#ffffff">Cookies help us improve your browsing experience.</p><div class="cky-notice-group"> <div class="cky-notice-des" data-cky-tag="description" style="color:#ffffff">  </div><div class="cky-notice-btn-wrapper" data-cky-tag="notice-buttons">   <button class="cky-btn cky-btn-accept" aria-label="Got It" data-cky-tag="accept-button" style="color:#fff">Got It</button>  </div></div></div></div></div><div class="cky-modal" tabindex="0"> <div class="cky-preference-center" data-cky-tag="detail" style="color:#ffffff;background-color:#121021;border-color:#161425"> <div class="cky-preference-header"> <span class="cky-preference-title" role="heading" aria-level="1" data-cky-tag="detail-title" style="color:#ffffff">Customise Consent Preferences</span> <button class="cky-btn-close" aria-label="[cky_preference_close_label]" data-cky-tag="detail-close"> <img src="https://playground1stg.wpengine.com/wp-content/plugins/cookie-law-info/lite/frontend/images/close.svg" alt="Close"> </button> </div><div class="cky-preference-body-wrapper"> <div class="cky-preference-content-wrapper" data-cky-tag="detail-description" style="color:#ffffff"> <p>We use cookies to help you navigate efficiently and perform certain functions. You will find detailed information about all cookies under each consent category below.</p><p>The cookies that are categorised as "Necessary" are stored on your browser as they are essential for enabling the basic functionalities of the site. </p><p>We also use third-party cookies that help us analyse how you use this website, store your preferences, and provide the content and advertisements that are relevant to you. These cookies will only be stored in your browser with your prior consent.</p><p>You can choose to enable or disable some or all of these cookies but disabling some of them may affect your browsing experience.</p> </div><div class="cky-accordion-wrapper" data-cky-tag="detail-categories"> <div class="cky-accordion" id="ckyDetailCategorynecessary"> <div class="cky-accordion-item"> <div class="cky-accordion-chevron"><i class="cky-chevron-right"></i></div> <div class="cky-accordion-header-wrapper"> <div class="cky-accordion-header"><button class="cky-accordion-btn" aria-label="Necessary" data-cky-tag="detail-category-title" style="color:#ffffff">Necessary</button><span class="cky-always-active">Always Active</span> <div class="cky-switch" data-cky-tag="detail-category-toggle"><input type="checkbox" id="ckySwitchnecessary"></div> </div> <div class="cky-accordion-header-des" data-cky-tag="detail-category-description" style="color:#ffffff"> <p>Necessary cookies are required to enable the basic features of this site, such as providing secure log-in or adjusting your consent preferences. These cookies do not store any personally identifiable data.</p></div> </div> </div> <div class="cky-accordion-body">  </div> </div><div class="cky-accordion" id="ckyDetailCategoryfunctional"> <div class="cky-accordion-item"> <div class="cky-accordion-chevron"><i class="cky-chevron-right"></i></div> <div class="cky-accordion-header-wrapper"> <div class="cky-accordion-header"><button class="cky-accordion-btn" aria-label="Functional" data-cky-tag="detail-category-title" style="color:#ffffff">Functional</button><span class="cky-always-active">Always Active</span> <div class="cky-switch" data-cky-tag="detail-category-toggle"><input type="checkbox" id="ckySwitchfunctional"></div> </div> <div class="cky-accordion-header-des" data-cky-tag="detail-category-description" style="color:#ffffff"> <p>Functional cookies help perform certain functionalities like sharing the content of the website on social media platforms, collecting feedback, and other third-party features.</p></div> </div> </div> <div class="cky-accordion-body">  </div> </div><div class="cky-accordion" id="ckyDetailCategoryanalytics"> <div class="cky-accordion-item"> <div class="cky-accordion-chevron"><i class="cky-chevron-right"></i></div> <div class="cky-accordion-header-wrapper"> <div class="cky-accordion-header"><button class="cky-accordion-btn" aria-label="Analytics" data-cky-tag="detail-category-title" style="color:#ffffff">Analytics</button><span class="cky-always-active">Always Active</span> <div class="cky-switch" data-cky-tag="detail-category-toggle"><input type="checkbox" id="ckySwitchanalytics"></div> </div> <div class="cky-accordion-header-des" data-cky-tag="detail-category-description" style="color:#ffffff"> <p>Analytical cookies are used to understand how visitors interact with the website. These cookies help provide information on metrics such as the number of visitors, bounce rate, traffic source, etc.</p></div> </div> </div> <div class="cky-accordion-body">  </div> </div><div class="cky-accordion" id="ckyDetailCategoryperformance"> <div class="cky-accordion-item"> <div class="cky-accordion-chevron"><i class="cky-chevron-right"></i></div> <div class="cky-accordion-header-wrapper"> <div class="cky-accordion-header"><button class="cky-accordion-btn" aria-label="Performance" data-cky-tag="detail-category-title" style="color:#ffffff">Performance</button><span class="cky-always-active">Always Active</span> <div class="cky-switch" data-cky-tag="detail-category-toggle"><input type="checkbox" id="ckySwitchperformance"></div> </div> <div class="cky-accordion-header-des" data-cky-tag="detail-category-description" style="color:#ffffff"> <p>Performance cookies are used to understand and analyse the key performance indexes of the website which helps in delivering a better user experience for the visitors.</p></div> </div> </div> <div class="cky-accordion-body">  </div> </div><div class="cky-accordion" id="ckyDetailCategoryadvertisement"> <div class="cky-accordion-item"> <div class="cky-accordion-chevron"><i class="cky-chevron-right"></i></div> <div class="cky-accordion-header-wrapper"> <div class="cky-accordion-header"><button class="cky-accordion-btn" aria-label="Advertisement" data-cky-tag="detail-category-title" style="color:#ffffff">Advertisement</button><span class="cky-always-active">Always Active</span> <div class="cky-switch" data-cky-tag="detail-category-toggle"><input type="checkbox" id="ckySwitchadvertisement"></div> </div> <div class="cky-accordion-header-des" data-cky-tag="detail-category-description" style="color:#ffffff"> <p>Advertisement cookies are used to provide visitors with customised advertisements based on the pages you visited previously and to analyse the effectiveness of the ad campaigns.</p></div> </div> </div> <div class="cky-accordion-body">  </div> </div> </div></div><div class="cky-footer-wrapper"> <span class="cky-footer-shadow"></span> <div class="cky-prefrence-btn-wrapper" data-cky-tag="detail-buttons">  <button class="cky-btn cky-btn-preferences" aria-label="Save My Preferences" data-cky-tag="detail-save-button" style="color:#d0d0d0;background-color:transparent;border-color:#d0d0d0"> Save My Preferences </button> <button class="cky-btn cky-btn-accept" aria-label="Got It" data-cky-tag="detail-accept-button" style="color:#fff"> Got It </button> </div></div></div></div>
     </script>
