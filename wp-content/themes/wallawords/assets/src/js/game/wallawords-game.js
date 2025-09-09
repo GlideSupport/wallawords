@@ -13,7 +13,7 @@ s
         }
 
        // document.cookie = name + '=' + (value || '')  + expires + ';';
-		document.cookie = name+"="+ (value || '') + expires+"; path=/";
+        document.cookie = name+"="+ (value || '') + expires+"; path=/";
     },
 
     getCookie(name) {
@@ -30,7 +30,7 @@ s
 }
 */
 
- //replace cookies w/ local storage
+//replace cookies w/ local storage
 const GameStorageService = {
 
     setItem(name, value, days) {
@@ -69,7 +69,7 @@ const gameScreen = document.getElementById('game-screen');
 const gameGridElement = document.getElementById('sortable-grid');
 const finalScoreScreen = document.getElementById('final-score-screen');
 const finalScoreToggle = document.getElementById('final-page-toggle');
-const finalPoem = document.getElementById('final-poem'); 
+const finalPoem = document.getElementById('final-poem');
 const skinToggleButton = document.getElementById('skin-toggle-button');
 const gameMenuButton = document.getElementById('game-menu-btn');
 const finalMoveCount = document.getElementById('final-move-count');
@@ -113,11 +113,11 @@ let puzzleCounter = 0;
 let gameGrid = null;
 let completedSessionPuzzles = [];
 
-if(GameStorageService.getItem('ww-session-games')){
+if (GameStorageService.getItem('ww-session-games')) {
     completedSessionPuzzles = GameStorageService.getItem('ww-session-games');
 }
 
-console.log('WW puzzles completed: '+completedSessionPuzzles);
+console.log('WW puzzles completed: ' + completedSessionPuzzles);
 
 let completedPuzzleRank = '';
 let completedPuzzleIcon = '';
@@ -131,85 +131,85 @@ document.addEventListener('DOMContentLoaded', initializeGame);
 
 function initializeGame() {
 
-    if(GameStorageService.getItem('ww-played-before')){
+    if (GameStorageService.getItem('ww-played-before')) {
         isFirstPlay = 0;
     } else {
         //GameCookieService.setCookie('ww-played-before',1,365);
-        GameStorageService.setItem('ww-played-before',1,1);
+        GameStorageService.setItem('ww-played-before', 1, 1);
     }
 
     playGameButton.addEventListener('click', () => {
-        if(isFirstPlay == 1) {
+        if (isFirstPlay == 1) {
             jQuery('#help-button').trigger('click');
         }
-        
+
         titleScreen.style.display = 'none';
         //gameScreen.style.display = 'flex';
-        startGame(puzzleCounter);    
+        startGame(puzzleCounter);
     });
 
     playAgain.addEventListener('click', () => {
         instructionScreen.style.display = 'none';
         finalScoreScreen.style.display = 'none';
         gameGridElement.innerHTML = '<span></span><img src="/wp-content/themes/wallawords/assets/build/images/spinner.svg" class="loading"><span></span>';
-        startGame(puzzleCounter); 
+        startGame(puzzleCounter);
     });
 
     shareBtn.addEventListener('click', () => {
 
-		//let phone = document.getElementById("share-phone").value;
-		//let message = document.getElementById("share-message").value;		
-		//let smsLink = `sms:${phone}?&body=${message}`;
+        //let phone = document.getElementById("share-phone").value;
+        //let message = document.getElementById("share-message").value;		
+        //let smsLink = `sms:${phone}?&body=${message}`;
 
         var message = `I just discovered the amazing game, WallaWords! I solved it in ${moveCounterValue} moves and earned the “${completedPuzzleIcon} ${completedPuzzleRank}” level. Think you can beat me? Try it here - https://wallawords.com/play`;
 
         let smsLink = `sms:?&body=${message}`;
-		window.location.href = smsLink;
-	});   
+        window.location.href = smsLink;
+    });
 
     sentenceToggle[0].addEventListener('click', () => {
 
-            var container = jQuery('#sentence-list-container');
-    
-            if(container.css('display') == 'none') {
-                container.fadeIn(200);
-                errorCounterDisplay.style.display = "none";
-                moveCounterDisplay.style.display = "none";
-                sentenceCounterDisplay.style.display = "block";
-                sentenceToggle[0].style.display = "none";    
-            } else {
-                container.fadeOut(100);
-                errorCounterDisplay.style.display = "block";
-                moveCounterDisplay.style.display = "block";
-                sentenceToggle[0].style.display = "block";
-            }
-            
-        });
+        var container = jQuery('#sentence-list-container');
 
-        sentenceToggle[1].addEventListener('click', () => {
+        if (container.css('display') == 'none') {
+            container.fadeIn(200);
+            errorCounterDisplay.style.display = "none";
+            moveCounterDisplay.style.display = "none";
+            sentenceCounterDisplay.style.display = "block";
+            sentenceToggle[0].style.display = "none";
+        } else {
+            container.fadeOut(100);
+            errorCounterDisplay.style.display = "block";
+            moveCounterDisplay.style.display = "block";
+            sentenceToggle[0].style.display = "block";
+        }
 
-            var container = jQuery('#sentence-list-container');
-    
-            if(container.css('display') == 'none') {
-                container.fadeIn(200);
-                //moveCounterDisplay.style.display = "none";
-                sentenceCounterDisplay.style.display = "block";
-                sentenceToggle[1].style.display = "none";    
-            } else {
-                container.fadeOut(100);
-                sentenceCounterDisplay.style.display = "none";
-                sentenceToggle[1].style.display = "block";
-            }
-            
-        });
+    });
+
+    sentenceToggle[1].addEventListener('click', () => {
+
+        var container = jQuery('#sentence-list-container');
+
+        if (container.css('display') == 'none') {
+            container.fadeIn(200);
+            //moveCounterDisplay.style.display = "none";
+            sentenceCounterDisplay.style.display = "block";
+            sentenceToggle[1].style.display = "none";
+        } else {
+            container.fadeOut(100);
+            sentenceCounterDisplay.style.display = "none";
+            sentenceToggle[1].style.display = "block";
+        }
+
+    });
 
     closeSentenceToggle.addEventListener('click', () => {
         var container = jQuery('#sentence-list-container');
         container.fadeOut(150);
 
-        if(finalScoreScreen.style.display == 'none'){
+        if (finalScoreScreen.style.display == 'none') {
 
-            moveCounterDisplay.style.display = "block";        
+            moveCounterDisplay.style.display = "block";
             sentenceToggle.forEach(item => {
                 item.style.display = "block";
             });
@@ -220,7 +220,7 @@ function initializeGame() {
         }
 
     });
-	
+
 }
 
 // **Function to Remove Residual Classes After Dragging**
@@ -255,10 +255,40 @@ function removeBounceClass() {
     });
 }
 
-// **Start the Game**
-function startGame(puzzleCounterValue) {
+async function dpData(encryptedDataWithIv, nonce) {
+    const encryptedBytes = Uint8Array.from(atob(encryptedDataWithIv), c => c.charCodeAt(0));
 
-    pageHeader.classList.add('playing'); 
+    const iv = encryptedBytes.slice(0, 16);
+    const ciphertext = encryptedBytes.slice(16);
+
+    const encoder = new TextEncoder();
+    const nonceBytes = encoder.encode(nonce);
+    const hashBuffer = await crypto.subtle.digest('SHA-256', nonceBytes);
+
+    const key = await crypto.subtle.importKey(
+        'raw',
+        hashBuffer,
+        { name: 'AES-CBC' },
+        false,
+        ['decrypt']
+    );
+
+    const decryptedBuffer = await crypto.subtle.decrypt(
+        { name: 'AES-CBC', iv: iv },
+        key,
+        ciphertext
+    );
+
+    const decoder = new TextDecoder();
+    const jsonString = decoder.decode(decryptedBuffer);
+
+    return JSON.parse(jsonString);
+}
+
+// **Start the Game**
+async function startGame(puzzleCounterValue) {
+
+    pageHeader.classList.add('playing');
     moveCounterDisplay.classList.remove('over');
 
     finalScoreScreen.style.display = 'none';
@@ -267,16 +297,16 @@ function startGame(puzzleCounterValue) {
     errorCounterDisplay.style.display = "block";
     errorCounterDisplay.innerHTML = '';
 
-    if(jQuery('#puzzle_id').length) {
+    if (jQuery('#puzzle_id').length) {
         hasID = jQuery('#puzzle_id').val();
-        url = localVars.ajax_url + '?action=wallawords_get_puzzle_data&gameID='+hasID;
+        url = localVars.ajax_url + '?action=wallawords_get_puzzle_data&gameID=' + hasID + '&nonce=' + localVars.nonce;
         currentPuzzleID = hasID;
     } else {
-        url = localVars.ajax_url + '?action=wallawords_get_puzzle_data';
+        url = localVars.ajax_url + '?action=wallawords_get_puzzle_data&nonce=' + localVars.nonce;
     }
 
-    if(completedSessionPuzzles){
-        url += '&completed='+completedSessionPuzzles;
+    if (completedSessionPuzzles) {
+        url += '&completed=' + completedSessionPuzzles;
     }
 
     console.log(url);
@@ -284,7 +314,7 @@ function startGame(puzzleCounterValue) {
     gameScreen.style.display = 'flex';
 
     const floatingPieces = document.querySelectorAll('.piece');
-    
+
     floatingPieces.forEach((piece) => {
         piece.classList.add('blur'); //change floating elements
     });
@@ -297,10 +327,10 @@ function startGame(puzzleCounterValue) {
     completedColumns = [];
 
     if (gameGrid) {
-         gameGrid.destroy();
+        gameGrid.destroy();
 
-         const resetSentenceCounter = document.querySelectorAll('.sentence-list-item');
-         resetSentenceCounter.forEach((row) => {
+        const resetSentenceCounter = document.querySelectorAll('.sentence-list-item');
+        resetSentenceCounter.forEach((row) => {
             row.remove();
         });
     }
@@ -308,21 +338,35 @@ function startGame(puzzleCounterValue) {
     jQuery.ajax({
         url: url,
         type: 'GET',
-        success: function (response) {
+        success: async function (response) {
+            let data = response;
+            if (typeof response === "string") {
+                try {
+                    data = JSON.parse(response);
+                } catch (err) {
+                    console.error("❌ JSON.parse failed:", err, response);
+                    return;
+                }
+            }
 
-            if(response){
+            if (data.pd) {
+                 try {
+                    await dpData(data.pd, localVars.nonce);
+                } catch (err) {
+                    console.error("❌ Decryption failed:", err);
+                }
+                // console.log(JSON.parse(response)); Get All Puzzles data
+                const puzzles = await dpData(data.pd, localVars.nonce);
+                console.log(puzzles);
+                // const puzzles = JSON.parse(test);
 
-            console.log(JSON.parse(response));
+                sentenceToggle.forEach(item => {
+                    item.style.display = "block";
+                });
 
-            const puzzles = JSON.parse(response);
+                const originalDropPlacement = new Map(); // Map to store initial positions
 
-            sentenceToggle.forEach(item => {
-                item.style.display = "block";
-            });
-
-            const originalDropPlacement = new Map(); // Map to store initial positions
-    
-            // Select a random puzzle
+                // Select a random puzzle
                 const selectedPoem = puzzles[puzzleCounterValue];
                 activePoem = selectedPoem;
 
@@ -332,9 +376,9 @@ function startGame(puzzleCounterValue) {
                 lockedWords = selectedPoem.lockedWords.slice(); // Store the locked positions
                 sentences = selectedPoem.sentences; // Store sentences from JSON
                 columns = selectedPoem.columns; //store column rows
-                totalSentenceCount = selectedPoem.sentences.length+3; //add 3 because we always have 3 vertical sentences in a puzzle
+                totalSentenceCount = selectedPoem.sentences.length + 3; //add 3 because we always have 3 vertical sentences in a puzzle
 
-               // console.log('sentences = '.selectedPoem.sentences+"~"+selectedPoem.sentences.length);
+                // console.log('sentences = '.selectedPoem.sentences+"~"+selectedPoem.sentences.length);
                 //console.log('sentences = ');
                 //console.dir(selectedPoem.sentences);
 
@@ -351,37 +395,37 @@ function startGame(puzzleCounterValue) {
 
                 originalPositions.forEach((word, index) => {
                     const div = document.createElement('div');
-                    div.classList.add('grid-item');                
+                    div.classList.add('grid-item');
                     if (lockedIndexes.includes(index)) {
                         div.textContent = word;
                         div.classList.add('correct-position'); // Mark it as correctly placed
                         div.classList.add('locked-position'); // Mark it as locked
                         div.classList.add('intro1');
-                        div.style.animationDelay = `${parseInt(index)*.01}s`; //add delay to float in effect to stagger tiles  
+                        div.style.animationDelay = `${parseInt(index) * .01}s`; //add delay to float in effect to stagger tiles  
                     } else {
                         div.textContent = incorrectWords.shift(); // Populate with shuffled words
-                        div.classList.add('intro2');  
+                        div.classList.add('intro2');
                         div.classList.add('start-position');
                         var rand = parseInt(Math.floor(Math.random() * (originalPositions.length - 0 + 1) + 0));
-                        var randDelay = (rand*.01)+((parseInt(index)*.01)*lockedIndexes.length);
+                        var randDelay = (rand * .01) + ((parseInt(index) * .01) * lockedIndexes.length);
                         //console.log(randDelay);
                         div.style.animationDelay = `${randDelay}s`; //add delay to float in effect to stagger tiles                      
                     }
-                    
+
                     gameGridElement.appendChild(div);
                 });
 
-                
+
                 //get original placements as an array object to compare
                 document.querySelectorAll('.grid-item').forEach((tile) => {
                     const parent = tile.parentElement;
                     const index = Array.from(parent.children).indexOf(tile);
-                    originalDropPlacement.set(tile, { parent, index });   
+                    originalDropPlacement.set(tile, { parent, index });
                 });
-                                    
+
                 // Calculate the minimum number of moves required using cycle decomposition method
                 minimumMoves = calculateMinSwapsUsingGraphMethod(solvedState);
-                
+
                 console.log(`Lowest possible is ${minimumMoves} moves`); // Log minimum moves to console
 
                 // Initialize SortableJS on the grid container with Swap plugin
@@ -424,29 +468,29 @@ function startGame(puzzleCounterValue) {
 
                         // Check if the item was placed in an invalid slot
                         // if (!item.parentElement.classList.contains('valid-slot')) {
-                            //parent.insertBefore(item, parent.children[index]); // Revert to original position
+                        //parent.insertBefore(item, parent.children[index]); // Revert to original position
                         //}
 
                         removeDropZoneClass();
                     }
-                    
+
                 });
-                
+
                 /* counter grids */
 
                 //set default sentence counters
-                for(s=1; s <= totalSentenceCount; s++) {        
-                    const div = document.createElement('div');    
-                    div.id = 'sentence_'+s;  
-                    div.classList.add('sentence-list-item');  
-                    div.innerHTML = '<div class="content">'+s+'. sentence not found</div>';  
+                for (s = 1; s <= totalSentenceCount; s++) {
+                    const div = document.createElement('div');
+                    div.id = 'sentence_' + s;
+                    div.classList.add('sentence-list-item');
+                    div.innerHTML = '<div class="content">' + s + '. sentence not found</div>';
 
-                    const grid = document.createElement('div'); 
-                    grid.id = 'grid_'+s;
+                    const grid = document.createElement('div');
+                    grid.id = 'grid_' + s;
                     grid.classList.add('grid-container');
 
-                    for(c=0;c<15;c++) {
-                        const gridCell = document.createElement('div'); 
+                    for (c = 0; c < 15; c++) {
+                        const gridCell = document.createElement('div');
                         gridCell.classList.add('grid-cell');
                         grid.append(gridCell);
                     }
@@ -457,19 +501,19 @@ function startGame(puzzleCounterValue) {
                 }
 
                 updateMoveCounterDisplay(); //set 0 of max sentences
-           
-                //remove intro animation classes
-                setTimeout(()=> {
-                    removeAnimateInClass();
-                    setTimeout(()=> {
-                        removeBounceClass();
-                    },1500);
 
-                },2200);               
+                //remove intro animation classes
+                setTimeout(() => {
+                    removeAnimateInClass();
+                    setTimeout(() => {
+                        removeBounceClass();
+                    }, 1500);
+
+                }, 2200);
 
             }
         }
-    
+
     });
 
 }
@@ -535,19 +579,19 @@ function updateMoveCounter(evt, originalPositions) {
     // Update positions and visual feedback
     checkCorrectPositionAtIndex(fromIndex, originalPositions);
     checkCorrectPositionAtIndex(toIndex, originalPositions);
-    
-    // Increment move counter
-     moveCounterValue++;
 
-    if(checkCorrectPositionAtIndex(fromIndex, originalPositions) == false && checkCorrectPositionAtIndex(toIndex, originalPositions) == false) {
+    // Increment move counter
+    moveCounterValue++;
+
+    if (checkCorrectPositionAtIndex(fromIndex, originalPositions) == false && checkCorrectPositionAtIndex(toIndex, originalPositions) == false) {
         //increment X markers
         incorrectCounterValue++;
         const div = document.createElement('div');
-        div.classList.add('error');    
+        div.classList.add('error');
         div.innerHTML = '<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4.10745 15.8925C3.67288 15.458 3.65698 14.7717 4.07189 14.3568L14.3568 4.07187C14.7717 3.65697 15.458 3.67286 15.8926 4.10743C16.3271 4.54201 16.343 5.22832 15.9281 5.64322L5.64324 15.9281C5.22833 16.343 4.54203 16.3271 4.10745 15.8925Z" fill="white"/><path d="M4.10745 4.10745C4.54203 3.67288 5.22833 3.65698 5.64324 4.07189L15.9281 14.3568C16.343 14.7717 16.3271 15.458 15.8926 15.8926C15.458 16.3271 14.7717 16.343 14.3568 15.9281L4.07189 5.64324C3.65699 5.22833 3.67288 4.54203 4.10745 4.10745Z"/></svg>'; //X svg icon
         errorCounterDisplay.append(div);
-    
-    }    
+
+    }
 
     // Check for completed columns and sentences
     checkColumnCompletion(originalPositions);
@@ -562,12 +606,12 @@ function updateMoveCounter(evt, originalPositions) {
 function updateMoveCounterDisplay() {
     if (moveCounterDisplay) {
 
-        if(incorrectCounterValue > minimumMoves) {
+        if (incorrectCounterValue > minimumMoves) {
             moveCounterDisplay.classList.add('over');
         }
-        
-        moveCounterDisplay.innerHTML = `<span>Moves</span> ${minimumMoves-incorrectCounterValue}`;
-         
+
+        moveCounterDisplay.innerHTML = `<span>Moves</span> ${minimumMoves - incorrectCounterValue}`;
+
     }
 
     sentenceCounterDisplay.innerHTML = `<span>Sentences</span> ${completeSentenceCount}/${totalSentenceCount}`;
@@ -595,7 +639,7 @@ function checkColumnCompletion(originalPositions) {
 
     const items = document.querySelectorAll('.grid-item');
     const columns = 3; // Assuming a 3-column grid, adjust as necessary
-    const rows = items.length / columns;    
+    const rows = items.length / columns;
     const counters = document.querySelectorAll('.sentence-list-item');
 
     // Check each column to see if it's fully completed
@@ -611,8 +655,8 @@ function checkColumnCompletion(originalPositions) {
             if (items[index].textContent !== originalPositions[index]) {
                 isColumnCorrect = false;
             } else {
-                sentenceCounter += originalPositions[index]+' ';    
-                gridItems.push(index);     
+                sentenceCounter += originalPositions[index] + ' ';
+                gridItems.push(index);
             }
         }
 
@@ -628,13 +672,13 @@ function checkColumnCompletion(originalPositions) {
                 item.classList.remove('active');
             });
 
-            let thisCol = document.getElementById('sentence_'+completeSentenceCount);
- 
-            if(thisCol){
+            let thisCol = document.getElementById('sentence_' + completeSentenceCount);
+
+            if (thisCol) {
                 thisCol.classList.add('active');
 
                 let contentEl = thisCol.querySelector('.content');
-                
+
                 if (contentEl) {
                     contentEl.innerHTML = completeSentenceCount + '. ' + sentenceCounter;
                     //contentEl.innerHTML = completeSentenceCount + '. ' + sentenceCounter + '(column)';
@@ -645,15 +689,15 @@ function checkColumnCompletion(originalPositions) {
                 if (gridCells.length > 0) {
                     c = 0;
                     gridCells.forEach((cell) => {
-                        
-                        if(gridItems.includes(c)) {
+
+                        if (gridItems.includes(c)) {
                             cell.classList.add('active');
                         }
-                        
+
                         c++;
                     });
                 }
-                        
+
             }
         }
     }
@@ -680,8 +724,8 @@ function checkSentenceCompletion(originalPositions) {
                 isSentenceCorrect = false;
             } else {
                 //if(items[i].classList.contains('')){
-                    sentenceCounter += originalPositions[i]+' ';    
-                    gridItems.push(i);     
+                sentenceCounter += originalPositions[i] + ' ';
+                gridItems.push(i);
                 //}
             }
         }
@@ -696,15 +740,15 @@ function checkSentenceCompletion(originalPositions) {
 
             counters.forEach((item) => {
                 item.classList.remove('active');
-            });   
+            });
 
-            let thisRow = document.getElementById('sentence_'+completeSentenceCount); 
+            let thisRow = document.getElementById('sentence_' + completeSentenceCount);
 
-            if(thisRow){
+            if (thisRow) {
                 thisRow.classList.add('active');
 
                 let contentEl = thisRow.querySelector('.content');
-                
+
                 if (contentEl) {
                     contentEl.innerHTML = completeSentenceCount + '. ' + sentenceCounter;
                     //contentEl.innerHTML = completeSentenceCount + '. ' + sentenceCounter +' (sentence)';
@@ -715,15 +759,15 @@ function checkSentenceCompletion(originalPositions) {
                 if (gridCells.length > 0) {
                     c = 0;
                     gridCells.forEach((cell) => {
-                        
-                        if(gridItems.includes(c)) {
+
+                        if (gridItems.includes(c)) {
                             cell.classList.add('active');
                         }
 
                         c++;
                     });
                 }
-            
+
             }
         }
     }
@@ -738,7 +782,7 @@ function checkPuzzleCompletion(originalPositions) {
 
     let isFailed = 0;
 
-    if(incorrectCounterValue > minimumMoves) {
+    if (incorrectCounterValue > minimumMoves) {
         isFailed = 1;
     }
 
@@ -748,28 +792,28 @@ function checkPuzzleCompletion(originalPositions) {
         document.getElementById('confetti-canvas').style.opacity = '1';
         showFinalScoreScreen();
 
-        if(completedSessionPuzzles.includes(currentPuzzleID) === false){
+        if (completedSessionPuzzles.includes(currentPuzzleID) === false) {
             completedSessionPuzzles.push(currentPuzzleID);
         }
 
-        if(GameStorageService.getItem('ww-session-games')) {
-            if(GameStorageService.getItem('ww-session-games').indexOf(completedSessionPuzzles) == -1 ) { //only update local storage if this puzzle ID isnt marked complete
-                GameStorageService.setItem('ww-session-games',completedSessionPuzzles,365);
-            }            
+        if (GameStorageService.getItem('ww-session-games')) {
+            if (GameStorageService.getItem('ww-session-games').indexOf(completedSessionPuzzles) == -1) { //only update local storage if this puzzle ID isnt marked complete
+                GameStorageService.setItem('ww-session-games', completedSessionPuzzles, 365);
+            }
         } else {
-            GameStorageService.setItem('ww-session-games',completedSessionPuzzles,365);
+            GameStorageService.setItem('ww-session-games', completedSessionPuzzles, 365);
         }
 
         setTimeout(() => {
             document.getElementById('confetti-canvas').style.opacity = '0';
             setTimeout(() => {
                 stopConfetti();
-            },8000);
-        },8000);
+            }, 8000);
+        }, 8000);
     }
 
     if (isFailed) {
-       // animateWaveEffect(0, 'puzzle');
+        // animateWaveEffect(0, 'puzzle');
         //startConfetti();
         //document.getElementById('confetti-canvas').style.opacity = '1';
         showFinalScoreScreen();
@@ -816,7 +860,7 @@ function animateWaveEffect(index, type) {
     } else if (type === 'puzzle') {
         elements = Array.from(items);
     }
-    
+
     // Apply the wave-bounce animation with staggered timing
     elements.forEach((element, i) => {
         setTimeout(() => {
@@ -829,7 +873,7 @@ function animateWaveEffect(index, type) {
     });
 }
 
-function finalScoreResizer(mode){
+function finalScoreResizer(mode) {
     const pageSize = window.visualViewport ? window.visualViewport.height : window.innerHeight;
     const mainSection = document.querySelector('.main-section');
     const gameWrapper = document.querySelector('.game-wrapper');
@@ -839,12 +883,12 @@ function finalScoreResizer(mode){
 
     //console.log(mode);
 
-    if(mode == 'results') {
-        
+    if (mode == 'results') {
+
         let reviewHeight = 550;
-        
-       // const finalPoemEntries = finalPoemContent.querySelectorAll('p');
-      
+
+        // const finalPoemEntries = finalPoemContent.querySelectorAll('p');
+
         let addHeight = gameGridElement.offsetHeight;
 
         /*
@@ -857,15 +901,15 @@ function finalScoreResizer(mode){
         finalPoemContent.style.display = 'block';
 
         reviewHeight = reviewHeight + parseInt(addHeight);
-       
-        if(mainHeight <= reviewHeight) {
+
+        if (mainHeight <= reviewHeight) {
             mainHeight = reviewHeight;
         }
 
-        console.log('game height '+mainHeight); 
+        console.log('game height ' + mainHeight);
 
-    } else {            
-        if(mainHeight <= 740) {
+    } else {
+        if (mainHeight <= 740) {
             mainHeight = 740;
         }
 
@@ -873,10 +917,10 @@ function finalScoreResizer(mode){
     }
 
     //only run on resize if final score screen is active
-    if(finalScoreScreen.style.display == 'flex'){
+    if (finalScoreScreen.style.display == 'flex') {
 
         if (gameWrapper) {
-            gameWrapper.style.height = `${mainHeight-60}px`;
+            gameWrapper.style.height = `${mainHeight - 60}px`;
         }
 
         if (mainSection) {
@@ -884,14 +928,14 @@ function finalScoreResizer(mode){
         }
 
     }
-    
+
     //console.log('final score game area height: '+mainHeight);
 
 }
 
 // **Show the Final Score Screen After Puzzle Completion**
 function showFinalScoreScreen() {
-    
+
     puzzleCounter++;
 
     setTimeout(() => {
@@ -922,7 +966,7 @@ function showFinalScoreScreen() {
 
             //console.log(moveCounterValue +'~'+ scoreFrom +'~'+ scoreTo);
 
-            if(parseInt(moveCounterValue) >= parseInt(scoreFrom) && parseInt(moveCounterValue) <= parseInt(scoreTo)) {
+            if (parseInt(moveCounterValue) >= parseInt(scoreFrom) && parseInt(moveCounterValue) <= parseInt(scoreTo)) {
                 row.classList.add('highlighted');
                 row.classList.add(row.id);
                 finalMoveCount.classList.add(row.id);
@@ -935,37 +979,37 @@ function showFinalScoreScreen() {
             }
         });
 
-            const toggles = document.querySelectorAll('.final-page-toggle .toggle');
+        const toggles = document.querySelectorAll('.final-page-toggle .toggle');
 
-            finalScoreResizer(toggled);
+        finalScoreResizer(toggled);
 
-            toggles.forEach(toggle => {
-                
-                toggle.addEventListener('click', () => {
+        toggles.forEach(toggle => {
 
-                    toggles.forEach(toggle => {
-                        toggle.classList.remove('active');
-                    });
+            toggle.addEventListener('click', () => {
 
-                    if(toggled == 'results'){
-                       // finalPoem.style.display = 'none';
-                        scoreTableElement.style.display = 'flex';
-                        toggled = 'review';
-                        toggles[0].classList.add('active');
-                        gameGridElement.classList.remove('active');
-                        
-                    } else {
-                       // finalPoem.style.display = 'flex';
-                        scoreTableElement.style.display = 'none';
-                        toggled = 'results';
-                        toggles[1].classList.add('active');
-                        gameGridElement.classList.add('active');
-                    }       
-                    
-                    finalScoreResizer(toggled);
-
+                toggles.forEach(toggle => {
+                    toggle.classList.remove('active');
                 });
+
+                if (toggled == 'results') {
+                    // finalPoem.style.display = 'none';
+                    scoreTableElement.style.display = 'flex';
+                    toggled = 'review';
+                    toggles[0].classList.add('active');
+                    gameGridElement.classList.remove('active');
+
+                } else {
+                    // finalPoem.style.display = 'flex';
+                    scoreTableElement.style.display = 'none';
+                    toggled = 'results';
+                    toggles[1].classList.add('active');
+                    gameGridElement.classList.add('active');
+                }
+
+                finalScoreResizer(toggled);
+
             });
-                                
+        });
+
     }, 3000); // Delay to allow for wave animation to finish
 }
