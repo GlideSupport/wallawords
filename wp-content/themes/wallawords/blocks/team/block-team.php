@@ -80,7 +80,7 @@ $img_layout = ($www_blkteam_image_layout === 'small') ? 'sm-leadership' : 'leade
 				
 				<div class="s-72"></div>
 
-					<div class="team-members">
+					<div class="team-members <?php echo esc_attr($img_layout);?>">
 						<?php
 						global $post;
 						$count = 0;
@@ -109,7 +109,7 @@ $img_layout = ($www_blkteam_image_layout === 'small') ? 'sm-leadership' : 'leade
 								$amp_class = '';
 							}
 							?>
-							<div class="single-team-member column <?php echo esc_attr($img_layout);?>">
+							<div class="single-team-member column ">
 								<div class="single-team-member__details">
 									<div class="member-img">
 									<?php

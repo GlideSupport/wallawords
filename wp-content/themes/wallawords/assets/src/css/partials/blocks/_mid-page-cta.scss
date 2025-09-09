@@ -43,7 +43,14 @@
 		h6 {
 			margin: 0;
 			text-transform: uppercase;
+			span{
+			background: var(--Dark-Gradient, linear-gradient(88deg, #2BC016 0.88%, #26A96C 99.12%));
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent; 
 		}
+		}
+		
 	}
 	&__content--text{
 		 p{
