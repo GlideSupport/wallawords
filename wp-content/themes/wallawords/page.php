@@ -19,7 +19,7 @@ $bst_var_tmp_def_text   = $bst_fields['bst_var_tmp_def_text'] ?? null;
 $bst_var_tmp_def_button = $bst_fields['bst_var_tmp_def_button'] ?? null;
 
 ?>
-
+<?php if (!empty($bst_var_tmp_def_title) || !empty($bst_var_tmp_def_text) || !empty($bst_var_tmp_def_button) ) : ?>
 <section id="hero-section" class="hero-section hero-section-default hero-alongside-pattern">
 	<!-- Hero Start -->
 	<div class="hero-default center-align ctn-760">
@@ -35,7 +35,7 @@ $bst_var_tmp_def_button = $bst_fields['bst_var_tmp_def_button'] ?? null;
 	</div>
 	<!-- Hero End -->
 </section>
-
+<?php endif; ?>
 
 <section id="page-section" class="page-section">
 	<!-- Content Start -->
