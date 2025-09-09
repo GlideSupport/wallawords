@@ -85,7 +85,30 @@ body.light {
 
 
 }
+#hero-section {
+	position: relative;
+	&:before {
+		position: absolute;
+		content: "";
+		width: 100%;
+		height: 100%;
+		background: radial-gradient(80.72% 59.92% at 82.26% 60.9%, rgba(9, 7, 25, 0.00) 0%, rgb(9 7 25 / 31%) 40%, #090719 100%);
+		top: 0;
+		left: 0;
+		z-index: 3;
+	}
 
+	&:after {
+		position: absolute;
+		content: "";
+		width: 100%;
+		height: 100%;
+		top: 0;
+		left: 0;
+		z-index: 3;
+		background: linear-gradient(179deg, rgba(9, 7, 25, 0.00) 70.24%, #090719 99.28%);
+	}
+}
 .hero-section-default {
 	transition: all 0.3s ease-in-out;
 	//background-color: var(--ww_white_1);
@@ -95,8 +118,8 @@ body.light {
 .hero-default {
 	padding: 100px 0 80px;
 	background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
+    background-size: contain;
+    background-position: right;
 	position: relative;
 	&::before{
 		content: " ";
@@ -121,6 +144,8 @@ body.light {
 	}
 	.hero-alongside-block{
 		position: relative;
+		z-index: 3;
+
 	}
 	h1 {
         font-size: var(--text-85) !important;

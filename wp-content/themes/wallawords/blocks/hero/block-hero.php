@@ -55,11 +55,12 @@ $ww_hero_bg_image = $bst_block_fields['ww_hero_bg_image'] ?? null;
 
 <div id="<?php echo esc_html($bst_block_html_id); ?>" class="<?php echo esc_html($bst_var_align_class . ' ' . $bst_var_class_name . ' ' . $bst_var_name . ' '. $ww_hero_choose_variation); ?> block-<?php echo esc_html($bst_block_name); ?>" style="<?php echo esc_html($bst_block_styles); ?> ">
 	<?php 
-	if($ww_hero_choose_variation == 'home'): ?>
+	if($ww_hero_choose_variation == 'home'): ?> 
 	<section id="hero-section" class="hero-section hero-section-default hero-alongside-pattern">
 		<div  class="hero-default center-align ctn-760"  <?php if (!empty($ww_hero_bg_image)) : ?> style="background-image: url('<?php echo esc_url( wp_get_attachment_image_url($ww_hero_bg_image, 'full') ); ?>');"
 		<?php endif; ?>>
 			<div class="wrapper">
+				<div class="gl-s200"></div>
 				<div class="hero-alongside-block">
 					<div class="banner-text">
 						<?php if ( $ww_hero_headline ) { ?>
@@ -79,6 +80,7 @@ $ww_hero_bg_image = $bst_block_fields['ww_hero_bg_image'] ?? null;
 						<?php endif; ?>
 					</div>
 				</div>
+				<div class="gl-s200"></div>
 			</div>
 		</div>
 	</section>
@@ -88,6 +90,7 @@ $ww_hero_bg_image = $bst_block_fields['ww_hero_bg_image'] ?? null;
 		<section id="hero-section" class="hero-section hero-section-default hero-alongside-pattern">
 			<div class="hero-default center-align ctn-760">
 				<div class="wrapper">
+					<div class="gl-s200"></div>
 					<div class="hero-alongside-block">
 						<div class="banner-text">
 							<?php if ( $ww_hero_headline ) { ?>
@@ -107,6 +110,7 @@ $ww_hero_bg_image = $bst_block_fields['ww_hero_bg_image'] ?? null;
 							<?php endif; ?>
 						</div>
 					</div>
+					<div class="gl-s200"></div>
 				</div>
 			</div>
 		</section>
