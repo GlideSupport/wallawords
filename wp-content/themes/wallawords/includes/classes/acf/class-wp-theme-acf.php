@@ -40,7 +40,7 @@ class WP_Theme_Acf {
 			);
 		}
 
-		add_filter( 'block_categories_all', array( $this, 'blocks_category' ), 10, 2 );
+		add_filter( 'block_categories_all', array( $this, 'blocks_category' ), PHP_INT_MAX, 2 );
 		add_action( 'init', array( $this, 'include_acf_fields' ) );
 		add_action( 'acf/render_field_settings/type=wysiwyg', array( $this, 'wysiwyg_render_field_settings' ), 10, 1 );
 		add_action( 'acf/render_field/type=wysiwyg', array( $this, 'wysiwyg_render_field' ), 10, 1 );
