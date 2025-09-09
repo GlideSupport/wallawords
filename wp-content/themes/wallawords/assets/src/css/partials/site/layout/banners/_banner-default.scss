@@ -108,6 +108,13 @@ body.light {
 		z-index: 3;
 		background: linear-gradient(179deg,rgba(9,7,25,0) 70.24%,rgba(9,7,25,0.9) 99.28%);
 	}
+	&.page-title-banner{
+		 padding: 96px 0 0 0;
+		 &:after,
+		 &:before{
+			 display: none;
+		 }
+	}
 }
 .hero-section-default {
 	transition: all 0.3s ease-in-out;

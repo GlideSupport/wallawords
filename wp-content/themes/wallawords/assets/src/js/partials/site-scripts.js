@@ -433,7 +433,7 @@ jQuery( function() {
 
         var scrollPercent = (scrollTop / (scrollHeight - clientHeight)) * 100;
         $progressBar.css("height", scrollPercent + "%");
-    });
+    });  
 
 } );
 
