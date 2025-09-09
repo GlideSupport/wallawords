@@ -4,7 +4,7 @@
 	"description": "A custom contact Info block.",
 	"category": "theme-blocks",
 	"icon": "contact-info",
-	"keywords": ["contact","info"],
+	"keywords": ["contact","info" ,"Theme Form" ,"theme", "form"],
 	"supports": {
 		"align": true
 	},
