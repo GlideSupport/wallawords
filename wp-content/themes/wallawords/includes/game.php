@@ -20,197 +20,146 @@
     
 }
 
+
+function wallawords_encrypt_data($data, $nonce) {
+    $cipher = "AES-256-CBC";
+    $ivlen  = openssl_cipher_iv_length($cipher);
+    $iv     = openssl_random_pseudo_bytes($ivlen);
+
+    // Use hashed nonce as key
+    $encryption_key = hash('sha256', $nonce, true);
+
+    $encrypted = openssl_encrypt($data, $cipher, $encryption_key, OPENSSL_RAW_DATA, $iv);
+
+    // Encode iv + encrypted text as base64
+    return base64_encode($iv . $encrypted);
+}
+
  /**
  * Return all puzzle data from WP UI pages in JSON
  */
 
-function wallawords_get_puzzle_data() {
-
-  $gameID = array();
-
-  $get_puzzle_args = array(
-    'posts_per_page' => -1,
-    'post_status'    => 'publish',
-    'post_type'      => 'puzzle',
-    'orderby'        => 'date'
-);
-
-if(isset($_GET['gameID'])):
-    $gameID = array(intval($_GET['gameID'])); // Sanitize input
-    $get_puzzle_args['post__in'] = $gameID; // Include the specified post
-    $get_puzzle_args['orderby'] = 'post__in'; // Order by 'post__in' to prioritize the ID
-endif;
-
-//skip games we've already played this session
-if(isset($_GET['completed']) && $_GET['completed'] != ''):
-    if(stristr($_GET['completed'],',')):
-        $completed = explode(',',$_GET['completed']);
-    else:
-        $completed = array($_GET['completed']);
-    endif;
-
-    $gameID = array_merge($gameID,$completed);
-
-    $get_puzzle_args['post__not_in'] = $gameID; //filter out already played puzzles
-
-endif;
-
-$get_puzzle_posts = new WP_Query($get_puzzle_args);
-
-// Fetch additional puzzles excluding the prioritized one
-if (isset($gameID)):
-
-    $additional_puzzles_args = array(
-        'posts_per_page' => -1,
-        'post_status'    => 'publish',
-        'post_type'      => 'puzzle',
-        'post__not_in'   => $gameID, // Exclude the prioritized post(s)
-        'orderby'        => 'date'
-    );
-
-    $additional_puzzles = new WP_Query($additional_puzzles_args);
-
-    // Combine prioritized and additional puzzles
-    $get_puzzle_posts->posts = array_merge($get_puzzle_posts->posts, $additional_puzzles->posts);
-    $get_puzzle_posts->post_count = count($get_puzzle_posts->posts);
-endif;
-
-//reset query if empty and user has played all games already
-if($get_puzzle_posts->found_posts == 0):
-    $get_puzzle_args = array(
-        'posts_per_page' => -1,
-        'post_status'    => 'publish',
-        'post_type'      => 'puzzle',
-        'orderby'        => 'date'
-    );
-    $get_puzzle_posts = new WP_Query($get_puzzle_args);
-endif;
-    
-if($get_puzzle_posts->found_posts > 0):
-
-    $output_data = array();
-
-    $key = 0;
-
-    while ($get_puzzle_posts->have_posts()) : $get_puzzle_posts->the_post();
-
-        $puzzle_post_meta = get_post_meta(get_the_ID());
-
-        $output_data[$key]['id'] = get_the_ID();
-
-        $output_data[$key]['title'] = get_the_title();
-
-        $output_data[$key]['fullPoem'] = $puzzle_post_meta['full_poem'][0];
-
-        if(isset($puzzle_post_meta['correct_words'])):
-
-            $correct_words = json_decode($puzzle_post_meta['correct_words'][0]);
-
-            $correct_words_list = array();
-
-            foreach($correct_words as $s => $value):
-                $correct_words_list[] = $value;
-            endforeach;
-
-            if(count($correct_words_list) > 0):
-                $output_data[$key]['correctWords'] = $correct_words_list;
-            endif;
-        
-        endif;
-
-        if(isset($puzzle_post_meta['sentences'])):
-
-            $sentences = json_decode($puzzle_post_meta['sentences'][0]);
-
-            $sentences_list = array();
-
-            foreach($sentences as $s => $value):
-                $sentences_list[$s] = $value; //subtract value by 1 to start at 0, end at 14 to map JS values
-            endforeach;
-
-            if(count($sentences_list) > 0):
-                $output_data[$key]['sentences'] = $sentences_list;
-            endif;
-        
-        endif;
-        
-        if(isset($puzzle_post_meta['locked_words'])):
-
-            $locked_words = json_decode($puzzle_post_meta['locked_words'][0]);
-            
-            $locked_list = array();
-
-            foreach($locked_words as $cell => $locked):
-               // if($locked == 1):
-                    $locked_list[] = intval($locked); //needs to be an int for JS
-              // endif;
-
-            endforeach;
-
-            if(count($locked_list) > 0):
-                $output_data[$key]['lockedWords'] = $locked_list;
-                //$output_data[$key]['lockedWords'] = array(0, 4, 7, 10, 12);
-            endif;
-        
-        endif;
-
-        if(isset($puzzle_post_meta['incorrect_words'])):
-
-            $incorrect_words = json_decode($puzzle_post_meta['incorrect_words'][0]);
-
-            $incorrect_words_list = array();
-
-            foreach($incorrect_words as $s => $value):
-                $incorrect_words_list[] = $value;
-            endforeach;
-
-            if(count($incorrect_words_list) > 0):
-                $output_data[$key]['incorrectWords'] = $incorrect_words_list;
-            endif;
-        
-        endif;
-
-        //how do we do columns??
-
-        if(isset($puzzle_post_meta['columns'])):
-
-            $columns = json_decode($puzzle_post_meta['columns'][0]);
-
-            $columns_list = array();
-
-            foreach($columns as $s => $value):
-                $columns_list[] = $value;
-            endforeach;
-
-            if(count($columns_list) > 0):
-                $output_data[$key]['columns'] = $columns_list;
-            endif;
-        
-        endif;
-        
-        $key++;
-    endwhile;
-
-    //randomize order, should remove games we've already played this sesh?
-
-    if(!isset($gameID)):
-        shuffle($output_data);
-    endif;
-
-    if(count($output_data) > 0):
-        echo json_encode($output_data);
-    endif;
-
-    exit;
-
-endif;
-
-}
-
-//wallawords_get_puzzle_data();
-
 add_action("wp_ajax_wallawords_get_puzzle_data", "wallawords_get_puzzle_data");
 add_action("wp_ajax_nopriv_wallawords_get_puzzle_data", "wallawords_get_puzzle_data");
+function wallawords_get_puzzle_data() {
+    if (isset($_REQUEST['nonce']) && wp_verify_nonce($_REQUEST['nonce'], 'ajax_nonce')) :
+
+        $gameID = array();
+        $get_puzzle_args = array(
+            'posts_per_page' => -1,
+            'post_status'    => 'publish',
+            'post_type'      => 'puzzle',
+            'orderby'        => 'date'
+        );
+
+        if (isset($_GET['gameID'])) :
+            $gameID = array(intval($_GET['gameID'])); // Sanitize input
+            $get_puzzle_args['post__in'] = $gameID;
+            $get_puzzle_args['orderby'] = 'post__in';
+        endif;
+
+        if (isset($_GET['completed']) && $_GET['completed'] != '') :
+            if (stristr($_GET['completed'], ',')) :
+                $completed = explode(',', $_GET['completed']);
+            else :
+                $completed = array($_GET['completed']);
+            endif;
+
+            $gameID = array_merge($gameID, $completed);
+            $get_puzzle_args['post__not_in'] = $gameID;
+        endif;
+
+        $get_puzzle_posts = new WP_Query($get_puzzle_args);
+
+        if (isset($gameID)) :
+            $additional_puzzles_args = array(
+                'posts_per_page' => -1,
+                'post_status'    => 'publish',
+                'post_type'      => 'puzzle',
+                'post__not_in'   => $gameID,
+                'orderby'        => 'date'
+            );
+
+            $additional_puzzles = new WP_Query($additional_puzzles_args);
+            $get_puzzle_posts->posts = array_merge($get_puzzle_posts->posts, $additional_puzzles->posts);
+            $get_puzzle_posts->post_count = count($get_puzzle_posts->posts);
+        endif;
+
+        if ($get_puzzle_posts->found_posts == 0) :
+            $get_puzzle_args = array(
+                'posts_per_page' => -1,
+                'post_status'    => 'publish',
+                'post_type'      => 'puzzle',
+                'orderby'        => 'date'
+            );
+            $get_puzzle_posts = new WP_Query($get_puzzle_args);
+        endif;
+
+        if ($get_puzzle_posts->found_posts > 0) :
+
+            $output_data = array();
+            $key = 0;
+
+            while ($get_puzzle_posts->have_posts()) : $get_puzzle_posts->the_post();
+
+                $puzzle_post_meta = get_post_meta(get_the_ID());
+                $output_data[$key]['id'] = get_the_ID();
+                $output_data[$key]['title'] = get_the_title();
+                $output_data[$key]['fullPoem'] = $puzzle_post_meta['full_poem'][0] ?? '';
+
+                if (isset($puzzle_post_meta['correct_words'])) :
+                    $correct_words = json_decode($puzzle_post_meta['correct_words'][0]);
+                    $output_data[$key]['correctWords'] = array_values((array)$correct_words);
+                endif;
+
+                if (isset($puzzle_post_meta['sentences'])) :
+                    $sentences = json_decode($puzzle_post_meta['sentences'][0]);
+                    $output_data[$key]['sentences'] = (array)$sentences;
+                endif;
+
+                if (isset($puzzle_post_meta['locked_words'])) :
+                    $locked_words = json_decode($puzzle_post_meta['locked_words'][0]);
+                    $output_data[$key]['lockedWords'] = array_map('intval', (array)$locked_words);
+                endif;
+
+                if (isset($puzzle_post_meta['incorrect_words'])) :
+                    $incorrect_words = json_decode($puzzle_post_meta['incorrect_words'][0]);
+                    $output_data[$key]['incorrectWords'] = array_values((array)$incorrect_words);
+                endif;
+
+                if (isset($puzzle_post_meta['columns'])) :
+                    $columns = json_decode($puzzle_post_meta['columns'][0]);
+                    $output_data[$key]['columns'] = array_values((array)$columns);
+                endif;
+
+                $key++;
+            endwhile;
+
+            if (!isset($_GET['gameID'])) :
+                shuffle($output_data);
+            endif;
+
+            // --- 🔐 Encryption Section ---
+            $encryption_key = hash('sha256', $_REQUEST['nonce'], true); // 32-byte key
+            $iv = openssl_random_pseudo_bytes(openssl_cipher_iv_length('aes-256-cbc'));
+
+            $encrypted_data = openssl_encrypt(
+                json_encode($output_data),
+                'aes-256-cbc',
+                $encryption_key,
+                OPENSSL_RAW_DATA,
+                $iv
+            );
+
+            // Combine IV + ciphertext, then base64 encode
+            $encrypted_data_with_iv = base64_encode($iv . $encrypted_data);
+
+            echo json_encode(['pd' => $encrypted_data_with_iv]);
+            exit;
+        endif;
+    endif;
+}
+
 
 function wallawords_get_instruction_data() {
 
@@ -235,7 +184,6 @@ function wallawords_get_instruction_data() {
     endif;
 
 }
-
 add_action("wp_ajax_wallawords_get_instruction_data", "wallawords_get_instruction_data");
 add_action("wp_ajax_nopriv_wallawords_get_instruction_data", "wallawords_get_instruction_data");
 
