@@ -34,17 +34,26 @@
 		@media(max-width:1024px) {
 			grid-template-columns: repeat(3, 1fr);
 		}
+			@media(max-width:767px) {
+		grid-template-columns: repeat(2, 1fr);
+	}
+
+	@media(max-width:640px) {
+		grid-template-columns: repeat(1, 1fr);
+	}
 
 	}
+
 	
-		@media(max-width:767px) {
+
+   &.leadership{
+		@media(max-width:991px) {
 			grid-template-columns: repeat(2, 1fr);
 		}
 
-		@media(max-width:640px) {
-			grid-template-columns: repeat(1, 1fr);
-		}
-   &.leadership{
+	@media(max-width:640px) {
+		grid-template-columns: repeat(1, 1fr);
+	}
 	 .single-team-member {
 	
 		h4 {
