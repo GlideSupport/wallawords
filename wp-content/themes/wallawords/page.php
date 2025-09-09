@@ -14,7 +14,7 @@ get_header();
 
 list( $bst_var_post_id, $bst_fields, $bst_option_fields ) = BaseTheme::defaults();
 
-$bst_var_tmp_def_title  = $bst_fields['bst_var_tmp_def_title'] ?? get_the_title();
+$bst_var_tmp_def_title  = $bst_fields['bst_var_tmp_def_title'] ?? null;
 $bst_var_tmp_def_text   = $bst_fields['bst_var_tmp_def_text'] ?? null;
 $bst_var_tmp_def_button = $bst_fields['bst_var_tmp_def_button'] ?? null;
 
