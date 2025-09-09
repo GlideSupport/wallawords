@@ -3,7 +3,7 @@
 	"title": "Contact Info",
 	"description": "A custom contact Info block.",
 	"category": "theme-blocks",
-	"icon": "contact-info",
+	"icon": "feedback",
 	"keywords": ["contact","info" ,"Theme Form" ,"theme", "form"],
 	"supports": {
 		"align": true
