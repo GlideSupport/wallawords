@@ -68,9 +68,11 @@ $ww_blkmdpg_link   = ( isset( $block_fields['ww_blkmdpg_link'] ) && '' !== $bloc
 								<<?php echo esc_html( $ww_blkmdpg_title_tag ); ?> class="heading-1"><?php echo html_entity_decode( $ww_blkmdpg_title ); ?><?php echo '</' . esc_html( $ww_blkmdpg_title_tag ) . '>'; ?>
 							</div>
 						<?php } ?>
+						<div class="mpc__content--text">
 						<?php if($ww_blkmdpg_content) {
 							echo html_entity_decode($ww_blkmdpg_content);
 						}?>
+						</div>
 						
 					<?php } ?>
 					

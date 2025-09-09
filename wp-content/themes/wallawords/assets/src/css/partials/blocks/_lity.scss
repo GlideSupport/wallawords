@@ -44,6 +44,7 @@
     text-align: center;
     top: 0;
     z-index: 9990;
+    background-color: rgba(0,0,0,0.8);
 
     @media(max-width: 991px) {
         margin-top: 60px;
@@ -139,9 +140,9 @@
     -webkit-box-shadow: none;
     align-items: center;
     background: none;
-    background: var(--gb_white);
+    background: var(--ww_white);
     border: 0;
-    border: 1px solid var(--gb_base_brown);
+    border: 1px solid var(--ww_border_2);
     border-radius: 9999px;
     box-shadow: none;
     cursor: pointer;

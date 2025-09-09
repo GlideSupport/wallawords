@@ -16,7 +16,8 @@
 	}
 
 	&__content--inner {
-		width: 65%;
+		max-width: 720px;
+		width: 100%;
 		position: relative;
 		z-index: 4;
 	}
@@ -34,7 +35,7 @@
 
 	&__heading {
 		margin-top: 0;
-
+		margin-bottom: 24px;
 		h2,
 		h3,
 		h4,
@@ -43,6 +44,11 @@
 			margin: 0;
 			text-transform: uppercase;
 		}
+	}
+	&__content--text{
+		 p{
+			 @extend .p1;
+		 }
 	}
 
 	&__text {
