@@ -11,27 +11,31 @@
 // Include header.
 get_header();
 
-/*
+
 list( $bst_var_post_id, $bst_fields, $bst_option_fields ) = BaseTheme::defaults();
 
 $bst_var_tmp_def_title  = $bst_fields['bst_var_tmp_def_title'] ?? get_the_title();
 $bst_var_tmp_def_text   = $bst_fields['bst_var_tmp_def_text'] ?? null;
 $bst_var_tmp_def_button = $bst_fields['bst_var_tmp_def_button'] ?? null;
-*/
+
 ?>
 
-<?php /*
-<section id="hero-section" class="hero-section hero-section-default">
+<section id="hero-section" class="hero-section hero-section-default hero-alongside-pattern">
 	<!-- Hero Start -->
-
-	<div class="hero-ctn">
+	<div class="hero-default center-align ctn-760">
 		<div class="wrapper">
-			<h1><?php echo html_entity_decode( $bst_var_tmp_def_title ); ?></h1>
+			<div class="hero-alongside-block">
+				<div class="banner-text">
+					<h1><?php echo html_entity_decode( $bst_var_tmp_def_title ); ?></h1>
+					<?php if (!empty($bst_var_tmp_def_text)) : ?><?php echo html_entity_decode($bst_var_tmp_def_text); ?><?php endif; ?>
+					<?php if (!empty($bst_var_tmp_def_button)) : ?><div class="block-btn"><?php echo BaseTheme::button($bst_var_tmp_def_button, 'button'); ?></div><?php endif; ?>
+				</div>
+			</div>
 		</div>
 	</div>
 	<!-- Hero End -->
 </section>
-*/ ?>
+
 
 <section id="page-section" class="page-section">
 	<!-- Content Start -->
