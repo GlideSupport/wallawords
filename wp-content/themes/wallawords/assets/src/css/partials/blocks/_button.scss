@@ -3,3 +3,22 @@
 ---------------------------------------------------
 >> Edit these styles as required
 ------------------------------------------------- */
+.button{
+      flex: 1 1 100%;
+            padding: 15px 48px;
+            color: #FFF;
+            text-align: center;
+            @include font(rubik, med);
+            font-size: 18px;
+            font-style: normal;
+            font-weight: 500;
+            line-height: 135%;
+            /* 24.3px */
+            letter-spacing: -0.18px;
+            transition: box-shadow 0.3s, color 0.3s !important;
+
+            &:hover {
+                box-shadow: none !important;
+                color: var(--ww_black_1);
+            }
+}
