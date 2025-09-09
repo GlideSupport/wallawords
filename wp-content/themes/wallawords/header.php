@@ -260,8 +260,8 @@ $page_template = basename(get_page_template());
                     </svg>
 
                 </div>
-                <div id="help-button" class="game-help icon-help icon" role="button" aria-label="Help menu"
-                    tabindex="5">
+           
+        
                     <div id="help-button" class="game-help icon-help icon" role="button" aria-label="Help menu"
                         tabindex="5"><svg width="38" height="37" viewBox="0 0 38 37" fill="none"
                             xmlns="http://www.w3.org/2000/svg">
@@ -280,7 +280,7 @@ $page_template = basename(get_page_template());
                             </defs>
                         </svg>
                     </div>
-                </div>
+            
             </div>
 
     </header>

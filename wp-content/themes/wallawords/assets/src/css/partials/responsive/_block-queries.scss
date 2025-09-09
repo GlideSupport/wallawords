@@ -1091,7 +1091,7 @@
 		min-height: 70px;
 
 		span {
-			padding: 15px 65px 12px 0;
+			padding: 15px 65px 12px 20px;
 			font-size: 18px;
 
 			&::before,
@@ -1754,6 +1754,7 @@
 		&__image {
 			top:0;
 			left: 0;
+			margin: 0 auto;
 
 			&--area {
 				margin: 0 auto;

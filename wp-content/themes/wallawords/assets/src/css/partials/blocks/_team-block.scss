@@ -64,7 +64,10 @@
 			margin: 32px 0;
 			text-align: center;			
 			width: 260px;
-			height: 420px;			
+			height: 420px;		
+			@media(max-width:991px){
+				 margin: 32px auto;
+			}	
 		}
 	 }
    }
@@ -157,6 +160,9 @@
 			
 			}
 		}
+			@media(max-width:991px){
+				text-align: center;
+			}	
 
 	}
 

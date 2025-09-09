@@ -1678,11 +1678,15 @@ body {
             .icon path {
                 fill: var(--ww_dark);
             }
-
-            ;
-
             .logo path:first-child {
                 fill: var(--ww_dark);
+            }
+            .icon{
+                &.icon-help{
+                     path{
+                         fill:#fff
+                     }
+                }
             }
         }
 
