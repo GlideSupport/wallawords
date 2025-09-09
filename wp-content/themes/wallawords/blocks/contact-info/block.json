@@ -1,10 +1,10 @@
 {
 	"name": "acf/contact-info",
-	"title": "Contact Info",
+	"title": "Theme Form",
 	"description": "A custom contact Info block.",
 	"category": "theme-blocks",
-	"icon": "contact-info",
-	"keywords": ["contact","info"],
+	"icon": "feedback",
+	"keywords": ["contact","info" ,"Theme Form" ,"theme", "form"],
 	"supports": {
 		"align": true
 	},
