@@ -20,7 +20,7 @@ $bst_var_tmp_def_button = $bst_fields['bst_var_tmp_def_button'] ?? null;
 
 ?>
 <?php if (!empty($bst_var_tmp_def_title) || !empty($bst_var_tmp_def_text) || !empty($bst_var_tmp_def_button) ) : ?>
-<section id="hero-section" class="hero-section hero-section-default hero-alongside-pattern">
+<section id="hero-section" class="page-title-banner">
 	<!-- Hero Start -->
 	<div class="hero-default center-align ctn-760">
 		<div class="wrapper">
