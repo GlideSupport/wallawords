@@ -44,7 +44,21 @@
 		@media(max-width:640px) {
 			grid-template-columns: repeat(1, 1fr);
 		}
+   &.leadership{
+	 .single-team-member {
+	
+		h4 {
+			font-size: var(--ww_font_size_9);
+		}
 
+		.member-img {
+			margin: 32px 0;
+			text-align: center;			
+			width: 260px;
+			height: 420px;			
+		}
+	 }
+   }
 
 }
 
@@ -136,21 +150,7 @@
 		}
 
 	}
-		
-	&.leadership {
-		flex: 33% 0 0;	
 
-		h4 {
-			font-size: var(--ww_font_size_9);
-		}
-
-		.member-img {
-			margin: 32px 0;
-			text-align: center;			
-			width: 260px;
-			height: 420px;			
-		}
-	}
 }
 
 .single-member-detail {
