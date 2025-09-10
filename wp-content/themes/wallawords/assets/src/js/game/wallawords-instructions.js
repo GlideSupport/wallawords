@@ -18,21 +18,21 @@ let instructionSlide = 1;
 helpButton.addEventListener('click', () => {
     //instructionSlide = 1;
     //startInstructions(instructionSlide);
+    setTimeout(() => {
+        const instructionEl = document.querySelector('#instruction-text');
+        const instructionScreenEl = document.querySelector('#instruction-screen');
 
-    const instructionTextWrapper = document.getElementById('instruction-text');
-    if (!instructionTextWrapper) return;
+        if (instructionEl && instructionScreenEl) {
+            instructionEl.style.height = "0px";
+            const containerEl = document.querySelector('.instructions-container');
+            const containerStyle = window.getComputedStyle(containerEl);
+            const paddingBottom = parseInt(containerStyle.paddingBottom, 10) || 0;
 
-	let viewportHeight = window.visualViewport ? window.visualViewport.height : window.innerHeight;
-	
-	let offsetVal = 104;
-
-    if(window.innerWidth > 747) {
-        offsetVal = 164; //add 20px for larger size screens    
-    }
-
-    let resetInstructionsHeight = viewportHeight - offsetVal; // Adjust height
-
-    instructionTextWrapper.style.height = `${resetInstructionsHeight}px`;
+            const elHeight = instructionScreenEl.offsetHeight - (containerEl.offsetHeight - paddingBottom);
+            console.log('test' + elHeight);
+            instructionEl.style.height = `${elHeight}px`;
+        }
+    }, 50);
 
     //console.log('instruction screen height: '+resetInstructionsHeight);
 

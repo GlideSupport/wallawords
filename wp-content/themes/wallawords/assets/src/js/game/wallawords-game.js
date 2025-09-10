@@ -286,7 +286,7 @@ async function dpData(encryptedDataWithIv, nonce) {
 }
 
 // **Start the Game**
-async function startGame(puzzleCounterValue) {
+function startGame(puzzleCounterValue) {
 
     pageHeader.classList.add('playing');
     moveCounterDisplay.classList.remove('over');
@@ -344,7 +344,7 @@ async function startGame(puzzleCounterValue) {
                 try {
                     data = JSON.parse(response);
                 } catch (err) {
-                    console.error("❌ JSON.parse failed:", err, response);
+                    console.error("JSON.parse failed:", err, response);
                     return;
                 }
             }
@@ -353,11 +353,11 @@ async function startGame(puzzleCounterValue) {
                  try {
                     await dpData(data.pd, localVars.nonce);
                 } catch (err) {
-                    console.error("❌ Decryption failed:", err);
+                    console.error("Puzzle failed:", err);
                 }
                 // console.log(JSON.parse(response)); Get All Puzzles data
                 const puzzles = await dpData(data.pd, localVars.nonce);
-                console.log(puzzles);
+                // console.log(puzzles);
                 // const puzzles = JSON.parse(test);
 
                 sentenceToggle.forEach(item => {

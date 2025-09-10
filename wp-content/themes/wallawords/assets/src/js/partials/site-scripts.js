@@ -211,25 +211,18 @@ function adjustScoreTable() {
 	
 }
 
+
 function adjustInstructionsHeight() {
-
-	const instructionTextWrapper = document.getElementById('instruction-text');
-    if (!instructionTextWrapper) return;
-
-	let viewportHeight = window.visualViewport ? window.visualViewport.height : window.innerHeight;
-	
-	let offsetVal = 104;
-
-    if(window.innerWidth > 747) {
-        offsetVal = 164; //add 20px for larger size screens    
+    const instructionEl = document.querySelector('#instruction-text');
+    const instructionScreenEl = document.querySelector('#instruction-screen');
+    if (instructionEl && instructionScreenEl) {
+        instructionEl.style.height = "0px";
+        const containerEl = document.querySelector('.instructions-container');
+        const containerStyle = window.getComputedStyle(containerEl);
+        const paddingBottom = parseInt(containerStyle.paddingBottom, 10) || 0;
+        const elHeight = instructionScreenEl.offsetHeight - (containerEl.offsetHeight - paddingBottom);
+        instructionEl.style.height = `${elHeight}px`;
     }
-
-    let resetInstructionsHeight = viewportHeight - offsetVal; // Adjust height
-
-    instructionTextWrapper.style.height = `${resetInstructionsHeight}px`;
-
-   // console.log('instruction screen height: '+resetInstructionsHeight);
-
 }
 
 // Function to hide top bar
