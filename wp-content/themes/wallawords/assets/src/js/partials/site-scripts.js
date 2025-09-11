@@ -166,15 +166,15 @@ function adjustGameHeight() {
 		mainHeight = 400;
 	}
 
-    if (gameWrapper) {
-        gameWrapper.style.height = `${mainHeight-60}px`;
-		console.log(`game area height: ${mainHeight-60}`);
-	}
+    // if (gameWrapper) {
+    //     gameWrapper.style.height = `${mainHeight-60}px`;
+	// 	console.log(`game area height: ${mainHeight-60}`);
+	// }
 
-	if (mainSection) {
-        mainSection.style.height = `${mainHeight}px`;
-		console.log('main area height: '+mainHeight);
-    }
+	// if (mainSection) {
+    //     mainSection.style.height = `${mainHeight}px`;
+	// 	console.log('main area height: '+mainHeight);
+    // }
 
     
 }
