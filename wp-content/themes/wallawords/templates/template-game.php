@@ -108,7 +108,9 @@ array(
             <!-- Row 2: Grid of Tiles -->
             <div class="game-row">
                 <div id="sortable-grid" class="game-grid"></div>
+                <div id="game-prompt" class="game-prompt"></div>
             </div>
+            
         </div>
     </div>
 
