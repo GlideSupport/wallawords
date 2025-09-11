@@ -70,6 +70,7 @@ $page_template = basename(get_page_template());
         content="<?php echo esc_url( get_template_directory_uri() ); ?>/assets/build/images/pwa/pwa-icon-144.png">
     <!-- iOS Safari -->
     <meta name="apple-mobile-web-app-status-bar-style" content="#0047FE">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.10.2/lottie.min.js"></script>
     <?php
 		// Tracking Code.
 	if ( '' !== $ww_var_tracking ) {
@@ -321,6 +322,31 @@ $page_template = basename(get_page_template());
 				$instructions = get_field('ww_game_instructions','options');
 				if(is_array($instructions)):?>
                 <div id="instruction-text">
+                    <div class="content">
+                        <div class="text">
+                            <div class="num">1.</div>
+                            Drag words to make sentences in <span>two directions.</span>
+                        </div>
+                        <div class="lotiie-instruction-1"></div>
+                        <!-- <lottie-player id="lotiie-instruction" autoplay loop></lottie-player> -->
+                    </div>
+                    <div class="content">
+                        <div class="text">
+                            <div class="num">2.</div>
+                            Drag words to make sentences in <span>two directions.</span>
+                        </div>
+                        <div class="lotiie-instruction-2"></div>
+                        <!-- <lottie-player id="lotiie-instruction" autoplay loop></lottie-player> -->
+                    </div>
+                    <div class="content">
+                        <div class="text">
+                            <div class="num">1.</div>
+                            Drag words to make sentences in <span>two directions.</span>
+                        </div>
+                        <div class="lotiie-instruction-1"></div>
+                        <!-- <lottie-player id="lotiie-instruction" autoplay loop></lottie-player> -->
+                    </div>
+
                     <?php /* <div class="indicator"></div> */ ?>
                     <?php foreach($instructions as $key => $step): ?>
                     <div class="content">
