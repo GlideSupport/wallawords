@@ -81,6 +81,9 @@
 		height: 80px;
 		border-radius: 130px;
 		overflow: hidden;
+			@media(max-width:991px){
+				 margin: 16px auto;
+			}
 
 		a,
 		a:visited {
