@@ -363,6 +363,8 @@ function startGame(puzzleCounterValue) {
                 sentenceToggle.forEach(item => {
                     item.style.display = "block";
                 });
+                
+                document.body.classList.add('steps-page');
 
                 const originalDropPlacement = new Map(); // Map to store initial positions
 
@@ -605,16 +607,28 @@ function updateMoveCounter(evt, originalPositions) {
 // **Update Move Counter Display in Real-Time**
 function updateMoveCounterDisplay() {
     if (moveCounterDisplay) {
-
         if (incorrectCounterValue > minimumMoves) {
             moveCounterDisplay.classList.add('over');
         }
-
-        moveCounterDisplay.innerHTML = `<span>Moves</span> ${minimumMoves - incorrectCounterValue}`;
-
+        moveCounterDisplay.innerHTML = `Health`;//<span>Moves</span> ${minimumMoves - incorrectCounterValue}  
+        var health = minimumMoves - incorrectCounterValue;
+        sentenceCounterDisplay.innerHTML = `<span>${health}</span>`;
+        var healthBar = '';
+        for (let i = 1; i <= minimumMoves; i++) {
+            if(i <= health){
+                healthBar += `<div class="segment active"></div>`;
+            }else{
+                healthBar += `<div class="segment"></div>`;
+            }
+        }
+        const healthBarSelctor = document.getElementById('health-bar');
+        if (healthBarSelctor){
+            healthBarSelctor.innerHTML = healthBar; 
+            healthBarSelctor.removeAttribute('style');
+        }
+        
     }
-
-    sentenceCounterDisplay.innerHTML = `<span>Sentences</span> ${completeSentenceCount}/${totalSentenceCount}`;
+    // sentenceCounterDisplay.innerHTML = `<span>Sentences</span> ${completeSentenceCount}/${totalSentenceCount}`;
 }
 
 // **Check Individual Tile Position at Index**
