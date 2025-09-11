@@ -655,6 +655,9 @@ body {
         box-sizing: border-box;
         padding: 0 15px;
         position: relative;
+        @media(max-width:767px){
+             padding: 0;
+        }
 
         .piece {
             position: absolute;
