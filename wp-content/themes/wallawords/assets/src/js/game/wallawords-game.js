@@ -358,7 +358,7 @@ function startGame(puzzleCounterValue) {
                 }
                 // console.log(JSON.parse(response)); Get All Puzzles data
                 const puzzles = await dpData(data.pd, localVars.nonce);
-                console.log(puzzles);
+                // console.log(puzzles);
 
 
                 // const puzzles = JSON.parse(test);
@@ -396,9 +396,7 @@ function startGame(puzzleCounterValue) {
                 const incorrectWords = selectedPoem.incorrectWords;
 
                 titleDisplay.textContent = selectedPoem.title;
-                if(!empty(selectedPoem.prompt)){
-                    gamePrompt.innerHTML = selectedPoem.prompt;
-                }
+                gamePrompt.innerHTML = selectedPoem.prompt;
                 gameGridElement.innerHTML = ''; // Clear previous words
 
                 originalPositions.forEach((word, index) => {
@@ -422,7 +420,6 @@ function startGame(puzzleCounterValue) {
 
                     gameGridElement.appendChild(div);
                 });
-
 
                 //get original placements as an array object to compare
                 document.querySelectorAll('.grid-item').forEach((tile) => {
