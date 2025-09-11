@@ -98,6 +98,7 @@ const poemColumn3 = document.getElementById('poem-column3'); // Move counter ele
 // **Game State Variables**
 let currentPuzzleID = 0;
 let moveCounterValue = 0; // Track the number of total moves
+let health = 7; // Track the number of health moves
 let incorrectCounterValue = 0; // Track the number of incorrect moves
 let activePoem = [];
 let sentences = []; // Store sentence data from the JSON
@@ -394,11 +395,11 @@ function startGame(puzzleCounterValue) {
                 // Shuffle the remaining words using derangement
                 const lockedIndexes = selectedPoem.lockedWords;
                 const incorrectWords = selectedPoem.incorrectWords;
-
                 titleDisplay.textContent = selectedPoem.title;
                 gamePrompt.innerHTML = selectedPoem.prompt;
                 gameGridElement.innerHTML = ''; // Clear previous words
-
+                health = selectedPoem.health;
+                console.log(`Health is ${health}`);
                 originalPositions.forEach((word, index) => {
                     const div = document.createElement('div');
                     div.classList.add('grid-item');
@@ -613,11 +614,12 @@ function updateMoveCounterDisplay() {
             moveCounterDisplay.classList.add('over');
         }
         moveCounterDisplay.innerHTML = `Health`;//<span>Moves</span> ${minimumMoves - incorrectCounterValue}  
-        var health = minimumMoves - incorrectCounterValue;
-        sentenceCounterDisplay.innerHTML = `<span>${health}</span>`;
+        // var health = minimumMoves - incorrectCounterValue;
+        var currentHealth = health - incorrectCounterValue;
+        sentenceCounterDisplay.innerHTML = `<span>${currentHealth}</span>`;
         var healthBar = '';
-        for (let i = 1; i <= minimumMoves; i++) {
-            if(i <= health){
+        for (let i = 1; i <= health; i++) {
+            if(i <= currentHealth){
                 healthBar += `<div class="segment active"></div>`;
             }else{
                 healthBar += `<div class="segment"></div>`;
@@ -797,8 +799,10 @@ function checkPuzzleCompletion(originalPositions) {
     );
 
     let isFailed = 0;
-    console.log(`minimumMoves :` + minimumMoves);
-    if (incorrectCounterValue > minimumMoves) {
+    console.log(`Health -> :` + health);
+    console.log(`Health -> :` + incorrectCounterValue);
+    incorrectCounterValue
+    if (incorrectCounterValue >= health) {
         isFailed = 1;
     }
 
@@ -954,7 +958,7 @@ function showFinalScoreScreen() {
 
     puzzleCounter++;
 
-    setTimeout(() => {
+    // setTimeout(() => {
         //gameScreen.style.display = 'none';
         finalScoreScreen.style.display = 'flex';
         finalScoreToggle.style.display = 'flex';
@@ -1027,5 +1031,5 @@ function showFinalScoreScreen() {
             });
         });
 
-    }, 3000); // Delay to allow for wave animation to finish
+    // }, 3000); // Delay to allow for wave animation to finish
 }
