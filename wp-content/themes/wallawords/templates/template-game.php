@@ -79,14 +79,17 @@ array(
             <div class="game-stats">
                 <h1 id="puzzle-title" class="puzzle-title"></h1>
                 <div class="move-container">
-                    <div id="error-counter" class="error-counter"></div>
-                    <div id="move-counter" class="move-counter"></div>
-                    <div id="sentence-counter" class="move-counter"></div>
-                    <div id="sentence-toggle" class="sentence-toggle">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none">
-                        <path d="M6.06667 11.9776C6.32917 12.0639 6.61111 11.8845 6.61111 11.6257V3.05749C6.61111 2.96213 6.57222 2.86678 6.48958 2.80775C6.01319 2.45358 4.91944 1.99951 3.5 1.99951C2.27257 1.99951 1.12535 2.30147 0.439931 2.54666C0.165278 2.64656 0 2.90083 0 3.17554V11.5826C0 11.8528 0.311111 12.0412 0.585764 11.9572C1.35139 11.7188 2.56424 11.4441 3.5 11.4441C4.32396 11.4441 5.42014 11.7619 6.06667 11.9776ZM7.93333 11.9776C8.57986 11.7619 9.67604 11.4441 10.5 11.4441C11.4358 11.4441 12.6486 11.7188 13.4142 11.9572C13.6889 12.0435 14 11.8528 14 11.5826V3.17554C14 2.90083 13.8347 2.64656 13.5601 2.54893C12.8747 2.30147 11.7274 1.99951 10.5 1.99951C9.08055 1.99951 7.98681 2.45358 7.51042 2.80775C7.43021 2.86678 7.38889 2.96213 7.38889 3.05749V11.6257C7.38889 11.8845 7.67326 12.0639 7.93333 11.9776Z" fill="white"/>
-                    </svg>
+                    <div class="flex-container"> 
+                        <div id="error-counter" class="error-counter"></div>
+                        <div id="move-counter" class="move-counter  p1"></div>
+                        <div id="sentence-counter" class="p1"></div>
+                        <!-- <div id="sentence-toggle" class="sentence-toggle">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none">
+                                <path d="M6.06667 11.9776C6.32917 12.0639 6.61111 11.8845 6.61111 11.6257V3.05749C6.61111 2.96213 6.57222 2.86678 6.48958 2.80775C6.01319 2.45358 4.91944 1.99951 3.5 1.99951C2.27257 1.99951 1.12535 2.30147 0.439931 2.54666C0.165278 2.64656 0 2.90083 0 3.17554V11.5826C0 11.8528 0.311111 12.0412 0.585764 11.9572C1.35139 11.7188 2.56424 11.4441 3.5 11.4441C4.32396 11.4441 5.42014 11.7619 6.06667 11.9776ZM7.93333 11.9776C8.57986 11.7619 9.67604 11.4441 10.5 11.4441C11.4358 11.4441 12.6486 11.7188 13.4142 11.9572C13.6889 12.0435 14 11.8528 14 11.5826V3.17554C14 2.90083 13.8347 2.64656 13.5601 2.54893C12.8747 2.30147 11.7274 1.99951 10.5 1.99951C9.08055 1.99951 7.98681 2.45358 7.51042 2.80775C7.43021 2.86678 7.38889 2.96213 7.38889 3.05749V11.6257C7.38889 11.8845 7.67326 12.0639 7.93333 11.9776Z" fill="white"/>
+                            </svg>
+                        </div> -->
                     </div>
+                    <div class="health-bar" id="health-bar" style="display: none;"></div>
                 </div>
 
                 <div id="sentence-list-container" class="sentence-list-container">
@@ -105,7 +108,9 @@ array(
             <!-- Row 2: Grid of Tiles -->
             <div class="game-row">
                 <div id="sortable-grid" class="game-grid"></div>
+                <div id="game-prompt" class="game-prompt"></div>
             </div>
+            
         </div>
     </div>
 

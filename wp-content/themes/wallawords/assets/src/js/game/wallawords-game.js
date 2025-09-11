@@ -67,6 +67,7 @@ const pageHeader = document.getElementById('header-section');
 const titleScreen = document.getElementById('title-screen');
 const gameScreen = document.getElementById('game-screen');
 const gameGridElement = document.getElementById('sortable-grid');
+const gamePrompt = document.getElementById('game-prompt');
 const finalScoreScreen = document.getElementById('final-score-screen');
 const finalScoreToggle = document.getElementById('final-page-toggle');
 const finalPoem = document.getElementById('final-poem');
@@ -179,7 +180,7 @@ function initializeGame() {
             sentenceToggle[0].style.display = "none";
         } else {
             container.fadeOut(100);
-            errorCounterDisplay.style.display = "block";
+            // errorCounterDisplay.style.display = "block";
             moveCounterDisplay.style.display = "block";
             sentenceToggle[0].style.display = "block";
         }
@@ -357,17 +358,22 @@ function startGame(puzzleCounterValue) {
                 }
                 // console.log(JSON.parse(response)); Get All Puzzles data
                 const puzzles = await dpData(data.pd, localVars.nonce);
-                // console.log(puzzles);
+                console.log(puzzles);
+
+
                 // const puzzles = JSON.parse(test);
 
                 sentenceToggle.forEach(item => {
                     item.style.display = "block";
                 });
+                
+                document.body.classList.add('steps-page');
 
                 const originalDropPlacement = new Map(); // Map to store initial positions
 
                 // Select a random puzzle
                 const selectedPoem = puzzles[puzzleCounterValue];
+                
                 activePoem = selectedPoem;
 
                 currentPuzzleID = selectedPoem.id; //poem ID
@@ -390,7 +396,9 @@ function startGame(puzzleCounterValue) {
                 const incorrectWords = selectedPoem.incorrectWords;
 
                 titleDisplay.textContent = selectedPoem.title;
-
+                if(!empty(selectedPoem.prompt)){
+                    gamePrompt.innerHTML = selectedPoem.prompt;
+                }
                 gameGridElement.innerHTML = ''; // Clear previous words
 
                 originalPositions.forEach((word, index) => {
@@ -586,11 +594,10 @@ function updateMoveCounter(evt, originalPositions) {
     if (checkCorrectPositionAtIndex(fromIndex, originalPositions) == false && checkCorrectPositionAtIndex(toIndex, originalPositions) == false) {
         //increment X markers
         incorrectCounterValue++;
-        const div = document.createElement('div');
-        div.classList.add('error');
-        div.innerHTML = '<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4.10745 15.8925C3.67288 15.458 3.65698 14.7717 4.07189 14.3568L14.3568 4.07187C14.7717 3.65697 15.458 3.67286 15.8926 4.10743C16.3271 4.54201 16.343 5.22832 15.9281 5.64322L5.64324 15.9281C5.22833 16.343 4.54203 16.3271 4.10745 15.8925Z" fill="white"/><path d="M4.10745 4.10745C4.54203 3.67288 5.22833 3.65698 5.64324 4.07189L15.9281 14.3568C16.343 14.7717 16.3271 15.458 15.8926 15.8926C15.458 16.3271 14.7717 16.343 14.3568 15.9281L4.07189 5.64324C3.65699 5.22833 3.67288 4.54203 4.10745 4.10745Z"/></svg>'; //X svg icon
-        errorCounterDisplay.append(div);
-
+        // const div = document.createElement('div');
+        // div.classList.add('error');
+        // div.innerHTML = '<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4.10745 15.8925C3.67288 15.458 3.65698 14.7717 4.07189 14.3568L14.3568 4.07187C14.7717 3.65697 15.458 3.67286 15.8926 4.10743C16.3271 4.54201 16.343 5.22832 15.9281 5.64322L5.64324 15.9281C5.22833 16.343 4.54203 16.3271 4.10745 15.8925Z" fill="white"/><path d="M4.10745 4.10745C4.54203 3.67288 5.22833 3.65698 5.64324 4.07189L15.9281 14.3568C16.343 14.7717 16.3271 15.458 15.8926 15.8926C15.458 16.3271 14.7717 16.343 14.3568 15.9281L4.07189 5.64324C3.65699 5.22833 3.67288 4.54203 4.10745 4.10745Z"/></svg>'; //X svg icon
+        // errorCounterDisplay.append(div);
     }
 
     // Check for completed columns and sentences
@@ -605,16 +612,28 @@ function updateMoveCounter(evt, originalPositions) {
 // **Update Move Counter Display in Real-Time**
 function updateMoveCounterDisplay() {
     if (moveCounterDisplay) {
-
         if (incorrectCounterValue > minimumMoves) {
             moveCounterDisplay.classList.add('over');
         }
-
-        moveCounterDisplay.innerHTML = `<span>Moves</span> ${minimumMoves - incorrectCounterValue}`;
-
+        moveCounterDisplay.innerHTML = `Health`;//<span>Moves</span> ${minimumMoves - incorrectCounterValue}  
+        var health = minimumMoves - incorrectCounterValue;
+        sentenceCounterDisplay.innerHTML = `<span>${health}</span>`;
+        var healthBar = '';
+        for (let i = 1; i <= minimumMoves; i++) {
+            if(i <= health){
+                healthBar += `<div class="segment active"></div>`;
+            }else{
+                healthBar += `<div class="segment"></div>`;
+            }
+        }
+        const healthBarSelctor = document.getElementById('health-bar');
+        if (healthBarSelctor){
+            healthBarSelctor.innerHTML = healthBar; 
+            healthBarSelctor.removeAttribute('style');
+        }
+        
     }
-
-    sentenceCounterDisplay.innerHTML = `<span>Sentences</span> ${completeSentenceCount}/${totalSentenceCount}`;
+    // sentenceCounterDisplay.innerHTML = `<span>Sentences</span> ${completeSentenceCount}/${totalSentenceCount}`;
 }
 
 // **Check Individual Tile Position at Index**
@@ -781,7 +800,7 @@ function checkPuzzleCompletion(originalPositions) {
     );
 
     let isFailed = 0;
-
+    console.log(`minimumMoves :` + minimumMoves);
     if (incorrectCounterValue > minimumMoves) {
         isFailed = 1;
     }

@@ -301,7 +301,6 @@ $page_template = basename(get_page_template());
 				<div class="piece  piece-left-bottom"></div>
 				<div class="piece  piece-right-bottom"></div>
                 <div class="header">
-
                     <div class="close-button" id="skip-button">
                         <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path
@@ -322,31 +321,6 @@ $page_template = basename(get_page_template());
 				$instructions = get_field('ww_game_instructions','options');
 				if(is_array($instructions)):?>
                 <div id="instruction-text">
-                    <div class="content">
-                        <div class="text">
-                            <div class="num">1.</div>
-                            Drag words to make sentences in <span>two directions.</span>
-                        </div>
-                        <div class="lotiie-instruction-1"></div>
-                        <!-- <lottie-player id="lotiie-instruction" autoplay loop></lottie-player> -->
-                    </div>
-                    <div class="content">
-                        <div class="text">
-                            <div class="num">2.</div>
-                            Drag words to make sentences in <span>two directions.</span>
-                        </div>
-                        <div class="lotiie-instruction-2"></div>
-                        <!-- <lottie-player id="lotiie-instruction" autoplay loop></lottie-player> -->
-                    </div>
-                    <div class="content">
-                        <div class="text">
-                            <div class="num">1.</div>
-                            Drag words to make sentences in <span>two directions.</span>
-                        </div>
-                        <div class="lotiie-instruction-1"></div>
-                        <!-- <lottie-player id="lotiie-instruction" autoplay loop></lottie-player> -->
-                    </div>
-
                     <?php /* <div class="indicator"></div> */ ?>
                     <?php foreach($instructions as $key => $step): ?>
                     <div class="content">
@@ -354,14 +328,9 @@ $page_template = basename(get_page_template());
                             <div class="num"><?php echo str_pad(($key+1), 2, '0', STR_PAD_LEFT);?>.</div>
                             <?php echo $step['step_description'];?>
                         </div>
-                        <?php if(isset($step['step_image'])):?>
-                        <img src="<?php echo $step['step_image']['url'];?>" class="dark">
+                        <?php if(isset($step['lottie_animation'])):?>
+                        <div class="<?php echo esc_attr($step['lottie_animation'])?>"></div>
                         <?php endif;?>
-
-                        <?php if(isset($step['step_image_light'])):?>
-                        <img src="<?php echo $step['step_image_light']['url'];?>" class="light">
-                        <?php endif;?>
-
                     </div>
                     <?php endforeach;?>
 

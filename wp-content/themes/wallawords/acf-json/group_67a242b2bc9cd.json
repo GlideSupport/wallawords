@@ -46,11 +46,11 @@
                     "parent_repeater": "field_67a242b46c44e"
                 },
                 {
-                    "key": "field_67a242f56c450",
-                    "label": "Step Image",
-                    "name": "step_image",
+                    "key": "field_68c283b750a6f",
+                    "label": "Lottie Animation",
+                    "name": "lottie_animation",
                     "aria-label": "",
-                    "type": "image",
+                    "type": "select",
                     "instructions": "",
                     "required": 0,
                     "conditional_logic": 0,
@@ -59,16 +59,20 @@
                         "class": "",
                         "id": ""
                     },
-                    "return_format": "array",
-                    "library": "all",
-                    "min_width": "",
-                    "min_height": "",
-                    "min_size": "",
-                    "max_width": "",
-                    "max_height": "",
-                    "max_size": "",
-                    "mime_types": "",
-                    "preview_size": "medium",
+                    "choices": {
+                        "lotiie-instruction-1": "Lotiie Instruction 1",
+                        "lotiie-instruction-2": "Lotiie Instruction 2"
+                    },
+                    "default_value": false,
+                    "return_format": "value",
+                    "multiple": 0,
+                    "allow_null": 0,
+                    "allow_in_bindings": 0,
+                    "ui": 0,
+                    "ajax": 0,
+                    "placeholder": "",
+                    "create_options": 0,
+                    "save_options": 0,
                     "parent_repeater": "field_67a242b46c44e"
                 }
             ]
@@ -92,5 +96,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1738688013
+    "modified": 1757578318
 }

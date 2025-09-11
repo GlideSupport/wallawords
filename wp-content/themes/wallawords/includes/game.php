@@ -106,7 +106,8 @@ function wallawords_get_puzzle_data() {
                 $output_data[$key]['id'] = get_the_ID();
                 $output_data[$key]['title'] = get_the_title();
                 $output_data[$key]['fullPoem'] = $puzzle_post_meta['full_poem'][0] ?? '';
-
+                $output_data[$key]['prompt'] = get_field('wwp_prompt', get_the_ID()) ?? '';
+                $output_data[$key]['health'] = get_field('wwp_health', get_the_ID()) ?? 7;
                 if (isset($puzzle_post_meta['correct_words'])) :
                     $correct_words = json_decode($puzzle_post_meta['correct_words'][0]);
                     $output_data[$key]['correctWords'] = array_values((array)$correct_words);
@@ -131,7 +132,7 @@ function wallawords_get_puzzle_data() {
                     $columns = json_decode($puzzle_post_meta['columns'][0]);
                     $output_data[$key]['columns'] = array_values((array)$columns);
                 endif;
-
+                
                 $key++;
             endwhile;
 
