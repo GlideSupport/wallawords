@@ -1917,7 +1917,8 @@ body {
 .home {
      .game-wrapper{
         .title-screen{
-   min-height: 74vh;
+     height: calc(100vh - 176px);
+     min-height: 450px;
     display: flex;
     justify-content: center;
     align-items: center;
