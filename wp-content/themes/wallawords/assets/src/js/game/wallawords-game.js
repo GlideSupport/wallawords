@@ -86,7 +86,7 @@ const moveCounterDisplay = document.getElementById('move-counter'); // Move coun
 const sentenceCounterDisplay = document.getElementById('sentence-counter'); // Move counter element
 const counterContainer = document.getElementById('sentence-list-container');
 const counterContainerContent = document.getElementById('sentence-list-text');
-// const sentenceToggle = document.getElementById('sentence-toggle');
+//const sentenceToggle = document.getElementById('sentence-toggle');
 const sentenceToggle = document.querySelectorAll('.sentence-toggle');
 const closeSentenceToggle = document.getElementById('close-sentences-button');
 const titleDisplay = document.getElementById('puzzle-title'); // Move counter element
@@ -189,22 +189,22 @@ function initializeGame() {
 
     });
 
-    sentenceToggle[1].addEventListener('click', () => {
+    // sentenceToggle[1].addEventListener('click', () => {
 
-        var container = jQuery('#sentence-list-container');
+    //     var container = jQuery('#sentence-list-container');
 
-        if (container.css('display') == 'none') {
-            container.fadeIn(200);
-            //moveCounterDisplay.style.display = "none";
-            sentenceCounterDisplay.style.display = "block";
-            sentenceToggle[1].style.display = "none";
-        } else {
-            container.fadeOut(100);
-            sentenceCounterDisplay.style.display = "none";
-            sentenceToggle[1].style.display = "block";
-        }
+    //     if (container.css('display') == 'none') {
+    //         container.fadeIn(200);
+    //         //moveCounterDisplay.style.display = "none";
+    //         sentenceCounterDisplay.style.display = "block";
+    //         sentenceToggle[1].style.display = "none";
+    //     } else {
+    //         container.fadeOut(100);
+    //         sentenceCounterDisplay.style.display = "none";
+    //         sentenceToggle[1].style.display = "block";
+    //     }
 
-    });
+    // });
 
     closeSentenceToggle.addEventListener('click', () => {
         var container = jQuery('#sentence-list-container');
@@ -219,7 +219,7 @@ function initializeGame() {
 
         } else {
             sentenceCounterDisplay.style.display = "none";
-            sentenceToggle[1].style.display = "block";
+            // sentenceToggle[1].style.display = "block";
         }
 
     });
@@ -977,7 +977,7 @@ function showFinalScoreScreen() {
         errorCounterDisplay.style.display = "none";
         sentenceCounterDisplay.style.display = "none";
         sentenceToggle[0].style.display = "none";
-        sentenceToggle[1].style.display = "block";
+        // sentenceToggle[1].style.display = "block";
 
         /* //removed this in place of showing final game board
         fullPoem.textContent = activePoem.fullPoem;
@@ -1139,7 +1139,6 @@ function outlineSegment(tiles) {
       pathEl.setAttribute("stroke", "#4CAF50");
       pathEl.setAttribute("stroke-width", "5");
       pathEl.setAttribute("stroke-linejoin", "round");
-      console.log(pathEl);
       svgOverlay.appendChild(pathEl);
       let segDuration = tiles.length * 0.20;
       let extraPause = tiles.length * 0.20;
