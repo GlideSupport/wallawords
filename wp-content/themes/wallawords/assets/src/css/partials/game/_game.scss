@@ -1916,7 +1916,11 @@ body {
 
 .home {
      .game-wrapper{
-         min-height: 80vh;
-        justify-content:center;
+        .game-row{
+   min-height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
      }
+    }
 }
