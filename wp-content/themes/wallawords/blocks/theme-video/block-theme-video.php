@@ -48,6 +48,7 @@ $ww_blkthvdo_spcr_btm    = ( isset( $block_fields['ww_blkthvdo_spcr']['bottom_sp
 $ww_blkthvdo_vid         = ( isset( $block_fields['ww_blkthvdo_vid'] ) && '' !== $block_fields['ww_blkthvdo_vid'] ) ? $block_fields['ww_blkthvdo_vid'] : null;
 $ww_blkthvdo_vupld       = ( isset( $block_fields['ww_blkthvdo_vupld'] ) && '' !== $block_fields['ww_blkthvdo_vupld'] ) ? $block_fields['ww_blkthvdo_vupld'] : null;
 $ww_blkthvdo_video_thumb = ( isset( $block_fields['ww_blkthvdo_video_thumb'] ) && '' !== $block_fields['ww_blkthvdo_video_thumb'] ) ? $block_fields['ww_blkthvdo_video_thumb'] : null;
+$ww_blkthvdo_choose_video_type = ( isset( $block_fields['ww_blkthvdo_choose_video_type'] ) && '' !== $block_fields['ww_blkthvdo_choose_video_type'] ) ? $block_fields['ww_blkthvdo_choose_video_type'] : null;
 $amp_src                  = wp_get_attachment_image_url( $ww_blkthvdo_video_thumb, 'thumb_1600' );
 
 ?>
@@ -60,7 +61,7 @@ $amp_src                  = wp_get_attachment_image_url( $ww_blkthvdo_video_thum
 				</div>
 			<?php } ?>
 			<div class="video-block video-pop border-20" style="background-image: url(<?php echo esc_url( $amp_src ); ?>);">
-			<?php if ( $ww_blkthvdo_vupld ) : ?>
+			<?php if ($ww_blkthvdo_choose_video_type == "file" && $ww_blkthvdo_vupld ) : ?>
 				<a href="<?php echo esc_url( $ww_blkthvdo_vupld ); ?>" data-lity class="popup-btn">
 					<span class="play-btn" id="play-btn">
 						<svg xmlns="http://www.w3.org/2000/svg" width="124" height="124" viewBox="0 0 124 124" fill="none">
@@ -69,7 +70,7 @@ $amp_src                  = wp_get_attachment_image_url( $ww_blkthvdo_video_thum
 						</svg>
 					</span>
 				</a>
-			<?php elseif ( $ww_blkthvdo_vid ) : ?>
+			<?php elseif ($ww_blkthvdo_choose_video_type == "youtube"  &&  $ww_blkthvdo_vid ) : ?>
 				<a href="https://www.youtube.com/watch?v=<?php echo esc_attr( $ww_blkthvdo_vid ); ?>" data-lity class="popup-btn">
 					<span class="play-btn" id="play-btn">
 						<svg xmlns="http://www.w3.org/2000/svg" width="124" height="124" viewBox="0 0 124 124" fill="none">

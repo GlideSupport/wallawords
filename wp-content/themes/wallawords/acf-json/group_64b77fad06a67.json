@@ -198,24 +198,28 @@
             "preview_size": "admin-landscape"
         },
         {
-            "key": "field_64d4b5136316b",
-            "label": "Placeholder  Video",
-            "name": "ww_blkthvdo_vupld",
+            "key": "field_68c3fef15b78b",
+            "label": "Choose Video Type",
+            "name": "ww_blkthvdo_choose_video_type",
             "aria-label": "",
-            "type": "file",
+            "type": "button_group",
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
-                "width": "66",
+                "width": "",
                 "class": "",
                 "id": ""
             },
-            "return_format": "url",
-            "library": "all",
-            "min_size": "",
-            "max_size": "",
-            "mime_types": ""
+            "choices": {
+                "youtube": "Youtube",
+                "file": "File"
+            },
+            "default_value": "",
+            "return_format": "value",
+            "allow_null": 0,
+            "allow_in_bindings": 0,
+            "layout": "horizontal"
         },
         {
             "key": "field_64b77fad1caf3",
@@ -225,7 +229,15 @@
             "type": "text",
             "instructions": "NOTE : For Popup Video give Video ID like \"-4PKi63rZ0g&t=2s\" you can get from URL.\r\nURL : https:\/\/www.youtube.com\/watch?v=-4PKi63rZ0g&t=2s",
             "required": 0,
-            "conditional_logic": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_68c3fef15b78b",
+                        "operator": "==",
+                        "value": "youtube"
+                    }
+                ]
+            ],
             "wrapper": {
                 "width": "",
                 "class": "",
@@ -233,9 +245,39 @@
             },
             "default_value": "",
             "maxlength": "",
+            "allow_in_bindings": 1,
             "placeholder": "",
             "prepend": "",
             "append": ""
+        },
+        {
+            "key": "field_64d4b5136316b",
+            "label": "Video File",
+            "name": "ww_blkthvdo_vupld",
+            "aria-label": "",
+            "type": "file",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_68c3fef15b78b",
+                        "operator": "==",
+                        "value": "file"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "66",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "url",
+            "library": "all",
+            "min_size": "",
+            "max_size": "",
+            "mime_types": "",
+            "allow_in_bindings": 1
         }
     ],
     "location": [
@@ -256,5 +298,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1733935701
+    "modified": 1757675356
 }
