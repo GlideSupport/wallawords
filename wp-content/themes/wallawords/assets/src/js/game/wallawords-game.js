@@ -899,7 +899,7 @@ function animateWaveEffect(index, type) {
                     }, 600);
             }, i * 100);
         });
-    }, 3000);
+    }, 250);
 
 }
 
