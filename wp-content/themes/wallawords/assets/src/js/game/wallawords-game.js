@@ -219,7 +219,7 @@ function initializeGame() {
 
         } else {
             sentenceCounterDisplay.style.display = "none";
-            sentenceToggle[1].style.display = "block";
+            // sentenceToggle[1].style.display = "block";
         }
 
     });
@@ -889,15 +889,18 @@ function animateWaveEffect(index, type) {
             }, 600);
         }, i * 100);
     });
-    const incompleteItems = Array.from(items).filter(item => !item.classList.contains('correct-position'));
-    incompleteItems.forEach((element, i) => {
-        setTimeout(() => {
-            element.classList.add('wave-bounce');
-                setTimeout(() => {
-                    element.classList.remove('wave-bounce');
-                }, 600);
-        }, i * 100);
-    });
+    setTimeout(() => {
+        const incompleteItems = Array.from(items).filter(item => !item.classList.contains('correct-position'));
+        incompleteItems.forEach((element, i) => {
+            setTimeout(() => {
+                element.classList.add('wave-bounce');
+                    setTimeout(() => {
+                        element.classList.remove('wave-bounce');
+                    }, 600);
+            }, i * 100);
+        });
+    }, 3000);
+
 }
 
 function finalScoreResizer(mode) {
@@ -974,7 +977,7 @@ function showFinalScoreScreen() {
         errorCounterDisplay.style.display = "none";
         sentenceCounterDisplay.style.display = "none";
         sentenceToggle[0].style.display = "none";
-        sentenceToggle[1].style.display = "block";
+        // sentenceToggle[1].style.display = "block";
 
         /* //removed this in place of showing final game board
         fullPoem.textContent = activePoem.fullPoem;
