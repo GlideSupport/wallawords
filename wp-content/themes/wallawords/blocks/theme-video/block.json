@@ -3,8 +3,8 @@
 	"title": "Theme Video",
 	"description": "A custom Theme Video block.",
 	"category": "theme-blocks",
-	"icon": "theme-video",
-	"keywords": ["theme","video"],
+	"icon": "video-alt3",
+	"keywords": ["theme","video","Theme video"],
 	"supports": {
 		"align": true
 	},
