@@ -6,6 +6,12 @@ import magnificPopup from '../vendors/jquery-magnificpopup';
 import organicTabs from '../vendors/organic-tab';
 import slick from '../vendors/slick.min';
 import Owl from '../vendors/owl.carousel.min';
+
+import ClipperLib from 'clipper-lib';
+window.ClipperLib = ClipperLib;
+// export default ClipperLib;
+
+console.log('ClipperLib:', ClipperLib);
 jQuery( document ).on( 'scroll', function() {
 	if ( jQuery( document ).scrollTop() > 0 ) {
 		jQuery( 'header, body' ).addClass( 'shrink' );

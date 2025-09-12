@@ -97,6 +97,7 @@ const poemColumn3 = document.getElementById('poem-column3'); // Move counter ele
 
 // **Game State Variables**
 let currentPuzzleID = 0;
+const totalTiles = 15;
 let moveCounterValue = 0; // Track the number of total moves
 let health = 7; // Track the number of health moves
 let incorrectCounterValue = 0; // Track the number of incorrect moves
@@ -188,22 +189,22 @@ function initializeGame() {
 
     });
 
-    sentenceToggle[1].addEventListener('click', () => {
+    // sentenceToggle[1].addEventListener('click', () => {
 
-        var container = jQuery('#sentence-list-container');
+    //     var container = jQuery('#sentence-list-container');
 
-        if (container.css('display') == 'none') {
-            container.fadeIn(200);
-            //moveCounterDisplay.style.display = "none";
-            sentenceCounterDisplay.style.display = "block";
-            sentenceToggle[1].style.display = "none";
-        } else {
-            container.fadeOut(100);
-            sentenceCounterDisplay.style.display = "none";
-            sentenceToggle[1].style.display = "block";
-        }
+    //     if (container.css('display') == 'none') {
+    //         container.fadeIn(200);
+    //         //moveCounterDisplay.style.display = "none";
+    //         sentenceCounterDisplay.style.display = "block";
+    //         sentenceToggle[1].style.display = "none";
+    //     } else {
+    //         container.fadeOut(100);
+    //         sentenceCounterDisplay.style.display = "none";
+    //         sentenceToggle[1].style.display = "block";
+    //     }
 
-    });
+    // });
 
     closeSentenceToggle.addEventListener('click', () => {
         var container = jQuery('#sentence-list-container');
@@ -359,7 +360,7 @@ function startGame(puzzleCounterValue) {
                 }
                 // console.log(JSON.parse(response)); Get All Puzzles data
                 const puzzles = await dpData(data.pd, localVars.nonce);
-                // console.log(puzzles);
+                console.log(puzzles);
 
 
                 // const puzzles = JSON.parse(test);
@@ -399,7 +400,6 @@ function startGame(puzzleCounterValue) {
                 gamePrompt.innerHTML = selectedPoem.prompt;
                 gameGridElement.innerHTML = ''; // Clear previous words
                 health = selectedPoem.health;
-                console.log(`Health is ${health}`);
                 originalPositions.forEach((word, index) => {
                     const div = document.createElement('div');
                     div.classList.add('grid-item');
@@ -654,7 +654,6 @@ function checkCorrectPositionAtIndex(index, originalPositions) {
 
 // **Check if a Column is Completed**
 function checkColumnCompletion(originalPositions) {
-
     const items = document.querySelectorAll('.grid-item');
     const columns = 3; // Assuming a 3-column grid, adjust as necessary
     const rows = items.length / columns;
@@ -723,6 +722,7 @@ function checkColumnCompletion(originalPositions) {
 
 // **Check if a Sentence is Completed**
 function checkSentenceCompletion(originalPositions) {
+  
     const items = document.querySelectorAll('.grid-item');
     const counters = document.querySelectorAll('.sentence-list-item');
 
@@ -734,7 +734,7 @@ function checkSentenceCompletion(originalPositions) {
         let gridItems = [];
 
         //console.log('sentence start '+start+' sentence end '+end);
-
+        
         if (completedSentences.includes(index)) continue;
 
         for (let i = start; i <= end; i++) {
@@ -747,9 +747,9 @@ function checkSentenceCompletion(originalPositions) {
                 //}
             }
         }
-
+        
         //console.log('found tiles '+gridItems);
-
+        
         if (isSentenceCorrect) {
             completedSentences.push(index);
             completeSentenceCount++;
@@ -799,8 +799,6 @@ function checkPuzzleCompletion(originalPositions) {
     );
 
     let isFailed = 0;
-    console.log(`Health -> :` + health);
-    console.log(`Health -> :` + incorrectCounterValue);
     incorrectCounterValue
     if (incorrectCounterValue >= health) {
         isFailed = 1;
@@ -880,7 +878,9 @@ function animateWaveEffect(index, type) {
     } else if (type === 'puzzle') {
         elements = Array.from(items);
     }
-
+    console.log('test');
+    console.log(elements);
+    outlineSegment(elements);
     // Apply the wave-bounce animation with staggered timing
     elements.forEach((element, i) => {
         setTimeout(() => {
@@ -958,7 +958,7 @@ function showFinalScoreScreen() {
 
     puzzleCounter++;
 
-    // setTimeout(() => {
+    setTimeout(() => {
         //gameScreen.style.display = 'none';
         finalScoreScreen.style.display = 'flex';
         finalScoreToggle.style.display = 'flex';
@@ -1031,5 +1031,197 @@ function showFinalScoreScreen() {
             });
         });
 
-    // }, 3000); // Delay to allow for wave animation to finish
+    }, 3000); // Delay to allow for wave animation to finish
+}
+
+
+function getTileBounds(tile, padding = 15) {
+    const rect = tile.getBoundingClientRect();
+    return {
+        left: (rect.left + window.scrollX - padding) * 100,
+        top: (rect.top + window.scrollY - padding) * 100,
+        right: (rect.right + window.scrollX + padding) * 100,
+        bottom: (rect.bottom + window.scrollY + padding + 4) * 100 // Add 4px fudge factor to bottom
+    };
+}
+
+
+// Animation
+function outlineSegment(tiles) {
+  console.log('outlineSegment called');
+  return new Promise(resolve => {
+    setTimeout(() => {
+      const grid = tiles[0]?.parentElement || document.getElementById("sortable-grid");
+      const allTiles = Array.from(grid.children);
+      allTiles.forEach(tile => { if (!tiles.includes(tile)) tile.classList.add("dimmed"); });
+      let paths = tiles.map(tile => {
+        const b = getTileBounds(tile);
+        return [
+          { X: b.left, Y: b.top },
+          { X: b.right, Y: b.top },
+          { X: b.right, Y: b.bottom },
+          { X: b.left, Y: b.bottom }
+        ];
+      });
+      const clipper = new ClipperLib.Clipper();
+      clipper.AddPaths(paths, ClipperLib.PolyType.ptSubject, true);
+      let solution = new ClipperLib.Paths();
+      clipper.Execute(ClipperLib.ClipType.ctUnion, solution, ClipperLib.PolyFillType.pftNonZero, ClipperLib.PolyFillType.pftNonZero);
+      let unionPoly;
+      if (solution.length === 0) {
+        let minL = Infinity, minT = Infinity, maxR = -Infinity, maxB = -Infinity;
+        tiles.forEach(tile => {
+          const b = getTileBounds(tile);
+          minL = Math.min(minL, b.left);
+          minT = Math.min(minT, b.top);
+          maxR = Math.max(maxR, b.right);
+          maxB = Math.max(maxB, b.bottom);
+        });
+        unionPoly = [
+          { X: minL, Y: minT },
+          { X: maxR, Y: minT },
+          { X: maxR, Y: maxB },
+          { X: minL, Y: maxB }
+        ];
+      } else {
+        unionPoly = getLargestPath(solution);
+      }
+      unionPoly = rotatePathToTopLeft(unionPoly);
+
+      // Offset the shape inward by a specified number of pixels (scaled to ClipperLib units)
+      var offsetValue = 9 * 100; // 9px, scaled
+      var co = new ClipperLib.ClipperOffset();
+      co.AddPath(unionPoly, ClipperLib.JoinType.jtRound, ClipperLib.EndType.etClosedPolygon);
+      var offsetPoly = new ClipperLib.Paths();
+      co.Execute(offsetPoly, -offsetValue);
+      if (offsetPoly.length > 0) {
+        unionPoly = offsetPoly[0];
+      }
+
+      // Convert back to pixel units for SVG
+      unionPoly = unionPoly.map(pt => ({ X: pt.X / 100, Y: pt.Y / 100 }));
+
+      const pathString = toSvgPath(unionPoly);
+      
+      let roundedPath;
+      try {
+        console.log('Using custom roundPathCorners utility');
+        roundedPath = roundPathCorners(unionPoly, 15); // 10px radius
+        
+        console.log('Rounded path:', roundedPath);
+        if (!roundedPath) {
+          console.warn('Rounded path is empty!');
+        }
+      } catch (e) {
+        console.error('Error during roundPathCorners:', e);
+        roundedPath = toSvgPath(unionPoly);
+      }
+      const svgOverlay = document.getElementById("svgOverlay");
+      if (!svgOverlay) {
+        console.error('svgOverlay not found!');
+      } else {
+        console.log('svgOverlay found, appending path');
+      }
+      const svgNS = "http://www.w3.org/2000/svg";
+      let pathEl = document.createElementNS(svgNS, "path");
+      pathEl.setAttribute("d", roundedPath);
+      pathEl.setAttribute("fill", "none");
+      pathEl.setAttribute("stroke", "#4CAF50");
+      pathEl.setAttribute("stroke-width", "5");
+      pathEl.setAttribute("stroke-linejoin", "round");
+      console.log(pathEl);
+      svgOverlay.appendChild(pathEl);
+      let segDuration = tiles.length * 0.20;
+      let extraPause = tiles.length * 0.20;
+      pathEl.style.animationDuration = segDuration + "s";
+      const length = pathEl.getTotalLength();
+      pathEl.style.strokeDasharray = length;
+      pathEl.style.strokeDashoffset = length;
+      pathEl.style.setProperty('--dash-length', length);
+      pathEl.classList.add("snake-path");
+      setTimeout(() => {
+        svgOverlay.removeChild(pathEl);
+        allTiles.forEach(tile => tile.classList.remove("dimmed"));
+        resolve(segDuration + extraPause);
+      }, (segDuration + extraPause) * 1000);
+    }, 200);
+  });
+}
+
+function toSvgPath(points) {
+    return points.map((pt, i) =>
+            (i === 0 ? "M" : "L") + pt.X + " " + pt.Y
+        )
+        .join(" ") + " Z";
+}
+
+function getLargestPath(paths) {
+    return paths.reduce((largest, current) =>
+        Math.abs(ClipperLib.Clipper.Area(current)) > Math.abs(ClipperLib.Clipper.Area(largest)) ?
+        current : largest, paths[0]);
+}
+
+function rotatePathToTopLeft(points) {
+    let minY = Infinity
+        , minX = Infinity
+        , idx = 0;
+    points.forEach((pt, i) => {
+        if (pt.Y < minY || (pt.Y === minY && pt.X < minX)) {
+            minY = pt.Y;
+            minX = pt.X;
+            idx = i;
+        }
+    });
+    return idx > 0 ? points.slice(idx)
+        .concat(points.slice(0, idx)) : points;
+}
+
+
+// Utility to round corners of a polygon path
+function roundPathCorners(points, radius) {
+  if (points.length < 2) return '';
+  // Find the index of the point closest to top-left (smallest Y, then X)
+  let minIdx = 0;
+  for (let i = 1; i < points.length; i++) {
+    if (
+      points[i].Y < points[minIdx].Y ||
+      (points[i].Y === points[minIdx].Y && points[i].X < points[minIdx].X)
+    ) {
+      minIdx = i;
+    }
+  }
+  // Rotate points so the path starts from the top-left
+  const ordered = points.slice(minIdx).concat(points.slice(0, minIdx));
+  let d = '';
+  const len = ordered.length;
+  for (let i = 0; i < len; i++) {
+    const p0 = ordered[(i - 1 + len) % len];
+    const p1 = ordered[i];
+    const p2 = ordered[(i + 1) % len];
+    // Vectors
+    const v1 = { x: p1.X - p0.X, y: p1.Y - p0.Y };
+    const v2 = { x: p2.X - p1.X, y: p2.Y - p1.Y };
+    // Normalize
+    const len1 = Math.hypot(v1.x, v1.y);
+    const len2 = Math.hypot(v2.x, v2.y);
+    const v1n = { x: v1.x / len1, y: v1.y / len1 };
+    const v2n = { x: v2.x / len2, y: v2.y / len2 };
+    // Start and end of the corner arc
+    const start = {
+      x: p1.X - v1n.x * Math.min(radius, len1 / 2),
+      y: p1.Y - v1n.y * Math.min(radius, len1 / 2)
+    };
+    const end = {
+      x: p1.X + v2n.x * Math.min(radius, len2 / 2),
+      y: p1.Y + v2n.y * Math.min(radius, len2 / 2)
+    };
+    if (i === 0) {
+      d += `M${start.x},${start.y}`;
+    } else {
+      d += `L${start.x},${start.y}`;
+    }
+    d += `Q${p1.X},${p1.Y},${end.x},${end.y}`;
+  }
+  d += 'Z';
+  return d;
 }

@@ -36,5 +36,8 @@
 		"node": "=20.14.0"
 	},
 	"author": "Abubakar",
-	"license": "GNU GPL"
+	"license": "GNU GPL",
+	"dependencies": {
+		"clipper-lib": "^6.4.2"
+	}
 }

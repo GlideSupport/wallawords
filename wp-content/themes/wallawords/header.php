@@ -102,6 +102,7 @@ $page_template = basename(get_page_template());
 </head>
 
 <body <?php body_class(); ?>> <?php wp_body_open(); ?>
+    <svg id="svgOverlay"></svg>
     <?php
 	if ( BaseTheme::if_live() ) {
 		if ( '' !== $ww_var_bscripts ) {
