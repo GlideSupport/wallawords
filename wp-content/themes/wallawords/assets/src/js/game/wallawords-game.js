@@ -878,17 +878,24 @@ function animateWaveEffect(index, type) {
     } else if (type === 'puzzle') {
         elements = Array.from(items);
     }
-    console.log('test');
-    console.log(elements);
     outlineSegment(elements);
     // Apply the wave-bounce animation with staggered timing
     elements.forEach((element, i) => {
         setTimeout(() => {
-            element.classList.add('wave-bounce');
+            // element.classList.add('wave-bounce');
             setTimeout(() => {
-                element.classList.remove('wave-bounce');
+                // element.classList.remove('wave-bounce');
                 element.classList.add('completed');
             }, 600);
+        }, i * 100);
+    });
+    const incompleteItems = Array.from(items).filter(item => !item.classList.contains('correct-position'));
+    incompleteItems.forEach((element, i) => {
+        setTimeout(() => {
+            element.classList.add('wave-bounce');
+                setTimeout(() => {
+                    element.classList.remove('wave-bounce');
+                }, 600);
         }, i * 100);
     });
 }

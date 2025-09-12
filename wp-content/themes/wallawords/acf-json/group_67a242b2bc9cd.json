@@ -61,7 +61,8 @@
                     },
                     "choices": {
                         "lotiie-instruction-1": "Lotiie Instruction 1",
-                        "lotiie-instruction-2": "Lotiie Instruction 2"
+                        "lotiie-instruction-2": "Lotiie Instruction 2",
+                        "lotiie-instruction-3": "Lotiie Instruction 3"
                     },
                     "default_value": false,
                     "return_format": "value",
@@ -96,5 +97,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1757578318
+    "modified": 1757669544
 }
