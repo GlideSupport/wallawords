@@ -48,7 +48,7 @@ $ww_blkthvdo_spcr_btm    = ( isset( $block_fields['ww_blkthvdo_spcr']['bottom_sp
 $ww_blkthvdo_vid         = ( isset( $block_fields['ww_blkthvdo_vid'] ) && '' !== $block_fields['ww_blkthvdo_vid'] ) ? $block_fields['ww_blkthvdo_vid'] : null;
 $ww_blkthvdo_vupld       = ( isset( $block_fields['ww_blkthvdo_vupld'] ) && '' !== $block_fields['ww_blkthvdo_vupld'] ) ? $block_fields['ww_blkthvdo_vupld'] : null;
 $ww_blkthvdo_video_thumb = ( isset( $block_fields['ww_blkthvdo_video_thumb'] ) && '' !== $block_fields['ww_blkthvdo_video_thumb'] ) ? $block_fields['ww_blkthvdo_video_thumb'] : null;
-$ww_blkthvdo_choose_video_type = ( isset( $block_fields['ww_blkthvdo_choose_video_type'] ) && '' !== $block_fields['ww_blkthvdo_choose_video_type'] ) ? $block_fields['ww_blkthvdo_choose_video_type'] : null;
+$ww_blkthvdo_choose_video_type = ( isset( $block_fields['ww_blkthvdo_choose_video_type'] ) && '' !== $block_fields['ww_blkthvdo_choose_video_type'] ) ? $block_fields['ww_blkthvdo_choose_video_type'] : 'youtube';
 $amp_src                  = wp_get_attachment_image_url( $ww_blkthvdo_video_thumb, 'thumb_1600' );
 
 ?>
