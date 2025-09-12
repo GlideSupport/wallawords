@@ -1900,11 +1900,22 @@ body {
                 left: 0;
                 width: 100%;
                 height: calc(100% + 78px);
-                background: linear-gradient(193deg, rgba(255, 255, 255, 0.16) 1.63%, rgba(255, 255, 255, 0) 61.52%), rgba(28, 26, 41, 0.03);
+               background: linear-gradient(
+              215deg,
+              rgba(255, 255, 255, 0.16) 1.63%,
+              rgba(255, 255, 255, 0) 61.52%
+            ),
+            rgba(28, 26, 41, 0.03);
                 border-radius: 0 0 30px 30px;
                 border: 1px solid rgba(255, 255, 255, 0.04);
             }
         }
 
     }
+}
+
+.home {
+     .game-wrapper{
+         min-height: 70vh;
+     }
 }
