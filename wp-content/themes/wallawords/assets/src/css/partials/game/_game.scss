@@ -228,9 +228,9 @@ body {
 
 
         &:before {
-            opacity: 0.07;
+            opacity: 0.022;
             left: 0;
-          /*  content: "play";*/
+            content: "play";
             bottom: 0;
             position: absolute;
             width: 100%;
@@ -1913,18 +1913,18 @@ body {
                 left: 0;
                 width: 100%;
                 height: calc(100% + 70px);
-             /*  background: linear-gradient(
+               background: linear-gradient(
               215deg,
               rgba(255, 255, 255, 0.11) 1.63%,
               rgba(255, 255, 255, 0) 61.52%
             ),
-            rgba(28, 26, 41, 0.03);*/
+            rgba(28, 26, 41, 0.03);
                 border-radius: 0 0 30px 30px;
                 border: 1px solid rgba(255, 255, 255, 0.04);
-                background: url(../images/header-bg.svg);
+               /* background: url(../images/header-bg.svg);
                 background-position: bottom center;
                 background-repeat: no-repeat;
-                background-size: cover;
+                background-size: cover;*/
             }
         }
 
