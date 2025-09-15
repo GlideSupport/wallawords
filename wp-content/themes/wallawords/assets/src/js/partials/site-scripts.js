@@ -319,7 +319,7 @@ jQuery( function() {
         var gameSkinSetting = 'dark';
     }   
 
-    console.log('WW skin set to:'+gameSkinSetting);
+    // console.log('WW skin set to:'+gameSkinSetting);
 
 	/**
 	 * Toggle menu for mobile
@@ -415,7 +415,7 @@ jQuery( function() {
 			gameSkinSetting = 'light';
 		}   
 		
-		console.log('WW skin set to:'+gameSkinSetting);
+		// console.log('WW skin set to:'+gameSkinSetting);
 	});
 	
    var $scrollArea = jQuery("#instruction-text");

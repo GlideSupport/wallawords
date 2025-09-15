@@ -407,7 +407,6 @@ function startGame(puzzleCounterValue) {
                                 item.classList.add('warning');
                                 item.classList.add('zingle');
                                 item.addEventListener('animationend', function handler(e) {
-                                    console.log(e.animationName);
                                     if (e.animationName === 'shake') {
                                         item.classList.remove('zingle');
                                     }
@@ -418,6 +417,24 @@ function startGame(puzzleCounterValue) {
                                         item.removeEventListener('animationend', handler);
                                     }
                                 });
+                            }, 150);
+                        }else {
+                            item.dataset.justPlaced = "true";
+                             setTimeout(() => {
+                            // Remove any previous animationend handler
+                                item.removeEventListener('animationend', item._bounceHandler);
+                                // Remove bounce if present, force reflow, then add bounce
+                                item.classList.remove('bounce');
+                                void item.offsetWidth;
+                                item.classList.add('bounce');
+                                // Define and store the handler so it can be removed next time
+                                item._bounceHandler = function handler(e) {
+                                    if (e.animationName === 'tileBounce') {
+                                    item.classList.remove('bounce');
+                                    item.removeEventListener('animationend', handler);
+                                    }
+                                };
+                                item.addEventListener('animationend', item._bounceHandler);
                             }, 150);
                         }
                         removeDropZoneClass();
@@ -655,7 +672,6 @@ function checkSentenceCompletion(originalPositions) {
             });
             let thisRow = document.getElementById('sentence_' + completeSentenceCount);
             if (thisRow) {
-                console.log(thisRow);
                 thisRow.classList.add('active');
                 let contentEl = thisRow.querySelector('.content');
                 if (contentEl) {
@@ -707,7 +723,7 @@ function checkPuzzleCompletion(originalPositions) {
         animateEffect(0, 'puzzle');
         startConfetti();
         document.getElementById('confetti-canvas').style.opacity = '1';
-        showFinalScoreScreen();
+        // showFinalScoreScreen();
         if (completedSessionPuzzles.includes(currentPuzzleID) === false) {
             completedSessionPuzzles.push(currentPuzzleID);
         }
@@ -747,7 +763,8 @@ function animateEffect(index, type) {
     } else if (type === 'puzzle') {
         elements = Array.from(items);
     }
-    outlineSegment(elements);
+    console.log(elements);
+    animationQueued(elements);
     // Apply the animation with staggered timing
     elements.forEach((element, i) => {
         setTimeout(() => {
@@ -758,19 +775,19 @@ function animateEffect(index, type) {
             }, 600);
         }, i * 100);
     });
-    setTimeout(() => {
-        const incompleteItems = Array.from(items).filter(item => !item.classList.contains('correct-position'));
-        incompleteItems.forEach((element, i) => {
-            setTimeout(() => {
-                // element.classList.add('wave-bounce');
-                element.classList.add('zingle');
-                setTimeout(() => {
-                    element.classList.remove('zingle');
-                    // element.classList.remove('wave-bounce');
-                }, 600);
-            }, i * 100);
-        });
-    }, 1000);
+    // setTimeout(() => {
+    //     const incompleteItems = Array.from(items).filter(item => !item.classList.contains('correct-position'));
+    //     incompleteItems.forEach((element, i) => {
+    //         setTimeout(() => {
+    //             // element.classList.add('wave-bounce');
+    //             element.classList.add('zingle');
+    //             setTimeout(() => {
+    //                 element.classList.remove('zingle');
+    //                 // element.classList.remove('wave-bounce');
+    //             }, 800);
+    //         }, i * 100);
+    //     });
+    // }, 1000);
 
 }
 
@@ -890,17 +907,50 @@ function getTileBounds(tile, padding = 15, Offset = 0) {
 }
 
 // Animation
-function outlineSegment(tiles) {
-    console.log(tiles);
+
+let isRunning = false;
+let queue = [];
+
+async function animationQueued(elements) {
+  // Push this animation request into the queue
+  queue.push(elements);
+
+  // If an animation is already in progress, exit (it will handle the queue)
+  if (isRunning) return;
+
+  isRunning = true;
+
+  while (queue.length > 0) {
+    const current = queue.shift(); // take first item in queue
+
+    try {
+    //   console.log("Running animation for:", current);
+
+      // If outlineSegment is async → await it
+      await outlineSegment(current);
+
+      // Optional delay between animations
+    //   await new Promise(resolve => setTimeout(resolve, 2500));
+
+    //   console.log("Finished animation for:", current);
+    } catch (error) {
+      console.error("Error in animation:", error);
+    }
+  }
+
+  isRunning = false;
+}
+
+function outlineSegment(items) {
     return new Promise(resolve => {
         setTimeout(() => {
-            const grid = tiles[0]?.parentElement || document.getElementById("sortable-grid");
-            const allTiles = Array.from(grid.children);
+            const grid = items[0]?.parentElement || document.getElementById("sortable-grid");
+            const allItems = Array.from(grid.children);
             const hasAdminBar = document.body.classList.contains('admin-bar');
             const adminBarOffset = hasAdminBar ? -32 : 0;
             const padding = 15;
-            allTiles.forEach(tile => { if (!tiles.includes(tile)) tile.classList.add("dimmed"); });
-            let paths = tiles.map(tile => {
+            allItems.forEach(tile => { if (!items.includes(tile)) tile.classList.add("dimmed"); });
+            let paths = items.map(tile => {
                 const b = getTileBounds(tile, padding, adminBarOffset);
                 return [
                     { X: b.left, Y: b.top },
@@ -916,7 +966,7 @@ function outlineSegment(tiles) {
             let unionPoly;
             if (solution.length === 0) {
                 let minL = Infinity, minT = Infinity, maxR = -Infinity, maxB = -Infinity;
-                tiles.forEach(tile => {
+                items.forEach(tile => {
                     const b = getTileBounds(tile, padding, adminBarOffset);
                     minL = Math.min(minL, b.left);
                     minT = Math.min(minT, b.top);
@@ -932,7 +982,6 @@ function outlineSegment(tiles) {
             } else {
                 unionPoly = getLargestPath(solution);
             }
-            console.log(unionPoly);
             unionPoly = rotatePathToTopLeft(unionPoly);
             // Offset the shape inward by a specified number of pixels (scaled to ClipperLib units)
             var offsetValue = 9 * 100; // 9px, scaled
@@ -971,8 +1020,8 @@ function outlineSegment(tiles) {
             pathEl.setAttribute("stroke-width", "5");
             pathEl.setAttribute("stroke-linejoin", "round");
             svgOverlay.appendChild(pathEl);
-            let segDuration = tiles.length * 0.20;
-            let extraPause = tiles.length * 0.20;
+            let segDuration = items.length * 0.20;
+            let extraPause = items.length * 0.20;
             pathEl.style.animationDuration = segDuration + "s";
             const length = pathEl.getTotalLength();
             pathEl.style.strokeDasharray = length;
@@ -981,7 +1030,7 @@ function outlineSegment(tiles) {
             pathEl.classList.add("snake-path");
             setTimeout(() => {
                 svgOverlay.removeChild(pathEl);
-                allTiles.forEach(tile => tile.classList.remove("dimmed"));
+                allItems.forEach(tile => tile.classList.remove("dimmed"));
                 resolve(segDuration + extraPause);
             }, (segDuration + extraPause) * 1000);
         }, 200);
