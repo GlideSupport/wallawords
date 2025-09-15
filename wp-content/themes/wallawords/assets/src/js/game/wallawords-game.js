@@ -397,11 +397,29 @@ function startGame(puzzleCounterValue) {
                     onEnd: function (evt) {
                         const item = evt.item;
                         const { parent, index } = originalDropPlacement.get(item);
-                        //console.log('end');
-                        // Check if the item was placed in an invalid slot
-                        // if (!item.parentElement.classList.contains('valid-slot')) {
-                        //parent.insertBefore(item, parent.children[index]); // Revert to original position
-                        //}
+                        if (evt.newIndex === undefined || evt.oldIndex === evt.newIndex) return;
+                        let targetTile = evt.from.children[evt.newIndex];
+                        if (targetTile && targetTile.classList.contains("locked-position")) return;
+                        const domIndex = Array.from(gameGridElement.children).indexOf(item);
+                        if (item.textContent.trim() !== originalPositions[domIndex]) {
+                            // Delay shake/pulse-red until after Sortable animation (150ms)
+                            setTimeout(() => {
+                                item.classList.add('warning');
+                                item.classList.add('zingle');
+                                item.addEventListener('animationend', function handler(e) {
+                                    console.log(e.animationName);
+                                    if (e.animationName === 'shake') {
+                                        item.classList.remove('zingle');
+                                    }
+                                    if (e.animationName === 'pulseRed') {
+                                        item.classList.remove('warning');
+                                    }
+                                    if (!item.classList.contains('zingle') &&  !item.classList.contains('warning')) {
+                                        item.removeEventListener('animationend', handler);
+                                    }
+                                });
+                            }, 150);
+                        }
                         removeDropZoneClass();
                     }
                 });
@@ -493,6 +511,8 @@ function updateMoveCounter(evt, originalPositions) {
     if (checkCorrectPositionAtIndex(fromIndex, originalPositions) == false && checkCorrectPositionAtIndex(toIndex, originalPositions) == false) {
         //increment X markers
         incorrectCounterValue++;
+
+        
         // const div = document.createElement('div');
         // div.classList.add('error');
         // div.innerHTML = '<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4.10745 15.8925C3.67288 15.458 3.65698 14.7717 4.07189 14.3568L14.3568 4.07187C14.7717 3.65697 15.458 3.67286 15.8926 4.10743C16.3271 4.54201 16.343 5.22832 15.9281 5.64322L5.64324 15.9281C5.22833 16.343 4.54203 16.3271 4.10745 15.8925Z" fill="white"/><path d="M4.10745 4.10745C4.54203 3.67288 5.22833 3.65698 5.64324 4.07189L15.9281 14.3568C16.343 14.7717 16.3271 15.458 15.8926 15.8926C15.458 16.3271 14.7717 16.343 14.3568 15.9281L4.07189 5.64324C3.65699 5.22833 3.67288 4.54203 4.10745 4.10745Z"/></svg>'; //X svg icon
@@ -625,6 +645,7 @@ function checkSentenceCompletion(originalPositions) {
         }
         //console.log('found tiles '+gridItems);
         if (isSentenceCorrect) {
+            
             completedSentences.push(index);
             completeSentenceCount++;
             animateEffect(index, 'sentence');
@@ -640,6 +661,21 @@ function checkSentenceCompletion(originalPositions) {
                 if (contentEl) {
                     contentEl.innerHTML = completeSentenceCount + '. ' + sentenceCounter;
                     //contentEl.innerHTML = completeSentenceCount + '. ' + sentenceCounter +' (sentence)';
+                    // const gamePrompt = document.getElementById('game-prompt');
+                    // const writeText = sentenceCounter; // Define your text here
+
+                    // if (gamePrompt) {
+                    //     let textCount = 0;
+                    //     gamePrompt.textContent = '';
+                    //     function typeWriter() {
+                    //         if (textCount < writeText.length) {
+                    //             gamePrompt.textContent += writeText.charAt(textCount);
+                    //             textCount++;
+                    //             setTimeout(typeWriter, 100); // Speed: 100 ms per character
+                    //         }
+                    //     }
+                    //     typeWriter();
+                    // }
                 }
                 let gridCells = thisRow.querySelectorAll('.grid-cell');
                 if (gridCells.length > 0) {
