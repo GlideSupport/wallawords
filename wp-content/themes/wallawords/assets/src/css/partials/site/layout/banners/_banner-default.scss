@@ -114,11 +114,14 @@ body.light {
 		}
 	}
 	&.page-title-banner{
-		 padding: 96px 0 0 0;
-		 &:after,
+		 padding: 96px 0 0 0 !important;
+		 .hero-default{
+ &:after,
 		 &:before{
-			 display: none;
+			 display: none !important;
 		 }
+		 }
+		
 	}
 
 }
