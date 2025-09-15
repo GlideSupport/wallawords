@@ -1948,7 +1948,9 @@ body {
 }
 
 .page-template-template-game {
-     .game-wrapper{
+  
+}
+ body  .game-wrapper{
         .title-screen{
      height: calc(100vh - 176px);
      min-height: 450px;
@@ -1957,8 +1959,6 @@ body {
     align-items: center;
      }
     }
-}
-
 @keyframes pulseRed {
   0%   { background-color: #fff; box-shadow: 0 4px 0 rgba(0,0,0,0.2); }
   20%  { background-color: rgba(255,77,77,0.8); box-shadow: 0 4px 0 #b22222; }
