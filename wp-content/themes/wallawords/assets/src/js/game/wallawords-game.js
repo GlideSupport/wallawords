@@ -572,7 +572,7 @@ function checkColumnCompletion(originalPositions) {
         if (isColumnCorrect) {
             completedColumns.push(col);
             completeSentenceCount++;
-            animateWaveEffect(col, 'column');
+            animateEffect(col, 'column');
             columnCompletedThisMove = true; // Set flag for this move
             let numLabel = completeSentenceCount;
             counters.forEach((item) => {
@@ -627,13 +627,14 @@ function checkSentenceCompletion(originalPositions) {
         if (isSentenceCorrect) {
             completedSentences.push(index);
             completeSentenceCount++;
-            animateWaveEffect(index, 'sentence');
+            animateEffect(index, 'sentence');
             sentenceCompletedThisMove = true; // Set flag for this move
             counters.forEach((item) => {
                 item.classList.remove('active');
             });
             let thisRow = document.getElementById('sentence_' + completeSentenceCount);
             if (thisRow) {
+                console.log(thisRow);
                 thisRow.classList.add('active');
                 let contentEl = thisRow.querySelector('.content');
                 if (contentEl) {
@@ -667,7 +668,7 @@ function checkPuzzleCompletion(originalPositions) {
         isFailed = 1;
     }
     if (isSolved) {
-        animateWaveEffect(0, 'puzzle');
+        animateEffect(0, 'puzzle');
         startConfetti();
         document.getElementById('confetti-canvas').style.opacity = '1';
         showFinalScoreScreen();
@@ -693,8 +694,8 @@ function checkPuzzleCompletion(originalPositions) {
     }
 }
 
-// **Animate the Wave Effect for Completed Sections**
-function animateWaveEffect(index, type) {
+// **Animate the Effect for Completed Sections**
+function animateEffect(index, type) {
     const items = document.querySelectorAll('.grid-item');
     let elements = [];
     // Determine elements based on type
@@ -711,12 +712,7 @@ function animateWaveEffect(index, type) {
         elements = Array.from(items);
     }
     outlineSegment(elements);
-    if (type === 'sentence') {
-        // elements
-        console.log('sentence');
-        console.log(elements);
-    }
-    // Apply the wave-bounce animation with staggered timing
+    // Apply the animation with staggered timing
     elements.forEach((element, i) => {
         setTimeout(() => {
             // element.classList.add('wave-bounce');
@@ -730,9 +726,11 @@ function animateWaveEffect(index, type) {
         const incompleteItems = Array.from(items).filter(item => !item.classList.contains('correct-position'));
         incompleteItems.forEach((element, i) => {
             setTimeout(() => {
-                element.classList.add('wave-bounce');
+                // element.classList.add('wave-bounce');
+                element.classList.add('zingle');
                 setTimeout(() => {
-                    element.classList.remove('wave-bounce');
+                    element.classList.remove('zingle');
+                    // element.classList.remove('wave-bounce');
                 }, 600);
             }, i * 100);
         });
@@ -857,7 +855,7 @@ function getTileBounds(tile, padding = 15, Offset = 0) {
 
 // Animation
 function outlineSegment(tiles) {
-    console.log('outlineSegment called');
+    console.log(tiles);
     return new Promise(resolve => {
         setTimeout(() => {
             const grid = tiles[0]?.parentElement || document.getElementById("sortable-grid");
@@ -916,9 +914,8 @@ function outlineSegment(tiles) {
             try {
                 // console.log('Using custom roundPathCorners utility');
                 roundedPath = roundPathCorners(unionPoly, 15); // 10px radius
-                // console.log('Rounded path:', roundedPath);
                 if (!roundedPath) {
-                    //   console.warn('Rounded path is empty!');
+                    console.warn('Rounded path is empty!');
                 }
             } catch (e) {
                 console.error('Error during roundPathCorners:', e);
