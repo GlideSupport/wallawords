@@ -240,6 +240,7 @@ body {
             top: 0;
             border-radius: 0 0 30px 30px;
 
+
         }
 
         &:before {
@@ -249,13 +250,11 @@ body {
             bottom: 0;
             position: absolute;
             width: 100%;
-            height: 100%;
+            height: auto;
             font-size: 86px;
-            line-height: 125%;
+            line-height: 35px;
             text-transform: uppercase;
-            font-family: Rubik-Black, arial, sans-serif;
-            font-style: normal;
-            font-weight: 900;
+           @include font(rubik, rblack);
             color: #fff;
         }
 
@@ -2034,7 +2033,7 @@ body {
             #game-screen {
              .game-stats{
                  &:before{
-                     content: "result";
+                     content: "results";
                  }
              }
         }
