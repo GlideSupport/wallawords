@@ -164,8 +164,6 @@ function adjustGameHeight() {
 
     let mainHeight = pageSize - 108; // resize to page minus padding
 
-	console.log('starter height '+mainHeight);
-	
 	if(mainHeight <= 400) {
 		mainHeight = 400;
 	}
