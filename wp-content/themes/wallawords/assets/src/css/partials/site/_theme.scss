@@ -267,26 +267,26 @@ span.button,
 .gform_button,
 .is-style-mycustomstyle .wp-element-button {
 	background: var(--ww_theme_btn_gradient);
-    border: none;
-    border-radius: 300px;
-    box-sizing: border-box;
-    cursor: pointer;
-    display: inline-block;
-    position: relative;
-    text-decoration: none;
-    width: -moz-fit-content;
-    width: fit-content;
-    color: #fff;
-    flex: 1 1 100%;
-  	@include font(rubik, med);
+	border: none;
+	border-radius: 300px;
+	box-sizing: border-box;
+	cursor: pointer;
+	display: inline-block;
+	position: relative;
+	text-decoration: none;
+	width: -moz-fit-content;
+	width: fit-content;
+	color: #fff;
+	flex: 1 1 100%;
+	@include font(rubik, med);
 	font-size: 18px;
 	font-weight: 500;
-    letter-spacing: -.18px;
-    line-height: 135%;
-    padding: 15px 48px;
-    text-align: center;
-    transition: box-shadow .3s, color .3s !important;
-    box-shadow: 0 0 40px 0 rgba(43, 191, 28, .5);
+	letter-spacing: -.18px;
+	line-height: 135%;
+	padding: 15px 48px;
+	text-align: center;
+	transition: box-shadow .3s, color .3s !important;
+	box-shadow: 0 0 40px 0 rgba(43, 191, 28, .5);
 
 	&:last-child {
 		margin-right: 0;
@@ -303,8 +303,8 @@ span.button,
 	*/
 
 	&:hover {
-		    box-shadow: none !important;
-    color: #fff;
+		box-shadow: none !important;
+		color: #fff;
 	}
 
 	&.outline-btn {
@@ -569,11 +569,16 @@ picture {
 body.light {
 	background-color: #ECF1EF;
 	color: var(--ww_dark);
-	 
-	h1, h2, h3, h4, h5, h6 {
+
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {
 		color: var(--ww_dark);
 	}
-	
+
 	.menu {
 
 		li {
@@ -587,8 +592,8 @@ body.light {
 				}
 			}
 
-			
-		}	
+
+		}
 	}
 
 	.wp-block-cover.hero {
@@ -605,16 +610,15 @@ body.light {
 		}
 	}
 
-	.icon-grid__text p, 
-	.iat .section-head__subheading, 
+	.icon-grid__text p,
+	.iat .section-head__subheading,
 	.team .section-head p,
 	.single-team-member .member-bio .member-designation p,
 	.testimonials-slider .client__name,
 	.faq-text p,
 	.text-tile__text,
 	blockquote,
-	.gform_required_legend
-	 {
+	.gform_required_legend {
 		color: var(--ww_black_2);
 	}
 }
