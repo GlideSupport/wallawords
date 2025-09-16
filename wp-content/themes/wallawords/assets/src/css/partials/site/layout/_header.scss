@@ -228,6 +228,10 @@ header {
 					display: flex;
 					align-items: center;
 					justify-content: center;
+					.dark,
+					.light{
+						 height: 24px;
+					}
 
 					svg,
 					img {
