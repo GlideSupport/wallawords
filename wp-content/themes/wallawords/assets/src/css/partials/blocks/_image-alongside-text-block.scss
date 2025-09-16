@@ -157,13 +157,11 @@ li.no-icon {
 	}
 
 	&__image {
-		aspect-ratio: 420/626;
-		max-height: 626px;
+		max-height: 700px;
 		z-index: 1;
 		position: relative;
-		left: 10%;
-		top: 73px;
-	}
+		border-radius: 15px;
+		}
 
 	&__lines {
 		position: absolute;
@@ -181,15 +179,35 @@ li.no-icon {
 			}
 		}
 	}
-}
 
+}
+.iat.image-alongside-text{
+		 &.two-column{
+			     display: flex;
+				align-items: center;
+				gap: 90px;
+				.iat__image--area{
+					 flex: 0 0 clamp(300px, calc(18.75rem + ((1vw - 7.68px) * 40.5405)), 540px);
+					 .iat__image{
+						 max-height: none;
+						 aspect-ratio: auto;
+						 top:0;
+						 left: 0;
+						
+					 }
+				}
+				.iat__content{
+					 flex: 1;
+					 padding: 0;
+				}
+
+	    
+		 }
+	}
 
 .two-columns {
 	.iat {
 		&__image {
-			aspect-ratio: 360/530;
-			top: -40px;
-			left: 12%;
 			//max-height: 560px;	
 			border-radius: 16px;
 			overflow: hidden;
