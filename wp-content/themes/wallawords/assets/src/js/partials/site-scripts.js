@@ -415,13 +415,14 @@ jQuery( function() {
 			gameSkinSetting = 'light';
 		}   
 		
-		// console.log('WW skin set to:'+gameSkinSetting);
+		// console.log('WW skin set to:'+gameSkinSetting); 
 	});
 jQuery(document).ready(function () {
     var $instructionText = jQuery('#instruction-text');
     var $iscreen = jQuery('.instruction-screen');
 
     $instructionText.on('scroll', function () {
+		adjustInstructionsHeight();
         if ($instructionText.scrollTop() > 10) {  
             // Add class when scrolling starts
             $iscreen.addClass('scrolled');
