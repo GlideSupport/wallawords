@@ -2102,3 +2102,49 @@ body .game-wrapper {
         transform: translateX(0);
     }
 }
+
+
+
+#svgOverlay {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	pointer-events: none;
+	z-index: 99;
+}
+.dimmed {
+	opacity: 0.25 !important
+}
+.noHover{
+	pointer-events: none;
+	user-select: none;
+}
+.snake-path {
+    animation: snake-draw 2s 
+ease-in-out forwards;
+}
+
+@keyframes snake-draw {
+		from {
+			stroke-dashoffset: var(--dash-length) 
+	}
+		to {
+			stroke-dashoffset: 0 
+	}
+}
+
+
+.grid-item.bounce {
+  animation: itemBounce 0.5s cubic-bezier(.36,.07,.19,.97);
+}
+
+@keyframes itemBounce {
+  0%   { transform: translateY(0); }
+  20%  { transform: translateY(-12px); }
+  40%  { transform: translateY(0); }
+  60%  { transform: translateY(-12px); }
+  80%  { transform: translateY(0); }
+  100%{ transform: translateY(0); }
+}
