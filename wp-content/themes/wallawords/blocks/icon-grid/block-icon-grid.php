@@ -56,7 +56,7 @@ $ww_blkicngrd_cntnt_var = ( isset( $block_fields['ww_blkicngrd_cntnt_var'] ) && 
 ?>
 <div id="<?php echo esc_html( $amp_id ); ?>" class="<?php echo esc_html( $amp_align_class . ' ' . $amp_class_name . ' ' . $amp_name ); ?> block-<?php echo esc_html( $block_name ); ?>">
 	<div class="glide-spacer <?php echo esc_html( $ww_blkicngrd_spcr_tp ); ?>"> </div>
-		<?php if ( 'center' === $ww_blkicngrd_cntnt_var ) { ?>
+		<?php if ( 'center' == $ww_blkicngrd_cntnt_var ) { ?>
 			<div class="icon-grid center-align">
 				<?php if ( $ww_blkicngrd_title || $ww_blkicngrd_text ) { ?>
 					<div class="section-head">
