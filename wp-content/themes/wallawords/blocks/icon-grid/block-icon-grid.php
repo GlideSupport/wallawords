@@ -124,7 +124,7 @@ $ww_blkicngrd_cntnt_var = ( isset( $block_fields['ww_blkicngrd_cntnt_var'] ) && 
 			<?php
 		} else {
 			?>
-			<div class="icon-grid icon-grid-variation">
+			<div class="icon-grid">
 				<?php if ( $ww_blkicngrd_title || $ww_blkicngrd_text ) { ?>
 					<div class="section-head sh">
 						<?php if ( $ww_blkicngrd_title ) { ?>
