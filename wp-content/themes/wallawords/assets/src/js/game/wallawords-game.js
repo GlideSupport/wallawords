@@ -404,8 +404,7 @@ function startGame(puzzleCounterValue) {
                         if (item.textContent.trim() !== originalPositions[domIndex]) {
                             // Delay shake/pulse-red until after Sortable animation (150ms)
                             setTimeout(() => {
-                                item.classList.add('warning');
-                                item.classList.add('zingle');
+                                item.classList.add('warning', 'zingle', 'nohover');
                                 item.addEventListener('animationend', function handler(e) {
                                     if (e.animationName === 'shake') {
                                         item.classList.remove('zingle');
@@ -414,6 +413,7 @@ function startGame(puzzleCounterValue) {
                                         item.classList.remove('warning');
                                     }
                                     if (!item.classList.contains('zingle') &&  !item.classList.contains('warning')) {
+                                        setTimeout(() => item.classList.remove('nohover'), 50);
                                         item.removeEventListener('animationend', handler);
                                     }
                                 });
@@ -426,16 +426,23 @@ function startGame(puzzleCounterValue) {
                                 // Remove bounce if present, force reflow, then add bounce
                                 item.classList.remove('bounce');
                                 void item.offsetWidth;
-                                item.classList.add('bounce');
+                                item.classList.add('bounce',  'nohover');
                                 // Define and store the handler so it can be removed next time
                                 item._bounceHandler = function handler(e) {
                                     if (e.animationName === 'tileBounce') {
                                     item.classList.remove('bounce');
+                                    setTimeout(() => item.classList.remove('nohover'), 50);
                                     item.removeEventListener('animationend', handler);
                                     }
                                 };
                                 item.addEventListener('animationend', item._bounceHandler);
                             }, 150);
+                        }
+                        if (incorrectCounterValue >= health) {
+                            let gitems = document.querySelectorAll('.grid-item');
+                            gitems.forEach(item => {
+                                item.classList.add('noHover');
+                            });
                         }
                         removeDropZoneClass();
                     }
@@ -538,7 +545,8 @@ function updateMoveCounter(evt, originalPositions) {
     // Check for completed columns and sentences
     checkColumnCompletion(originalPositions);
     checkSentenceCompletion(originalPositions);
-    checkPuzzleCompletion(originalPositions);
+    // checkPuzzleCompletion(originalPositions);
+    checkPuzzleHelth(originalPositions);
     // Update the move counter display
     updateMoveCounterDisplay();
 }
@@ -639,6 +647,8 @@ function checkColumnCompletion(originalPositions) {
 }
 
 // **Check if a Sentence is Completed**
+
+
 function checkSentenceCompletion(originalPositions) {
     const items = document.querySelectorAll('.grid-item');
     const counters = document.querySelectorAll('.sentence-list-item');
@@ -709,21 +719,17 @@ function checkSentenceCompletion(originalPositions) {
 }
 
 // **Check if the Puzzle is Completed**
+var isSolved = isFailed = 0;
 function checkPuzzleCompletion(originalPositions) {
     const items = document.querySelectorAll('.grid-item');
     const isSolved = Array.from(items).every(
         (item, index) => item.textContent === originalPositions[index]
     );
-    let isFailed = 0;
-    incorrectCounterValue
-    if (incorrectCounterValue >= health) {
-        isFailed = 1;
-    }
     if (isSolved) {
-        animateEffect(0, 'puzzle');
+        // animateEffect(0, 'puzzle');
         startConfetti();
         document.getElementById('confetti-canvas').style.opacity = '1';
-        // showFinalScoreScreen();
+        showFinalScoreScreen();
         if (completedSessionPuzzles.includes(currentPuzzleID) === false) {
             completedSessionPuzzles.push(currentPuzzleID);
         }
@@ -741,11 +747,15 @@ function checkPuzzleCompletion(originalPositions) {
             }, 8000);
         }, 8000);
     }
+}
+function checkPuzzleHelth(originalPositions) {
+    if (incorrectCounterValue >= health) {
+        isFailed = 1;
+    }
     if (isFailed) {
         showFinalScoreScreen();
     }
 }
-
 // **Animate the Effect for Completed Sections**
 function animateEffect(index, type) {
     const items = document.querySelectorAll('.grid-item');
@@ -763,8 +773,8 @@ function animateEffect(index, type) {
     } else if (type === 'puzzle') {
         elements = Array.from(items);
     }
-    console.log(elements);
-    animationQueued(elements);
+    
+    
     // Apply the animation with staggered timing
     elements.forEach((element, i) => {
         setTimeout(() => {
@@ -775,6 +785,12 @@ function animateEffect(index, type) {
             }, 600);
         }, i * 100);
     });
+    setTimeout(() => {
+        // Wait for animationQueued to complete before continuing
+        animationQueued(elements);       
+        // checkPuzzleCompletion(originalPositions);
+    }, 1000); 
+
     // setTimeout(() => {
     //     const incompleteItems = Array.from(items).filter(item => !item.classList.contains('correct-position'));
     //     incompleteItems.forEach((element, i) => {
@@ -790,6 +806,8 @@ function animateEffect(index, type) {
     // }, 1000);
 
 }
+
+ 
 
 function finalScoreResizer(mode) {
     const pageSize = window.visualViewport ? window.visualViewport.height : window.innerHeight;
@@ -925,20 +943,16 @@ async function animationQueued(elements) {
 
     try {
     //   console.log("Running animation for:", current);
-
       // If outlineSegment is async → await it
       await outlineSegment(current);
-
-      // Optional delay between animations
     //   await new Promise(resolve => setTimeout(resolve, 2500));
-
-    //   console.log("Finished animation for:", current);
     } catch (error) {
       console.error("Error in animation:", error);
     }
   }
 
   isRunning = false;
+  checkPuzzleCompletion(originalPositions);
 }
 
 function outlineSegment(items) {
