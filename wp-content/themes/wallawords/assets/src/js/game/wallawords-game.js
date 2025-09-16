@@ -910,7 +910,7 @@ function showFinalScoreScreen() {
                 finalScoreResizer(toggled);
             });
         });
-    }, 3000); // Delay to allow for wave animation to finish
+    }, 1000); // Delay to allow for wave animation to finish
 }
 
 
