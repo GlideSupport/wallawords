@@ -1790,16 +1790,16 @@ letter-spacing: -0.16px;
 		overflow-x: hidden;
 	}
 
-	body .game-grid {
 
-		column-gap: 4px;
-		row-gap: 5px;
-		max-width: 272px;
-	}
-
-	body .grid-item {
-		width: 85px !important;
-	}
+		    body .game-grid {
+        -moz-column-gap: 4px;
+        column-gap: 5px;
+        max-width: 100%;
+        row-gap: 5px;
+    }
+    body .grid-item {
+        width: 100% !important;
+    }
 }
 
 @media only screen and (max-width: 374px) {

@@ -415,3 +415,48 @@ body.logged-in.admin-bar {
 .desktop-hide {
 	display: none;
 }
+
+@media(max-width:370px) {
+	.header-wrapper {
+		.icon {
+			height: 25px;
+			width: 25px;
+			line-height: 27px;
+
+			svg,
+			img {
+				width: 18px;
+				height: 18px;
+			}
+		}
+
+		.game-menu-ctn {
+			.game-skin-toggle {
+				&.icon {
+					height: 25px;
+					width: 25px;
+					line-height: 27px;
+
+					svg,
+					img {
+						width: 18px;
+						height: 18px;
+					}
+					.dark{
+						 height: 18px;
+					}
+				}
+			}
+			 .game-help {
+				height: 25px;
+					width: 25px;
+					line-height: 27px;
+				img,svg{
+					 	height: 25px;
+					width: 25px;
+				}
+			 }
+			 
+		}
+	}
+}
