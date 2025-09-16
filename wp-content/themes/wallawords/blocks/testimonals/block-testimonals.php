@@ -46,6 +46,7 @@ $ww_blktstimnls_title_tag    = ( isset( $block_fields['ww_blktstimnls_title']['t
 $ww_blktstimnls_spcr_tp      = ( isset( $block_fields['ww_blktstimnls_spcr']['top_spacer'] ) && '' !== $block_fields['ww_blktstimnls_spcr']['top_spacer'] ) ? $block_fields['ww_blktstimnls_spcr']['top_spacer'] : null;
 $ww_blktstimnls_spcr_btm     = ( isset( $block_fields['ww_blktstimnls_spcr']['bottom_spacer'] ) && '' !== $block_fields['ww_blktstimnls_spcr']['bottom_spacer'] ) ? $block_fields['ww_blktstimnls_spcr']['bottom_spacer'] : null;
 $ww_blktstimnls_testimonials = ( isset( $block_fields['ww_blktstimnls_testimonials'] ) && '' !== $block_fields['ww_blktstimnls_testimonials'] ) ? $block_fields['ww_blktstimnls_testimonials'] : null;
+$testi_count = is_array($ww_blktstimnls_testimonials) ? count($ww_blktstimnls_testimonials) : 0;
 
 ?>
 <div id="<?php echo esc_html( $amp_id ); ?>" class="<?php echo esc_html( $amp_align_class . ' ' . $amp_class_name . ' ' . $amp_name ); ?> block-<?php echo esc_html( $block_name ); ?>">
@@ -54,18 +55,20 @@ $ww_blktstimnls_testimonials = ( isset( $block_fields['ww_blktstimnls_testimonia
 			<?php if ( $ww_blktstimnls_title ) { ?>
 				<div class="testimonial__title">
 					<<?php echo esc_html( $ww_blktstimnls_title_tag ); ?> class="heading-2"><?php echo html_entity_decode( $ww_blktstimnls_title ); ?><?php echo '</' . esc_html( $ww_blktstimnls_title_tag ) . '>'; ?>
-				<div class="testimonial__swiper-controls">
-					<div class="swiper-button-prev">
-						<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-						<path d="M21 12H3M3 12L10 5M3 12L10 19" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-						</svg>
+				<?php if ( $testi_count > 1 ) : ?>
+					<div class="testimonial__swiper-controls">
+						<div class="swiper-button-prev">
+							<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+							<path d="M21 12H3M3 12L10 5M3 12L10 19" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+							</svg>
+							</div>
+						<div class="swiper-button-next">
+							<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+							<path d="M3 12H21M21 12L14 5M21 12L14 19" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+							</svg>
 						</div>
-					<div class="swiper-button-next">
-						<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-						<path d="M3 12H21M21 12L14 5M21 12L14 19" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-						</svg>
 					</div>
-				</div>
+				<?php endif; ?>
 				</div>
 
 			<?php } ?>
