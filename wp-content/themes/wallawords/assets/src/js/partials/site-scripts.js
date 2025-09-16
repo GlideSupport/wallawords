@@ -417,18 +417,20 @@ jQuery( function() {
 		
 		// console.log('WW skin set to:'+gameSkinSetting);
 	});
-	
-   var $scrollArea = jQuery("#instruction-text");
-    var $progressBar = jQuery("#progress-bar");
+jQuery(document).ready(function () {
+    var $instructionText = jQuery('#instruction-text');
+    var $iscreen = jQuery('.instruction-screen');
 
-    $scrollArea.on("scroll", function(){
-        var scrollTop = $scrollArea.scrollTop();
-        var scrollHeight = $scrollArea.prop("scrollHeight");
-        var clientHeight = $scrollArea.innerHeight();
-
-        var scrollPercent = (scrollTop / (scrollHeight - clientHeight)) * 100;
-        $progressBar.css("height", scrollPercent + "%");
-    });  
+    $instructionText.on('scroll', function () {
+        if ($instructionText.scrollTop() > 10) {  
+            // Add class when scrolling starts
+            $iscreen.addClass('scrolled');
+        } else {
+            // Remove class when scrolled back to top
+            $iscreen.removeClass('scrolled');
+        }
+    });
+});
 
 } );
 

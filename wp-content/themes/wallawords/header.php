@@ -313,15 +313,16 @@ $page_template = basename(get_page_template());
                         </svg>
                     </div>
 
-                    <h1>How to <span>Play</span></h1>
+                    <div class="popuptitle heading-1">How to <span>Play</span></div>
                 </div>
-                   <div id="progress-container">
-                    <div id="progress-bar"></div>
-                </div>
+                
                 <?php
 				$instructions = get_field('ww_game_instructions','options');
 				if(is_array($instructions)):?>
                 <div id="instruction-text">
+                       <div id="progress-container">
+                    <div id="progress-bar"></div>
+                </div>
                     <?php /* <div class="indicator"></div> */ ?>
                     <?php foreach($instructions as $key => $step): ?>
                     <div class="content">

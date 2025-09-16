@@ -1341,17 +1341,18 @@
                         </svg>
                     </div>
 
-                    <h1>How to <span>Play</span></h1>
+                   <div class="popuptitle heading-1">How to <span>Play</span></div>
                 </div>
-            <div id="progress-container">
-                    <div id="progress-bar"></div>
-                </div>
+         
 
                 <div id="instruction-text">
+                       <div id="progress-container">
+                    <div id="progress-bar"></div>
+                </div>
                     <div class="content">
                         <div class="text">
                             <div class="num">01.</div>
-                           Swap WHITE tiles to form sentences.
+                           Swap WHITE tilesto form sentences.
                         </div>
                            <lottie-player src="https://cdn.lottielab.com/l/4bAdpQSC1frrNW.json?v=117d0807e5055cfa9fa2aad6&amp;w=1" autoplay loop></lottie-player>
 
@@ -1359,7 +1360,7 @@
                     <div class="content">
                         <div class="text">
                             <div class="num">02.</div>
-                            Read UP and DOWN,.<span> ignoring punctuation.</span>
+                            Read UP and DOWN,.<span>ignoring punctuation.</span>
                         </div>
                          <lottie-player src="https://cdn.lottielab.com/l/V9Vdcvu9xjBEw0.json?v=117d08078b9f4a893e6555c6&amp;w=1" autoplay loop></lottie-player>
 
@@ -1583,21 +1584,7 @@
             </script>
         </footer>
     </main>
-    <script>jQuery(document).ready(function(){
-    var $scrollArea = jQuery("#instruction-text");
-    var $progressBar = jQuery("#progress-bar");
 
-    $scrollArea.on("scroll", function(){
-        var scrollTop = $scrollArea.scrollTop();
-        var scrollHeight = $scrollArea.prop("scrollHeight");
-        var clientHeight = $scrollArea.innerHeight();
-
-        var scrollPercent = (scrollTop / (scrollHeight - clientHeight)) * 100;
-        $progressBar.css("height", scrollPercent + "%");
-    });
-});
-
-    </script>
 
     <script type="speculationrules">
         {"prefetch":[{"source":"document","where":{"and":[{"href_matches":"\/*"},{"not":{"href_matches":["\/wp-*.php","\/wp-admin\/*","\/wp-content\/uploads\/*","\/wp-content\/*","\/wp-content\/plugins\/*","\/wp-content\/themes\/wallawords\/*","\/*\\?(.+)"]}},{"not":{"selector_matches":"a[rel~=\"nofollow\"]"}},{"not":{"selector_matches":".no-prefetch, .no-prefetch a"}}]},"eagerness":"conservative"}]}
@@ -1626,7 +1613,7 @@
         };
     </script>
     <script
-        src="https://playground1stg.wpengine.com/wp-content/themes/wallawords/assets/build/scripts.min.js?ver=1757064552"
+        src="../assets/build/scripts.min.js?ver=1757064552"
         id="wp-theme-scripts-js" defer data-wp-strategy="defer"></script>
     <script
         src="https://playground1stg.wpengine.com/wp-content/themes/wallawords/assets/build/game/wallawords-instructions.js?ver=1757064552"
@@ -1640,7 +1627,23 @@
     <script
         src="https://playground1stg.wpengine.com/wp-content/themes/wallawords/assets/build/game/confetti.min.js?ver=1757064552"
         id="wp-theme-confetti-js"></script>
-</body>
+<script>
+jQuery(document).ready(function () {
+    var $instructionText = jQuery('#instruction-text');
+    var $iscreen = jQuery('.instruction-screen');
+
+    $instructionText.on('scroll', function () {
+        if ($instructionText.scrollTop() > 10) {  
+            // Add class when scrolling starts
+            $iscreen.addClass('scrolled');
+        } else {
+            // Remove class when scrolled back to top
+            $iscreen.removeClass('scrolled');
+        }
+    });
+});
+</script>
+    </body>
 
 </html>
 

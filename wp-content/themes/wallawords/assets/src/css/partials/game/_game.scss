@@ -389,10 +389,11 @@ body {
             background: transparent;
             margin-bottom: 24px;
 
-            h1 {
+            .popuptitle {
                 width: 100%;
                 margin: 0 auto;
                 max-width: 316px;
+                transition: all 0.3s ease;
 
                 @media(max-width:767px) {
                     max-width: 182px;
@@ -408,26 +409,26 @@ body {
 
 
             }
-
+      
         }
 
         #progress-container {
             position: relative;
             top: 0;
             height: 73px;
+            margin: 0 auto 24px;
             width: 1px;
             background: var(--ww_black_3);
             border-radius: 3px;
             overflow: hidden;
-            margin-bottom: 24px;
-
             /* Progress fill */
             #progress-bar {
-                height: 0;
+                height: 32px;
                 width: 100%;
                 background: var(--ww_white);
                 border-radius: 3px;
-                transition: height 0.2s ease-out;
+                position: relative;
+                animation: mymove 1.5s infinite;
             }
 
         }
@@ -443,8 +444,8 @@ body {
             /* Firefox */
             -ms-overflow-style: none;
             /* height: auto !important;
-    overflow-y: auto;
-    max-height: 45vh;*/
+            overflow-y: auto;
+            max-height: 45vh;*/
 
             .indicator {
                 position: relative;
@@ -552,6 +553,22 @@ body {
             align-items: center;
             gap: 15px;
         }
+        &.scrolled{
+                 .popuptitle{
+                      font-size: 22px;
+                      transition: all 0.3s ease;
+                      line-height: 80%; /* 17.6px */
+                  letter-spacing: -0.66px;
+                      span{
+                         display: block;
+                      }
+                 }
+                 .game-container{
+                     padding-top: 24px;
+                     transition: all 0.3s ease;
+                 }
+                 
+            }
 
     }
 
@@ -1130,6 +1147,7 @@ body {
 
         .game-container {
             padding: 96px 15px;
+            transition: all 0.3s ease;
         }
     }
 
@@ -2147,4 +2165,9 @@ ease-in-out forwards;
   60%  { transform: translateY(-12px); }
   80%  { transform: translateY(0); }
   100%{ transform: translateY(0); }
+}
+
+@keyframes mymove {
+  0% {transform: translateY(0);}
+  100% {transform: translateY(80px);}
 }
