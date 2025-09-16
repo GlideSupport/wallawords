@@ -46,7 +46,7 @@ $ww_blktstimnls_title_tag    = ( isset( $block_fields['ww_blktstimnls_title']['t
 $ww_blktstimnls_spcr_tp      = ( isset( $block_fields['ww_blktstimnls_spcr']['top_spacer'] ) && '' !== $block_fields['ww_blktstimnls_spcr']['top_spacer'] ) ? $block_fields['ww_blktstimnls_spcr']['top_spacer'] : null;
 $ww_blktstimnls_spcr_btm     = ( isset( $block_fields['ww_blktstimnls_spcr']['bottom_spacer'] ) && '' !== $block_fields['ww_blktstimnls_spcr']['bottom_spacer'] ) ? $block_fields['ww_blktstimnls_spcr']['bottom_spacer'] : null;
 $ww_blktstimnls_testimonials = ( isset( $block_fields['ww_blktstimnls_testimonials'] ) && '' !== $block_fields['ww_blktstimnls_testimonials'] ) ? $block_fields['ww_blktstimnls_testimonials'] : null;
-$testi_count = is_array($amp_lp_select_testimnls) ? count($amp_lp_select_testimnls) : 0;
+echo $testi_count = is_array($ww_blktstimnls_testimonials) ? count($ww_blktstimnls_testimonials) : 0;
 
 ?>
 <div id="<?php echo esc_html( $amp_id ); ?>" class="<?php echo esc_html( $amp_align_class . ' ' . $amp_class_name . ' ' . $amp_name ); ?> block-<?php echo esc_html( $block_name ); ?>">
