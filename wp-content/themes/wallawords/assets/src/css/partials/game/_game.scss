@@ -2076,22 +2076,26 @@ body .game-wrapper {
 @keyframes pulseRed {
     0% {
         background-color: #fff;
-        box-shadow: 0 4px 0 rgba(0, 0, 0, 0.2);
+        box-shadow:inset 0 -6px 0 rgba(0, 0, 0, 0.2);
+        border-bottom: 0;
     }
 
     20% {
         background-color: rgba(255, 77, 77, 0.8);
-        box-shadow: 0 4px 0 #b22222;
+        box-shadow: inset 0 -6px 0 #b22222;
+         border-bottom: 0;
     }
 
     80% {
         background-color: rgba(255, 77, 77, 0.8);
-        box-shadow: 0 4px 0 #b22222;
+        box-shadow: inset 0 -6px 0 #b22222;
+         border-bottom: 0;
     }
 
     100% {
         background-color: #fff;
-        box-shadow: 0 4px 0 rgba(0, 0, 0, 0.2);
+         border-bottom: 0;
+        box-shadow: inset 0 -6px 0 rgba(0, 0, 0, 0.2);
     }
 }
 
