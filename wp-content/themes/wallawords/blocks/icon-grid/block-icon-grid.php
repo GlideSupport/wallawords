@@ -56,10 +56,10 @@ $ww_blkicngrd_cntnt_var = ( isset( $block_fields['ww_blkicngrd_cntnt_var'] ) && 
 ?>
 <div id="<?php echo esc_html( $amp_id ); ?>" class="<?php echo esc_html( $amp_align_class . ' ' . $amp_class_name . ' ' . $amp_name ); ?> block-<?php echo esc_html( $block_name ); ?>">
 	<div class="glide-spacer <?php echo esc_html( $ww_blkicngrd_spcr_tp ); ?>"> </div>
-		<?php if ( 'center' === $ww_blkicngrd_cntnt_var ) { ?>
-			<div class="icon-grid">
+		<?php if ( 'center' == $ww_blkicngrd_cntnt_var ) { ?>
+			<div class="icon-grid center-align">
 				<?php if ( $ww_blkicngrd_title || $ww_blkicngrd_text ) { ?>
-					<div class="section-head sh ">
+					<div class="section-head">
 						<?php if ( $ww_blkicngrd_title ) { ?>
 							<div class="section-head__heading ">
 								<<?php echo esc_html( $ww_blkicngrd_title_tag ); ?> class="heading-2"><?php echo html_entity_decode( $ww_blkicngrd_title ); ?><?php echo '</' . esc_html( $ww_blkicngrd_title_tag ) . '>'; ?>
@@ -124,7 +124,7 @@ $ww_blkicngrd_cntnt_var = ( isset( $block_fields['ww_blkicngrd_cntnt_var'] ) && 
 			<?php
 		} else {
 			?>
-			<div class="icon-grid icon-grid-variation center-align">
+			<div class="icon-grid">
 				<?php if ( $ww_blkicngrd_title || $ww_blkicngrd_text ) { ?>
 					<div class="section-head sh">
 						<?php if ( $ww_blkicngrd_title ) { ?>

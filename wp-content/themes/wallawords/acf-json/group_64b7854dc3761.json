@@ -187,12 +187,13 @@
                 "id": ""
             },
             "choices": {
-                "left": "<img src=\"\/wp-content\/themes\/amplify\/assets\/build\/images\/admin\/left.webp\"><br> Left",
-                "center": "<img src=\"\/wp-content\/themes\/amplify\/assets\/build\/images\/admin\/center.webp\"><br> Center"
+                "left": "<img src=\"\/wp-content\/themes\/wallawords\/assets\/src\/images\/block-variations\/icon-grid-left.webp\"><br> Left",
+                "center": "<img src=\"\/wp-content\/themes\/wallawords\/assets\/src\/images\/block-variations\/icon-grid-center.webp\"><br> Center"
             },
             "default_value": "center",
             "return_format": "value",
             "allow_null": 0,
+            "allow_in_bindings": 1,
             "layout": "horizontal"
         },
         {
@@ -360,5 +361,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1733935699
+    "modified": 1758029139
 }
