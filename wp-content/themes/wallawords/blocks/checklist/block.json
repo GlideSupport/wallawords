@@ -3,7 +3,7 @@
 	"title": "Checklist",
 	"description": "A custom checklist block.",
 	"category": "theme-blocks",
-	"icon": "checklist",
+	"icon": "yes-alt",
 	"keywords": ["checklist"],
 	"supports": {
 		"align": true

@@ -3,7 +3,7 @@
 	"title": "Media Alongside Text",
 	"description": "A custom Media Alongside Text block.",
 	"category": "theme-blocks",
-	"icon": "admin-comments",
+	"icon": "text",
 	"keywords": ["media-alongside-text"],
 	"supports": {
 		"align": true

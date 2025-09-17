@@ -31,7 +31,7 @@
                 "class": "",
                 "id": ""
             },
-            "instructions_title": "",
+            "instructions_title": "Use &lt;span&gt; For Color Text &lt;\/span&gt;",
             "instructions_title_tag": "",
             "is_h1": "yes",
             "allow_in_bindings": 1,
@@ -46,7 +46,7 @@
                     "type": "text",
                     "value": null,
                     "menu_order": 0,
-                    "instructions": "",
+                    "instructions": "Use &lt;span&gt; For Color Text &lt;\/span&gt;",
                     "required": "",
                     "id": "",
                     "class": "",
@@ -78,7 +78,7 @@
                     "parent": "",
                     "wrapper": {
                         "width": "30",
-                        "class": "",
+                        "class": "is-padding",
                         "id": ""
                     },
                     "default_value": ""
@@ -219,5 +219,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1757335996
+    "modified": 1758109490
 }

@@ -5,7 +5,7 @@
 	"category": "theme-blocks",
 	"editorScript": ["block-image-gallery","swiper"],
 	"script": ["block-image-gallery","swiper"],
-	"icon": "image-gallery",
+	"icon": "format-gallery",
 	"keywords": ["image","gallery","photos"],
 	"supports": {
 		"align": true
