@@ -114,7 +114,7 @@ if ( 'left' === $bst_var_blk_mat_img_location ) {
 					<?php } ?>
 				<?php } else { ?>
 					<?php if ($modal_video_embed): ?>
-						<div class="iat__image img-cover">
+						<div class="iat__image img-cover video-block">
 							<img src="<?php echo esc_url( $video_poster ); ?>"  alt="<?php echo esc_attr( get_the_title() ); ?> Video Poster"  title="<?php echo esc_attr( get_the_title() ); ?> Video" 
 							loading="lazy"  width="1280" height="720"  />
 
@@ -149,7 +149,7 @@ if ( 'left' === $bst_var_blk_mat_img_location ) {
 								<?php if ( $bst_var_blk_mat_button) { ?>
 								<div class="iat__content--btn">
 									<?php if ( $bst_var_blk_mat_button ) {?>
-										<?php echo build_acf_button( $bst_var_blk_mat_button, 'button has-arrow' ); ?>
+										<?php echo build_acf_button( $bst_var_blk_mat_button, 'site-btn site-secondary-btn' ); ?>
 									<?php } ?>
 								</div>
 							<?php } ?>

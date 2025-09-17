@@ -296,3 +296,43 @@ li.no-icon {
 		order: 2;
 	}
 }
+
+.video-block {
+	position: relative;
+
+	.play-btn {
+		position: absolute;
+		z-index: 66;
+		width: 124px;
+		height: 124px;
+		display: block;
+		z-index: 66;
+		top: 0;
+		margin: auto;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		text-decoration: none;
+		border: 0;
+		background: var(--ww_color_primary);
+		border-radius: 100%;
+
+		&:hover {
+			background: var(--ww_black_1);
+		}
+
+		svg {
+			margin: 0;
+		}
+
+		@media(max-width:1024px) {
+			width: 80px;
+			height: 80px;
+
+			svg {
+				width: 80px;
+				height: 80px;
+			}
+		}
+	}
+}

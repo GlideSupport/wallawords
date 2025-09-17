@@ -77,8 +77,9 @@
         top: 20px;
     }
     &.site-btn-small{ 
-          height: 46px;
-         width: 46px;
+          height:46px;
+         width:46px;
+         padding:0;
     }
 }
 
@@ -190,7 +191,7 @@ body {
  
 
 
-/* Styles for the disabled button */
+/* Styles for the   disabled button */
 button[disabled] {
     background-color: #dddddd;
     border: none;
