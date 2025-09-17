@@ -6,7 +6,7 @@
 	"style": ["file:./team.css"],
 	"editorScript": ["block-team"],
 	"script": ["block-team"],
-	"icon": "team",
+	"icon": "groups",
 	"keywords": ["team","members"],
 	"supports": {
 		"align": true
