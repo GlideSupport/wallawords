@@ -3,7 +3,7 @@
 	"title": "Theme Quote",
 	"description": "A custom block theme quote block.",
 	"category": "theme-blocks",
-	"icon": "theme-quote",
+	"icon": "format-quote",
 	"keywords": ["quote","testimonials"],
 	"supports": {
 		"align": true
