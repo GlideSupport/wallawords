@@ -250,7 +250,7 @@
                 "class": "",
                 "id": ""
             },
-            "message": "<div class=\"upload-instructions\">\r\n\r\n<b>Recommended Size:<\/b> Minimum 356px by 531px (Regular Display) - Maximum 534px by 800px (Retina Display) - (width x height)<br \/>\r\n\r\n<b>Image \/ Icon  Height:<\/b> Height of the image \/ icon  can vary slightly due to aspect ratio, but width of image must meet the recommended size.<br \/>\r\n\r\n<b>Resources:<\/b> Make sure to upload a compressed image in <i>.WEBP<\/i> image format. - <a href=\"https:\/\/image.online-convert.com\/convert-to-webp\" target=\"_blank\">Convert Images to WEBP<\/a> - <a href=\"https:\/\/tinypng.com\/\" target=\"_blank\">Compress WEBP Images<\/a>\r\n\r\n<\/div>",
+            "message": "<div class=\"upload-instructions\">\r\n\r\n<b>Recommended Size:<\/b> Minimum 356px by 531px (Regular Display) - Maximum 534px by 800px (Retina Display) - (width x height)<br \/>\r\n\r\n<b>Resources:<\/b> Make sure to upload a compressed image in <i>.WEBP<\/i> image format. - <a href=\"https:\/\/image.online-convert.com\/convert-to-webp\" target=\"_blank\">Convert Images to WEBP<\/a> - <a href=\"https:\/\/tinypng.com\/\" target=\"_blank\">Compress WEBP Images<\/a>\r\n\r\n<\/div>",
             "new_lines": "wpautop",
             "esc_html": 0
         },
@@ -294,22 +294,6 @@
                 "id": ""
             },
             "return_format": "array"
-        },
-        {
-            "key": "field_64ca5bc8fe3f2",
-            "label": "Link",
-            "name": "ww_blkiat_link",
-            "aria-label": "",
-            "type": "link",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "50",
-                "class": "",
-                "id": ""
-            },
-            "return_format": "array"
         }
     ],
     "location": [
@@ -330,5 +314,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1758104656
+    "modified": 1758105930
 }

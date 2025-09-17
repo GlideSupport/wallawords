@@ -50,7 +50,6 @@ $ww_blkiat_imgpositon = ( isset( $block_fields['ww_blkiat_imgpositon'] ) && '' !
 $ww_blkiat_text       = ( isset( $block_fields['ww_blkiat_text'] ) && '' !== $block_fields['ww_blkiat_text'] ) ? $block_fields['ww_blkiat_text'] : null;
 $ww_blkiat_image      = ( isset( $block_fields['ww_blkiat_image'] ) && '' !== $block_fields['ww_blkiat_image'] ) ? $block_fields['ww_blkiat_image'] : null;
 $ww_blkiat_btn        = ( isset( $block_fields['ww_blkiat_btn'] ) && '' !== $block_fields['ww_blkiat_btn'] ) ? $block_fields['ww_blkiat_btn'] : null;
-$ww_blkiat_link       = ( isset( $block_fields['ww_blkiat_link'] ) && '' !== $block_fields['ww_blkiat_link'] ) ? $block_fields['ww_blkiat_link'] : null;
 
 //$ww_blkiat_dsgnvar    = ( isset( $block_fields['ww_blkiat_dsgnvar'] ) && '' !== $block_fields['ww_blkiat_dsgnvar'] ) ? $block_fields['ww_blkiat_dsgnvar'] : null;
 
@@ -102,21 +101,9 @@ if ( 'left' === $ww_blkiat_imgpositon ) {
 										<?php echo html_entity_decode( $ww_blkiat_text ); ?>
 									</div>
 								<?php } ?>
-								<?php if ( $ww_blkiat_btn || $ww_blkiat_link ) { ?>
-								<div class="iat__content--btn
-									<?php
-									if ( $ww_blkiat_link && ! $ww_blkiat_btn ) {
-										echo 'just-arrow-link';}
-									?>
-								">
-									<?php
-									if ( $ww_blkiat_btn ) {
-										?>
-										<?php echo build_acf_button( $ww_blkiat_btn, 'site-btn site-secondary-btn' ); ?><?php } ?>
-									<?php
-									if ( $ww_blkiat_link ) {
-										?>
-										<?php echo build_acf_button( $ww_blkiat_link, 'text-arrow' ); ?><?php } ?>
+								<?php if ( $ww_blkiat_btn) { ?>
+								<div class="iat__content--btn">
+										<?php echo build_acf_button( $ww_blkiat_btn, 'site-btn site-secondary-btn' ); ?>
 								</div>
 							<?php } ?>
 							</div>
