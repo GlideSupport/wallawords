@@ -2156,12 +2156,14 @@ body .game-wrapper {
 @keyframes snake-draw {
     from {
         stroke-dashoffset: var(--dash-length);
-         filter: drop-shadow(0 0 6px green); 
+         filter:  drop-shadow(0 0 8px rgba(0, 255, 0, 0.7))
+            drop-shadow(0 0 16px rgba(0, 255, 0, 0.5));
     }
 
     to {
         stroke-dashoffset: 0;
-         filter: drop-shadow(0 0 6px green); 
+         filter: drop-shadow(0 0 8px rgba(0, 255, 0, 0.7))
+            drop-shadow(0 0 16px rgba(0, 255, 0, 0.5));
     }
 }
 
