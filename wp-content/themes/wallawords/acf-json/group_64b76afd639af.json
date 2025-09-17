@@ -26,22 +26,7 @@
             "type": "text",
             "instructions": "",
             "required": 0,
-            "conditional_logic": [
-                [
-                    {
-                        "field": "field_64b774987e721",
-                        "operator": "==",
-                        "value": "left"
-                    }
-                ],
-                [
-                    {
-                        "field": "field_64b774987e721",
-                        "operator": "==",
-                        "value": "left"
-                    }
-                ]
-            ],
+            "conditional_logic": 0,
             "wrapper": {
                 "width": "",
                 "class": "",
@@ -49,6 +34,7 @@
             },
             "default_value": "",
             "maxlength": "",
+            "allow_in_bindings": 1,
             "placeholder": "",
             "prepend": "",
             "append": ""
@@ -252,7 +238,7 @@
         },
         {
             "key": "field_64b77ddef2cc3",
-            "label": "Image \/ Icon Upload Instructions",
+            "label": "Image Upload Instructions",
             "name": "",
             "aria-label": "",
             "type": "message",
@@ -264,34 +250,9 @@
                 "class": "",
                 "id": ""
             },
-            "message": "<div class=\"upload-instructions\">\r\n\r\n<b>Recommended Size:<\/b> Minimum 356px by 531px (Regular Display) - Maximum 534px by 800px (Retina Display) - (width x height)<br \/>\r\n\r\n<b>Recommended Size For Icon :<\/b> Minimum 111px by 110px (Regular Display) - Maximum 222px by 220px (Retina Display) - (width x height)<br \/>\r\n\r\n<b>Image \/ Icon  Height:<\/b> Height of the image \/ icon  can vary slightly due to aspect ratio, but width of image must meet the recommended size.<br \/>\r\n\r\n<b>Resources:<\/b> Make sure to upload a compressed image in <i>.WEBP<\/i> image format. - <a href=\"https:\/\/image.online-convert.com\/convert-to-webp\" target=\"_blank\">Convert Images to WEBP<\/a> - <a href=\"https:\/\/tinypng.com\/\" target=\"_blank\">Compress WEBP Images<\/a>\r\n\r\n<\/div>",
+            "message": "<div class=\"upload-instructions\">\r\n\r\n<b>Recommended Size:<\/b> Minimum 356px by 531px (Regular Display) - Maximum 534px by 800px (Retina Display) - (width x height)<br \/>\r\n\r\n<b>Image \/ Icon  Height:<\/b> Height of the image \/ icon  can vary slightly due to aspect ratio, but width of image must meet the recommended size.<br \/>\r\n\r\n<b>Resources:<\/b> Make sure to upload a compressed image in <i>.WEBP<\/i> image format. - <a href=\"https:\/\/image.online-convert.com\/convert-to-webp\" target=\"_blank\">Convert Images to WEBP<\/a> - <a href=\"https:\/\/tinypng.com\/\" target=\"_blank\">Compress WEBP Images<\/a>\r\n\r\n<\/div>",
             "new_lines": "wpautop",
             "esc_html": 0
-        },
-        {
-            "key": "field_64b76e647e71d",
-            "label": "Upload an icon image",
-            "name": "ww_blkiat_imgicn",
-            "aria-label": "",
-            "type": "image",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "33",
-                "class": "",
-                "id": ""
-            },
-            "return_format": "id",
-            "library": "all",
-            "min_width": "",
-            "min_height": "",
-            "min_size": "",
-            "max_width": "",
-            "max_height": "",
-            "max_size": "",
-            "mime_types": "",
-            "preview_size": "admin-square"
         },
         {
             "key": "field_64b76e277e71b",
@@ -369,5 +330,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1733946869
+    "modified": 1758104656
 }

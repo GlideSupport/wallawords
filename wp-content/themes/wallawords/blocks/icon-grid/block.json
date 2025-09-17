@@ -6,7 +6,7 @@
 	"style": ["file:./icon-grid.css"],
 	"editorScript": ["block-icon-grid"],
 	"script": ["block-icon-grid"],
-	"icon": "icon-grid",
+	"icon": "grid-view",
 	"keywords": ["icon","grid"],
 	"supports": {
 		"align": true

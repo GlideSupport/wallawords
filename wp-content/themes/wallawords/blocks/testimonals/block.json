@@ -5,7 +5,7 @@
 	"category": "theme-blocks",
 	"editorScript": ["block-testimonals","swiper"],
 	"script": ["block-testimonals","swiper"],
-	"icon": "testimonals",
+	"icon": "testimonial",
 	"keywords": ["testimonals","quotes"],
 	"supports": {
 		"align": true

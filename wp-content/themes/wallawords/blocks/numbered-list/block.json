@@ -5,7 +5,7 @@
 	"category": "theme-blocks",
 	"editorScript": ["block-numbered-list","swiper"],
 	"script": ["block-numbered-list","swiper"],
-	"icon": "numbered-list",
+	"icon": "editor-ol",
 	"keywords": ["numbered","list"],
 	"supports": {
 		"align": true

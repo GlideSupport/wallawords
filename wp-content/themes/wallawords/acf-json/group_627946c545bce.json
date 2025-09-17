@@ -19,6 +19,27 @@
             "default_value": ""
         },
         {
+            "key": "field_68c97192d465c",
+            "label": "Kicker",
+            "name": "bst_var_blk_mat_kicker",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "allow_in_bindings": 0,
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
             "key": "field_627946dfc50e8",
             "label": "Title",
             "name": "bst_var_blk_mat_title",
@@ -102,27 +123,6 @@
             "open": 0,
             "multi_expand": 0,
             "endpoint": 0
-        },
-        {
-            "key": "field_68c97192d465c",
-            "label": "Kicker",
-            "name": "bst_var_blk_mat_kicker",
-            "aria-label": "",
-            "type": "text",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "maxlength": "",
-            "allow_in_bindings": 0,
-            "placeholder": "",
-            "prepend": "",
-            "append": ""
         },
         {
             "key": "field_62794734c50ea",
@@ -450,5 +450,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1758095786
+    "modified": 1758104379
 }

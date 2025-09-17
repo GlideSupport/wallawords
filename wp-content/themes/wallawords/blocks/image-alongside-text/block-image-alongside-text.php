@@ -48,7 +48,6 @@ $ww_blkiat_spcr_tp    = ( isset( $block_fields['ww_blkiat_spcr']['top_spacer'] )
 $ww_blkiat_spcr_btm   = ( isset( $block_fields['ww_blkiat_spcr']['bottom_spacer'] ) && '' !== $block_fields['ww_blkiat_spcr']['bottom_spacer'] ) ? $block_fields['ww_blkiat_spcr']['bottom_spacer'] : null;
 $ww_blkiat_imgpositon = ( isset( $block_fields['ww_blkiat_imgpositon'] ) && '' !== $block_fields['ww_blkiat_imgpositon'] ) ? $block_fields['ww_blkiat_imgpositon'] : null;
 $ww_blkiat_text       = ( isset( $block_fields['ww_blkiat_text'] ) && '' !== $block_fields['ww_blkiat_text'] ) ? $block_fields['ww_blkiat_text'] : null;
-$ww_blkiat_imgicn     = ( isset( $block_fields['ww_blkiat_imgicn'] ) && '' !== $block_fields['ww_blkiat_imgicn'] ) ? $block_fields['ww_blkiat_imgicn'] : null;
 $ww_blkiat_image      = ( isset( $block_fields['ww_blkiat_image'] ) && '' !== $block_fields['ww_blkiat_image'] ) ? $block_fields['ww_blkiat_image'] : null;
 $ww_blkiat_btn        = ( isset( $block_fields['ww_blkiat_btn'] ) && '' !== $block_fields['ww_blkiat_btn'] ) ? $block_fields['ww_blkiat_btn'] : null;
 $ww_blkiat_link       = ( isset( $block_fields['ww_blkiat_link'] ) && '' !== $block_fields['ww_blkiat_link'] ) ? $block_fields['ww_blkiat_link'] : null;
@@ -67,7 +66,7 @@ if ( 'left' === $ww_blkiat_imgpositon ) {
 	
 		<div class="iat image-alongside-text two-columns <?php echo esc_html( $ww_blkiat_imgpositon ); ?>">
 			<div class="iat__image--area column">
-			<?php if ( $ww_blkiat_image || $ww_blkiat_imgicn ) { ?>
+			<?php if ( $ww_blkiat_image ) { ?>
 						<div class="iat__image img-cover">
 							<?php
 							if ( $ww_blkiat_image ) {
@@ -83,22 +82,6 @@ if ( 'left' === $ww_blkiat_imgpositon ) {
 								);
 							}
 							?>
-								<?php if ( $ww_blkiat_imgicn ) { ?>
-									<div class="iat__icon shield-icon medium">
-										<?php
-											echo wp_get_attachment_image(
-												$ww_blkiat_imgicn,
-												'thumb_300',
-												false,
-												array(
-													'class' => '',
-													'alt' => get_post_meta( $ww_blkiat_imgicn, '_wp_attachment_image_alt', true ),
-													'title' => get_the_title( $ww_blkiat_imgicn ),
-												)
-											);
-										?>
-									</div>
-								<?php } ?>
 						</div>
 					<?php } ?>
 

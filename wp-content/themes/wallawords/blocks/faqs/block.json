@@ -5,7 +5,7 @@
 	"category": "theme-blocks",
 	"editorScript": ["block-faqs"],
 	"script": ["block-faqs"],
-	"icon": "faqs",
+	"icon": "editor-ol",
 	"keywords": ["faqs"],
 	"supports": {
 		"align": true

@@ -3,7 +3,7 @@
 	"title": "Image Alongside Text",
 	"description": "A custom Image Alongside Text block.",
 	"category": "theme-blocks",
-	"icon": "image-alongside-text",
+	"icon": "text",
 	"keywords": ["image","alongside","text"],
 	"supports": {
 		"align": true
