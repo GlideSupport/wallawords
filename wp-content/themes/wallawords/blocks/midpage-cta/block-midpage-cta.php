@@ -49,12 +49,13 @@ $ww_blkmdpg_spcr_btm     = ( isset( $block_fields['ww_blkmdpg_spcr']['bottom_spa
 $ww_blkmdpg_content        = ( isset( $block_fields['ww_blkmdpg_content'] ) && '' !== $block_fields['ww_blkmdpg_content'] ) ? $block_fields['ww_blkmdpg_content']: null;
 $ww_blkmdpg_btn    = ( isset( $block_fields['ww_blkmdpg_btn'] ) && '' !== $block_fields['ww_blkmdpg_btn'] ) ? $block_fields['ww_blkmdpg_btn'] : null;
 $ww_blkmdpg_secondary_btn    = ( isset( $block_fields['ww_blkmdpg_secondary_btn'] ) && '' !== $block_fields['ww_blkmdpg_secondary_btn'] ) ? $block_fields['ww_blkmdpg_secondary_btn'] : null;
+$ww_blkmdpg_button_layout    = ( isset( $block_fields['ww_blkmdpg_button_layout'] ) && '' !== $block_fields['ww_blkmdpg_button_layout'] ) ? $block_fields['ww_blkmdpg_button_layout'] : 'variation-one';
 			
 ?>
 <div id="<?php echo esc_html( $ww_id ); ?>" class="<?php echo esc_html( $ww_align_class . ' ' . $ww_class_name . ' ' . $ww_name ); ?> block-<?php echo esc_html( $block_name ); ?>">
 	<div class="glide-spacer <?php echo esc_html( $ww_blkmdpg_spcr_tp ); ?>"> </div>
 		
-			<div class="mid-page-cta mpc ctn-gradient">
+			<div class="mid-page-cta mpc ctn-gradient <?php echo $ww_blkmdpg_button_layout; ?>">
 				<div class="mpc__content d-flex">
 				<div class="mpc__content--inner">
 					<?php if ( $ww_blkmdpg_title ) { ?>

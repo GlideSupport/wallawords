@@ -87,6 +87,24 @@
             "is_h1": "no"
         },
         {
+            "key": "field_64b7b54b61cc1",
+            "label": "Expand for options",
+            "name": "",
+            "aria-label": "",
+            "type": "accordion",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "open": 1,
+            "multi_expand": 0,
+            "endpoint": 0
+        },
+        {
             "key": "field_6759cb05a1435",
             "label": "Content",
             "name": "ww_blkmdpg_content",
@@ -106,24 +124,6 @@
             "toolbar": "basic",
             "media_upload": 0,
             "delay": 0
-        },
-        {
-            "key": "field_64b7b54b61cc1",
-            "label": "Expand for options",
-            "name": "",
-            "aria-label": "",
-            "type": "accordion",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "open": 1,
-            "multi_expand": 0,
-            "endpoint": 0
         },
         {
             "key": "field_64b7b54b65775",
@@ -194,8 +194,32 @@
             "instructions_bottom": ""
         },
         {
+            "key": "field_68ca98d5daadf",
+            "label": "Button layout",
+            "name": "ww_blkmdpg_button_layout",
+            "aria-label": "",
+            "type": "button_group",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "variation-one": "<img src=\"\/wp-content\/themes\/wallawords\/assets\/src\/images\/block-variations\/variation-one-btn.webp\" width=\"400\" height=\"60\" alt=\"Variation One\">",
+                "variation-two": "<img src=\"\/wp-content\/themes\/wallawords\/assets\/src\/images\/block-variations\/variation-two-btn.webp\" width=\"400\" height=\"60\" alt=\"Variation Two\">"
+            },
+            "default_value": "variation-one",
+            "return_format": "value",
+            "allow_null": 0,
+            "allow_in_bindings": 0,
+            "layout": "horizontal"
+        },
+        {
             "key": "field_64b7b54b7b6b1",
-            "label": "Primary Button",
+            "label": "Button One",
             "name": "ww_blkmdpg_btn",
             "aria-label": "",
             "type": "link",
@@ -212,7 +236,7 @@
         },
         {
             "key": "field_68ca9322e8b95",
-            "label": "Secondary Button",
+            "label": "Button Two",
             "name": "ww_blkmdpg_secondary_btn",
             "aria-label": "",
             "type": "link",
@@ -246,5 +270,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1758106692
+    "modified": 1758108526
 }
