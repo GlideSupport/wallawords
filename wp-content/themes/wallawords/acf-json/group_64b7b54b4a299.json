@@ -195,7 +195,7 @@
         },
         {
             "key": "field_64b7b54b7b6b1",
-            "label": "Button",
+            "label": "Primary Button",
             "name": "ww_blkmdpg_btn",
             "aria-label": "",
             "type": "link",
@@ -207,12 +207,13 @@
                 "class": "",
                 "id": ""
             },
-            "return_format": "array"
+            "return_format": "array",
+            "allow_in_bindings": 1
         },
         {
-            "key": "field_64b7b54b7f2fa",
-            "label": "Link",
-            "name": "ww_blkmdpg_link",
+            "key": "field_68ca9322e8b95",
+            "label": "Secondary Button",
+            "name": "ww_blkmdpg_secondary_btn",
             "aria-label": "",
             "type": "link",
             "instructions": "",
@@ -223,7 +224,8 @@
                 "class": "",
                 "id": ""
             },
-            "return_format": "array"
+            "return_format": "array",
+            "allow_in_bindings": 1
         }
     ],
     "location": [
@@ -244,5 +246,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1733937965
+    "modified": 1758106692
 }

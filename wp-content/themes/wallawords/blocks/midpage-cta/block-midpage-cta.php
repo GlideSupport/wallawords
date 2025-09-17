@@ -46,14 +46,10 @@ $ww_blkmdpg_title        = ( isset( $block_fields['ww_blkmdpg_title']['title'] )
 $ww_blkmdpg_title_tag    = ( isset( $block_fields['ww_blkmdpg_title']['title_tag'] ) && '' !== $block_fields['ww_blkmdpg_title']['title_tag'] ) ? $block_fields['ww_blkmdpg_title']['title_tag'] : null;
 $ww_blkmdpg_spcr_tp      = ( isset( $block_fields['ww_blkmdpg_spcr']['top_spacer'] ) && '' !== $block_fields['ww_blkmdpg_spcr']['top_spacer'] ) ? $block_fields['ww_blkmdpg_spcr']['top_spacer'] : null;
 $ww_blkmdpg_spcr_btm     = ( isset( $block_fields['ww_blkmdpg_spcr']['bottom_spacer'] ) && '' !== $block_fields['ww_blkmdpg_spcr']['bottom_spacer'] ) ? $block_fields['ww_blkmdpg_spcr']['bottom_spacer'] : null;
-
 $ww_blkmdpg_content        = ( isset( $block_fields['ww_blkmdpg_content'] ) && '' !== $block_fields['ww_blkmdpg_content'] ) ? $block_fields['ww_blkmdpg_content']: null;
-
 $ww_blkmdpg_btn    = ( isset( $block_fields['ww_blkmdpg_btn'] ) && '' !== $block_fields['ww_blkmdpg_btn'] ) ? $block_fields['ww_blkmdpg_btn'] : null;
-$ww_blkmdpg_link   = ( isset( $block_fields['ww_blkmdpg_link'] ) && '' !== $block_fields['ww_blkmdpg_link'] ) ? $block_fields['ww_blkmdpg_link'] : null;
+$ww_blkmdpg_secondary_btn    = ( isset( $block_fields['ww_blkmdpg_secondary_btn'] ) && '' !== $block_fields['ww_blkmdpg_secondary_btn'] ) ? $block_fields['ww_blkmdpg_secondary_btn'] : null;
 			
-//$ww_blkmdpg_dsgn_variton = ( isset( $block_fields['ww_blkmdpg_dsgn_variton'] ) && '' !== $block_fields['ww_blkmdpg_dsgn_variton'] ) ? $block_fields['ww_blkmdpg_dsgn_variton'] : null;
-
 ?>
 <div id="<?php echo esc_html( $ww_id ); ?>" class="<?php echo esc_html( $ww_align_class . ' ' . $ww_class_name . ' ' . $ww_name ); ?> block-<?php echo esc_html( $block_name ); ?>">
 	<div class="glide-spacer <?php echo esc_html( $ww_blkmdpg_spcr_tp ); ?>"> </div>
@@ -62,35 +58,28 @@ $ww_blkmdpg_link   = ( isset( $block_fields['ww_blkmdpg_link'] ) && '' !== $bloc
 				<div class="mpc__content d-flex">
 				<div class="mpc__content--inner">
 					<?php if ( $ww_blkmdpg_title ) { ?>
-						
 							<?php if ( $ww_blkmdpg_title ) { ?>
 							<div class="mpc__heading">
 								<<?php echo esc_html( $ww_blkmdpg_title_tag ); ?> class="heading-1"><?php echo html_entity_decode( $ww_blkmdpg_title ); ?><?php echo '</' . esc_html( $ww_blkmdpg_title_tag ) . '>'; ?>
 							</div>
 						<?php } ?>
 						<div class="mpc__content--text">
-						<?php if($ww_blkmdpg_content) {
-							echo html_entity_decode($ww_blkmdpg_content);
-						}?>
+							<?php if($ww_blkmdpg_content) { echo html_entity_decode($ww_blkmdpg_content); }?>
 						</div>
-						
 					<?php } ?>
 					
-					<?php if ( $ww_blkmdpg_btn || $ww_blkmdpg_link ) { ?>
+					<?php if ( $ww_blkmdpg_btn || $ww_blkmdpg_secondary_btn) { ?>
 						<div class="mpc__btns">
-							<?php
-							if ( $ww_blkmdpg_btn ) {
-								?>
-								<?php echo build_acf_button( $ww_blkmdpg_btn, 'site-btn site-arrow-btn-style' ); ?><?php } ?>
-							<?php
-							if ( $ww_blkmdpg_link ) {
-								?>
-								<?php echo build_acf_button( $ww_blkmdpg_link, 'site-btn' ); ?><?php } ?>
+							<?php if ( $ww_blkmdpg_btn ) { ?>
+								<?php echo build_acf_button( $ww_blkmdpg_btn, 'site-btn' ); ?>
+							<?php } ?>
+							<?php if ( $ww_blkmdpg_secondary_btn ) { ?>
+								<?php echo build_acf_button( $ww_blkmdpg_secondary_btn, 'site-btn site-secondary-btn' ); ?>
+							<?php } ?>
 						</div>
 					<?php } ?>
 					</div>
 			</div>
 		</div>
-
 		<div class="glide-spacer <?php echo esc_html( $ww_blkmdpg_spcr_btm ); ?>"> </div>
 </div>
