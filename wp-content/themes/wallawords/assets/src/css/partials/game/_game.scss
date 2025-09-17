@@ -673,8 +673,7 @@ body {
         }
 
         #share-button,
-        #play-game,
-        #play-button {
+        #play-game {
             box-shadow: 0px 0px 40px 0 rgba(43, 191, 28, 0.50);
             //box-shadow: 0px -2px 6px 0px rgba(43, 190, 31, 0.50) inset, 0px 0px 40px -40px rgba(43, 191, 28, 0.50);
 
@@ -1199,15 +1198,6 @@ body {
     }
 
 
-    #play-button {
-        transition: box-shadow 0.3s, color 0.3s !important;
-        padding: 15px 42px;
-        box-shadow: 0px 0px 40px 0 rgba(43, 191, 28, 0.5);
-
-        &:hover {
-            box-shadow: none;
-        }
-    }
 
     .hidden {
         display: none;
@@ -1865,13 +1855,6 @@ body {
             }
         }
 
-        #play-button {
-            color: var(--ww_dark);
-
-            &:hover {
-                color: var(--ww_dark);
-            }
-        }
 
         .title-screen p,
         .title-screen h1,
