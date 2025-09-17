@@ -1,0 +1,214 @@
+@mixin site-btn-style {
+    background: var(--ww_theme_btn_gradient);
+    border: none;
+    border-radius: 30px;
+    box-sizing: border-box;
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    text-decoration: none;
+    width: -moz-fit-content;
+    width: fit-content;
+    color: var(--ww_white);
+    flex: 1 1 100%;
+    @include font(rubik, med);
+    font-size: 18px;
+    letter-spacing: -.18px;
+    line-height: 135%;
+    padding: 15px 48px;
+    text-align: center;
+    transition: box-shadow .3s, color .3s;
+    box-shadow: 0 0 40px 0 rgba(43,191,28,.5);
+  //  box-shadow: 0 -2px 6px 0 rgba(43, 190, 31, 0.50) inset, 0 0 40px -40px rgba(43, 191, 28, 0.50);
+
+
+    &:hover {
+        box-shadow: none;
+        color: var(--ww_white);
+        background: var(--ww_theme_btn_gradient_hover);
+    }
+}
+
+
+
+
+@mixin site-arrow-btn-style {
+    padding: 15px 73px 15px 48px;
+
+    &:after {
+        background-image: url(../images/button-arrow.svg);
+        background-repeat: no-repeat;
+        background-size: 16px 16px;
+        width: 16px;
+        height: 16px;
+        content: "";
+        position: absolute;
+        right: 24px;
+        top: 20px;
+    }
+
+}
+
+
+@mixin site-only-arrow-btn-style {
+    font-size: 0;
+    border-radius: 100px;
+    padding: 0;
+    height: 54px;
+    width: 54px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &:after {
+        background-image: url(../images/button-arrow.svg);
+        background-repeat: no-repeat;
+        background-size: 16px 16px;
+        width: 16px;
+        height: 16px;
+        content: "";
+        right: 24px;
+        top: 20px;
+    }
+}
+
+
+
+
+
+@mixin site-secondary-btn {
+    background: var(--ww_white_3);
+    box-shadow: none;
+
+    &:hover {
+        background: var(--ww_white);
+        color: var(--ww_color_background);
+    }
+     &.site-only-arrow-btn-style ,
+    &.site-arrow-btn-style {
+        &:hover {
+            &:after {
+                filter: brightness(0) saturate(100%) invert(0%) sepia(0%) saturate(7500%) hue-rotate(327deg) brightness(96%) contrast(104%);
+            }
+        }
+    }
+}
+
+@mixin site-btn-small{
+    padding: 11px 20px;
+}
+
+
+@mixin site-arrow-btn-small{
+    padding: 11px 46px 11px 20px;
+    &::after{
+         top:16px;
+    }
+}
+
+@mixin site-only-arrow-btn-small{
+       height: 46px;
+    width: 46px;
+}
+@mixin site-text-btn{
+        @include font(rubik, med);
+    font-size: 18px;
+    letter-spacing: -.18px;
+    text-decoration: underline;
+        text-underline-offset: 8px;
+    border: 0;
+     color:var(--ww_white);
+     cursor: pointer;
+    text-decoration-thickness: 2px;
+    &:hover{
+         color:var(--ww_color_primary);
+    }
+     
+    }
+
+body {
+
+    .site-btn {
+        @include site-btn-style;
+
+       &.site-arrow-btn-style {
+            @include site-arrow-btn-style;
+        }
+
+        &.site-only-arrow-btn-style {
+            @include site-only-arrow-btn-style;
+        }
+
+       &.site-secondary-btn {
+            @include site-secondary-btn;
+        }
+           &.site-btn-small {
+            @include site-btn-small;
+        }
+           &.site-arrow-btn-small {
+            @include site-arrow-btn-small;
+        }
+           &.site-only-arrow-btn-small {
+            @include site-only-arrow-btn-small;
+        }
+    
+    }
+    .site-btn-only-link{
+         @include site-text-btn;
+    }
+
+    // Backend Buttons - Use the Same Classname which used in Frontend
+    .wp-block-button {
+        .wp-block-button__link {
+            @include site-btn-style;
+        }
+
+        &.is-style-site-border-btn {
+            .wp-block-button__link {
+                @include site-arrow-btn-style;
+            }
+        }
+
+        &.is-style-site-secondary-btn {
+            .wp-block-button__link {
+                @include site-secondary-btn;
+            }
+        }
+
+        &.is-style-site-text-btn {
+            .wp-block-button__link {
+                @include site-text-btn;
+            }
+        }
+
+        &.is-style-site-arrow-btn {
+            .wp-block-button__link {
+               @include site-arrow-btn-style;
+            }
+        }
+    }
+}
+
+
+
+ 
+
+
+/* Styles for the disabled button */
+button[disabled] {
+    background-color: #dddddd;
+    border: none;
+    color: #999999;
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+button[disabled]:hover {
+    background-color: #dddddd;
+}
+
+.two-btn-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+}
