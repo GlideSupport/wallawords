@@ -485,7 +485,7 @@ body {
 
             .content {
                 width: 100%;
-                padding: 0 24px;
+                padding:0;
                 transition: opacity 0.5s ease-in-out;
 
                 @media(max-width:767px) {
@@ -542,6 +542,7 @@ body {
             flex-direction: column;
             align-items: center;
             gap: 15px;
+            margin-top: 29px;
         }
 
         &.scrolled {
@@ -1144,7 +1145,7 @@ body {
         overflow: hidden;
 
         .game-container {
-            padding: 96px 15px;
+            padding: 96px  24px;
             transition: all 0.3s ease;
         }
     }
@@ -2158,11 +2159,13 @@ body .game-wrapper {
 
 @keyframes snake-draw {
     from {
-        stroke-dashoffset: var(--dash-length)
+        stroke-dashoffset: var(--dash-length);
+         filter: drop-shadow(0 0 6px green); 
     }
 
     to {
-        stroke-dashoffset: 0
+        stroke-dashoffset: 0;
+         filter: drop-shadow(0 0 6px green); 
     }
 }
 
