@@ -115,15 +115,16 @@
 @mixin site-text-btn{
         @include font(rubik, med);
     font-size: 18px;
+    line-height: 135%;
     letter-spacing: -.18px;
     text-decoration: underline;
-        text-underline-offset: 8px;
+        text-underline-offset: 4.14px;
     border: 0;
-     color:var(--ww_white);
+     color:var(--ww_color_primary);
      cursor: pointer;
-    text-decoration-thickness: 2px;
+    text-decoration-thickness: 1.08px;
     &:hover{
-         color:var(--ww_color_primary);
+         color:var(--ww_white);
     }
      
     }
