@@ -264,14 +264,13 @@
                     "choices": {
                         "default": "Default",
                         "has-arrow": "Has Arrow",
-                        "just-arrow-small": "Just Arrow Small",
-                        "has-icon": "Has Icon",
-                        "text-arrow": "Text Arrow"
+                        "just-arrow": "Just Arrow"
                     },
                     "default_value": "default",
                     "return_format": "value",
                     "allow_null": 0,
                     "other_choice": 0,
+                    "allow_in_bindings": 1,
                     "layout": "horizontal",
                     "save_other_choice": 0,
                     "parent_repeater": "field_611938c557c59"
@@ -356,5 +355,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1758101774
+    "modified": 1758104065
 }

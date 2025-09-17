@@ -82,18 +82,19 @@ if ( 'single' === $ww_blk_btn_variation ) {
 } else {
 	if ( $ww_blk_buttons ) {
 		foreach ( $ww_blk_buttons as $amp_button ) {
-			$amp_button_link  = $amp_button['site-btn'];
+			$amp_button_link  = $amp_button['button']; 
 			$amp_button_style = $amp_button['style'];
 
 			if ( 'default' === $amp_button_style ) {
-				echo build_acf_button( $amp_button_link, 'site-btn ' .' '. $ww_blk_btn_button_style .' '. $ww_blk_button_size );
+				echo build_acf_button( $amp_button_link, 'site-btn ' . $ww_blk_btn_button_style . ' ' . $ww_blk_button_size );
 			} elseif ( 'has-arrow' === $amp_button_style ) {
-				echo build_acf_button( $amp_button_link, 'site-btn site-arrow-btn-style ' .' '. $ww_blk_btn_button_style .' '. $ww_blk_button_size );
+				echo build_acf_button( $amp_button_link, 'site-btn site-arrow-btn-style ' . $ww_blk_btn_button_style . ' ' . $ww_blk_button_size );
 			} elseif ( 'just-arrow' === $amp_button_style ) {
-				echo build_acf_button( $amp_button_link, 'site-btn site-only-arrow-btn-style ' .' '. $ww_blk_btn_button_style .' '. $ww_blk_button_size );
+				echo build_acf_button( $amp_button_link, 'site-btn site-only-arrow-btn-style ' . $ww_blk_btn_button_style . ' ' . $ww_blk_button_size );
 			}
 		}
 	}
+
 }
 ?>
 
