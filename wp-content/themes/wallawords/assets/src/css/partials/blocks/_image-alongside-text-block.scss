@@ -314,15 +314,24 @@ li.no-icon {
 		bottom: 0;
 		text-decoration: none;
 		border: 0;
-		background: var(--ww_color_primary);
+    overflow: hidden;
 		border-radius: 100%;
-
-		&:hover {
-			background: var(--ww_black_1);
-		}
 
 		svg {
 			margin: 0;
+			circle{
+			 fill:	var(--ww_color_primary); 
+			 fill-opacity: 1;
+			}
+		}
+		&:hover{
+			 	svg {
+			margin: 0;
+			circle{
+			 fill:	var(--ww_black_1); 
+			  fill-opacity: 1;
+			}
+		}
 		}
 
 		@media(max-width:1024px) {

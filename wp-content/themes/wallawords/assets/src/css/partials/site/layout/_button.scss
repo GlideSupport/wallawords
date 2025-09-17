@@ -16,6 +16,7 @@
     letter-spacing: -.18px;
     line-height: 135%;
     padding: 15px 48px;
+     flex: 0 0 auto;
     text-align: center;
     transition: box-shadow .3s, color .3s;
     box-shadow: 0 0 40px 0 rgba(43,191,28,.5);
@@ -208,4 +209,38 @@ button[disabled]:hover {
     display: flex;
     flex-wrap: wrap;
     gap: 15px;
+}
+
+
+.multuple-site-btn-default{
+     display: flex;
+     flex-direction: column;
+     justify-content: center;
+     row-gap: 15px;
+}
+
+.center-align{
+     .multuple-site-btn-default{
+         align-items: center;
+     }
+}
+.right-align{
+     .multuple-site-btn-default{
+       align-items: end;
+     }
+}
+
+.multiple-site-btn-small{
+     gap: 15px;
+}
+
+.center-align{
+     .multiple-site-btn-small{
+        justify-content: center;
+     }
+}
+.right-align{
+     .multiple-site-btn-small{
+       justify-content: flex-end;
+     }
 }
