@@ -28,7 +28,7 @@ $bst_var_tmp_def_button = $bst_fields['bst_var_tmp_def_button'] ?? null;
 				<div class="banner-text">
 					<h1><?php echo html_entity_decode( $bst_var_tmp_def_title ); ?></h1>
 					<?php if (!empty($bst_var_tmp_def_text)) : ?><?php echo html_entity_decode($bst_var_tmp_def_text); ?><?php endif; ?>
-					<?php if (!empty($bst_var_tmp_def_button)) : ?><div class="block-btn"><?php echo BaseTheme::button($bst_var_tmp_def_button, 'button'); ?></div><?php endif; ?>
+					<?php if (!empty($bst_var_tmp_def_button)) : ?><div class="block-btn"><?php echo BaseTheme::button($bst_var_tmp_def_button, 'site-btn'); ?></div><?php endif; ?>
 				</div>
 			</div>
 		</div>

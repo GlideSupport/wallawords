@@ -72,30 +72,30 @@ if ( 'single' === $ww_blk_btn_variation ) {
 <?php
 if ( 'single' === $ww_blk_btn_variation ) {
 	if ( 'default' === $ww_blk_btn_style ) {
-		echo build_acf_button( $ww_blk_button, 'button ' . $ww_blk_btn_button_style );
+		echo build_acf_button( $ww_blk_button, 'site-btn' . $ww_blk_btn_button_style );
 	} elseif ( 'has-arrow' === $ww_blk_btn_style ) {
-		echo build_acf_button( $ww_blk_button, 'button has-arrow ' . $ww_blk_btn_button_style );
+		echo build_acf_button( $ww_blk_button, 'site-btn  has-arrow ' . $ww_blk_btn_button_style );
 	} elseif ( 'just-arrow small' === $ww_blk_btn_style ) {
 		echo build_acf_button( $ww_blk_button, 'just-arrow small ' . $ww_blk_btn_button_style );
 	} elseif ( 'has-icon' === $ww_blk_btn_style ) {
-		echo build_acf_button( $ww_blk_button, 'button has-icon ' . $ww_blk_btn_button_style );
+		echo build_acf_button( $ww_blk_button, 'site-btn  has-icon ' . $ww_blk_btn_button_style );
 	} elseif ( 'text-arrow' === $ww_blk_btn_style ) {
 		echo build_acf_button( $ww_blk_button, 'text-arrow ' . $ww_blk_btn_button_style );
 	}
 } else {
 	if ( $ww_blk_buttons ) {
 		foreach ( $ww_blk_buttons as $amp_button ) {
-			$amp_button_link  = $amp_button['button'];
+			$amp_button_link  = $amp_button['site-btn'];
 			$amp_button_style = $amp_button['style'];
 
 			if ( 'default' === $amp_button_style ) {
-				echo build_acf_button( $amp_button_link, 'button ' . $ww_blk_btn_button_style );
+				echo build_acf_button( $amp_button_link, 'site-btn ' . $ww_blk_btn_button_style );
 			} elseif ( 'has-arrow' === $amp_button_style ) {
-				echo build_acf_button( $amp_button_link, 'button has-arrow ' . $ww_blk_btn_button_style );
+				echo build_acf_button( $amp_button_link, 'site-btn  has-arrow ' . $ww_blk_btn_button_style );
 			} elseif ( 'just-arrow small' === $amp_button_style ) {
 				echo build_acf_button( $amp_button_link, 'just-arrow small ' . $ww_blk_btn_button_style );
 			} elseif ( 'has-icon' === $amp_button_style ) {
-				echo build_acf_button( $amp_button_link, 'button has-icon ' . $ww_blk_btn_button_style );
+				echo build_acf_button( $amp_button_link, 'site-btn  has-icon ' . $ww_blk_btn_button_style );
 			} elseif ( 'text-arrow' === $amp_button_style ) {
 				echo build_acf_button( $amp_button_link, 'text-arrow ' . $ww_blk_btn_button_style );
 			}
