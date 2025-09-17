@@ -261,57 +261,6 @@
 	@include font(inter, bold);
 }
 
-a.button,
-a.button:visited,
-span.button,
-.gform_button,
-.is-style-mycustomstyle .wp-element-button {
-	background: var(--ww_theme_btn_gradient);
-	border: none;
-	border-radius: 300px;
-	box-sizing: border-box;
-	cursor: pointer;
-	display: inline-block;
-	position: relative;
-	text-decoration: none;
-	width: -moz-fit-content;
-	width: fit-content;
-	color: #fff;
-	flex: 1 1 100%;
-	@include font(rubik, med);
-	font-size: 18px;
-	font-weight: 500;
-	letter-spacing: -.18px;
-	line-height: 135%;
-	padding: 15px 48px;
-	text-align: center;
-	transition: box-shadow .3s, color .3s !important;
-	box-shadow: 0 0 40px 0 rgba(43, 191, 28, .5);
-
-	&:last-child {
-		margin-right: 0;
-	}
-
-	/*
-	&:hover {
-		background: var(--ww_theme_btn_bgcolor_hover);
-		border: none;
-		color: var(--ww_theme_btn_color_hover);
-		box-shadow: none;
-	}
-
-	*/
-
-	&:hover {
-		box-shadow: none !important;
-		color: #fff;
-	}
-
-	&.outline-btn {
-		background: transparent;
-		color: var(--ww_theme_btn_color_hover);
-	}
-}
 
 a.wp-block-button__link,
 a.wp-block-button__link:visited {

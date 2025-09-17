@@ -264,6 +264,7 @@
 	--ww_white: #ffffff;
 	--ww_white_1: #f1f1f1;
 	--ww_white_2: #f1e9e9;
+	--ww_white_3: rgba(255, 255, 255, 0.10);
 
 	// Theme Colors
 	--ww_gray: #e0e0e0;
@@ -431,6 +432,8 @@
 	--ww_theme_btn_border_color: var(--ww_button_border_color);
 	--ww_theme_btn_border_color_hover: var(--ww_button_border_color_hover);
 	--ww_theme_btn_gradient: linear-gradient(88deg, #2BC016 0.88%, #26A96C 99.12%);
+	--ww_theme_btn_gradient_hover:linear-gradient(224deg, rgba(255, 255, 255, 0.20) 0%, rgba(255, 255, 255, 0.00) 72.49%), #29B443;
+
 
 	// --ww_wp_btn_color: var(--ww_white_text);
 	// --ww_wp_btn_bgcolor: var(--ww_button_bg);

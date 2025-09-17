@@ -75,7 +75,7 @@ $ww_hero_bg_image = $bst_block_fields['ww_hero_bg_image'] ?? null;
 
 						<?php if (!empty($ww_hero_button)) : ?>
 							<div class="block-btn">
-								<?php echo BaseTheme::button($ww_hero_button, 'button'); ?>
+								<?php echo BaseTheme::button($ww_hero_button, 'site-btn'); ?>
 							</div>
 						<?php endif; ?>
 					</div>
@@ -105,7 +105,7 @@ $ww_hero_bg_image = $bst_block_fields['ww_hero_bg_image'] ?? null;
 
 							<?php if (!empty($ww_hero_button)) : ?>
 								<div class="block-btn">
-									<?php echo BaseTheme::button($ww_hero_button, 'button'); ?>
+									<?php echo BaseTheme::button($ww_hero_button, 'site-btn'); ?>
 								</div>
 							<?php endif; ?>
 						</div>

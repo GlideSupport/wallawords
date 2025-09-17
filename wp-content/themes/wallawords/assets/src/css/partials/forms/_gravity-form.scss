@@ -70,7 +70,7 @@ button {
 		}
 	}
 }
-
+ 
 .gform_fileupload_rules {
 	font-size: 90%;
 	color: var(--ww_fileupload_rule_color);
@@ -295,5 +295,47 @@ font-size: .78rem;
 .hidden_label {
 	label {
 		display: none;
+	}
+}
+body {
+	.gform_wrapper {
+		form {
+
+			.gform-footer {
+
+				.gform_button,
+				button,
+				input[type="submit"],
+				input[type="button"] {
+					background: var(--ww_theme_btn_gradient);
+					border: none;
+					border-radius: 30px;
+					box-sizing: border-box;
+					cursor: pointer;
+					display: inline-block;
+					position: relative;
+					text-decoration: none;
+					width: -moz-fit-content;
+					width: fit-content;
+					color: var(--ww_white);
+					flex: 1 1 100%;
+					@include font(rubik, med);
+					font-size: 18px;
+					letter-spacing: -.18px;
+					line-height: 135%;
+					padding: 15px 48px;
+					text-align: center;
+					transition: box-shadow .3s, color .3s;
+					box-shadow: 0 0 40px 0 rgba(43, 191, 28, .5);
+					//  box-shadow: 0 -2px 6px 0 rgba(43, 190, 31, 0.50) inset, 0 0 40px -40px rgba(43, 191, 28, 0.50);
+
+					&:hover {
+						box-shadow: none;
+						color: var(--ww_white);
+						background: var(--ww_theme_btn_gradient_hover);
+					}
+				}
+			}
+		}
 	}
 }

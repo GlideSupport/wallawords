@@ -337,8 +337,8 @@ $page_template = basename(get_page_template());
                     <?php endforeach;?>
 
                     <div class="button-container flex-column-button">
-                        <a class="button">Start Playing</a>
-                        <a id="play-button" class="button">Skip to Today's Puzzle</a>
+                        <a class="site-btn">Start Playing</a>
+                        <a id="play-button" class="site-btn-only-link">Skip to Today's Puzzle</a>
                     </div>
               
 
