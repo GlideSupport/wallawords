@@ -104,6 +104,27 @@
             "endpoint": 0
         },
         {
+            "key": "field_68c97192d465c",
+            "label": "Kicker",
+            "name": "bst_var_blk_mat_kicker",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "allow_in_bindings": 0,
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
             "key": "field_62794734c50ea",
             "label": "Text",
             "name": "bst_var_blk_mat_text",
@@ -141,29 +162,6 @@
             "return_format": "array"
         },
         {
-            "key": "field_65254d0d506e8",
-            "label": "Media Type",
-            "name": "bst_var_blk_mat_mediatype",
-            "aria-label": "",
-            "type": "button_group",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "50",
-                "class": "",
-                "id": ""
-            },
-            "choices": {
-                "image": "image",
-                "video": "video"
-            },
-            "default_value": "",
-            "return_format": "value",
-            "allow_null": 0,
-            "layout": "horizontal"
-        },
-        {
             "key": "field_62794da70c37b",
             "label": "Image Location",
             "name": "bst_var_blk_mat_img_location",
@@ -187,30 +185,28 @@
             "layout": "horizontal"
         },
         {
-            "key": "field_62794d860c37a",
-            "label": "Image Upload Instructions",
-            "name": "",
+            "key": "field_65254d0d506e8",
+            "label": "Media Type",
+            "name": "bst_var_blk_mat_mediatype",
             "aria-label": "",
-            "type": "message",
+            "type": "button_group",
             "instructions": "",
             "required": 0,
-            "conditional_logic": [
-                [
-                    {
-                        "field": "field_65254d0d506e8",
-                        "operator": "==",
-                        "value": "image"
-                    }
-                ]
-            ],
+            "conditional_logic": 0,
             "wrapper": {
-                "width": "",
+                "width": "50",
                 "class": "",
                 "id": ""
             },
-            "message": "<div class=\"upload-instructions\">\r\n\r\n<b>Recommended Size:<\/b> Minimum 580px by 620px (Regular Display) - Maximum 870px by 930px (Retina Display) - (width x height)<br \/>\r\n\r\n<b>Image Height:<\/b> Height of the image can vary slightly due to aspect ratio, but width of image must meet the recommended size.<br \/>\r\n\r\n<b>Resources:<\/b> Make sure to upload a compressed image in <i>.WEBP<\/i> image format. - <a href=\"https:\/\/image.online-convert.com\/convert-to-webp\" target=\"_blank\">Convert Images to WEBP<\/a> - <a href=\"https:\/\/tinypng.com\/\" target=\"_blank\">Compress WEBP Images<\/a>\r\n\r\n<\/div>",
-            "new_lines": "wpautop",
-            "esc_html": 0
+            "choices": {
+                "image": "Image",
+                "video": "Video"
+            },
+            "default_value": "",
+            "return_format": "value",
+            "allow_null": 0,
+            "allow_in_bindings": 1,
+            "layout": "horizontal"
         },
         {
             "key": "field_62794780c50ec",
@@ -270,96 +266,20 @@
             "layout": "block",
             "sub_fields": [
                 {
-                    "key": "field_65254dd44eb44",
-                    "label": "Video Type",
-                    "name": "video_type",
-                    "aria-label": "",
-                    "type": "button_group",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "50",
-                        "class": "",
-                        "id": ""
-                    },
-                    "choices": {
-                        "file": "File",
-                        "url": "Url"
-                    },
-                    "default_value": "",
-                    "return_format": "value",
-                    "allow_null": 0,
-                    "layout": "horizontal"
-                },
-                {
-                    "key": "field_65254d8cc90d4",
-                    "label": "Video",
-                    "name": "video_file",
-                    "aria-label": "",
-                    "type": "file",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": [
-                        [
-                            {
-                                "field": "field_65254dd44eb44",
-                                "operator": "==",
-                                "value": "file"
-                            }
-                        ]
-                    ],
-                    "wrapper": {
-                        "width": "50",
-                        "class": "",
-                        "id": ""
-                    },
-                    "return_format": "array",
-                    "library": "all",
-                    "min_size": "",
-                    "max_size": "",
-                    "mime_types": ".mp4,.mkv"
-                },
-                {
-                    "key": "field_65254e4b3cd35",
-                    "label": "Video",
-                    "name": "video_url",
-                    "aria-label": "",
-                    "type": "url",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": [
-                        [
-                            {
-                                "field": "field_65254dd44eb44",
-                                "operator": "==",
-                                "value": "url"
-                            }
-                        ]
-                    ],
-                    "wrapper": {
-                        "width": "50",
-                        "class": "",
-                        "id": ""
-                    },
-                    "default_value": "",
-                    "placeholder": ""
-                },
-                {
-                    "key": "field_65254da1c90d5",
-                    "label": "Thumbnail",
-                    "name": "thumbnail",
+                    "key": "field_68ca667c39e33",
+                    "label": "Video Poster",
+                    "name": "video_poster",
                     "aria-label": "",
                     "type": "image",
                     "instructions": "",
                     "required": 0,
                     "conditional_logic": 0,
                     "wrapper": {
-                        "width": "50",
+                        "width": "",
                         "class": "",
                         "id": ""
                     },
-                    "return_format": "id",
+                    "return_format": "url",
                     "library": "all",
                     "min_width": "",
                     "min_height": "",
@@ -368,29 +288,148 @@
                     "max_height": "",
                     "max_size": "",
                     "mime_types": "",
-                    "preview_size": "thumbnail"
+                    "allow_in_bindings": 0,
+                    "preview_size": "medium"
                 },
                 {
-                    "key": "field_65254e975a918",
-                    "label": "Open in Popup",
-                    "name": "open_in_popup",
+                    "key": "field_68ca60311ca55",
+                    "label": "Choose Video Type",
+                    "name": "choose_video_type",
                     "aria-label": "",
-                    "type": "true_false",
+                    "type": "button_group",
                     "instructions": "",
                     "required": 0,
                     "conditional_logic": 0,
                     "wrapper": {
-                        "width": "50",
+                        "width": "",
                         "class": "",
                         "id": ""
                     },
-                    "message": "",
-                    "default_value": 0,
-                    "ui_on_text": "",
-                    "ui_off_text": "",
-                    "ui": 1
+                    "choices": {
+                        "youtube": "Youtube",
+                        "vimeo": "Vimeo",
+                        "Upload": "Upload Video File"
+                    },
+                    "default_value": "",
+                    "return_format": "value",
+                    "allow_null": 0,
+                    "allow_in_bindings": 0,
+                    "layout": "horizontal"
+                },
+                {
+                    "key": "field_68ca60581ca56",
+                    "label": "Youtube Video Embed ID",
+                    "name": "youtube_video_embed_id",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "<strong>Add the video ID of the YouTube video<\/strong>",
+                    "required": 0,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_68ca60311ca55",
+                                "operator": "==",
+                                "value": "youtube"
+                            }
+                        ]
+                    ],
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 1,
+                    "placeholder": "",
+                    "prepend": "https:\/\/www.youtube.com\/embed\/",
+                    "append": ""
+                },
+                {
+                    "key": "field_68ca60851ca57",
+                    "label": "Vimeo Video Embed ID",
+                    "name": "vimeo_video_embed_id",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "<strong>Add the video ID of the Vimeo video<\/strong>",
+                    "required": 0,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_68ca60311ca55",
+                                "operator": "==",
+                                "value": "vimeo"
+                            }
+                        ]
+                    ],
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 1,
+                    "placeholder": "",
+                    "prepend": "https:\/\/player.vimeo.com\/video\/",
+                    "append": ""
+                },
+                {
+                    "key": "field_68ca609f1ca58",
+                    "label": "Video File",
+                    "name": "video_file",
+                    "aria-label": "",
+                    "type": "file",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_68ca60311ca55",
+                                "operator": "==",
+                                "value": "Upload"
+                            }
+                        ]
+                    ],
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "return_format": "url",
+                    "library": "all",
+                    "min_size": "",
+                    "max_size": "",
+                    "mime_types": "mp4",
+                    "allow_in_bindings": 0
                 }
             ]
+        },
+        {
+            "key": "field_62794d860c37a",
+            "label": "Image Upload Instructions",
+            "name": "",
+            "aria-label": "",
+            "type": "message",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_65254d0d506e8",
+                        "operator": "==",
+                        "value": "image"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "<div class=\"upload-instructions\">\r\n\r\n<b>Recommended Size:<\/b> Minimum 580px by 620px (Regular Display) - Maximum 870px by 930px (Retina Display) - (width x height)<br \/>\r\n\r\n<b>Image Height:<\/b> Height of the image can vary slightly due to aspect ratio, but width of image must meet the recommended size.<br \/>\r\n\r\n<b>Resources:<\/b> Make sure to upload a compressed image in <i>.WEBP<\/i> image format. - <a href=\"https:\/\/image.online-convert.com\/convert-to-webp\" target=\"_blank\">Convert Images to WEBP<\/a> - <a href=\"https:\/\/tinypng.com\/\" target=\"_blank\">Compress WEBP Images<\/a>\r\n\r\n<\/div>",
+            "new_lines": "wpautop",
+            "esc_html": 0
         }
     ],
     "location": [
@@ -411,5 +450,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1696943797
+    "modified": 1758095786
 }

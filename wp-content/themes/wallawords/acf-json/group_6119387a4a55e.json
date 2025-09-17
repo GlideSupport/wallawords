@@ -114,7 +114,7 @@
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
-                "width": "33.33",
+                "width": "25",
                 "class": "",
                 "id": ""
             },
@@ -138,15 +138,15 @@
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
-                "width": "33.33",
+                "width": "25",
                 "class": "",
                 "id": ""
             },
             "choices": {
                 "primary-btn": "Primary",
-                "secondary-btn": "Secondary"
+                "site-secondary-btn": "Secondary"
             },
-            "default_value": "single",
+            "default_value": "primary-btn",
             "return_format": "value",
             "allow_null": 0,
             "allow_in_bindings": 1,
@@ -162,7 +162,7 @@
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
-                "width": "33.33",
+                "width": "25",
                 "class": "",
                 "id": ""
             },
@@ -171,7 +171,31 @@
                 "center": "Center",
                 "right": "Right"
             },
-            "default_value": "single",
+            "default_value": "left",
+            "return_format": "value",
+            "allow_null": 0,
+            "allow_in_bindings": 1,
+            "layout": "horizontal"
+        },
+        {
+            "key": "field_68ca805cf9be2",
+            "label": "Button Size",
+            "name": "ww_blk_button_size",
+            "aria-label": "",
+            "type": "button_group",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "25",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "site-btn-default": "Large",
+                "site-btn-small": "Small"
+            },
+            "default_value": "site-btn-default",
             "return_format": "value",
             "allow_null": 0,
             "allow_in_bindings": 1,
@@ -303,14 +327,13 @@
             "choices": {
                 "default": "Default",
                 "has-arrow": "Has Arrow",
-                "just-arrow-small": "Just Arrow Small",
-                "has-icon": "Has Icon",
-                "text-arrow": "Text Arrow"
+                "just-arrow": "Just Arrow"
             },
             "default_value": "default",
             "return_format": "value",
             "allow_null": 0,
             "other_choice": 0,
+            "allow_in_bindings": 1,
             "layout": "horizontal",
             "save_other_choice": 0
         }
@@ -333,5 +356,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1758023866
+    "modified": 1758101774
 }
