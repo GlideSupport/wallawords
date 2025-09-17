@@ -75,7 +75,9 @@ $ww_blkmdpg_button_layout    = ( isset( $block_fields['ww_blkmdpg_button_layout'
 								<?php echo build_acf_button( $ww_blkmdpg_btn, 'site-btn' ); ?>
 							<?php } ?>
 							<?php if ( $ww_blkmdpg_secondary_btn ) { ?>
-								<?php echo build_acf_button( $ww_blkmdpg_secondary_btn, 'site-btn site-secondary-btn' ); ?>
+								<?php
+									$btn_class = ( $ww_blkmdpg_button_layout === 'variation-one' ) ? 'site-btn site-secondary-btn' : 'site-btn-only-link';
+									echo build_acf_button( $ww_blkmdpg_secondary_btn, $btn_class ); ?>
 							<?php } ?>
 						</div>
 					<?php } ?>
