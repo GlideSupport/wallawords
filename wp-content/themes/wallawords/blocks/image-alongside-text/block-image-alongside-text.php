@@ -112,7 +112,7 @@ if ( 'left' === $ww_blkiat_imgpositon ) {
 									<?php
 									if ( $ww_blkiat_btn ) {
 										?>
-										<?php echo build_acf_button( $ww_blkiat_btn, 'button has-arrow' ); ?><?php } ?>
+										<?php echo build_acf_button( $ww_blkiat_btn, 'site-btn site-secondary-btn' ); ?><?php } ?>
 									<?php
 									if ( $ww_blkiat_link ) {
 										?>

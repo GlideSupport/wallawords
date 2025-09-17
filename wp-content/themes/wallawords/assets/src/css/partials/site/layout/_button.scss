@@ -10,7 +10,6 @@
     width: -moz-fit-content;
     width: fit-content;
     color: var(--ww_white);
-    flex: 1 1 100%;
     @include font(rubik, med);
     font-size: 18px;
     letter-spacing: -.18px;
@@ -212,7 +211,7 @@ button[disabled]:hover {
 }
 
 
-.multuple-site-btn-default{
+.multiple-site-btn-default{
      display: flex;
      flex-direction: column;
      justify-content: center;
@@ -220,12 +219,12 @@ button[disabled]:hover {
 }
 
 .center-align{
-     .multuple-site-btn-default{
+     .multiple-site-btn-default{
          align-items: center;
      }
 }
 .right-align{
-     .multuple-site-btn-default{
+     .multiple-site-btn-default{
        align-items: end;
      }
 }

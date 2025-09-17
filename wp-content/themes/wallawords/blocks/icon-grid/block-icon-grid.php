@@ -117,7 +117,7 @@ $ww_blkicngrd_cntnt_var = ( isset( $block_fields['ww_blkicngrd_cntnt_var'] ) && 
 				<?php } ?>
 				<?php if ( $ww_blkicngrd_button ) { ?>
 					<div class="icon-grid__btn">
-						<?php echo build_acf_button( $ww_blkicngrd_button, 'button has-arrow' ); ?>
+						<?php echo build_acf_button( $ww_blkicngrd_button, 'site-btn' ); ?>
 					</div>
 				<?php } ?>
 			</div>
@@ -181,7 +181,7 @@ $ww_blkicngrd_cntnt_var = ( isset( $block_fields['ww_blkicngrd_cntnt_var'] ) && 
 				<?php } ?>
 				<?php if ( $ww_blkicngrd_button ) { ?>
 					<div class="icon-grid__btn">
-						<?php echo build_acf_button( $ww_blkicngrd_button, 'button has-arrow' ); ?>
+						<?php echo build_acf_button( $ww_blkicngrd_button, 'site-btn' ); ?>
 					</div>
 				<?php } ?>
 			</div>

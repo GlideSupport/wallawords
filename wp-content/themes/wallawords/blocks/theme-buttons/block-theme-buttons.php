@@ -81,7 +81,7 @@ if ( 'single' === $ww_blk_btn_variation ) {
 	}
 } else {
 	if ( $ww_blk_buttons ) {
-		echo '<div class="multuple-' . esc_attr( $ww_blk_button_size ) . '">';
+		echo '<div class="multiple-' . esc_attr( $ww_blk_button_size ) . '">';
 		foreach ( $ww_blk_buttons as $amp_button ) {
 			$amp_button_link  = $amp_button['button']; 
 			$amp_button_style = $amp_button['style'];
