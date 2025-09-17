@@ -74,7 +74,7 @@ if ( 'single' === $ww_blk_btn_variation ) {
 	if ( 'default' === $ww_blk_btn_style ) {
 		echo build_acf_button( $ww_blk_button, 'site-btn' . $ww_blk_btn_button_style );
 	} elseif ( 'has-arrow' === $ww_blk_btn_style ) {
-		echo build_acf_button( $ww_blk_button, 'site-btn  has-arrow ' . $ww_blk_btn_button_style );
+		echo build_acf_button( $ww_blk_button, 'site-btn  site-arrow-btn-style ' . $ww_blk_btn_button_style );
 	} elseif ( 'just-arrow small' === $ww_blk_btn_style ) {
 		echo build_acf_button( $ww_blk_button, 'just-arrow small ' . $ww_blk_btn_button_style );
 	} elseif ( 'has-icon' === $ww_blk_btn_style ) {
@@ -91,11 +91,11 @@ if ( 'single' === $ww_blk_btn_variation ) {
 			if ( 'default' === $amp_button_style ) {
 				echo build_acf_button( $amp_button_link, 'site-btn ' . $ww_blk_btn_button_style );
 			} elseif ( 'has-arrow' === $amp_button_style ) {
-				echo build_acf_button( $amp_button_link, 'site-btn  has-arrow ' . $ww_blk_btn_button_style );
+				echo build_acf_button( $amp_button_link, 'site-btn  site-arrow-btn-style ' . $ww_blk_btn_button_style );
 			} elseif ( 'just-arrow small' === $amp_button_style ) {
-				echo build_acf_button( $amp_button_link, 'just-arrow small ' . $ww_blk_btn_button_style );
+				echo build_acf_button( $amp_button_link, 'site-btn small ' . $ww_blk_btn_button_style );
 			} elseif ( 'has-icon' === $amp_button_style ) {
-				echo build_acf_button( $amp_button_link, 'site-btn  has-icon ' . $ww_blk_btn_button_style );
+				echo build_acf_button( $amp_button_link, 'site-btn  site-arrow-btn-style ' . $ww_blk_btn_button_style );
 			} elseif ( 'text-arrow' === $amp_button_style ) {
 				echo build_acf_button( $amp_button_link, 'text-arrow ' . $ww_blk_btn_button_style );
 			}

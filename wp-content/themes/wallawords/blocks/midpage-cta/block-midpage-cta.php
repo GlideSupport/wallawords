@@ -81,11 +81,11 @@ $ww_blkmdpg_link   = ( isset( $block_fields['ww_blkmdpg_link'] ) && '' !== $bloc
 							<?php
 							if ( $ww_blkmdpg_btn ) {
 								?>
-								<?php echo build_acf_button( $ww_blkmdpg_btn, 'button has-arrow' ); ?><?php } ?>
+								<?php echo build_acf_button( $ww_blkmdpg_btn, 'site-btn site-arrow-btn-style' ); ?><?php } ?>
 							<?php
 							if ( $ww_blkmdpg_link ) {
 								?>
-								<?php echo build_acf_button( $ww_blkmdpg_link, 'text-arrow' ); ?><?php } ?>
+								<?php echo build_acf_button( $ww_blkmdpg_link, 'site-btn' ); ?><?php } ?>
 						</div>
 					<?php } ?>
 					</div>

@@ -46,6 +46,12 @@
         right: 24px;
         top: 20px;
     }
+    &.site-btn-small{
+          padding: 11px 46px 11px 20px;
+                &::after{
+                    top:16px;
+                }
+    }
 
 }
 
@@ -69,6 +75,10 @@
         content: "";
         right: 24px;
         top: 20px;
+    }
+    &.site-btn-small{ 
+          height: 46px;
+         width: 46px;
     }
 }
 
@@ -99,17 +109,8 @@
 }
 
 
-@mixin site-arrow-btn-small{
-    padding: 11px 46px 11px 20px;
-    &::after{
-         top:16px;
-    }
-}
 
-@mixin site-only-arrow-btn-small{
-       height: 46px;
-    width: 46px;
-}
+
 @mixin site-text-btn{
         @include font(rubik, med);
     font-size: 18px;
@@ -145,12 +146,7 @@ body {
            &.site-btn-small {
             @include site-btn-small;
         }
-           &.site-arrow-btn-small {
-            @include site-arrow-btn-small;
-        }
-           &.site-only-arrow-btn-small {
-            @include site-only-arrow-btn-small;
-        }
+        
     
     }
     .site-btn-only-link{
