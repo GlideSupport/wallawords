@@ -154,8 +154,8 @@ array(
         <?php endif;?>
 
         <div class="finish-buttons">
-            <a id="share-button" class="button" role="button" aria-label="Share game results">Share Results</a>
-            <a id="play-again" class="button" role="button" aria-label="Play another game">Play another!</a>
+            <a id="share-button" class="site-btn" role="button" aria-label="Share game results">Share Results</a>
+            <a id="play-again" class="site-btn" role="button" aria-label="Play another game">Play another!</a>
         </div>
     </div>
 
