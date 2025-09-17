@@ -408,7 +408,6 @@ body {
             margin: 0 auto 24px;
             width: 1px;
             background: var(--ww_black_3);
-            border-radius: 3px;
             overflow: hidden;
 
             /* Progress fill */
@@ -416,7 +415,6 @@ body {
                 height: 32px;
                 width: 100%;
                 background: var(--ww_white);
-                border-radius: 3px;
                 position: relative;
                 animation: mymove 1.5s infinite;
             }
@@ -487,6 +485,7 @@ body {
                 width: 100%;
                 padding:0;
                 transition: opacity 0.5s ease-in-out;
+                margin-bottom: 20px;
 
                 @media(max-width:767px) {
                     padding: 0;
@@ -494,25 +493,20 @@ body {
 
                 .text {
                     @include font(rubik, med);
-                    max-width: 540px;
+                    max-width: 327px;
                     margin: 0 auto;
                     text-align: center;
                     color: var(--ww-white);
                     font-size: var(--ww_font_size_9);
                     letter-spacing: -0.72px;
                     line-height: 112%;
-
-                    @media(max-width:767px) {
-                        max-width: 250px;
-                    }
-
                     span {
                         color: var(--ww_regular_text);
                         display: block;
                     }
 
                     .num {
-                        color: #8A8997;
+                        color: var(-ww_grey_1);
                         @include font(inter, reg);
                         font-size: 14px;
                         line-height: 170%;
@@ -526,6 +520,7 @@ body {
                     margin: 20px auto 24px auto;
                 }
 
+
                 img.dark {
                     display: block;
                 }
@@ -533,6 +528,7 @@ body {
                 img.light {
                     display: none;
                 }
+                svg, img{ margin-bottom: 0;}
 
             }
 
