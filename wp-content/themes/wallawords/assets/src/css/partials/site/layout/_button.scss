@@ -216,14 +216,18 @@ button[disabled]:hover {
 
 .multiple-site-btn-default{
      display: flex;
-     justify-content: center;
+          justify-content: center;
+          flex-wrap: wrap;
      gap: 15px;
+     @media(max-width:767px){
+             flex-direction: column;
+     }
 }
 
 
 .multiple-site-btn-small{
          display: flex;
-     flex-direction: column;
+      flex-wrap: wrap;
      justify-content: center;
      gap: 15px;
 }
