@@ -216,31 +216,27 @@ button[disabled]:hover {
      display: flex;
      flex-direction: column;
      justify-content: center;
-     row-gap: 15px;
+     gap: 15px;
 }
 
+
+.multiple-site-btn-small{
+         display: flex;
+     flex-direction: column;
+     justify-content: center;
+     gap: 15px;
+}
+
+
 .center-align{
+    .multiple-site-btn-small,
      .multiple-site-btn-default{
          align-items: center;
      }
 }
 .right-align{
+     .multiple-site-btn-small,
      .multiple-site-btn-default{
        align-items: end;
-     }
-}
-
-.multiple-site-btn-small{
-     gap: 15px;
-}
-
-.center-align{
-     .multiple-site-btn-small{
-        justify-content: center;
-     }
-}
-.right-align{
-     .multiple-site-btn-small{
-       justify-content: flex-end;
      }
 }
