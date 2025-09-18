@@ -216,7 +216,6 @@ button[disabled]:hover {
 
 .multiple-site-btn-default{
      display: flex;
-          justify-content: center;
           flex-wrap: wrap;
      gap: 15px;
      @media(max-width:767px){
@@ -228,7 +227,6 @@ button[disabled]:hover {
 .multiple-site-btn-small{
          display: flex;
       flex-wrap: wrap;
-     justify-content: center;
      gap: 15px;
 }
 
@@ -236,12 +234,15 @@ button[disabled]:hover {
 .center-align{
     .multiple-site-btn-small,
      .multiple-site-btn-default{
-         align-items: center;
+        justify-content: center;
      }
 }
 .right-align{
      .multiple-site-btn-small,
      .multiple-site-btn-default{
-       align-items: end;
+       justify-content: end;
      }
 }
+
+
+
