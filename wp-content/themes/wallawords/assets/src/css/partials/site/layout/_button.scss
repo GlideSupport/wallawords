@@ -161,7 +161,7 @@ body {
             @include site-btn-style;
         }
 
-        &.is-style-site-border-btn {
+        &.is-style-site-arrow-btn-style {
             .wp-block-button__link {
                 @include site-arrow-btn-style;
             }
@@ -179,9 +179,9 @@ body {
             }
         }
 
-        &.is-style-site-arrow-btn {
+        &.is-style-site-btn-small {
             .wp-block-button__link {
-               @include site-arrow-btn-style;
+               @include site-btn-small;
             }
         }
     }
