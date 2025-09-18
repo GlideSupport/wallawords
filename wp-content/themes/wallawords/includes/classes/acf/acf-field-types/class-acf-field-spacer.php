@@ -118,15 +118,15 @@ class Acf_Field_Spacer extends \acf_field {
 
 		$options = array(
 			's-0'    => 'No Margin',
-			'gl-s44'  => '30 Pixels',
-			'gl-s48'  => '36 Pixels',
-			'gl-s60' => '48 Pixels',
+			'gl-s44'  => '44 Pixels',
+			'gl-s48'  => '48 Pixels',
+			'gl-s60' => '60 Pixels',
 			'gl-s72' => '72 Pixels',
 			'gl-s96' => '96 Pixels',
-			'gl-s120' => '128 Pixels',
-			'gl-s160' => '156 Pixels',
+			'gl-s120' => '120 Pixels',
+			'gl-s160' => '160 Pixels',
 			'gl-s200' => '200 Pixels',
-			'gl-s240' => '236 Pixels',
+			'gl-s240' => '240 Pixels',
 		);
 		if ( $options ) {
 			foreach ( $options as $key => $option ) {
