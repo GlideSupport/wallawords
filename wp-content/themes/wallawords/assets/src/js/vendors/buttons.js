@@ -7,10 +7,6 @@ wp.blocks.registerBlockStyle("core/button", {
  name: "site-secondary-btn",
 });
 wp.blocks.registerBlockStyle("core/button", {
- label: "Site Text Btn",
- name: "site-text-btnnpm",
-});
-wp.blocks.registerBlockStyle("core/button", {
  label: "Site Btn Small",
  name: "site-btn-small",
 });

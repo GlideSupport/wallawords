@@ -174,13 +174,6 @@ body {
                 @include site-secondary-btn;
             }
         }
-
-        &.is-style-site-text-btn {
-            .wp-block-button__link {
-                @include site-text-btn;
-            }
-        }
-
         &.is-style-site-btn-small {
             .wp-block-button__link {
                @include site-btn-small;
