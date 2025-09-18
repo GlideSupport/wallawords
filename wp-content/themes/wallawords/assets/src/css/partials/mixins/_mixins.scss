@@ -85,6 +85,26 @@ Mixin for transition
 @mixin font-size($value) {
 	$baseFontSize: 16; // Set your base font size here
 	$remValue: math.div($value , $baseFontSize);
-
 	font-size: #{$remValue}rem;
+}
+
+
+
+@mixin font($family, $weight) {
+  // You can extend this if you want more font families/weights
+  @if $family == rubik {
+    font-family: 'Rubik', sans-serif;
+  } @else {
+    font-family: #{$family}, sans-serif;
+  }
+
+  @if $weight == med {
+    font-weight: 500;
+  } @else if $weight == bold {
+    font-weight: 700;
+  } @else if $weight == reg {
+    font-weight: 400;
+  } @else {
+    font-weight: #{$weight}; // fallback if you pass a number like 600
+  }
 }

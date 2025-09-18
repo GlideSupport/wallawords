@@ -124,7 +124,7 @@
 				font-size: var(--ww_font_size_6);
 				margin: 8px 0;
 				text-align: center;
-				@include font(inter, bold);
+				//@include font(inter, bold);
 			}
 		}
 	}
@@ -139,7 +139,7 @@
 			font-size: var(--ww_font_size_6);
 			margin: 8px 0;
 			text-align: center;
-			@include font(inter, bold);
+			//@include font(inter, bold);
 		}
 	}
 }

@@ -1,6 +1,6 @@
 wp.blocks.registerBlockStyle("core/button", {
- label: "Site Arrow Btn Style",
- name: "site-arrow-btn-style",
+ label: "Site Arrow Btn",
+ name: "site-arrow-btn",
 });
 wp.blocks.registerBlockStyle("core/button", {
  label: "Site Secondary Btn",

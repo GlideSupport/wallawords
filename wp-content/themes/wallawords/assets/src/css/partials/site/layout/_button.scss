@@ -10,7 +10,9 @@
     width: -moz-fit-content;
     width: fit-content;
     color: var(--ww_white);
-    @include font(rubik, med);
+        font-family: "Rubik-Medium";
+    font-weight:500;
+    font-style:normal;
     font-size: 18px;
     letter-spacing: -.18px;
     line-height: 135%;
@@ -110,10 +112,10 @@
 }
 
 
-
-
 @mixin site-text-btn{
-        @include font(rubik, med);
+    font-family: "Rubik-Medium";
+    font-weight:500;
+    font-style:normal;
     font-size: 18px;
     line-height: 135%;
     letter-spacing: -.18px;
@@ -127,7 +129,7 @@
          color:var(--ww_white);
     }
      
-    }
+}
 
 body {
 
@@ -161,7 +163,7 @@ body {
             @include site-btn-style;
         }
 
-        &.is-style-site-arrow-btn-style {
+        &.is-style-site-arrow-btn {
             .wp-block-button__link {
                 @include site-arrow-btn-style;
             }
