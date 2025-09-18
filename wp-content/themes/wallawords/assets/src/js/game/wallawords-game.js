@@ -288,7 +288,7 @@ function startGame(puzzleCounterValue) {
         url: url,
         type: 'GET',
         success: async function (response) {
-            let data = response;
+            let data = response.data;
             if (typeof response === "string") {
                 try {
                     data = JSON.parse(response);
@@ -297,16 +297,13 @@ function startGame(puzzleCounterValue) {
                     return;
                 }
             }
-            if (data.pd) {
+            if (data) {
                 try {
-                    await dpData(data.pd, localVars.nonce);
+                    await dpData(data, localVars.nonce);
                 } catch (err) {
                     console.error("Puzzle failed:", err);
                 }
-                // console.log(JSON.parse(response)); Get All Puzzles data
-                const puzzles = await dpData(data.pd, localVars.nonce);
-                // console.log(puzzles);
-                // const puzzles = JSON.parse(test);
+                const puzzles = await dpData(data, localVars.nonce);
                 sentenceToggle.forEach(item => {
                     item.style.display = "block";
                 });
@@ -322,10 +319,6 @@ function startGame(puzzleCounterValue) {
                 sentences = selectedPoem.sentences; // Store sentences from JSON
                 columns = selectedPoem.columns; //store column rows
                 totalSentenceCount = selectedPoem.sentences.length + 3; //add 3 because we always have 3 vertical sentences in a puzzle
-                // console.log('sentences = '.selectedPoem.sentences+"~"+selectedPoem.sentences.length);
-                //console.log('sentences = ');
-                //console.dir(selectedPoem.sentences);
-                // Define the solved state explicitly
                 const solvedState = originalPositions.slice(); // Assumes solved state is the initial state
                 // Shuffle the remaining words using derangement
                 const lockedIndexes = selectedPoem.lockedWords;
@@ -376,7 +369,7 @@ function startGame(puzzleCounterValue) {
                     swapThreshold: 0.1,
                     // Called by any change to the list (add / update / remove)
                     onSort: function (evt) {
-                        updateMoveCounter(evt, originalPositions);
+                        // updateMoveCounter(evt, originalPositions);
                         // Remove unnecessary classes to ensure draggable functionality
                         removeDragClasses();
                         //console.log('trigger sort');
@@ -403,6 +396,7 @@ function startGame(puzzleCounterValue) {
                         const domIndex = Array.from(gameGridElement.children).indexOf(item);
                         if (item.textContent.trim() !== originalPositions[domIndex]) {
                             // Delay shake/pulse-red until after Sortable animation (150ms)
+                            incorrectCounterValue++;
                             setTimeout(() => {
                                 item.classList.add('warning', 'zingle', 'nohover');
                                 item.addEventListener('animationend', function handler(e) {
@@ -444,6 +438,7 @@ function startGame(puzzleCounterValue) {
                                 item.classList.add('noHover');
                             });
                         }
+                        updateMoveCounter(evt, originalPositions);
                         removeDropZoneClass();
                     }
                 });
@@ -534,7 +529,7 @@ function updateMoveCounter(evt, originalPositions) {
     moveCounterValue++;
     if (checkCorrectPositionAtIndex(fromIndex, originalPositions) == false && checkCorrectPositionAtIndex(toIndex, originalPositions) == false) {
         //increment X markers
-        incorrectCounterValue++;
+        // incorrectCounterValue++;
 
         
         // const div = document.createElement('div');
