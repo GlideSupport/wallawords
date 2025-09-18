@@ -236,12 +236,22 @@ button[disabled]:hover {
      .multiple-site-btn-default{
         justify-content: center;
      }
+      .multiple-site-btn-default{
+        @media(max-width:767px){
+             align-items: center;
+        }
+      }
 }
 .right-align{
      .multiple-site-btn-small,
      .multiple-site-btn-default{
        justify-content: end;
      }
+       .multiple-site-btn-default{
+        @media(max-width:767px){
+             align-items: end;
+        }
+      }
 }
 
 
