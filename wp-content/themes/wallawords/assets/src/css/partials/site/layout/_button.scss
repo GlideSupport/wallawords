@@ -235,29 +235,30 @@ button[disabled]:hover {
     .multiple-site-btn-small,
      .multiple-site-btn-default{
         justify-content: center;
+                 .site-only-arrow-btn-style{
+                    margin:0
+                }
      }
       .multiple-site-btn-default{
         @media(max-width:767px){
              align-items: center;
         }
       }
-          .site-only-arrow-btn-style{
-         margin:0
-    }
+ 
 }
 .right-align{
      .multiple-site-btn-small,
      .multiple-site-btn-default{
        justify-content: end;
+          .site-only-arrow-btn-style{
+                    margin:0
+                }
      }
        .multiple-site-btn-default{
         @media(max-width:767px){
              align-items: end;
         }
       }
-      .site-only-arrow-btn-style{
-         margin:0
-    }
 }
 
 
