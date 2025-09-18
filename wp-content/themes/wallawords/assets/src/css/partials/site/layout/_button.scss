@@ -125,6 +125,8 @@
      color:var(--ww_color_primary);
      cursor: pointer;
     text-decoration-thickness: 1.08px;
+    background-color: transparent;
+    padding: 0;
     &:hover{
          color:var(--ww_white);
     }
@@ -168,7 +170,6 @@ body {
                 @include site-arrow-btn-style;
             }
         }
-
         &.is-style-site-secondary-btn {
             .wp-block-button__link {
                 @include site-secondary-btn;
@@ -178,6 +179,11 @@ body {
             .wp-block-button__link {
                 @include site-secondary-btn;
                 @include site-arrow-btn-style;
+            }
+        }
+        &.is-style-site-only-text-btn {
+            .wp-block-button__link {
+                @include site-text-btn;
             }
         }
     }

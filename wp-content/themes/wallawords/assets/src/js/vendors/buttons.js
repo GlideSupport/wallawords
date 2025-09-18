@@ -10,6 +10,10 @@ wp.blocks.registerBlockStyle("core/button", {
  label: "Site Secondary Btn Arrow",
  name: "site-secondary-btn-arrow",
 });
+wp.blocks.registerBlockStyle("core/button", {
+ label: "Site Only Text Btn",
+ name: "site-only-text-btn",
+});
 
 wp.domReady(() => {
  wp.blocks.unregisterBlockStyle("core/button", "outline"); 
