@@ -174,9 +174,10 @@ body {
                 @include site-secondary-btn;
             }
         }
-        &.is-style-site-btn-small {
+        &.is-style-site-secondary-btn-arrow {
             .wp-block-button__link {
-               @include site-btn-small;
+                @include site-secondary-btn;
+                @include site-arrow-btn-style;
             }
         }
     }

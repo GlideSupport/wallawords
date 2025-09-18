@@ -7,9 +7,10 @@ wp.blocks.registerBlockStyle("core/button", {
  name: "site-secondary-btn",
 });
 wp.blocks.registerBlockStyle("core/button", {
- label: "Site Btn Small",
- name: "site-btn-small",
+ label: "Site Secondary Btn Arrow",
+ name: "site-secondary-btn-arrow",
 });
+
 wp.domReady(() => {
  wp.blocks.unregisterBlockStyle("core/button", "outline"); 
  wp.blocks.unregisterBlockStyle("core/button", "fill");
