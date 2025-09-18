@@ -145,10 +145,11 @@ body {
        &.site-secondary-btn {
             @include site-secondary-btn;
         }
-        &.site-btn-small {
+           &.site-btn-small {
             @include site-btn-small;
         }
-            
+        
+    
     }
     .site-btn-only-link{
          @include site-text-btn;
@@ -171,12 +172,18 @@ body {
                 @include site-secondary-btn;
             }
         }
-        &.is-style-site-btn-small {
+
+        &.is-style-site-text-btn {
             .wp-block-button__link {
-                @include site-btn-small;
+                @include site-text-btn;
             }
         }
 
+        &.is-style-site-arrow-btn {
+            .wp-block-button__link {
+               @include site-arrow-btn-style;
+            }
+        }
     }
 }
 

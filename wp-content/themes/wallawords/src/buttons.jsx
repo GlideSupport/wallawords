@@ -3,14 +3,14 @@ import { unregisterBlockStyle, registerBlockStyle } from '@wordpress/blocks';
 import { InspectorControls } from '@wordpress/block-editor';
 import { Panel, PanelBody, SelectControl } from '@wordpress/components';
 import { createHigherOrderComponent } from '@wordpress/compose';
-// registerBlockStyle( 'core/button', {
-// 	label: 'Fill Boxed',
-// 	name: 'fill-boxed',
-// } );
-// registerBlockStyle( 'core/button', {
-// 	label: 'Outline Boxed',
-// 	name: 'outline-boxed',
-// } );
+registerBlockStyle( 'core/button', {
+	label: 'Fill Boxed',
+	name: 'fill-boxed',
+} );
+registerBlockStyle( 'core/button', {
+	label: 'Outline Boxed',
+	name: 'outline-boxed',
+} );
 function addCustomAttributes( settings, name ) {
 	if ( 'core/button' === name ) {
 		if ( settings.attributes ) {
