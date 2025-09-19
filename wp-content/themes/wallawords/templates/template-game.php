@@ -84,8 +84,10 @@ array(
                         <div id="move-counter" class="move-counter  p1"></div>
                         <div id="sentence-counter" class="p1"></div>
                     </div>
-                    <div id="result-sentence-counter" class="p1" style="display: none;"></div>
-                    <div class="health-bar" id="health-bar" style="display: none;"></div>
+                    <div class="result-bar">
+                        <div id="result-sentence-counter" class="p1" style="display: none;"></div>
+                        <div class="health-bar" id="health-bar" style="display: none;"></div>
+                    </div>
                 </div>
 
                 <div id="sentence-list-container" class="sentence-list-container">
@@ -108,14 +110,7 @@ array(
             </div>
             <!-- sentence-list-container -->
             <div id="final-score-screen" class="final-score-screen sentence-list-container final-result" style="display: none;">
-                <ol>
-                    <!-- <li>growth and comfort cannot coexist,</li>                            
-                    <li>demands resolve. rarely our differing</li>                            
-                    <li>balance is good? striving rightly?</li>                            
-                    <li>growth demands balance and resolve.</li>                            
-                    <li>is comfort rarely good?</li>                            
-                    <li>cannot our striving coexist, differing rightly?</li>                             -->
-                </ol>
+                <ol></ol>
                 <div class="finish-buttons">
                     <a id="share-button" class="site-btn" role="button" aria-label="Share game results">Share Results</a>
                 </div>
