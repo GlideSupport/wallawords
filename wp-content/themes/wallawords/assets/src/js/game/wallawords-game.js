@@ -73,13 +73,14 @@ const shareModal = document.getElementById('share-modal');
 const errorCounterDisplay = document.getElementById('error-counter'); // Move counter element
 const moveCounterDisplay = document.getElementById('move-counter'); // Move counter element
 const sentenceCounterDisplay = document.getElementById('sentence-counter'); // Move counter element
+const resultSentenceCounterDisplay = document.getElementById('result-sentence-counter'); 
 const counterContainer = document.getElementById('sentence-list-container');
 // const counterContainerContent = document.getElementById('sentence-list-text');
 const finalScoreSentence = document.querySelector('#final-score-screen ol');
-
 //const sentenceToggle = document.getElementById('sentence-toggle');
 const sentenceToggle = document.querySelectorAll('.sentence-toggle');
 const closeSentenceToggle = document.getElementById('close-sentences-button');
+const kicker = document.getElementById('kicker');
 const titleDisplay = document.getElementById('puzzle-title'); // Move counter element
 const fullPoem = document.getElementById('full-poem'); // Move counter element
 const poemColumn1 = document.getElementById('poem-column1'); // Move counter element
@@ -154,23 +155,23 @@ function initializeGame() {
             window.location.href = smsLink;
         });
     }
-    if(sentenceToggle[0]){
-        sentenceToggle[0].addEventListener('click', () => {
-            var container = jQuery('#sentence-list-container');
-            if (container.css('display') == 'none') {
-                container.fadeIn(200);
-                errorCounterDisplay.style.display = "none";
-                moveCounterDisplay.style.display = "none";
-                sentenceCounterDisplay.style.display = "block";
-                sentenceToggle[0].style.display = "none";
-            } else {
-                container.fadeOut(100);
-                // errorCounterDisplay.style.display = "block";
-                moveCounterDisplay.style.display = "block";
-                sentenceToggle[0].style.display = "block";
-            }
-        });        
-    }
+    // if(sentenceToggle[0]){
+    //     sentenceToggle[0].addEventListener('click', () => {
+    //         var container = jQuery('#sentence-list-container');
+    //         if (container.css('display') == 'none') {
+    //             container.fadeIn(200);
+    //             errorCounterDisplay.style.display = "none";
+    //             moveCounterDisplay.style.display = "none";
+    //             sentenceCounterDisplay.style.display = "block";
+    //             sentenceToggle[0].style.display = "none";
+    //         } else {
+    //             container.fadeOut(100);
+    //             // errorCounterDisplay.style.display = "block";
+    //             moveCounterDisplay.style.display = "block";
+    //             sentenceToggle[0].style.display = "block";
+    //         }
+    //     });        
+    // }
 
     // sentenceToggle[1].addEventListener('click', () => {
     //     var container = jQuery('#sentence-list-container');
@@ -264,8 +265,8 @@ function startGame(puzzleCounterValue) {
     finalScoreScreen.style.display = 'none';
     moveCounterDisplay.style.display = "block";
     sentenceCounterDisplay.style.display = "block";
-    errorCounterDisplay.style.display = "block";
-    errorCounterDisplay.innerHTML = '';
+    // errorCounterDisplay.style.display = "block";
+    // errorCounterDisplay.innerHTML = '';
     if (jQuery('#puzzle_id').length) {
         hasID = jQuery('#puzzle_id').val();
         url = localVars.ajax_url + '?action=wallawords_get_puzzle_data&gameID=' + hasID + '&nonce=' + localVars.nonce;
@@ -575,6 +576,7 @@ function updateMoveCounterDisplay() {
         // var health = minimumMoves - incorrectCounterValue;
         var currentHealth = health - incorrectCounterValue;
         sentenceCounterDisplay.innerHTML = `<span>${currentHealth}</span>`;
+        resultSentenceCounterDisplay.innerHTML = `<span>${currentHealth}</span>`;
         var healthBar = '';
         for (let i = 1; i <= health; i++) {
             if (i <= currentHealth) {
@@ -858,12 +860,16 @@ function showFinalScoreScreen() {
     setTimeout(() => {
         //gameScreen.style.display = 'none';
         gameRow.style.display = 'none';
+        titleDisplay.removeAttribute('style');
+        kicker.removeAttribute('style');
         finalScoreScreen.style.display = 'flex';
         // finalScoreToggle.style.display = 'flex';
         // finalMoveCount.innerHTML = `<span>Moves</span> ${moveCounterValue}`;
-        moveCounterDisplay.style.display = "none";
-        errorCounterDisplay.style.display = "none";
+        // moveCounterDisplay.style.display = "none";
+        // errorCounterDisplay.style.display = "none";
         sentenceCounterDisplay.style.display = "none";
+        resultSentenceCounterDisplay.removeAttribute('style');
+        document.body.classList.add('final-result');
         // sentenceToggle[0].style.display = "none";
         // sentenceToggle[1].style.display = "block";
         /* //removed this in place of showing final game board
