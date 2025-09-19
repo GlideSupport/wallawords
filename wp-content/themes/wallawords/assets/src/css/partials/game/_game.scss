@@ -2228,6 +2228,9 @@ body.final-result {
                      display: flex;
                     align-items: center;
                     margin-bottom: 53px;
+                    @media(max-width:767px){
+                         margin-bottom: 44px;
+                    }
             }
         }
 
