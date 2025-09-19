@@ -955,6 +955,7 @@ body {
             position: relative;
             width: 100%;
             max-width: 100%;
+            background-color: transparent;
 
 
             ol {
@@ -2170,6 +2171,7 @@ body.final-result {
         }
        }
     }
+    #game-screen{
     .game-stats {
         .move-container {
             margin-bottom: 10px;
@@ -2218,6 +2220,7 @@ body.final-result {
         }
 
     }
+}
 }
 
 
