@@ -964,6 +964,8 @@ body {
                 counter-reset: custom-counter;
                 padding-left: 0;
                 text-align: left;
+                margin-bottom: 78px;
+                
 
                 li {
                     counter-increment: custom-counter;
@@ -989,6 +991,7 @@ body {
 
                     &:last-child {
                         border-bottom: 0;
+                        padding-bottom: 0;
                     }
 
                     @media(max-width:767px) {
