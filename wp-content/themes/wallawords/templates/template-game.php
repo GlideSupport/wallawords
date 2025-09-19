@@ -116,6 +116,9 @@ array(
                     <li>is comfort rarely good?</li>                            
                     <li>cannot our striving coexist, differing rightly?</li>                             -->
                 </ol>
+                <div class="finish-buttons">
+                    <a id="share-button" class="site-btn" role="button" aria-label="Share game results">Share Results</a>
+                </div>
             </div>
             
         </div>
