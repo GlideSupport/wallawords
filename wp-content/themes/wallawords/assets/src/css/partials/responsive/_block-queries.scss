@@ -1805,7 +1805,7 @@
 		flex-wrap: wrap;
 
 		&__quote {
-			padding: 50px 20px 46px 20px;
+			padding: 50px 0 46px;
 
 			&--text {
 				margin-bottom: 43px;
@@ -1834,6 +1834,7 @@
 			box-sizing: border-box;
 			margin-bottom: 0;
 		}
+	
 	}
 
 	.client {

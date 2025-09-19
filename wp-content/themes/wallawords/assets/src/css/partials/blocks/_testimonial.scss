@@ -1,5 +1,8 @@
 .testimonial {
 	display: flex;
+	.testimonials-slider{
+		 height: auto !important;
+	}
 
 	&__swiper {
 		flex: 1 1 75%;
@@ -94,6 +97,9 @@
 				font-size: 44px;
 				line-height: 120%; /* 52.8px */
 				letter-spacing: -1.32px;
+				@media(max-width:767px){
+					 font-size: 22px;
+				}
 
 				&:last-child {
 					margin-bottom: 0;
