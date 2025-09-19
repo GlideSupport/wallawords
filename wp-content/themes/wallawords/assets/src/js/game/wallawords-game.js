@@ -321,6 +321,8 @@ function startGame(puzzleCounterValue) {
                 const originalDropPlacement = new Map(); // Map to store initial positions
                 // Select a random puzzle
                 const selectedPoem = puzzles[puzzleCounterValue];
+                console.log(selectedPoem.id);
+                console.log(selectedPoem.fullPoem);
                 activePoem = selectedPoem;
                 currentPuzzleID = selectedPoem.id; //poem ID
                 title = selectedPoem.title; // Store the puzzle title
