@@ -188,10 +188,10 @@
 	--ww_font_size_18_min: 34px;
 	--ww_font_size_18: clamp(var(--ww_font_size_18_min), calc(2.125rem + ((1vw - 7.68px) * 1.6892)), var(--ww_font_size_18_max));
 
-			/* ------- [ D-20 to M-16 ] - [ Text-20] ------- */
+/* ------- [ D-20 to M-16 ] - [ Text-20] ------- */
 	--ww_font_size_19_max: 20px;
 	--ww_font_size_19_min: 16px;
-	--ww_font_size_19: clamp(var(--ww_font_size_19_mix), calc(1rem + ((1vw - 7.68px) * 0.6757)), var(--ww_font_size_19_max));
+	--ww_font_size_19: clamp(var(--ww_font_size_19_min), calc(1rem + ((1vw - 7.68px) * 0.6757)), var(--ww_font_size_19_max));
 
 		
 

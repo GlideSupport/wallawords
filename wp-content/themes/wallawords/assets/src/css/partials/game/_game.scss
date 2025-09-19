@@ -946,10 +946,11 @@ body {
         &.final-result {
      border-radius: 0;
     margin: 0 -24px;
-    padding: 124px 24px 24px;
+    padding:40px 0;
     position: relative;
     width: 100%;
     max-width: 100%;
+   
 
             ol {
                 list-style: none;
@@ -960,7 +961,7 @@ body {
 
                 li {
                     counter-increment: custom-counter;
-                    padding: 16px 0 16px 25px;
+                    padding: 16px 0 16px 24px;
                     font-size: var(--ww_font_size_19);
                     color: var(--ww-white);
                     @include font(rubik, med);
@@ -970,6 +971,9 @@ body {
                     border-bottom: 1px solid var(--ww_black_3);
                     position: relative;
                     margin: 0;
+                    &:last-child{
+                         border-bottom: 0;
+                    }
 
                     &:before {
                         content: counter(custom-counter, decimal-leading-zero) ".";
@@ -979,7 +983,7 @@ body {
                         font-size: 14px;
                         color: #8A8997;
                         line-height: 170%;
-                        top:12px;
+                        top:13px;
 
                     }
                 }
