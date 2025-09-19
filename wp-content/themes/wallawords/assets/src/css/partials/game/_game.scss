@@ -977,6 +977,15 @@ body {
                     border-bottom: 1px solid var(--ww_black_3);
                     position: relative;
                     margin: 0;
+                    &:first-child{
+                         padding-top: 0;
+                         &:before{
+                             top:-2px;
+                             @media(max-width:767px){
+                                 top:-4px;
+                             }
+                         }
+                    }
 
                     &:last-child {
                         border-bottom: 0;
@@ -2167,7 +2176,10 @@ body.final-result {
        header{
         &:before{
               background-image: url(../images/header-bg-2.svg);
-              height: calc(100% + 131px);
+              height: calc(100% + 137px);
+              @media(max-width:767px){
+                 height: calc(100% + 127px);
+              }
         }
        }
     }
@@ -2176,12 +2188,11 @@ body.final-result {
         .move-container {
             margin-bottom: 0px;
             #puzzle-title {
-                @media(max-width:767px) {
-                    line-height: 125%;
+                     margin-bottom: 8px;
+                           line-height: 125%;
                     letter-spacing: 0;
-                    margin-bottom: 8px;
-                }
-            }
+                    font-size: 20px;
+               }
 
             .flex-container {
                 margin-bottom: 4px;
@@ -2216,7 +2227,7 @@ body.final-result {
             .result-bar{
                      display: flex;
                     align-items: center;
-                    margin-bottom: 48px;
+                    margin-bottom: 53px;
             }
         }
 
