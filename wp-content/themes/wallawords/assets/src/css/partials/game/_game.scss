@@ -951,7 +951,7 @@ body {
         &.final-result {
             border-radius: 0;
             margin: 0 -24px;
-            padding: 40px 0;
+            padding: 24px 0;
             position: relative;
             width: 100%;
             max-width: 100%;
@@ -2174,7 +2174,7 @@ body.final-result {
     #game-screen{
     .game-stats {
         .move-container {
-            margin-bottom: 10px;
+            margin-bottom: 0px;
             #puzzle-title {
                 @media(max-width:767px) {
                     line-height: 125%;
@@ -2202,10 +2202,6 @@ body.final-result {
             }
 
             #health-bar {
-                width: calc(100% - 30px);
-                display: inline-block;
-                vertical-align: middle;
-
                 .segment &:before {
                     border: 2px solid #15141e;
                     border-radius: 9px;
@@ -2216,6 +2212,11 @@ body.final-result {
                     top: -2px;
                     width: 40px;
                 }
+            }
+            .result-bar{
+                     display: flex;
+                    align-items: center;
+                    margin-bottom: 48px;
             }
         }
 
