@@ -54,10 +54,11 @@ const GameStorageService = {
 const pageHeader = document.getElementById('header-section');
 const titleScreen = document.getElementById('title-screen');
 const gameScreen = document.getElementById('game-screen');
+const gameRow = document.getElementById('game-row');
 const gameGridElement = document.getElementById('sortable-grid');
 const gamePrompt = document.getElementById('game-prompt');
 const finalScoreScreen = document.getElementById('final-score-screen');
-const finalScoreToggle = document.getElementById('final-page-toggle');
+// const finalScoreToggle = document.getElementById('final-page-toggle');
 const finalPoem = document.getElementById('final-poem');
 const skinToggleButton = document.getElementById('skin-toggle-button');
 const gameMenuButton = document.getElementById('game-menu-btn');
@@ -73,7 +74,9 @@ const errorCounterDisplay = document.getElementById('error-counter'); // Move co
 const moveCounterDisplay = document.getElementById('move-counter'); // Move counter element
 const sentenceCounterDisplay = document.getElementById('sentence-counter'); // Move counter element
 const counterContainer = document.getElementById('sentence-list-container');
-const counterContainerContent = document.getElementById('sentence-list-text');
+// const counterContainerContent = document.getElementById('sentence-list-text');
+const finalScoreSentence = document.querySelector('#final-score-screen ol');
+
 //const sentenceToggle = document.getElementById('sentence-toggle');
 const sentenceToggle = document.querySelectorAll('.sentence-toggle');
 const closeSentenceToggle = document.getElementById('close-sentences-button');
@@ -133,35 +136,42 @@ function initializeGame() {
         //gameScreen.style.display = 'flex';
         startGame(puzzleCounter);
     });
-    playAgain.addEventListener('click', () => {
-        instructionScreen.style.display = 'none';
-        finalScoreScreen.style.display = 'none';
-        gameGridElement.innerHTML = '<span></span><img src="/wp-content/themes/wallawords/assets/build/images/spinner.svg" class="loading"><span></span>';
-        startGame(puzzleCounter);
-    });
-    shareBtn.addEventListener('click', () => {
-        //let phone = document.getElementById("share-phone").value;
-        //let message = document.getElementById("share-message").value;		
-        //let smsLink = `sms:${phone}?&body=${message}`;
-        var message = `I just discovered the amazing game, WallaWords! I solved it in ${moveCounterValue} moves and earned the “${completedPuzzleIcon} ${completedPuzzleRank}” level. Think you can beat me? Try it here - https://wallawords.com/play`;
-        let smsLink = `sms:?&body=${message}`;
-        window.location.href = smsLink;
-    });
-    sentenceToggle[0].addEventListener('click', () => {
-        var container = jQuery('#sentence-list-container');
-        if (container.css('display') == 'none') {
-            container.fadeIn(200);
-            errorCounterDisplay.style.display = "none";
-            moveCounterDisplay.style.display = "none";
-            sentenceCounterDisplay.style.display = "block";
-            sentenceToggle[0].style.display = "none";
-        } else {
-            container.fadeOut(100);
-            // errorCounterDisplay.style.display = "block";
-            moveCounterDisplay.style.display = "block";
-            sentenceToggle[0].style.display = "block";
-        }
-    });
+    if(playAgain){
+        playAgain.addEventListener('click', () => {
+            instructionScreen.style.display = 'none';
+            finalScoreScreen.style.display = 'none';
+            gameGridElement.innerHTML = '<span></span><img src="/wp-content/themes/wallawords/assets/build/images/spinner.svg" class="loading"><span></span>';
+            startGame(puzzleCounter);
+        });
+    }
+    if(shareBtn){
+        shareBtn.addEventListener('click', () => {
+            //let phone = document.getElementById("share-phone").value;
+            //let message = document.getElementById("share-message").value;		
+            //let smsLink = `sms:${phone}?&body=${message}`;
+            var message = `I just discovered the amazing game, WallaWords! I solved it in ${moveCounterValue} moves and earned the “${completedPuzzleIcon} ${completedPuzzleRank}” level. Think you can beat me? Try it here - https://wallawords.com/play`;
+            let smsLink = `sms:?&body=${message}`;
+            window.location.href = smsLink;
+        });
+    }
+    if(sentenceToggle[0]){
+        sentenceToggle[0].addEventListener('click', () => {
+            var container = jQuery('#sentence-list-container');
+            if (container.css('display') == 'none') {
+                container.fadeIn(200);
+                errorCounterDisplay.style.display = "none";
+                moveCounterDisplay.style.display = "none";
+                sentenceCounterDisplay.style.display = "block";
+                sentenceToggle[0].style.display = "none";
+            } else {
+                container.fadeOut(100);
+                // errorCounterDisplay.style.display = "block";
+                moveCounterDisplay.style.display = "block";
+                sentenceToggle[0].style.display = "block";
+            }
+        });        
+    }
+
     // sentenceToggle[1].addEventListener('click', () => {
     //     var container = jQuery('#sentence-list-container');
     //     if (container.css('display') == 'none') {
@@ -279,7 +289,7 @@ function startGame(puzzleCounterValue) {
     completedColumns = [];
     if (gameGrid) {
         gameGrid.destroy();
-        const resetSentenceCounter = document.querySelectorAll('.sentence-list-item');
+        const resetSentenceCounter = document.querySelectorAll('.sentence-item');
         resetSentenceCounter.forEach((row) => {
             row.remove();
         });
@@ -445,20 +455,27 @@ function startGame(puzzleCounterValue) {
                 /* counter grids */
                 //set default sentence counters
                 for (s = 1; s <= totalSentenceCount; s++) {
-                    const div = document.createElement('div');
-                    div.id = 'sentence_' + s;
-                    div.classList.add('sentence-list-item');
-                    div.innerHTML = '<div class="content">' + s + '. sentence not found</div>';
-                    const grid = document.createElement('div');
-                    grid.id = 'grid_' + s;
-                    grid.classList.add('grid-container');
-                    for (c = 0; c < 15; c++) {
-                        const gridCell = document.createElement('div');
-                        gridCell.classList.add('grid-cell');
-                        grid.append(gridCell);
-                    }
-                    div.prepend(grid);
-                    counterContainerContent.appendChild(div);
+                    const li = document.createElement('li');
+                    li.id = 'sentence_' + s;
+                    li.classList.add('sentence-item');
+                    li.innerHTML = '';
+                    finalScoreSentence.appendChild(li);
+
+
+                    // const div = document.createElement('div');
+                    // div.id = 'sentence_' + s;
+                    // div.classList.add('sentence-item');
+                    // div.innerHTML = '<div class="content">' + s + '. sentence not found</div>';
+                    // const grid = document.createElement('div');
+                    // grid.id = 'grid_' + s;
+                    // grid.classList.add('grid-container');
+                    // for (c = 0; c < 15; c++) {
+                    //     const gridCell = document.createElement('div');
+                    //     gridCell.classList.add('grid-cell');
+                    //     grid.append(gridCell);
+                    // }
+                    // div.prepend(grid);
+                    // counterContainerContent.appendChild(div);
                 }
                 updateMoveCounterDisplay(); //set 0 of max sentences
                 //remove intro animation classes
@@ -593,7 +610,7 @@ function checkColumnCompletion(originalPositions) {
     const items = document.querySelectorAll('.grid-item');
     const columns = 3; // Assuming a 3-column grid, adjust as necessary
     const rows = items.length / columns;
-    const counters = document.querySelectorAll('.sentence-list-item');
+    const counters = document.querySelectorAll('.sentence-item');
     // Check each column to see if it's fully completed
     for (let col = 0; col < columns; col++) {
         if (completedColumns.includes(col)) continue;
@@ -620,12 +637,13 @@ function checkColumnCompletion(originalPositions) {
             });
             let thisCol = document.getElementById('sentence_' + completeSentenceCount);
             if (thisCol) {
-                thisCol.classList.add('active');
-                let contentEl = thisCol.querySelector('.content');
-                if (contentEl) {
-                    contentEl.innerHTML = completeSentenceCount + '. ' + sentenceCounter;
+                thisCol.innerHTML = sentenceCounter;
+                // thisCol.classList.add('active');
+                // let contentEl = thisCol.querySelector('.content');
+                // if (contentEl) {
+                    // contentEl.innerHTML = completeSentenceCount + '. ' + sentenceCounter;
                     //contentEl.innerHTML = completeSentenceCount + '. ' + sentenceCounter + '(column)';
-                }
+                // }
                 let gridCells = thisCol.querySelectorAll('.grid-cell');
                 if (gridCells.length > 0) {
                     c = 0;
@@ -646,7 +664,7 @@ function checkColumnCompletion(originalPositions) {
 
 function checkSentenceCompletion(originalPositions) {
     const items = document.querySelectorAll('.grid-item');
-    const counters = document.querySelectorAll('.sentence-list-item');
+    const counters = document.querySelectorAll('.sentence-item');
     // Check each sentence to see if it's fully completed
     for (let index = 0; index < sentences.length; index++) {
         const [start, end] = sentences[index];
@@ -677,27 +695,12 @@ function checkSentenceCompletion(originalPositions) {
             });
             let thisRow = document.getElementById('sentence_' + completeSentenceCount);
             if (thisRow) {
-                thisRow.classList.add('active');
-                let contentEl = thisRow.querySelector('.content');
-                if (contentEl) {
-                    contentEl.innerHTML = completeSentenceCount + '. ' + sentenceCounter;
-                    //contentEl.innerHTML = completeSentenceCount + '. ' + sentenceCounter +' (sentence)';
-                    // const gamePrompt = document.getElementById('game-prompt');
-                    // const writeText = sentenceCounter; // Define your text here
-
-                    // if (gamePrompt) {
-                    //     let textCount = 0;
-                    //     gamePrompt.textContent = '';
-                    //     function typeWriter() {
-                    //         if (textCount < writeText.length) {
-                    //             gamePrompt.textContent += writeText.charAt(textCount);
-                    //             textCount++;
-                    //             setTimeout(typeWriter, 100); // Speed: 100 ms per character
-                    //         }
-                    //     }
-                    //     typeWriter();
-                    // }
-                }
+                thisRow.innerHTML = sentenceCounter;
+                // thisRow.classList.add('active');
+                // let contentEl = thisRow.querySelector('.content');
+                // if (contentEl) {
+                    // contentEl.innerHTML = completeSentenceCount + '. ' + sentenceCounter;
+                // }
                 let gridCells = thisRow.querySelectorAll('.grid-cell');
                 if (gridCells.length > 0) {
                     c = 0;
@@ -822,7 +825,7 @@ function finalScoreResizer(mode) {
                 });
             }
             */
-        finalPoemContent.style.display = 'block';
+        // finalPoemContent.style.display = 'block';
         reviewHeight = reviewHeight + parseInt(addHeight);
         if (mainHeight <= reviewHeight) {
             mainHeight = reviewHeight;
@@ -832,7 +835,7 @@ function finalScoreResizer(mode) {
         if (mainHeight <= 740) {
             mainHeight = 740;
         }
-        finalPoemContent.style.display = 'none';
+        // finalPoemContent.style.display = 'none';
     }
     //only run on resize if final score screen is active
     if (finalScoreScreen.style.display == 'flex') {
@@ -852,13 +855,14 @@ function showFinalScoreScreen() {
     puzzleCounter++;
     setTimeout(() => {
         //gameScreen.style.display = 'none';
+        gameRow.style.display = 'none';
         finalScoreScreen.style.display = 'flex';
-        finalScoreToggle.style.display = 'flex';
-        finalMoveCount.innerHTML = `<span>Moves</span> ${moveCounterValue}`;
+        // finalScoreToggle.style.display = 'flex';
+        // finalMoveCount.innerHTML = `<span>Moves</span> ${moveCounterValue}`;
         moveCounterDisplay.style.display = "none";
         errorCounterDisplay.style.display = "none";
         sentenceCounterDisplay.style.display = "none";
-        sentenceToggle[0].style.display = "none";
+        // sentenceToggle[0].style.display = "none";
         // sentenceToggle[1].style.display = "block";
         /* //removed this in place of showing final game board
             fullPoem.textContent = activePoem.fullPoem;
@@ -882,29 +886,29 @@ function showFinalScoreScreen() {
                 completedPuzzleRank = rankTitle ? rankTitle.innerHTML.trim() : "";
             }
         });
-        const toggles = document.querySelectorAll('.final-page-toggle .toggle');
-        finalScoreResizer(toggled);
-        toggles.forEach(toggle => {
-            toggle.addEventListener('click', () => {
-                toggles.forEach(toggle => {
-                    toggle.classList.remove('active');
-                });
-                if (toggled == 'results') {
-                    // finalPoem.style.display = 'none';
-                    scoreTableElement.style.display = 'flex';
-                    toggled = 'review';
-                    toggles[0].classList.add('active');
-                    gameGridElement.classList.remove('active');
-                } else {
-                    // finalPoem.style.display = 'flex';
-                    scoreTableElement.style.display = 'none';
-                    toggled = 'results';
-                    toggles[1].classList.add('active');
-                    gameGridElement.classList.add('active');
-                }
-                finalScoreResizer(toggled);
-            });
-        });
+        // const toggles = document.querySelectorAll('.final-page-toggle .toggle');
+        // finalScoreResizer(toggled);
+        // toggles.forEach(toggle => {
+        //     toggle.addEventListener('click', () => {
+        //         toggles.forEach(toggle => {
+        //             toggle.classList.remove('active');
+        //         });
+        //         if (toggled == 'results') {
+        //             // finalPoem.style.display = 'none';
+        //             scoreTableElement.style.display = 'flex';
+        //             toggled = 'review';
+        //             toggles[0].classList.add('active');
+        //             gameGridElement.classList.remove('active');
+        //         } else {
+        //             // finalPoem.style.display = 'flex';
+        //             scoreTableElement.style.display = 'none';
+        //             toggled = 'results';
+        //             toggles[1].classList.add('active');
+        //             gameGridElement.classList.add('active');
+        //         }
+        //         finalScoreResizer(toggled);
+        //     });
+        // });
     }, 1000); // Delay to allow for wave animation to finish
 }
 

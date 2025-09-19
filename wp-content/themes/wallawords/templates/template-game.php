@@ -106,16 +106,27 @@ array(
                 </div>
             </div>
             <!-- Row 2: Grid of Tiles -->
-            <div class="game-row">
+            <div id="game-row" class="game-row">
                 <div id="sortable-grid" class="game-grid"></div>
                 <div id="game-prompt" class="game-prompt"></div>
+            </div>
+            <!-- sentence-list-container -->
+            <div id="final-score-screen" class="final-score-screen sentence-list-container final-result" style="display: none;">
+                <ol>
+                    <!-- <li>growth and comfort cannot coexist,</li>                            
+                    <li>demands resolve. rarely our differing</li>                            
+                    <li>balance is good? striving rightly?</li>                            
+                    <li>growth demands balance and resolve.</li>                            
+                    <li>is comfort rarely good?</li>                            
+                    <li>cannot our striving coexist, differing rightly?</li>                             -->
+                </ol>
             </div>
             
         </div>
     </div>
 
     <!-- Final Score Screen -->
-    <div id="final-score-screen" class="final-score-screen" style="display: none;">
+    <!-- <div id="final-score-screen" class="final-score-screen" style="display: none;">
 
         <div class="score-header">
             <div id="final-move-count">
@@ -157,7 +168,7 @@ array(
             <a id="share-button" class="site-btn" role="button" aria-label="Share game results">Share Results</a>
             <a id="play-again" class="site-btn" role="button" aria-label="Play another game">Play another!</a>
         </div>
-    </div>
+    </div> -->
 
     <?php if(is_single() && get_post_type() == "puzzle"): ?>
         <input type="hidden" id="puzzle_id" value="<?php echo get_the_ID();?>">

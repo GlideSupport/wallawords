@@ -29,7 +29,6 @@ helpButton.addEventListener('click', () => {
             const paddingBottom = parseInt(containerStyle.paddingBottom, 10) || 0;
 
             const elHeight = instructionScreenEl.offsetHeight - (containerEl.offsetHeight - paddingBottom);
-            console.log('test' + elHeight);
             instructionEl.style.height = `${elHeight}px`;
         }
     }, 50);
