@@ -2180,72 +2180,83 @@ body .game-wrapper {
     animation: itemBounce 0.5s cubic-bezier(.36, .07, .19, .97);
 }
 
-
 body.final-result {
-    &.steps-page{
-       header{
-        &:before{
-              background-image: url(../images/header-bg-2.svg);
-              height: calc(100% + 137px);
-              @media(max-width:767px){
-                 height: calc(100% + 130px);
-              }
+    &.steps-page {
+        header {
+            &:before {
+                background-image: url(../images/header-bg-2.svg);
+                height: calc(100% + 137px);
+
+                @media(max-width:767px) {
+                    height: calc(100% + 130px);
+                }
+            }
         }
-       }
     }
-    #game-screen{
-    .game-stats {
-        .move-container {
-            margin-bottom: 0px;
-            #puzzle-title {
-                     margin-bottom: 8px;
-                           line-height: 125%;
+    #game-screen {
+        .game-stats {
+            .move-container {
+                margin-bottom: 0px;
+
+                #puzzle-title {
+                    margin-bottom: 8px;
+                    line-height: 125%;
                     letter-spacing: 0;
                     font-size: 20px;
-               }
-
-            .flex-container {
-                margin-bottom: 4px;
-
-                #move-counter {
-                    font-size: 14px;
-                    margin: 0;
-                    line-height: 170%
                 }
-            }
 
-            #result-sentence-counter {
-                @include font(rubik, med);
-                line-height: 125%;
-                width: 25px;
-                display: inline-block;
-                vertical-align: middle;
-            }
+                .flex-container {
+                    margin-bottom: 4px;
 
-            #health-bar {
-                .segment &:before {
-                    border: 2px solid #15141e;
-                    border-radius: 9px;
-                    content: "";
-                    height: calc(100% + 10px);
-                    left: -2px;
-                    position: absolute;
-                    top: -2px;
-                    width: 40px;
+                    #move-counter {
+                        font-size: 14px;
+                        margin: 0;
+                        line-height: 170%
+                    }
                 }
-            }
-            .result-bar{
-                     display: flex;
+
+                #result-sentence-counter {
+                    @include font(rubik, med);
+                    line-height: 125%;
+                    width: 25px;
+                    display: inline-block;
+                    vertical-align: middle;
+                }
+
+                #health-bar {
+                    .segment &:before {
+                        border: 2px solid #15141e;
+                        border-radius: 9px;
+                        content: "";
+                        height: calc(100% + 10px);
+                        left: -2px;
+                        position: absolute;
+                        top: -2px;
+                        width: 40px;
+                    }
+                }
+
+                .result-bar {
+                    display: flex;
                     align-items: center;
                     margin-bottom: 53px;
-                    @media(max-width:767px){
-                         margin-bottom: 44px;
-                    }
-            }
-        }
 
+                    @media(max-width:767px) {
+                        margin-bottom: 44px;
+                    }
+                }
+            }
+
+        }
     }
-}
+    .sentence-list-container{
+         .final-score-screen{
+            .finish-buttons{
+                 margin-top: 0;
+            }
+         }
+    }
+     
 }
 
 
