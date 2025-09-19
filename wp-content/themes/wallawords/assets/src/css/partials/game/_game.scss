@@ -222,6 +222,8 @@ body {
         padding: 0 30px;
         max-width: 660px;
         overflow: hidden;
+        border-radius: 40px;
+    overflow: hidden;
 
         @media(min-width:661px) {
             padding: 0 24px;
@@ -965,6 +967,8 @@ body {
                 padding-left: 0;
                 text-align: left;
                 margin-bottom: 78px;
+                    max-width: 497px;
+                   width: 100%;
                 
 
                 li {
@@ -979,8 +983,10 @@ body {
                     border-bottom: 1px solid var(--ww_black_3);
                     position: relative;
                     margin: 0;
+                    min-height: 58px;
                     &:first-child{
                          padding-top: 0;
+                          min-height: 10px;
                          &:before{
                              top:-2px;
                              @media(max-width:767px){
@@ -992,6 +998,7 @@ body {
                     &:last-child {
                         border-bottom: 0;
                         padding-bottom: 0;
+                          min-height: 10px;
                     }
 
                     @media(max-width:767px) {
@@ -2181,7 +2188,7 @@ body.final-result {
               background-image: url(../images/header-bg-2.svg);
               height: calc(100% + 137px);
               @media(max-width:767px){
-                 height: calc(100% + 127px);
+                 height: calc(100% + 130px);
               }
         }
        }
