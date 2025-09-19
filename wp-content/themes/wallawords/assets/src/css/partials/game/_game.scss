@@ -256,15 +256,15 @@ body {
             text-align: left;
 
             #sentence-counter {
-               
+
                 @include font(rubik, med);
             }
         }
 
         .p4 {
             color: var(--ww_regular_text);
+            margin-bottom: 4px;
         }
-
 
     }
 
@@ -300,8 +300,8 @@ body {
         z-index: 999;
         transition: all 0.5s ease-in-out;
         display: flex;
-    justify-content: center;
-    align-items: center;
+        justify-content: center;
+        align-items: center;
 
         a {
             background: transparent;
@@ -311,7 +311,7 @@ body {
         }
 
         svg {
-            margin:0;
+            margin: 0;
 
             path {
                 fill: var(--ww_white_1);
@@ -486,7 +486,7 @@ body {
 
             .content {
                 width: 100%;
-                padding:0;
+                padding: 0;
                 transition: opacity 0.5s ease-in-out;
                 margin-bottom: 20px;
 
@@ -503,6 +503,7 @@ body {
                     font-size: var(--ww_font_size_9);
                     letter-spacing: -0.72px;
                     line-height: 112%;
+
                     span {
                         color: var(--ww_regular_text);
                         display: block;
@@ -531,7 +532,11 @@ body {
                 img.light {
                     display: none;
                 }
-                svg, img{ margin-bottom: 0;}
+
+                svg,
+                img {
+                    margin-bottom: 0;
+                }
 
             }
 
@@ -944,13 +949,13 @@ body {
         }
 
         &.final-result {
-     border-radius: 0;
-    margin: 0 -24px;
-    padding:40px 0;
-    position: relative;
-    width: 100%;
-    max-width: 100%;
-   
+            border-radius: 0;
+            margin: 0 -24px;
+            padding: 40px 0;
+            position: relative;
+            width: 100%;
+            max-width: 100%;
+
 
             ol {
                 list-style: none;
@@ -961,7 +966,7 @@ body {
 
                 li {
                     counter-increment: custom-counter;
-                    padding: 16px 0 16px 24px;
+                    padding: 16px 0 16px 30px;
                     font-size: var(--ww_font_size_19);
                     color: var(--ww-white);
                     @include font(rubik, med);
@@ -971,8 +976,13 @@ body {
                     border-bottom: 1px solid var(--ww_black_3);
                     position: relative;
                     margin: 0;
-                    &:last-child{
-                         border-bottom: 0;
+
+                    &:last-child {
+                        border-bottom: 0;
+                    }
+
+                    @media(max-width:767px) {
+                        padding: 16px 0 16px 24px;
                     }
 
                     &:before {
@@ -980,10 +990,15 @@ body {
                         position: absolute;
                         left: 0;
                         @include font(inter, reg);
-                        font-size: 14px;
+                        font-size: 16px;
                         color: #8A8997;
                         line-height: 170%;
-                        top:13px;
+                        top: 15px;
+
+                        @media(max-width:767px) {
+                            top: 13px;
+                            font-size: 14px;
+                        }
 
                     }
                 }
@@ -1150,7 +1165,7 @@ body {
         overflow: hidden;
 
         .game-container {
-            padding: 96px  24px;
+            padding: 96px 24px;
             transition: all 0.3s ease;
         }
     }
@@ -2027,26 +2042,8 @@ body {
 
     }
 
-    &.result-page {
-        header {
-            border: 0;
-            border-radius: 0;
-
-            &::before {
-                background: linear-gradient(215deg, hsla(0, 0%, 100%, .11) 1.63%, hsla(0, 0%, 100%, 0) 61.52%), rgba(28, 26, 41, .03);
-                border: 1px solid hsla(0, 0%, 100%, .04);
-                border-radius: 0 0 30px 30px;
-                content: "";
-                height: calc(100% + 149px);
-                left: 0;
-                position: absolute;
-                top: 0;
-                width: 100%;
-                z-index: 1;
-            }
-        }
-
-        #game-screen {
+    &.final-result {
+      #game-screen {
             .game-stats {
                 &:before {
                     content: "results";
@@ -2149,14 +2146,12 @@ body .game-wrapper {
 @keyframes snake-draw {
     from {
         stroke-dashoffset: var(--dash-length);
-         filter:  drop-shadow(0 0 8px rgba(0, 255, 0, 0.7))
-            drop-shadow(0 0 16px rgba(0, 255, 0, 0.5));
+        filter: drop-shadow(0 0 8px rgba(0, 255, 0, 0.7)) drop-shadow(0 0 16px rgba(0, 255, 0, 0.5));
     }
 
     to {
         stroke-dashoffset: 0;
-         filter: drop-shadow(0 0 8px rgba(0, 255, 0, 0.7))
-            drop-shadow(0 0 16px rgba(0, 255, 0, 0.5));
+        filter: drop-shadow(0 0 8px rgba(0, 255, 0, 0.7)) drop-shadow(0 0 16px rgba(0, 255, 0, 0.5));
     }
 }
 
@@ -2164,6 +2159,67 @@ body .game-wrapper {
 .grid-item.bounce {
     animation: itemBounce 0.5s cubic-bezier(.36, .07, .19, .97);
 }
+
+
+body.final-result {
+    &.steps-page{
+       header{
+        &:before{
+              background-image: url(../images/header-bg-2.svg);
+              height: calc(100% + 131px);
+        }
+       }
+    }
+    .game-stats {
+        .move-container {
+            margin-bottom: 10px;
+            #puzzle-title {
+                @media(max-width:767px) {
+                    line-height: 125%;
+                    letter-spacing: 0;
+                    margin-bottom: 8px;
+                }
+            }
+
+            .flex-container {
+                margin-bottom: 4px;
+
+                #move-counter {
+                    font-size: 14px;
+                    margin: 0;
+                    line-height: 170%
+                }
+            }
+
+            #result-sentence-counter {
+                @include font(rubik, med);
+                line-height: 125%;
+                width: 25px;
+                display: inline-block;
+                vertical-align: middle;
+            }
+
+            #health-bar {
+                width: calc(100% - 30px);
+                display: inline-block;
+                vertical-align: middle;
+
+                .segment &:before {
+                    border: 2px solid #15141e;
+                    border-radius: 9px;
+                    content: "";
+                    height: calc(100% + 10px);
+                    left: -2px;
+                    position: absolute;
+                    top: -2px;
+                    width: 40px;
+                }
+            }
+        }
+
+    }
+}
+
 
 @keyframes itemBounce {
     0% {
