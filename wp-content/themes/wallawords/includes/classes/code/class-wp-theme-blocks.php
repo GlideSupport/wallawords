@@ -40,14 +40,6 @@ class WP_Theme_Blocks {
 		self::register_acf_block( 'faqs' );
 		// Register a block - Media Alongside Text.
 		self::register_acf_block( 'media-alongside-text' );
-		// Register a block - Jump Location.
-		self::register_acf_block( 'jump-location' );
-		// Register a block - AcfBlock.
-		self::register_acf_block(
-			'acfblock',
-			true,
-			array( 'assets/build/vendors/owl.carousel.min.js', 'assets/build/vendors/organic-tab.js' ), // name will be wp-theme-owl and wp-theme-organic-tab.
-		);
 		// [register_here].
 	}
 
