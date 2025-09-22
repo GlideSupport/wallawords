@@ -2195,8 +2195,9 @@ body.final-result {
     }
     #game-screen {
         .game-stats {
+                    padding: 0 24px 24px;
             .move-container {
-                margin-bottom: 0px;
+                margin-bottom: 24px;
 
                 #puzzle-title {
                     margin-bottom: 8px;
