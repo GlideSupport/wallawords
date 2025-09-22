@@ -2197,7 +2197,10 @@ body.final-result {
         .game-stats {
                     padding: 0 24px 24px;
             .move-container {
-                margin-bottom: 24px;
+                margin-bottom: 22px;
+                @media(max-width:767px){
+                     margin-bottom: 17px;
+                }
 
                 #puzzle-title {
                     margin-bottom: 8px;
@@ -2222,6 +2225,10 @@ body.final-result {
                     width: 25px;
                     display: inline-block;
                     vertical-align: middle;
+                    letter-spacing: 0;
+                    span{
+                         letter-spacing: 0;
+                    }
                 }
 
                 #health-bar {
@@ -2240,11 +2247,7 @@ body.final-result {
                 .result-bar {
                     display: flex;
                     align-items: center;
-                    margin-bottom: 53px;
-
-                    @media(max-width:767px) {
-                        margin-bottom: 44px;
-                    }
+                    margin-bottom:0px;
                 }
             }
 
