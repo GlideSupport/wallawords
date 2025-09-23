@@ -58,17 +58,19 @@ function wallawords_get_puzzle_data() {
         'post_type'      => 'puzzle',
         'orderby'        => 'date',
     ];
-     $gameID = isset($_GET['gameID']) ? array(intval($_GET['gameID'])) : []; 
+    $gameID = isset($_GET['gameID']) ? array(intval($_GET['gameID'])) : []; 
     // Add gameID filtering if provided
     if ($gameID) {
         $get_puzzle_args['post__in'] = $gameID;
         $get_puzzle_args['orderby'] = 'post__in';
     }
-    
+
     if($today_puzzle){
         $get_puzzle_args['posts_per_page'] = 1;
-        $get_puzzle_args['orderby'] = 'date';
-        $get_puzzle_args['order'] = 'DESC';
+        if (!$gameID) {
+            $get_puzzle_args['orderby'] = 'date';
+            $get_puzzle_args['order'] = 'DESC';
+        }
     }else{
         // Get gameID and completed status if present
        
