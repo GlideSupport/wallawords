@@ -74,6 +74,7 @@ class WP_Theme_Scripts {
 			array(
 				'ajax_url' => admin_url( 'admin-ajax.php' ),
 				'nonce'    => esc_html( wp_create_nonce( 'ajax_nonce' ) ),
+				'site_url'    => esc_html( site_url() ),
 			),
 			array(
 				'in_footer' => true,

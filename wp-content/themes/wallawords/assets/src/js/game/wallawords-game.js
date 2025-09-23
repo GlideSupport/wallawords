@@ -856,71 +856,95 @@ function finalScoreResizer(mode) {
 
 // **Show the Final Score Screen After Puzzle Completion**
 function showFinalScoreScreen() {
-    if(isFailed){
-
-    }
     puzzleCounter++;
-    setTimeout(() => {
-        //gameScreen.style.display = 'none';
-        gameRow.style.display = 'none';
-        titleDisplay.removeAttribute('style');
-        kicker.removeAttribute('style');
-        finalScoreScreen.style.display = 'flex';
-        // finalScoreToggle.style.display = 'flex';
-        // finalMoveCount.innerHTML = `<span>Moves</span> ${moveCounterValue}`;
-        // moveCounterDisplay.style.display = "none";
-        // errorCounterDisplay.style.display = "none";
-        sentenceCounterDisplay.style.display = "none";
-        resultSentenceCounterDisplay.removeAttribute('style');
-        document.body.classList.add('final-result');
-        // sentenceToggle[0].style.display = "none";
-        // sentenceToggle[1].style.display = "block";
-        /* //removed this in place of showing final game board
-            fullPoem.textContent = activePoem.fullPoem;
-            poemColumn1.textContent = activePoem.columns[0];
-            poemColumn2.textContent = activePoem.columns[1];
-            poemColumn3.textContent = activePoem.columns[2];
-            */
-        const scoreTableElement = document.querySelector('.score-table');
-        const scoreTableElements = document.querySelectorAll('.score-row');
-        scoreTableElements.forEach(row => {
-            let scoreFrom = row.dataset.from;
-            let scoreTo = row.dataset.to;
-            //console.log(moveCounterValue +'~'+ scoreFrom +'~'+ scoreTo);
-            if (parseInt(moveCounterValue) >= parseInt(scoreFrom) && parseInt(moveCounterValue) <= parseInt(scoreTo)) {
-                row.classList.add('highlighted');
-                row.classList.add(row.id);
-                finalMoveCount.classList.add(row.id);
-                let rankIcon = row ? row.querySelector(".score-icon") : null;
-                completedPuzzleIcon = rankIcon ? rankIcon.innerHTML.trim() : "";
-                let rankTitle = row ? row.querySelector(".score-title") : null;
-                completedPuzzleRank = rankTitle ? rankTitle.innerHTML.trim() : "";
-            }
-        });
-        // const toggles = document.querySelectorAll('.final-page-toggle .toggle');
-        // finalScoreResizer(toggled);
-        // toggles.forEach(toggle => {
-        //     toggle.addEventListener('click', () => {
-        //         toggles.forEach(toggle => {
-        //             toggle.classList.remove('active');
-        //         });
-        //         if (toggled == 'results') {
-        //             // finalPoem.style.display = 'none';
-        //             scoreTableElement.style.display = 'flex';
-        //             toggled = 'review';
-        //             toggles[0].classList.add('active');
-        //             gameGridElement.classList.remove('active');
-        //         } else {
-        //             // finalPoem.style.display = 'flex';
-        //             scoreTableElement.style.display = 'none';
-        //             toggled = 'results';
-        //             toggles[1].classList.add('active');
-        //             gameGridElement.classList.add('active');
-        //         }
-        //         finalScoreResizer(toggled);
-        //     });
-        // });
-    }, 1000); // Delay to allow for wave animation to finish
+    if(isFailed){
+         setTimeout(() => {
+            gameRow.style.display = 'none';
+            titleDisplay.removeAttribute('style');
+            kicker.removeAttribute('style');
+            finalScoreScreen.style.display = 'flex';
+            document.body.classList.add('final-result', 'final-result-faild');
+            resultSentenceCounterDisplay.removeAttribute('style');
+            finalScoreSentence.innerHTML = ' ';
+            finalScoreScreen.classList.add('final-result-faild');
+            document.getElementById("share-button")?.style.setProperty('display', 'none');
+
+            var failedHTML= `<div id="resultFailed">
+                <div class="overlay-title">Not Quite This Time</div>
+                <div class="overlay-subtitle">Every mistake is a step closer to mastery. Try again!</div>
+                <a href="${localVars.site_url}/?start_puzzle=true" class="site-btn btn-replay">Replay</a>
+            </div>`;
+            finalScoreScreen.insertAdjacentHTML('beforeend',failedHTML); 
+
+         }, 1000);
+    }else{
+        setTimeout(() => {
+            document.getElementById('resultFailed')?.remove();
+            //gameScreen.style.display = 'none';
+            gameRow.style.display = 'none';
+            titleDisplay.removeAttribute('style');
+            kicker.removeAttribute('style');
+            finalScoreScreen.style.display = 'flex';
+            document.body.classList.add('final-result');
+            document.body.classList.remove('final-result-faild');
+            finalScoreScreen.classList.remove('final-result-faild');
+            // finalScoreToggle.style.display = 'flex';
+            // finalMoveCount.innerHTML = `<span>Moves</span> ${moveCounterValue}`;
+            // moveCounterDisplay.style.display = "none";
+            // errorCounterDisplay.style.display = "none";
+            sentenceCounterDisplay.style.display = "none";
+            resultSentenceCounterDisplay.removeAttribute('style');
+            document.getElementById("share-button").removeAttribute('style');
+            // sentenceToggle[0].style.display = "none";
+            // sentenceToggle[1].style.display = "block";
+            /* //removed this in place of showing final game board
+                fullPoem.textContent = activePoem.fullPoem;
+                poemColumn1.textContent = activePoem.columns[0];
+                poemColumn2.textContent = activePoem.columns[1];
+                poemColumn3.textContent = activePoem.columns[2];
+                */
+            const scoreTableElement = document.querySelector('.score-table');
+            const scoreTableElements = document.querySelectorAll('.score-row');
+            scoreTableElements.forEach(row => {
+                let scoreFrom = row.dataset.from;
+                let scoreTo = row.dataset.to;
+                //console.log(moveCounterValue +'~'+ scoreFrom +'~'+ scoreTo);
+                if (parseInt(moveCounterValue) >= parseInt(scoreFrom) && parseInt(moveCounterValue) <= parseInt(scoreTo)) {
+                    row.classList.add('highlighted');
+                    row.classList.add(row.id);
+                    finalMoveCount.classList.add(row.id);
+                    let rankIcon = row ? row.querySelector(".score-icon") : null;
+                    completedPuzzleIcon = rankIcon ? rankIcon.innerHTML.trim() : "";
+                    let rankTitle = row ? row.querySelector(".score-title") : null;
+                    completedPuzzleRank = rankTitle ? rankTitle.innerHTML.trim() : "";
+                }
+            });
+            // const toggles = document.querySelectorAll('.final-page-toggle .toggle');
+            // finalScoreResizer(toggled);
+            // toggles.forEach(toggle => {
+            //     toggle.addEventListener('click', () => {
+            //         toggles.forEach(toggle => {
+            //             toggle.classList.remove('active');
+            //         });
+            //         if (toggled == 'results') {
+            //             // finalPoem.style.display = 'none';
+            //             scoreTableElement.style.display = 'flex';
+            //             toggled = 'review';
+            //             toggles[0].classList.add('active');
+            //             gameGridElement.classList.remove('active');
+            //         } else {
+            //             // finalPoem.style.display = 'flex';
+            //             scoreTableElement.style.display = 'none';
+            //             toggled = 'results';
+            //             toggles[1].classList.add('active');
+            //             gameGridElement.classList.add('active');
+            //         }
+            //         finalScoreResizer(toggled);
+            //     });
+            // });
+        }, 1000); // Delay to allow for wave animation to finish
+    }
+    
 }
 
 

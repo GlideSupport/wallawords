@@ -60,7 +60,7 @@ skipButton.addEventListener('click', () => {
 
 });
 
-playButton.addEventListener('click', () => {
+playButton?.addEventListener('click', () => {
     document.body.style.overflow = 'auto';
     titleScreen.style.display = 'none';
     instructionScreen.style.display = 'none';

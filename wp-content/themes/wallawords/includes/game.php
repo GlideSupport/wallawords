@@ -49,9 +49,7 @@ function wallawords_get_puzzle_data() {
         exit;
     }
     $today_puzzle = true;
-    // Get gameID and completed status if present
-    $gameID = isset($_GET['gameID']) ? array(intval($_GET['gameID'])) : [];
-    $completed = isset($_GET['completed']) ? sanitize_text_field($_GET['completed']) : '';
+    
 
     // Prepare base query arguments
     $get_puzzle_args = [
@@ -61,24 +59,27 @@ function wallawords_get_puzzle_data() {
         'orderby'        => 'date',
     ];
 
-
-    // Add gameID filtering if provided
-    if ($gameID) {
-        $get_puzzle_args['post__in'] = $gameID;
-        $get_puzzle_args['orderby'] = 'post__in';
-    }
-
-    // Handle the "completed" parameter
-    if ($completed !== '') {
-        $completed = stristr($completed, ',') ? explode(',', $completed) : [$completed];
-        $gameID = array_merge($gameID, $completed);
-        $get_puzzle_args['post__not_in'] = $gameID;
-    }
-    
     if($today_puzzle){
         $get_puzzle_args['posts_per_page'] = 1;
         $get_puzzle_args['orderby'] = 'date';
         $get_puzzle_args['order'] = 'DESC';
+    }else{
+        // Get gameID and completed status if present
+        $gameID = isset($_GET['gameID']) ? array(intval($_GET['gameID'])) : [];
+        $completed = isset($_GET['completed']) ? sanitize_text_field($_GET['completed']) : '';
+        
+        // Add gameID filtering if provided
+        if ($gameID) {
+            $get_puzzle_args['post__in'] = $gameID;
+            $get_puzzle_args['orderby'] = 'post__in';
+        }
+
+        // Handle the "completed" parameter
+        if ($completed !== '') {
+            $completed = stristr($completed, ',') ? explode(',', $completed) : [$completed];
+            $gameID = array_merge($gameID, $completed);
+            $get_puzzle_args['post__not_in'] = $gameID;
+        }
     }
 
     // Fetch puzzles based on the prepared arguments
