@@ -65,7 +65,13 @@ playButton?.addEventListener('click', () => {
     titleScreen.style.display = 'none';
     instructionScreen.style.display = 'none';
     instructionSlide = 1;
+
+    finalScoreScreen.style.display = 'none';
+    gameScreen.removeAttribute('style');
+    gameRow.removeAttribute('style');
+    
     //switchInstructionsSlide(instructionSlide);
+    console.log(puzzleCounter);
     startGame(puzzleCounter);
 });
 

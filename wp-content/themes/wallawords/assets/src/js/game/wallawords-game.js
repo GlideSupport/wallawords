@@ -322,7 +322,9 @@ function startGame(puzzleCounterValue) {
                 document.body.classList.add('steps-page');
                 const originalDropPlacement = new Map(); // Map to store initial positions
                 // Select a random puzzle
-                const selectedPoem = puzzles[puzzleCounterValue];
+                console.log(puzzleCounterValue);
+                puzzleCounterValue = puzzles.length > puzzleCounterValue ? puzzleCounterValue : puzzles.length - 1;
+                var selectedPoem = puzzles[puzzleCounterValue];
                 console.log(selectedPoem.id);
                 console.log(selectedPoem.fullPoem);
                 activePoem = selectedPoem;
