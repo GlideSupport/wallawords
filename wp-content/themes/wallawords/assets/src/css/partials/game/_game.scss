@@ -1023,6 +1023,15 @@ body {
                     }
                 }
             }
+            &.final-result-faild{
+                  #game-screen {
+                     .game-stats{
+                         .move-container{
+                             margin-bottom: 42px;
+                         }
+                     }
+                  }
+            }
         }
 
         .close-button {
@@ -2263,7 +2272,16 @@ body.final-result {
      
 }
 
-
+#resultFailed{
+     .overlay-title{
+         font-size: var(--ww_font_size_9);
+        @include font(rubik, bold);
+        margin-bottom: 30px;
+     }
+     .overlay-subtitle{
+         margin-bottom: 30px;
+     }
+}
 @keyframes itemBounce {
     0% {
         transform: translateY(0);
