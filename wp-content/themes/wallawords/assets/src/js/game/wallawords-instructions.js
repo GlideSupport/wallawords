@@ -75,6 +75,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // Check if 'start_puzzle' is true in the URL
   if (urlParams.get('start_puzzle') === 'true') {
+    urlParams.delete('start_puzzle');
+    const newUrl = urlParams.toString() ? `${window.location.pathname}?${urlParams}` : window.location.pathname;
+    window.history.replaceState({}, '', newUrl);
+
     document.body.style.overflow = 'auto';
     titleScreen.style.display = 'none';
     instructionScreen.style.display = 'none';
