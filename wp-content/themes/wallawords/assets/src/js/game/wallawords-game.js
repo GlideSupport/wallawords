@@ -74,7 +74,7 @@ const errorCounterDisplay = document.getElementById('error-counter'); // Move co
 const moveCounterDisplay = document.getElementById('move-counter'); // Move counter element
 const sentenceCounterDisplay = document.getElementById('sentence-counter'); // Move counter element
 const resultSentenceCounterDisplay = document.getElementById('result-sentence-counter'); 
-const counterContainer = document.getElementById('sentence-list-container');
+// const counterContainer = document.getElementById('sentence-list-container');
 // const counterContainerContent = document.getElementById('sentence-list-text');
 const finalScoreSentence = document.querySelector('#final-score-screen ol');
 //const sentenceToggle = document.getElementById('sentence-toggle');
@@ -107,7 +107,8 @@ let title = ''; // Store the title of the puzzle
 let puzzleCounter = 0;
 let gameGrid = null;
 let completedSessionPuzzles = [];
-
+let isSolved = 0;
+let isFailed = 0;
 if (GameStorageService.getItem('ww-session-games')) {
     completedSessionPuzzles = GameStorageService.getItem('ww-session-games');
 }
@@ -721,7 +722,7 @@ function checkSentenceCompletion(originalPositions) {
 }
 
 // **Check if the Puzzle is Completed**
-var isSolved = isFailed = 0;
+
 function checkPuzzleCompletion(originalPositions) {
     const items = document.querySelectorAll('.grid-item');
     const isSolved = Array.from(items).every(
@@ -809,7 +810,6 @@ function animateEffect(index, type) {
 
 }
 
- 
 
 function finalScoreResizer(mode) {
     const pageSize = window.visualViewport ? window.visualViewport.height : window.innerHeight;
@@ -856,6 +856,9 @@ function finalScoreResizer(mode) {
 
 // **Show the Final Score Screen After Puzzle Completion**
 function showFinalScoreScreen() {
+    if(isFailed){
+
+    }
     puzzleCounter++;
     setTimeout(() => {
         //gameScreen.style.display = 'none';

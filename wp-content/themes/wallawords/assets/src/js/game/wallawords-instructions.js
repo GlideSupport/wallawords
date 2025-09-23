@@ -68,6 +68,20 @@ playButton.addEventListener('click', () => {
     //switchInstructionsSlide(instructionSlide);
     startGame(puzzleCounter);
 });
+
+document.addEventListener('DOMContentLoaded', function () {
+  // Get the query parameters from the URL
+  const urlParams = new URLSearchParams(window.location.search);
+
+  // Check if 'start_puzzle' is true in the URL
+  if (urlParams.get('start_puzzle') === 'true') {
+    document.body.style.overflow = 'auto';
+    titleScreen.style.display = 'none';
+    instructionScreen.style.display = 'none';
+    instructionSlide = 1;
+    startGame(puzzleCounter);
+  }
+});
 // --- Cookie helper functions ---
 function setCookie(name, value, days) {
     let expires = "";
