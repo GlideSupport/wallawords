@@ -919,29 +919,29 @@ function showFinalScoreScreen() {
                     completedPuzzleRank = rankTitle ? rankTitle.innerHTML.trim() : "";
                 }
             });
-            // const toggles = document.querySelectorAll('.final-page-toggle .toggle');
+            const toggles = document.querySelectorAll('.final-page-toggle .toggle');
             // finalScoreResizer(toggled);
-            // toggles.forEach(toggle => {
-            //     toggle.addEventListener('click', () => {
-            //         toggles.forEach(toggle => {
-            //             toggle.classList.remove('active');
-            //         });
-            //         if (toggled == 'results') {
-            //             // finalPoem.style.display = 'none';
-            //             scoreTableElement.style.display = 'flex';
-            //             toggled = 'review';
-            //             toggles[0].classList.add('active');
-            //             gameGridElement.classList.remove('active');
-            //         } else {
-            //             // finalPoem.style.display = 'flex';
-            //             scoreTableElement.style.display = 'none';
-            //             toggled = 'results';
-            //             toggles[1].classList.add('active');
-            //             gameGridElement.classList.add('active');
-            //         }
-            //         finalScoreResizer(toggled);
-            //     });
-            // });
+            toggles.forEach(toggle => {
+                toggle.addEventListener('click', () => {
+                    toggles.forEach(toggle => {
+                        toggle.classList.remove('active');
+                    });
+                    if (toggled == 'results') {
+                        // finalPoem.style.display = 'none';
+                        scoreTableElement.style.display = 'flex';
+                        toggled = 'review';
+                        toggles[0].classList.add('active');
+                        gameGridElement.classList.remove('active');
+                    } else {
+                        // finalPoem.style.display = 'flex';
+                        scoreTableElement.style.display = 'none';
+                        toggled = 'results';
+                        toggles[1].classList.add('active');
+                        gameGridElement.classList.add('active');
+                    }
+                    // finalScoreResizer(toggled);
+                });
+            });
         }, 1000); // Delay to allow for wave animation to finish
     }
     
