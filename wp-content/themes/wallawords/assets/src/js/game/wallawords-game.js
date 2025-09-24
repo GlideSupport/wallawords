@@ -287,6 +287,7 @@ function startGame(puzzleCounterValue) {
     moveCounterValue = 0;
     completeSentenceCount = 0;
     incorrectCounterValue = 0;
+    isFailed = 0;
     completedSentences = [];
     completedColumns = [];
     if (gameGrid) {
@@ -320,13 +321,9 @@ function startGame(puzzleCounterValue) {
                     item.style.display = "block";
                 });
                 document.body.classList.add('steps-page');
-                const originalDropPlacement = new Map(); // Map to store initial positions
-                // Select a random puzzle
-                console.log(puzzleCounterValue);
+                const originalDropPlacement = new Map();
                 puzzleCounterValue = puzzles.length > puzzleCounterValue ? puzzleCounterValue : puzzles.length - 1;
                 var selectedPoem = puzzles[puzzleCounterValue];
-                console.log(selectedPoem.id);
-                console.log(selectedPoem.fullPoem);
                 activePoem = selectedPoem;
                 currentPuzzleID = selectedPoem.id; //poem ID
                 title = selectedPoem.title; // Store the puzzle title
@@ -874,10 +871,11 @@ function showFinalScoreScreen() {
             var failedHTML= `<div id="resultFailed">
                 <div class="overlay-title">Not Quite This Time</div>
                 <div class="overlay-subtitle">Every mistake is a step closer to mastery. Try again!</div>
-                <a href="${localVars.site_url}/?start_puzzle=true" class="site-btn btn-replay">Replay</a>
+                <a id="replay-game" class="site-btn btn-replay">Replay</a>
             </div>`;
             finalScoreScreen.insertAdjacentHTML('beforeend',failedHTML); 
-
+            let replayGame = document.getElementById('replay-game');
+            replayGame?.addEventListener('click', startGameAgain);
          }, 1000);
     }else{
         setTimeout(() => {

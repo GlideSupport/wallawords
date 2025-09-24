@@ -10,6 +10,8 @@ const nextButton = document.getElementById('next-button');
 const backButton = document.getElementById('back-button');
 const playButton = document.getElementById('play-button');
 
+
+
 let totalSlides = 0;
 let instructionSlide = 1;
 
@@ -60,7 +62,7 @@ skipButton.addEventListener('click', () => {
 
 });
 
-playButton?.addEventListener('click', () => {
+const startGameAgain = () => {
     document.body.style.overflow = 'auto';
     titleScreen.style.display = 'none';
     instructionScreen.style.display = 'none';
@@ -69,11 +71,25 @@ playButton?.addEventListener('click', () => {
     finalScoreScreen.style.display = 'none';
     gameScreen.removeAttribute('style');
     gameRow.removeAttribute('style');
-    
+    document.body.classList.remove('final-result', 'final-result-faild');
+    document.getElementById('resultFailed')?.remove();
+    const hideElements = (...elementIds) => {
+        elementIds.forEach(id => {
+            const element = document.getElementById(id);
+            if (element) element.style.display = 'none';
+        });
+    };
+    hideElements('result-sentence-counter', 'kicker', 'puzzle-title');
+    gameGridElement.innerHTML = `<span></span><img src="${localVars.site_url}/wp-content/themes/wallawords/assets/build/images/spinner.svg" class="loading"><span></span>`;
+// Call hideElements with all the IDs you want to hide
+
     //switchInstructionsSlide(instructionSlide);
-    console.log(puzzleCounter);
     startGame(puzzleCounter);
-});
+};
+
+playButton?.addEventListener('click', startGameAgain);
+
+
 
 document.addEventListener('DOMContentLoaded', function () {
   // Get the query parameters from the URL
