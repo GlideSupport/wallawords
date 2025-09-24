@@ -72,6 +72,7 @@ const startGameAgain = () => {
     gameScreen.removeAttribute('style');
     gameRow.removeAttribute('style');
     document.body.classList.remove('final-result', 'final-result-faild');
+    finalScoreScreen.classList.remove('final-result-faild');
     document.getElementById('resultFailed')?.remove();
     const hideElements = (...elementIds) => {
         elementIds.forEach(id => {
@@ -80,7 +81,7 @@ const startGameAgain = () => {
         });
     };
     hideElements('result-sentence-counter', 'kicker', 'puzzle-title');
-    gameGridElement.innerHTML = `<span></span><img src="${localVars.site_url}/wp-content/themes/wallawords/assets/build/images/spinner.svg" class="loading"><span></span>`;
+    gameGridElement.innerHTML = `<span></span><img src="${localVars.site_url}/wp-content/themes/wallawords/assets/src/images/spinner.svg" class="loading"><span></span>`;
 // Call hideElements with all the IDs you want to hide
 
     //switchInstructionsSlide(instructionSlide);
