@@ -67,7 +67,7 @@ const startGameAgain = () => {
     titleScreen.style.display = 'none';
     instructionScreen.style.display = 'none';
     instructionSlide = 1;
-
+    moveCounterDisplay.innerHTML = `Health`;
     finalScoreScreen.style.display = 'none';
     gameScreen.removeAttribute('style');
     gameRow.removeAttribute('style');

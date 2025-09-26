@@ -864,6 +864,7 @@ function showFinalScoreScreen() {
             finalScoreScreen.style.display = 'flex';
             document.body.classList.add('final-result', 'final-result-faild');
             resultSentenceCounterDisplay.removeAttribute('style');
+            moveCounterDisplay.innerHTML = `Health:`;
             finalScoreSentence.innerHTML = ' ';
             finalScoreScreen.classList.add('final-result-faild');
             document.getElementById("share-button")?.style.setProperty('display', 'none');
@@ -884,6 +885,7 @@ function showFinalScoreScreen() {
             gameRow.style.display = 'none';
             titleDisplay.removeAttribute('style');
             kicker.removeAttribute('style');
+            moveCounterDisplay.innerHTML = `Health:`;
             finalScoreScreen.style.display = 'flex';
             document.body.classList.add('final-result');
             document.body.classList.remove('final-result-faild');
