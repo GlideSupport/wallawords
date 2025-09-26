@@ -104,11 +104,13 @@ function wallawords_get_puzzle_data() {
             $get_puzzle_posts->the_post();
             $puzzle_post_meta = get_post_meta(get_the_ID());
             // Gather puzzle data
+            $default_prompt = get_field('wwp_default_prompt','options') ?? '';
+            $game_prompt = get_field('wwp_prompt', get_the_ID());
             $output_data[] = [
                 'id'          => get_the_ID(),
                 'title'       => get_the_title(),
                 'fullPoem'    => $puzzle_post_meta['full_poem'][0] ?? '',
-                'prompt'      => get_field('wwp_prompt', get_the_ID()) ?? '',
+                'prompt'      => !empty($game_prompt) ? $game_prompt : $default_prompt,
                 'health'      => get_field('wwp_health', get_the_ID()) ?? 7,
                 'correctWords' => isset($puzzle_post_meta['correct_words']) ? json_decode($puzzle_post_meta['correct_words'][0]) : [],
                 'sentences'   => isset($puzzle_post_meta['sentences']) ? json_decode($puzzle_post_meta['sentences'][0]) : [],
