@@ -811,6 +811,11 @@ body {
                 &.active {
                     background: transparent;
                     /* inactive = black */
+                    &:last-child{
+                       &:before{
+                               width:calc(100% + 8px)
+                    }
+                       }
                 }
 
                 &:first-child {
@@ -821,7 +826,7 @@ body {
                     width: calc(100% + 4px);
                     height: calc(100% + 8px);
                     top: -4px;
-                    left: -3px;
+                    left: -4px;
                     position: absolute;
                     border: 4px solid rgb(21 20 30);
                     content: "";
