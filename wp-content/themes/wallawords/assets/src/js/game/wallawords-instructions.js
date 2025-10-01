@@ -9,6 +9,7 @@ const skipButton = document.getElementById('skip-button');
 const nextButton = document.getElementById('next-button');
 const backButton = document.getElementById('back-button');
 const playButton = document.getElementById('play-button');
+const playPuzzleAcademy = document.getElementById('play-puzzle-academy');
 
 
 
@@ -62,7 +63,7 @@ skipButton.addEventListener('click', () => {
 
 });
 
-const startGameAgain = () => {
+const startGameAgain = (isAcdamy = false) => {
     document.body.style.overflow = 'auto';
     titleScreen.style.display = 'none';
     instructionScreen.style.display = 'none';
@@ -82,15 +83,14 @@ const startGameAgain = () => {
     };
     hideElements('result-sentence-counter', 'kicker', 'puzzle-title');
     gameGridElement.innerHTML = `<span></span><img src="${localVars.site_url}/wp-content/themes/wallawords/assets/src/images/spinner.svg" class="loading"><span></span>`;
-// Call hideElements with all the IDs you want to hide
-
     //switchInstructionsSlide(instructionSlide);
-    startGame(puzzleCounter);
+    console.log(isAcdamy);
+    isAcdamy ? console.log("test") : console.log("el test");
+    startGame(puzzleCounter, isAcdamy);
 };
 
-playButton?.addEventListener('click', startGameAgain);
-
-
+playButton?.addEventListener('click', () => startGameAgain(false));
+playPuzzleAcademy?.addEventListener('click',() => startGameAgain(true));
 
 document.addEventListener('DOMContentLoaded', function () {
   // Get the query parameters from the URL

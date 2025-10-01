@@ -337,7 +337,7 @@ $page_template = basename(get_page_template());
                     <?php endforeach;?>
 
                     <div class="button-container flex-column-button">
-                        <a class="site-btn">Start Puzzle Academy</a>
+                        <a id="play-puzzle-academy" class="site-btn">Start Puzzle Academy</a>
                         <?php if(is_home() || is_front_page()): ?>
                         <a id="play-button" class="site-btn-only-link">Skip to Today's Puzzle</a>
                         <?php else: ?>

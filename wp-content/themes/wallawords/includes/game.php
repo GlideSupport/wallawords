@@ -48,8 +48,15 @@ function wallawords_get_puzzle_data() {
         wp_send_json_error(['message' => 'Invalid nonce']);
         exit;
     }
-    $today_puzzle = true;
-    
+    $today_puzzle = false;
+    $is_acdamy = isset($_GET['is_acdamy']) ? array(intval($_GET['is_acdamy'])) : []; 
+    $gameID = isset($_GET['gameID']) ? array(intval($_GET['gameID'])) : []; 
+
+    if($is_acdamy){
+        $gameID = array(1144, 1143, 1255);
+    }else{
+        $today_puzzle = true;
+    }
 
     // Prepare base query arguments
     $get_puzzle_args = [
@@ -58,13 +65,13 @@ function wallawords_get_puzzle_data() {
         'post_type'      => 'puzzle',
         'orderby'        => 'date',
     ];
-    $gameID = isset($_GET['gameID']) ? array(intval($_GET['gameID'])) : []; 
-    // Add gameID filtering if provided
+  
+   
     if ($gameID) {
         $get_puzzle_args['post__in'] = $gameID;
         $get_puzzle_args['orderby'] = 'post__in';
     }
-
+   
     if($today_puzzle){
         $get_puzzle_args['posts_per_page'] = 1;
         if (!$gameID) {
@@ -83,7 +90,8 @@ function wallawords_get_puzzle_data() {
             $get_puzzle_args['post__not_in'] = $gameID;
         }
     }
-
+    // echo '<pre>';
+    // print_r($get_puzzle_args);
     // Fetch puzzles based on the prepared arguments
     $get_puzzle_posts = new WP_Query($get_puzzle_args);
 
