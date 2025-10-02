@@ -1,0 +1,190 @@
+.level-finish-popup {
+	max-width: 375px;
+	padding-top: 227px;
+	margin: auto;
+	background-color: var(--ww_black_1);
+
+	.popup-card {
+		border-radius: 30px 30px 0 0;
+		background: linear-gradient(198deg, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0.00) 58.92%);
+		padding: 24px;
+		position: relative;
+
+		.content-area {
+			position: relative;
+			z-index: 6;
+		}
+
+		.piece {
+			position: absolute;
+			background-position: center;
+			background-repeat: no-repeat;
+			background-size: contain;
+			z-index: 1;
+
+			&.piece-one {
+				right: 0;
+				top: 118px;
+				background-image: url(../images/piece-01.svg);
+				width: 62px;
+				height: 62px;
+			}
+
+			&.piece-two {
+				left: 0;
+				top: 201px;
+				background-image: url(../images/piece-02.svg);
+				width: 68px;
+				height: 98px;
+			}
+
+			&.piece-three {
+				right: 0;
+				bottom: 0;
+				background-image: url(../images/piece-03.svg);
+				width: 82px;
+				height: 137px;
+			}
+
+			&.piece-four {
+				left: 0;
+				bottom: 0;
+				background-image: url(../images/piece-04.svg);
+				width: 127px;
+				height: 95px;
+			}
+		}
+
+		.badge-box {
+			width: 123px;
+			height: 137px;
+			background-image: url(../images/badge-icon.png);
+			background-position: center;
+			background-repeat: no-repeat;
+			background-size: 123px 137px;
+			margin: 0 auto -90px;
+			position: relative;
+			top: -90px;
+
+			.arrows {
+				position: absolute;
+				width: 233px;
+				height: 147px;
+				background-image: url(../images/level-1-arrows.svg);
+				background-position: center;
+				background-repeat: no-repeat;
+				background-size: contain;
+				left: -51px;
+				top: -12px;
+			}
+
+			.hexagone-bg {
+				width: 105px;
+				height: 105px;
+				/*	background-image: url(../images/level1-opacity.png);
+			background-position: center;
+			background-repeat: no-repeat;
+			background-size: 95px 107px; */
+				background: linear-gradient(97.81deg, #2DC847 0%, #7FCF4F 49.48%, #EAEF04 100%);
+				clip-path: shape(from 93.08% 71.38%, curve to 89.49% 77.45% with 93.04% 75.45%, line to 53.02% 98%, curve to 45.98% 97.93% with 49.48% 100%, line to 9.94% 76.62%, curve to 6.48% 70.48% with 6.44% 74.55%, line to 6.92% 28.62%, curve to 10.51% 22.55% with 6.96% 24.55%, line to 46.98% 2%, curve to 54.02% 2.07% with 50.52% 0%, line to 90.06% 23.38%, curve to 93.52% 29.52% with 93.56% 25.45%);
+				opacity: 0.30;
+				top: 14px;
+				left: 9px;
+				position: relative;
+				border-radius: 20px
+			}
+
+			.hexagone-txt {
+				position: absolute;
+				width: 85px;
+				height: 85px;
+				top: 24px;
+				left: 19px;
+				opacity: 1;
+				background: linear-gradient(97.81deg, #2DC847 0%, #7FCF4F 49.48%, #EAEF04 100%);
+				clip-path: shape(from 93.08% 71.38%, curve to 89.49% 77.45% with 93.04% 75.45%, line to 53.02% 98%, curve to 45.98% 97.93% with 49.48% 100%, line to 9.94% 76.62%, curve to 6.48% 70.48% with 6.44% 74.55%, line to 6.92% 28.62%, curve to 10.51% 22.55% with 6.96% 24.55%, line to 46.98% 2%, curve to 54.02% 2.07% with 50.52% 0%, line to 90.06% 23.38%, curve to 93.52% 29.52% with 93.56% 25.45%);
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				flex-direction: column;
+
+				.heading-5 {
+					font-size: var(--ww_font_size_11);
+					margin: 0;
+				}
+			}
+
+			&.level-2 {
+				.arrows {
+					background-image: url(../images/level-1-arrows.svg);
+				}
+
+				.hexagone-bg {
+					background: linear-gradient(97.81deg, #2DC847 0%, #7FCF4F 49.48%, #EAEF04 100%);
+					clip-path: shape(from 93.08% 71.38%, curve to 89.49% 77.45% with 93.04% 75.45%, line to 53.02% 98%, curve to 45.98% 97.93% with 49.48% 100%, line to 9.94% 76.62%, curve to 6.48% 70.48% with 6.44% 74.55%, line to 6.92% 28.62%, curve to 10.51% 22.55% with 6.96% 24.55%, line to 46.98% 2%, curve to 54.02% 2.07% with 50.52% 0%, line to 90.06% 23.38%, curve to 93.52% 29.52% with 93.56% 25.45%);
+				}
+
+				.hexagone-txt {
+					background: linear-gradient(97.81deg, #2DC847 0%, #7FCF4F 49.48%, #EAEF04 100%);
+					clip-path: shape(from 93.08% 71.38%, curve to 89.49% 77.45% with 93.04% 75.45%, line to 53.02% 98%, curve to 45.98% 97.93% with 49.48% 100%, line to 9.94% 76.62%, curve to 6.48% 70.48% with 6.44% 74.55%, line to 6.92% 28.62%, curve to 10.51% 22.55% with 6.96% 24.55%, line to 46.98% 2%, curve to 54.02% 2.07% with 50.52% 0%, line to 90.06% 23.38%, curve to 93.52% 29.52% with 93.56% 25.45%);
+				}
+
+			}
+			
+			&.level-3 {
+				.arrows {
+					background-image: url(../images/level-1-arrows.svg);
+				}
+
+				.hexagone-bg {
+					background: linear-gradient(97.81deg, #2DC847 0%, #7FCF4F 49.48%, #EAEF04 100%);
+					clip-path: shape(from 93.08% 71.38%, curve to 89.49% 77.45% with 93.04% 75.45%, line to 53.02% 98%, curve to 45.98% 97.93% with 49.48% 100%, line to 9.94% 76.62%, curve to 6.48% 70.48% with 6.44% 74.55%, line to 6.92% 28.62%, curve to 10.51% 22.55% with 6.96% 24.55%, line to 46.98% 2%, curve to 54.02% 2.07% with 50.52% 0%, line to 90.06% 23.38%, curve to 93.52% 29.52% with 93.56% 25.45%);
+				}
+
+				.hexagone-txt {
+					background: linear-gradient(97.81deg, #2DC847 0%, #7FCF4F 49.48%, #EAEF04 100%);
+					clip-path: shape(from 93.08% 71.38%, curve to 89.49% 77.45% with 93.04% 75.45%, line to 53.02% 98%, curve to 45.98% 97.93% with 49.48% 100%, line to 9.94% 76.62%, curve to 6.48% 70.48% with 6.44% 74.55%, line to 6.92% 28.62%, curve to 10.51% 22.55% with 6.96% 24.55%, line to 46.98% 2%, curve to 54.02% 2.07% with 50.52% 0%, line to 90.06% 23.38%, curve to 93.52% 29.52% with 93.56% 25.45%);
+				}
+
+			}
+
+			.popuptitle {
+				width: 100%;
+				margin: 8px auto 16px;
+				transition: all 0.3s ease;
+				text-align: center;
+
+				span {
+
+					background: linear-gradient(88deg, #2BC016 0.88%, #26A96C 99.12%);
+					background-clip: text;
+					-webkit-background-clip: text;
+					-webkit-text-fill-color: transparent;
+					display: block;
+				}
+
+
+			}
+
+			.popupcontent {
+				font-size: 18px;
+				@include font(rubik, med);
+				text-align: center;
+				max-width: 327px;
+				margin: 0 auto 30px;
+			}
+
+			.site-btn {
+				margin-bottom: 24px;
+			}
+
+			.note {
+				font-size: 14px;
+				text-align: center;
+				color: var(--ww_grey_1);
+			}
+
+		}
+
+	}
+}
