@@ -9,6 +9,7 @@
 		background: linear-gradient(198deg, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0.00) 58.92%);
 		padding: 24px;
 		position: relative;
+		text-align: center;
 
 		.content-area {
 			position: relative;
@@ -86,12 +87,14 @@
 			background-repeat: no-repeat;
 			background-size: 95px 107px; */
 				background: linear-gradient(97.81deg, #2DC847 0%, #7FCF4F 49.48%, #EAEF04 100%);
+				filter: drop-shadow(0 7.351px 238.906px #44CA4A);
 				clip-path: shape(from 93.08% 71.38%, curve to 89.49% 77.45% with 93.04% 75.45%, line to 53.02% 98%, curve to 45.98% 97.93% with 49.48% 100%, line to 9.94% 76.62%, curve to 6.48% 70.48% with 6.44% 74.55%, line to 6.92% 28.62%, curve to 10.51% 22.55% with 6.96% 24.55%, line to 46.98% 2%, curve to 54.02% 2.07% with 50.52% 0%, line to 90.06% 23.38%, curve to 93.52% 29.52% with 93.56% 25.45%);
 				opacity: 0.30;
 				top: 14px;
 				left: 9px;
 				position: relative;
 				border-radius: 20px
+
 			}
 
 			.hexagone-txt {
@@ -107,84 +110,94 @@
 				align-items: center;
 				justify-content: center;
 				flex-direction: column;
+				color: var(--ww_black_1);
 
 				.heading-5 {
-					font-size: var(--ww_font_size_11);
+					@include font(rubik, med);
+					font-size: 30px;
+					font-style: normal;
+					font-weight: 500;
+					line-height: 112%;
+					letter-spacing: -0.9px;
+					color: var(--ww_black_1);
 					margin: 0;
 				}
 			}
 
 			&.level-2 {
 				.arrows {
-					background-image: url(../images/level-1-arrows.svg);
+					background-image: url(../images/level-2-arrows.svg);
 				}
 
 				.hexagone-bg {
-					background: linear-gradient(97.81deg, #2DC847 0%, #7FCF4F 49.48%, #EAEF04 100%);
+					background: linear-gradient(119deg, #6B58FF 0%, #B902FA 100%);
+                filter: drop-shadow(0 0 130px #7325EA);
 					clip-path: shape(from 93.08% 71.38%, curve to 89.49% 77.45% with 93.04% 75.45%, line to 53.02% 98%, curve to 45.98% 97.93% with 49.48% 100%, line to 9.94% 76.62%, curve to 6.48% 70.48% with 6.44% 74.55%, line to 6.92% 28.62%, curve to 10.51% 22.55% with 6.96% 24.55%, line to 46.98% 2%, curve to 54.02% 2.07% with 50.52% 0%, line to 90.06% 23.38%, curve to 93.52% 29.52% with 93.56% 25.45%);
 				}
 
 				.hexagone-txt {
-					background: linear-gradient(97.81deg, #2DC847 0%, #7FCF4F 49.48%, #EAEF04 100%);
+					background: linear-gradient(119deg, #6B58FF 0%, #B902FA 100%);
 					clip-path: shape(from 93.08% 71.38%, curve to 89.49% 77.45% with 93.04% 75.45%, line to 53.02% 98%, curve to 45.98% 97.93% with 49.48% 100%, line to 9.94% 76.62%, curve to 6.48% 70.48% with 6.44% 74.55%, line to 6.92% 28.62%, curve to 10.51% 22.55% with 6.96% 24.55%, line to 46.98% 2%, curve to 54.02% 2.07% with 50.52% 0%, line to 90.06% 23.38%, curve to 93.52% 29.52% with 93.56% 25.45%);
 				}
 
 			}
-			
+
 			&.level-3 {
 				.arrows {
-					background-image: url(../images/level-1-arrows.svg);
+					background-image: url(../images/level-3-arrows.svg);
 				}
 
 				.hexagone-bg {
-					background: linear-gradient(97.81deg, #2DC847 0%, #7FCF4F 49.48%, #EAEF04 100%);
+					background: linear-gradient(98deg, #AA039F 0%, #ED014D 49.48%, #F67916 100%);
+					filter: drop-shadow(0 0 130px #C5027E);
 					clip-path: shape(from 93.08% 71.38%, curve to 89.49% 77.45% with 93.04% 75.45%, line to 53.02% 98%, curve to 45.98% 97.93% with 49.48% 100%, line to 9.94% 76.62%, curve to 6.48% 70.48% with 6.44% 74.55%, line to 6.92% 28.62%, curve to 10.51% 22.55% with 6.96% 24.55%, line to 46.98% 2%, curve to 54.02% 2.07% with 50.52% 0%, line to 90.06% 23.38%, curve to 93.52% 29.52% with 93.56% 25.45%);
 				}
 
 				.hexagone-txt {
-					background: linear-gradient(97.81deg, #2DC847 0%, #7FCF4F 49.48%, #EAEF04 100%);
+						background: linear-gradient(98deg, #AA039F 0%, #ED014D 49.48%, #F67916 100%);
 					clip-path: shape(from 93.08% 71.38%, curve to 89.49% 77.45% with 93.04% 75.45%, line to 53.02% 98%, curve to 45.98% 97.93% with 49.48% 100%, line to 9.94% 76.62%, curve to 6.48% 70.48% with 6.44% 74.55%, line to 6.92% 28.62%, curve to 10.51% 22.55% with 6.96% 24.55%, line to 46.98% 2%, curve to 54.02% 2.07% with 50.52% 0%, line to 90.06% 23.38%, curve to 93.52% 29.52% with 93.56% 25.45%);
 				}
 
 			}
 
-			
+
 		}
-			.popuptitle {
-				width: 100%;
-				margin: 8px auto 16px;
-				transition: all 0.3s ease;
-				text-align: center;
 
-				span {
+		.popuptitle {
+			width: 100%;
+			margin: 8px auto 16px;
+			transition: all 0.3s ease;
+			text-align: center;
 
-					background: linear-gradient(88deg, #2BC016 0.88%, #26A96C 99.12%);
-					background-clip: text;
-					-webkit-background-clip: text;
-					-webkit-text-fill-color: transparent;
-					display: block;
-				}
+			span {
 
-
+				background: linear-gradient(88deg, #2BC016 0.88%, #26A96C 99.12%);
+				background-clip: text;
+				-webkit-background-clip: text;
+				-webkit-text-fill-color: transparent;
+				display: block;
 			}
 
-			.popupcontent {
-				font-size: 18px;
-				@include font(rubik, med);
-				text-align: center;
-				max-width: 327px;
-				margin: 0 auto 30px;
-			}
 
-			.site-btn {
-				margin-bottom: 24px;
-			}
+		}
 
-			.note {
-				font-size: 14px;
-				text-align: center;
-				color: var(--ww_grey_1);
-			}
+		.popupcontent {
+			font-size: 18px;
+			@include font(rubik, med);
+			text-align: center;
+			max-width: 327px;
+			margin: 0 auto 30px;
+		}
+
+		.site-btn {
+			margin-bottom: 24px;
+		}
+
+		.note {
+			font-size: 14px;
+			text-align: center;
+			color: var(--ww_grey_1);
+		}
 
 
 	}
