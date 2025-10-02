@@ -119,6 +119,31 @@ array(
         </div>
     </div>
 
+    <div id="final-puzzle-acdamy-popup" class="level-finish-popup" style="display: none;">
+        <div class="popup-card">
+            <div class="piece piece-one"></div>
+            <div class="piece piece-two"></div>
+            <div class="piece piece-three"></div>
+            <div class="piece piece-four"></div>
+            <div class="content-area">
+            <div class="badge-box  level-3">
+            <div class="arrows"></div>
+            <div class="hexagone-bg"></div>
+                <div class="hexagone-txt">
+                <div class="p4">Level</div>
+                <div class="heading-5">1/3</div>
+                </div>
+                
+            </div>
+            <div class="popuptitle heading-1">Well <span>done</span></div>
+            <div class="popupcontent">You’ve completed Level 1! <br>Get ready for Level 2 and challenge yourself even more.</div>
+
+            <a class="site-btn" role="button" aria-label="Next Level">Next Level</a>
+            <div class="note">Remember to limit moves and avoid mistakesto get the highest score!</div>
+            </div>
+        </div>
+    </div>
+
     <!-- Final Score Screen -->
     <!-- <div id="final-score-screen" class="final-score-screen" style="display: none;">
 

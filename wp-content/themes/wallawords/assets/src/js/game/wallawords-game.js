@@ -58,6 +58,7 @@ const gameRow = document.getElementById('game-row');
 const gameGridElement = document.getElementById('sortable-grid');
 const gamePrompt = document.getElementById('game-prompt');
 const finalScoreScreen = document.getElementById('final-score-screen');
+const finalAcdamyPuzzlePopup = document.getElementById('final-puzzle-acdamy-popup');
 // const finalScoreToggle = document.getElementById('final-page-toggle');
 const finalPoem = document.getElementById('final-poem');
 const skinToggleButton = document.getElementById('skin-toggle-button');
@@ -776,6 +777,7 @@ function checkPuzzleCompletion(originalPositions) {
         }, 8000);
     }
 }
+
 function checkPuzzleHelth(originalPositions) {
     if (incorrectCounterValue >= health) {
         isFailed = 1;
@@ -784,6 +786,7 @@ function checkPuzzleHelth(originalPositions) {
         showFinalScoreScreen();
     }
 }
+
 // **Animate the Effect for Completed Sections**
 function animateEffect(index, type) {
     const items = document.querySelectorAll('.grid-item');
@@ -880,98 +883,103 @@ function finalScoreResizer(mode) {
 
 // **Show the Final Score Screen After Puzzle Completion**
 function showFinalScoreScreen() {
-    puzzleCounter++;
-    if(isFailed){
-         setTimeout(() => {
-            gameRow.style.display = 'none';
-            titleDisplay.removeAttribute('style');
-            kicker.removeAttribute('style');
-            finalScoreScreen.style.display = 'flex';
-            document.body.classList.add('final-result', 'final-result-faild');
-            resultSentenceCounterDisplay.removeAttribute('style');
-            moveCounterDisplay.innerHTML = `Health:`;
-            finalScoreSentence.innerHTML = ' ';
-            finalScoreScreen.classList.add('final-result-faild');
-            document.getElementById("share-button")?.style.setProperty('display', 'none');
+        puzzleCounter++;
+        if(isFailed){
+            setTimeout(() => {
+                gameRow.style.display = 'none';
+                titleDisplay.removeAttribute('style');
+                kicker.removeAttribute('style');
+                finalScoreScreen.style.display = 'flex';
+                document.body.classList.add('final-result', 'final-result-faild');
+                resultSentenceCounterDisplay.removeAttribute('style');
+                moveCounterDisplay.innerHTML = `Health:`;
+                finalScoreSentence.innerHTML = ' ';
+                finalScoreScreen.classList.add('final-result-faild');
+                document.getElementById("share-button")?.style.setProperty('display', 'none');
 
-            var failedHTML= `<div id="resultFailed">
-                <div class="overlay-title">Not Quite This Time</div>
-                <div class="overlay-subtitle">Every mistake is a step closer to mastery. Try again!</div>
-                <a id="replay-game" class="site-btn btn-replay">Replay</a>
-            </div>`;
-            finalScoreScreen.insertAdjacentHTML('beforeend',failedHTML); 
-            let replayGame = document.getElementById('replay-game');
-            replayGame?.addEventListener('click', () => startGameAgain(false));
-         }, 1000);
-    }else{
-        setTimeout(() => {
-            document.getElementById('resultFailed')?.remove();
-            //gameScreen.style.display = 'none';
-            gameRow.style.display = 'none';
-            titleDisplay.removeAttribute('style');
-            kicker.removeAttribute('style');
-            moveCounterDisplay.innerHTML = `Health:`;
-            finalScoreScreen.style.display = 'flex';
-            document.body.classList.add('final-result');
-            document.body.classList.remove('final-result-faild');
-            finalScoreScreen.classList.remove('final-result-faild');
-            // finalScoreToggle.style.display = 'flex';
-            // finalMoveCount.innerHTML = `<span>Moves</span> ${moveCounterValue}`;
-            // moveCounterDisplay.style.display = "none";
-            // errorCounterDisplay.style.display = "none";
-            sentenceCounterDisplay.style.display = "none";
-            resultSentenceCounterDisplay.removeAttribute('style');
-            document.getElementById("share-button").removeAttribute('style');
-            // sentenceToggle[0].style.display = "none";
-            // sentenceToggle[1].style.display = "block";
-            /* //removed this in place of showing final game board
-                fullPoem.textContent = activePoem.fullPoem;
-                poemColumn1.textContent = activePoem.columns[0];
-                poemColumn2.textContent = activePoem.columns[1];
-                poemColumn3.textContent = activePoem.columns[2];
-                */
-            const scoreTableElement = document.querySelector('.score-table');
-            const scoreTableElements = document.querySelectorAll('.score-row');
-            scoreTableElements.forEach(row => {
-                let scoreFrom = row.dataset.from;
-                let scoreTo = row.dataset.to;
-                //console.log(moveCounterValue +'~'+ scoreFrom +'~'+ scoreTo);
-                if (parseInt(moveCounterValue) >= parseInt(scoreFrom) && parseInt(moveCounterValue) <= parseInt(scoreTo)) {
-                    row.classList.add('highlighted');
-                    row.classList.add(row.id);
-                    finalMoveCount.classList.add(row.id);
-                    let rankIcon = row ? row.querySelector(".score-icon") : null;
-                    completedPuzzleIcon = rankIcon ? rankIcon.innerHTML.trim() : "";
-                    let rankTitle = row ? row.querySelector(".score-title") : null;
-                    completedPuzzleRank = rankTitle ? rankTitle.innerHTML.trim() : "";
-                }
-            });
-            const toggles = document.querySelectorAll('.final-page-toggle .toggle');
-            // finalScoreResizer(toggled);
-            toggles.forEach(toggle => {
-                toggle.addEventListener('click', () => {
-                    toggles.forEach(toggle => {
-                        toggle.classList.remove('active');
+                var failedHTML= `<div id="resultFailed">
+                    <div class="overlay-title">Not Quite This Time</div>
+                    <div class="overlay-subtitle">Every mistake is a step closer to mastery. Try again!</div>
+                    <a id="replay-game" class="site-btn btn-replay">Replay</a>
+                </div>`;
+                finalScoreScreen.insertAdjacentHTML('beforeend',failedHTML); 
+                let replayGame = document.getElementById('replay-game');
+                replayGame?.addEventListener('click', () => startGameAgain(false));
+            }, 1000);
+        }else{
+            setTimeout(() => {
+                document.getElementById('resultFailed')?.remove();
+                gameRow.style.display = 'none';
+                titleDisplay.removeAttribute('style');
+                kicker.removeAttribute('style');
+                if(!ispuzzleAcdamy){
+                    //gameScreen.style.display = 'none';
+                    moveCounterDisplay.innerHTML = `Health:`;
+                    finalScoreScreen.style.display = 'flex';
+                    document.body.classList.add('final-result');
+                    document.body.classList.remove('final-result-faild');
+                    finalScoreScreen.classList.remove('final-result-faild');
+                    // finalScoreToggle.style.display = 'flex';
+                    // finalMoveCount.innerHTML = `<span>Moves</span> ${moveCounterValue}`;
+                    // moveCounterDisplay.style.display = "none";
+                    // errorCounterDisplay.style.display = "none";
+                    sentenceCounterDisplay.style.display = "none";
+                    resultSentenceCounterDisplay.removeAttribute('style');
+                    document.getElementById("share-button").removeAttribute('style');
+                    // sentenceToggle[0].style.display = "none";
+                    // sentenceToggle[1].style.display = "block";
+                    /* //removed this in place of showing final game board
+                        fullPoem.textContent = activePoem.fullPoem;
+                        poemColumn1.textContent = activePoem.columns[0];
+                        poemColumn2.textContent = activePoem.columns[1];
+                        poemColumn3.textContent = activePoem.columns[2];
+                        */
+                    const scoreTableElement = document.querySelector('.score-table');
+                    const scoreTableElements = document.querySelectorAll('.score-row');
+                    scoreTableElements.forEach(row => {
+                        let scoreFrom = row.dataset.from;
+                        let scoreTo = row.dataset.to;
+                        //console.log(moveCounterValue +'~'+ scoreFrom +'~'+ scoreTo);
+                        if (parseInt(moveCounterValue) >= parseInt(scoreFrom) && parseInt(moveCounterValue) <= parseInt(scoreTo)) {
+                            row.classList.add('highlighted');
+                            row.classList.add(row.id);
+                            finalMoveCount.classList.add(row.id);
+                            let rankIcon = row ? row.querySelector(".score-icon") : null;
+                            completedPuzzleIcon = rankIcon ? rankIcon.innerHTML.trim() : "";
+                            let rankTitle = row ? row.querySelector(".score-title") : null;
+                            completedPuzzleRank = rankTitle ? rankTitle.innerHTML.trim() : "";
+                        }
                     });
-                    if (toggled == 'results') {
-                        // finalPoem.style.display = 'none';
-                        scoreTableElement.style.display = 'flex';
-                        toggled = 'review';
-                        toggles[0].classList.add('active');
-                        gameGridElement.classList.remove('active');
-                    } else {
-                        // finalPoem.style.display = 'flex';
-                        scoreTableElement.style.display = 'none';
-                        toggled = 'results';
-                        toggles[1].classList.add('active');
-                        gameGridElement.classList.add('active');
-                    }
+                    const toggles = document.querySelectorAll('.final-page-toggle .toggle');
                     // finalScoreResizer(toggled);
-                });
-            });
-        }, 1000); // Delay to allow for wave animation to finish
-    }
-    
+                    toggles.forEach(toggle => {
+                        toggle.addEventListener('click', () => {
+                            toggles.forEach(toggle => {
+                                toggle.classList.remove('active');
+                            });
+                            if (toggled == 'results') {
+                                // finalPoem.style.display = 'none';
+                                scoreTableElement.style.display = 'flex';
+                                toggled = 'review';
+                                toggles[0].classList.add('active');
+                                gameGridElement.classList.remove('active');
+                            } else {
+                                // finalPoem.style.display = 'flex';
+                                scoreTableElement.style.display = 'none';
+                                toggled = 'results';
+                                toggles[1].classList.add('active');
+                                gameGridElement.classList.add('active');
+                            }
+                            // finalScoreResizer(toggled);
+                        });
+                    });
+                }else{
+                    finalAcdamyPuzzlePopup.removeAttribute('style');
+                }
+            }, 1000); 
+            
+        }
+   
 }
 
 

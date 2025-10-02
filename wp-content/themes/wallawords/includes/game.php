@@ -7,7 +7,6 @@
  * add a game options page
  */
  if( function_exists('acf_add_options_page') ) {
-
     // Settings options page.
     $option_page = acf_add_options_page(array(
         'page_title'    => __('Game Settings'),
@@ -315,8 +314,7 @@ function render_custom_puzzle_form($post) {
     $output .= '<div id="tab-2" class="puzzle-tab" style="display:'.$showBlock.';">
     <h2>Configure Game Board</h2>
     <p style="color:#c00;">Select at least 2 tiles to lock</p>';    
-    $output .= '<p><a id="randomize" class="button button-primary button-large" style="display:'.$showRand.';">Randomize <i class="dashicons dashicons-randomize
-"></i></a></p>';
+    $output .= '<p><a id="randomize" class="button button-primary button-large" style="display:'.$showRand.';">Randomize <i class="dashicons dashicons-randomize"></i></a></p>';
     $output .= '<div class="game-grid">';
     if($full_poem):
         $output .= output_game_grid_for_admin($post->ID,$full_poem);
@@ -356,7 +354,7 @@ function output_game_grid_for_admin($post_id = '',$full_poem = '') {
     endif;
 
     $has_correct_words = get_post_meta($post_id, 'correct_words', true);
-
+    $output = '';
     foreach($words as $key => $word):
         $word = iconv('UTF-8', 'ASCII//TRANSLIT', $word); //add a filter for MS fancy quotes/apostrophes
         $output .= '<input name="correct_' . $key . '" value="' . $word . '" type="hidden" class="correct">';
@@ -494,7 +492,7 @@ function save_custom_puzzle_data($post_id) {
 
         update_post_meta($post_id, 'difficulty', '');
 
-        $words = explode(' ', $full_poem); // Split the full poem into words
+        // $words = explode(' ', $full_poem); // Split the full poem into words
 
         $correct_words = array();
         $incorrect_words = array();
@@ -584,73 +582,53 @@ function calculateMinSwapsUsingGraphMethod($solvedState, $currentState) {
     return $ans;
 }
 
-function getPuzzleDifficultyRating($puzzle_id) {
-
+function getPuzzleDifficultyRating($puzzle_id)
+{
     $full_poem = get_post_meta($puzzle_id, 'full_poem', true);
-
     $has_correct_words = get_post_meta($puzzle_id, 'correct_words', true);
+    if ($has_correct_words):
 
-    if($has_correct_words):
-        
         $words = array();
-    
-        if($full_poem):
+
+        if ($full_poem):
             $full_poem = iconv('UTF-8', 'ASCII//TRANSLIT', $full_poem); //add a filter for MS fancy quotes/apostrophes
             $words = explode(' ', $full_poem); // Split the full poem into words
         endif;
-
         $solved_state = json_decode($has_correct_words);
-
         $has_incorrect_words = get_post_meta($puzzle_id, 'incorrect_words', true);
-
-        if($has_incorrect_words):
+        if ($has_incorrect_words):
             $incorrect_words = json_decode($has_incorrect_words);
-        endif; 
-
+        endif;
         $has_locked_words = get_post_meta($puzzle_id, 'locked_words', true);
-        
-        if($has_locked_words):
-            $locked_words = json_decode($has_locked_words);    
-        endif;  
 
+        if ($has_locked_words):
+            $locked_words = json_decode($has_locked_words);
+        endif;
         $current_state = array();
-
         $incorrectCt = 0;
-
-        for($key=0;$key<15;$key++):
-            $value = '';            
-
-            if($incorrect_words && count($incorrect_words) > 0):
+        for ($key = 0; $key < 15; $key++):
+            $value = '';
+            if ($incorrect_words && count($incorrect_words) > 0):
                 $value = $incorrect_words[$incorrectCt];
             endif;
-
-            if(is_array($locked_words) && in_array($key,$locked_words)): 
+            if (is_array($locked_words) && in_array($key, $locked_words)):
                 $value = $words[$key];
                 $value = iconv('UTF-8', 'ASCII//TRANSLIT', $value); //add a filter for MS fancy quotes/apostrophes
             else:
                 $incorrectCt++;
             endif;
-
             $current_state[] = $value;
         endfor;
+        $this_difficulty = calculateMinSwapsUsingGraphMethod($solved_state, $current_state);
 
-       $this_difficulty = calculateMinSwapsUsingGraphMethod($solved_state, $current_state);
-                
-       $levels = get_field('difficulty_settings','options');
-
-        if(isset($levels) && is_array($levels)):
-
-            foreach($levels as $key => $difficulty):
-                if($difficulty <= $this_difficulty):
+        $levels = get_field('difficulty_settings', 'options');
+        if (isset($levels) && is_array($levels)):
+            foreach ($levels as $key => $difficulty):
+                if ($difficulty <= $this_difficulty):
                     $rank = $key;
                 endif;
             endforeach;
-
-            return array($rank,$this_difficulty);
-
+            return array($rank, $this_difficulty);
         endif;
-    
     endif;
-
-
 }
