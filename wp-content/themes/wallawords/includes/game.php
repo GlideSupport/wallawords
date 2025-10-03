@@ -48,18 +48,18 @@ function wallawords_get_puzzle_data() {
         exit;
     }
     $today_puzzle = false;
-    $is_acdamy = isset($_GET['is_acdamy']) ? array(intval($_GET['is_acdamy'])) : []; 
+    $is_acadamy = isset($_GET['is_acadamy']) ? array(intval($_GET['is_acadamy'])) : []; 
     $gameID = isset($_GET['gameID']) ? array(intval($_GET['gameID'])) : []; 
     $completed = isset($_GET['completed']) ? sanitize_text_field($_GET['completed']) : '';
     for($level =1; $level<= 3; $level++){
         $level_key = "select_level_".$level."_puzzle";
-        $acdamyPluzzle[$level] = get_field($level_key ,'options');
+        $acadamyPluzzle[$level] = get_field($level_key ,'options');
     }
     
-    if($is_acdamy){
+    if($is_acadamy){
         $level = $_GET['level'] ?? 1;
         $level_key = "select_level_".$level."_puzzle";
-        $gameID[] = $acdamyPluzzle[$level];//get_field($level_key ,'options');
+        $gameID[] = $acadamyPluzzle[$level];//get_field($level_key ,'options');
     }else{
         $today_puzzle = true;
     }

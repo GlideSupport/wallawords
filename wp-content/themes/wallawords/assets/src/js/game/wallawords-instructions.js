@@ -63,7 +63,7 @@ skipButton.addEventListener('click', () => {
 
 });
 
-const startGameAgain = (isAcdamy = false) => {
+const startGameAgain = (isAcadamy = false) => {
     document.body.style.overflow = 'auto';
     titleScreen.style.display = 'none';
     instructionScreen.style.display = 'none';
@@ -84,9 +84,9 @@ const startGameAgain = (isAcdamy = false) => {
     hideElements('result-sentence-counter', 'kicker', 'puzzle-title');
     gameGridElement.innerHTML = `<span></span><img src="${localVars.site_url}/wp-content/themes/wallawords/assets/src/images/spinner.svg" class="loading"><span></span>`;
     //switchInstructionsSlide(instructionSlide);
-    console.log(isAcdamy);
-    isAcdamy ? console.log("test") : console.log("el test");
-    startGame(puzzleCounter, isAcdamy);
+    console.log(isAcadamy);
+    isAcadamy ? console.log("test") : console.log("el test");
+    startGame(puzzleCounter, isAcadamy);
 };
 
 playButton?.addEventListener('click', () => startGameAgain(false));
@@ -107,6 +107,17 @@ document.addEventListener('DOMContentLoaded', function () {
     instructionScreen.style.display = 'none';
     instructionSlide = 1;
     startGame(puzzleCounter);
+  }
+  if (urlParams.get('start_puzzle_academy') === 'true') {
+    urlParams.delete('start_puzzle_academy');
+    const newUrl = urlParams.toString() ? `${window.location.pathname}?${urlParams}` : window.location.pathname;
+    window.history.replaceState({}, '', newUrl);
+
+    document.body.style.overflow = 'auto';
+    titleScreen.style.display = 'none';
+    instructionScreen.style.display = 'none';
+    instructionSlide = 1;
+    startGame(puzzleCounter, true);
   }
 });
 // --- Cookie helper functions ---

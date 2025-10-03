@@ -119,14 +119,14 @@ array(
         </div>
     </div>
 
-    <div id="final-puzzle-acdamy-popup" class="level-finish-popup" style="display: none;">
+    <div id="final-puzzle-acadamy-popup" class="level-finish-popup" style="display: none;">
         <div class="popup-card">
             <div class="piece piece-one"></div>
             <div class="piece piece-two"></div>
             <div class="piece piece-three"></div>
             <div class="piece piece-four"></div>
             <div class="content-area">
-            <div id="level-badge" class="badge-box  level-1">
+            <div id="level-badge" class="badge-box level-1">
             <div class="arrows"></div>
             <div class="hexagone-bg"></div>
                 <div class="hexagone-txt">

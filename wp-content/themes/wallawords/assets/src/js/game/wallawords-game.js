@@ -58,7 +58,7 @@ const gameRow = document.getElementById('game-row');
 const gameGridElement = document.getElementById('sortable-grid');
 const gamePrompt = document.getElementById('game-prompt');
 const finalScoreScreen = document.getElementById('final-score-screen');
-const finalAcdamyPuzzlePopup = document.getElementById('final-puzzle-acdamy-popup');
+const finalAcadamyPuzzlePopup = document.getElementById('final-puzzle-acadamy-popup');
 // const finalScoreToggle = document.getElementById('final-page-toggle');
 const finalPoem = document.getElementById('final-poem');
 const skinToggleButton = document.getElementById('skin-toggle-button');
@@ -125,12 +125,12 @@ let toggled = 'review';
 
 let columnCompletedThisMove = false; // Flag for column completion
 let sentenceCompletedThisMove = false; // Flag for sentence completion
-let ispuzzleAcdamy = false;
-let puzzleAcdamyLevel = 1;
-if (GameStorageService.getItem('puzzle-acdamy-level')) {
-    puzzleAcdamyLevel = GameStorageService.getItem('puzzle-acdamy-level');
+let ispuzzleAcadamy = false;
+let puzzleAcadamyLevel = 1;
+if (GameStorageService.getItem('puzzle-acadamy-level')) {
+    puzzleAcadamyLevel = GameStorageService.getItem('puzzle-acadamy-level');
 }else{
-    GameStorageService.setItem('puzzle-acdamy-level', puzzleAcdamyLevel, 1);
+    GameStorageService.setItem('puzzle-acadamy-level', puzzleAcadamyLevel, 1);
 }
 document.addEventListener('DOMContentLoaded', initializeGame);
 
@@ -160,10 +160,10 @@ function initializeGame() {
     }
     if(nextLevel){
         nextLevel.addEventListener('click', () => {
-            finalAcdamyPuzzlePopup.style.display = 'none';
+            finalAcadamyPuzzlePopup.style.display = 'none';
             gameGridElement.innerHTML = `<span></span><img src="${localVars.site_url}/wp-content/themes/wallawords/assets/src/images/spinner.svg" class="loading"><span></span>`;
-            puzzleAcdamyLevel = GameStorageService.getItem('puzzle-acdamy-level');
-            startGame(puzzleAcdamyLevel, true);
+            puzzleAcadamyLevel = GameStorageService.getItem('puzzle-acadamy-level');
+            startGame(puzzleAcadamyLevel, true);
         });
     }
     if(shareBtn){
@@ -246,7 +246,7 @@ async function dpData(encryptedDataWithIv, nonce) {
 }
 
 // **Start the Game**
-function startGame(puzzleCounterValue, isAcdamy = false) {
+function startGame(puzzleCounterValue, isAcadamy = false) {
     pageHeader.classList.add('playing');
     moveCounterDisplay.classList.remove('over');
     finalScoreScreen.style.display = 'none';
@@ -254,12 +254,12 @@ function startGame(puzzleCounterValue, isAcdamy = false) {
     sentenceCounterDisplay.style.display = "block";
     // errorCounterDisplay.style.display = "block";
     // errorCounterDisplay.innerHTML = '';
-    ispuzzleAcdamy = isAcdamy;
-    if(isAcdamy){
-        url = localVars.ajax_url + '?action=wallawords_get_puzzle_data&is_acdamy=' + isAcdamy + '&nonce=' + localVars.nonce;
-        puzzleAcdamyLevel = GameStorageService.getItem('puzzle-acdamy-level');
-        if(puzzleAcdamyLevel){
-            url += '&level=' + puzzleAcdamyLevel;
+    ispuzzleAcadamy = isAcadamy;
+    if(isAcadamy){
+        url = localVars.ajax_url + '?action=wallawords_get_puzzle_data&is_acadamy=' + isAcadamy + '&nonce=' + localVars.nonce;
+        puzzleAcadamyLevel = GameStorageService.getItem('puzzle-acadamy-level');
+        if(puzzleAcadamyLevel){
+            url += '&level=' + puzzleAcadamyLevel;
         }
     }else{
         if (jQuery('#puzzle_id').length) {
@@ -569,10 +569,10 @@ function updateMoveCounterDisplay() {
         moveCounterDisplay.innerHTML = `Health`;//<span>Moves</span> ${minimumMoves - incorrectCounterValue}  
         // var health = minimumMoves - incorrectCounterValue;
         var currentHealth = health - incorrectCounterValue;
-        if(ispuzzleAcdamy){
-            puzzleAcdamyLevel = GameStorageService.getItem('puzzle-acdamy-level');
+        if(ispuzzleAcadamy){
+            puzzleAcadamyLevel = GameStorageService.getItem('puzzle-acadamy-level');
             moveCounterDisplay.innerHTML = `Health: <span>${currentHealth}<span>`;
-            sentenceCounterDisplay.innerHTML = `Level: <span>${puzzleAcdamyLevel}/3</span>`;
+            sentenceCounterDisplay.innerHTML = `Level: <span>${puzzleAcadamyLevel}/3</span>`;
         }else{
             sentenceCounterDisplay.innerHTML = `<span>${currentHealth}</span>`;
             resultSentenceCounterDisplay.innerHTML = `<span>${currentHealth}</span>`;
@@ -732,7 +732,7 @@ function checkPuzzleCompletion(originalPositions) {
         startConfetti();
         document.getElementById('confetti-canvas').style.opacity = '1';
         showFinalScoreScreen();
-        if(!ispuzzleAcdamy){
+        if(!ispuzzleAcadamy){
             if (completedSessionPuzzles.includes(currentPuzzleID) === false) {
                 completedSessionPuzzles.push(currentPuzzleID);
             }
@@ -883,7 +883,7 @@ function showFinalScoreScreen() {
         }else{
             puzzleCounter++;
             setTimeout(() => {
-                if(!ispuzzleAcdamy){
+                if(!ispuzzleAcadamy){
                     titleDisplay.removeAttribute('style');
                     kicker.removeAttribute('style');
                     gameRow.style.display = 'none';
@@ -949,38 +949,38 @@ function showFinalScoreScreen() {
                         });
                     });
                 }else{
-                    finalAcdamyPuzzlePopup.removeAttribute('style');
-                    puzzleAcdamyLevel = GameStorageService.getItem('puzzle-acdamy-level');
+                    finalAcadamyPuzzlePopup.removeAttribute('style');
+                    puzzleAcadamyLevel = GameStorageService.getItem('puzzle-acadamy-level');
                     
                     var popupTitle = 'Well <span>done</span>';
-                    var popupContent = `You’ve completed Level ${puzzleAcdamyLevel}! <br>Get ready for Level ${puzzleAcdamyLevel+1} and challenge yourself even more.`;
+                    var popupContent = `You’ve completed Level ${puzzleAcadamyLevel}! <br>Get ready for Level ${puzzleAcadamyLevel+1} and challenge yourself even more.`;
                     var popupBtnTitle = 'Next Level';
                     var pupupNote = `Remember to limit moves and avoid mistakesto get the highest score!`;
-                    if(puzzleAcdamyLevel == 3){
+                    if(puzzleAcadamyLevel == 3){
                         popupTitle = 'You <span>did it!</span>';
                         popupContent = `You’ve mastered all 3 levels! Great job on completing the challenge.`;
                         popupBtnTitle = 'Play Again'; 
                         pupupNote = `Can you beat your best score? Limit your moves and aim for perfection!`;
                     }
-                    finalAcdamyPuzzlePopup.querySelector('.popuptitle').innerHTML = popupTitle;
-                    finalAcdamyPuzzlePopup.querySelector('.popupcontent').innerHTML = popupContent;
+                    finalAcadamyPuzzlePopup.querySelector('.popuptitle').innerHTML = popupTitle;
+                    finalAcadamyPuzzlePopup.querySelector('.popupcontent').innerHTML = popupContent;
                     nextLevel.innerText = popupBtnTitle;
-                    finalAcdamyPuzzlePopup.querySelector('.note').innerHTML = pupupNote;
+                    finalAcadamyPuzzlePopup.querySelector('.note').innerHTML = pupupNote;
 
 
-                    levelDone.innerText = `${puzzleAcdamyLevel}/3`;
-                    var prew = `level-${puzzleAcdamyLevel-1}`;
+                    levelDone.innerText = `${puzzleAcadamyLevel}/3`;
+                    var prew = `level-${puzzleAcadamyLevel-1}`;
                     console.log(prew);
                     if (levelBadge.classList.contains(prew)) {
                         levelBadge.classList.remove(prew);
-                        levelBadge.classList.add(`level-${puzzleAcdamyLevel}`);
+                        levelBadge.classList.add(`level-${puzzleAcadamyLevel}`);
                     }
-                    if(puzzleAcdamyLevel <= 3){
-                        puzzleAcdamyLevel = puzzleAcdamyLevel + 1;
-                        if(puzzleAcdamyLevel > 3){
-                            puzzleAcdamyLevel = 1;
+                    if(puzzleAcadamyLevel <= 3){
+                        puzzleAcadamyLevel = puzzleAcadamyLevel + 1;
+                        if(puzzleAcadamyLevel > 3){
+                            puzzleAcadamyLevel = 1;
                         }
-                        GameStorageService.setItem('puzzle-acdamy-level', puzzleAcdamyLevel, 1);
+                        GameStorageService.setItem('puzzle-acadamy-level', puzzleAcadamyLevel, 1);
                     }
                 }
             }, 1000); 
