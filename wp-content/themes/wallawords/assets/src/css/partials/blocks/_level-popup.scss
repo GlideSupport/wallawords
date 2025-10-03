@@ -1,27 +1,44 @@
 .level-finish-popup {
-margin: auto;
-    max-width: 100%;
-    padding-top: 0;
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    z-index: 99;
-	background-color:rgba(0,0,0,0.8);
-	    display: flex;
-    align-items: end;
-
+	margin: 0;
+	max-width: 100%;
+	padding: 0;
+	position: fixed;
+	width: 100%;
+	height: 100vh;
+	top: 0;
+	z-index: 99;
+	background-color: rgba(0, 0, 0, 0.8);
+	display: flex;
+	align-items: end;
+	overflow-y:auto;
+ @media(max-height:560px){
+   display: block;
+       height: calc(100vh + 10px);
+ }
 
 	.popup-card {
 
 		background: linear-gradient(198deg, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0.00) 58.92%);
 		border-radius: 30px 30px 0 0;
-    padding: 24px;
-    position: relative;
-    text-align: center;
-    width: 100%;
-    margin: 0 auto;
-    max-width: 375px;
+		padding: 24px;
+		position: relative;
+		text-align: center;
+		width: 100%;
+		margin: 100px auto 0;
+		max-width: 375px;
+		    box-sizing: border-box;
+
+		&:before {
+			content: "";
+			position: absolute;
+			left: 0;
+			top: 0;
+			border-radius: 30px 30px 0 0;
+			background-color: #090719;
+			width: 100%;
+			height: 100%;
+
+		}
 
 		.content-area {
 			position: relative;
@@ -106,7 +123,6 @@ margin: auto;
 				left: 9px;
 				position: relative;
 				border-radius: 20px
-
 			}
 
 			.hexagone-txt {
@@ -143,7 +159,7 @@ margin: auto;
 
 				.hexagone-bg {
 					background: linear-gradient(119deg, #6B58FF 0%, #B902FA 100%);
-                filter: drop-shadow(0 0 130px #7325EA);
+					filter: drop-shadow(0 0 130px #7325EA);
 					clip-path: shape(from 93.08% 71.38%, curve to 89.49% 77.45% with 93.04% 75.45%, line to 53.02% 98%, curve to 45.98% 97.93% with 49.48% 100%, line to 9.94% 76.62%, curve to 6.48% 70.48% with 6.44% 74.55%, line to 6.92% 28.62%, curve to 10.51% 22.55% with 6.96% 24.55%, line to 46.98% 2%, curve to 54.02% 2.07% with 50.52% 0%, line to 90.06% 23.38%, curve to 93.52% 29.52% with 93.56% 25.45%);
 				}
 
@@ -166,7 +182,7 @@ margin: auto;
 				}
 
 				.hexagone-txt {
-						background: linear-gradient(98deg, #AA039F 0%, #ED014D 49.48%, #F67916 100%);
+					background: linear-gradient(98deg, #AA039F 0%, #ED014D 49.48%, #F67916 100%);
 					clip-path: shape(from 93.08% 71.38%, curve to 89.49% 77.45% with 93.04% 75.45%, line to 53.02% 98%, curve to 45.98% 97.93% with 49.48% 100%, line to 9.94% 76.62%, curve to 6.48% 70.48% with 6.44% 74.55%, line to 6.92% 28.62%, curve to 10.51% 22.55% with 6.96% 24.55%, line to 46.98% 2%, curve to 54.02% 2.07% with 50.52% 0%, line to 90.06% 23.38%, curve to 93.52% 29.52% with 93.56% 25.45%);
 				}
 
