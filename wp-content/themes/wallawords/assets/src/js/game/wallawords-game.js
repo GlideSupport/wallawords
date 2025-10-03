@@ -254,8 +254,8 @@ function startGame(puzzleCounterValue, isAcdamy = false) {
     sentenceCounterDisplay.style.display = "block";
     // errorCounterDisplay.style.display = "block";
     // errorCounterDisplay.innerHTML = '';
+    ispuzzleAcdamy = isAcdamy;
     if(isAcdamy){
-        ispuzzleAcdamy = isAcdamy;
         url = localVars.ajax_url + '?action=wallawords_get_puzzle_data&is_acdamy=' + isAcdamy + '&nonce=' + localVars.nonce;
         puzzleAcdamyLevel = GameStorageService.getItem('puzzle-acdamy-level');
         if(puzzleAcdamyLevel){
