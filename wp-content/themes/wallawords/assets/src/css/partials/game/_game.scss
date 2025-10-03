@@ -262,7 +262,7 @@ body {
                 color: var(--ww_regular_text);
                 span{
                     @include font(rubik, med);
-                    color:var(--ww-white);
+                    color:#fff;
                 }
             }
         }
@@ -864,7 +864,7 @@ body {
                 color: var(--ww_regular_text);
                 span{
                     @include font(rubik, med);
-                    color:var(--ww-white);
+                   color:#ffffff;
                 }
         }
 
