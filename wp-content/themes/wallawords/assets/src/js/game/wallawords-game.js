@@ -569,8 +569,14 @@ function updateMoveCounterDisplay() {
         moveCounterDisplay.innerHTML = `Health`;//<span>Moves</span> ${minimumMoves - incorrectCounterValue}  
         // var health = minimumMoves - incorrectCounterValue;
         var currentHealth = health - incorrectCounterValue;
-        sentenceCounterDisplay.innerHTML = `<span>${currentHealth}</span>`;
-        resultSentenceCounterDisplay.innerHTML = `<span>${currentHealth}</span>`;
+        if(ispuzzleAcdamy){
+            puzzleAcdamyLevel = GameStorageService.getItem('puzzle-acdamy-level');
+            moveCounterDisplay.innerHTML = `Health: <span>${currentHealth}<span>`;
+            sentenceCounterDisplay.innerHTML = `Level: <span>${puzzleAcdamyLevel}/3</span>`;
+        }else{
+            sentenceCounterDisplay.innerHTML = `<span>${currentHealth}</span>`;
+            resultSentenceCounterDisplay.innerHTML = `<span>${currentHealth}</span>`;
+        }
         var healthBar = '';
         for (let i = 1; i <= health; i++) {
             if (i <= currentHealth) {
@@ -945,7 +951,7 @@ function showFinalScoreScreen() {
                 }else{
                     finalAcdamyPuzzlePopup.removeAttribute('style');
                     puzzleAcdamyLevel = GameStorageService.getItem('puzzle-acdamy-level');
-
+                    
                     var popupTitle = 'Well <span>done</span>';
                     var popupContent = `You’ve completed Level ${puzzleAcdamyLevel}! <br>Get ready for Level ${puzzleAcdamyLevel+1} and challenge yourself even more.`;
                     var popupBtnTitle = 'Next Level';
