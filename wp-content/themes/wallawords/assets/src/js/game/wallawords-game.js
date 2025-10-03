@@ -67,6 +67,9 @@ const finalMoveCount = document.getElementById('final-move-count');
 const startButton = document.getElementById('start-button');
 const playGameButton = document.getElementById('play-game');
 const playAgain = document.getElementById('play-again');
+const nextLevel = document.getElementById('next-level');
+const levelDone = document.getElementById('level-done');
+const levelBadge = document.getElementById('level-badge');
 const shareBtn = document.getElementById('share-button');
 const shareBtnSend = document.getElementById('share-send');
 const shareBtnClose = document.getElementById('share-close');
@@ -108,16 +111,13 @@ let title = ''; // Store the title of the puzzle
 let puzzleCounter = 0;
 let gameGrid = null;
 let completedSessionPuzzles = [];
-let completedSessionPuzzlesAcademy = [];
+
 let isSolved = 0;
 let isFailed = 0;
 if (GameStorageService.getItem('ww-session-games')) {
     completedSessionPuzzles = GameStorageService.getItem('ww-session-games');
 }
 
-if (GameStorageService.getItem('ww-session-games-academy')) {
-    completedSessionPuzzlesAcademy = GameStorageService.getItem('ww-session-games-academy');
-}
 let completedPuzzleRank = '';
 let completedPuzzleIcon = '';
 let isFirstPlay = 1;
@@ -126,6 +126,12 @@ let toggled = 'review';
 let columnCompletedThisMove = false; // Flag for column completion
 let sentenceCompletedThisMove = false; // Flag for sentence completion
 let ispuzzleAcdamy = false;
+let puzzleAcdamyLevel = 1;
+if (GameStorageService.getItem('puzzle-acdamy-level')) {
+    puzzleAcdamyLevel = GameStorageService.getItem('puzzle-acdamy-level');
+}else{
+    GameStorageService.setItem('puzzle-acdamy-level', puzzleAcdamyLevel, 1);
+}
 document.addEventListener('DOMContentLoaded', initializeGame);
 
 function initializeGame() {
@@ -152,47 +158,21 @@ function initializeGame() {
             startGame(puzzleCounter);
         });
     }
+    if(nextLevel){
+        nextLevel.addEventListener('click', () => {
+            finalAcdamyPuzzlePopup.style.display = 'none';
+            gameGridElement.innerHTML = `<span></span><img src="${localVars.site_url}/wp-content/themes/wallawords/assets/src/images/spinner.svg" class="loading"><span></span>`;
+            puzzleAcdamyLevel = GameStorageService.getItem('puzzle-acdamy-level');
+            startGame(puzzleAcdamyLevel, true);
+        });
+    }
     if(shareBtn){
         shareBtn.addEventListener('click', () => {
-            //let phone = document.getElementById("share-phone").value;
-            //let message = document.getElementById("share-message").value;		
-            //let smsLink = `sms:${phone}?&body=${message}`;
             var message = `I just discovered the amazing game, WallaWords! I solved it in ${moveCounterValue} moves and earned the “${completedPuzzleIcon} ${completedPuzzleRank}” level. Think you can beat me? Try it here - https://wallawords.com/play`;
             let smsLink = `sms:?&body=${message}`;
             window.location.href = smsLink;
         });
     }
-    // if(sentenceToggle[0]){
-    //     sentenceToggle[0].addEventListener('click', () => {
-    //         var container = jQuery('#sentence-list-container');
-    //         if (container.css('display') == 'none') {
-    //             container.fadeIn(200);
-    //             errorCounterDisplay.style.display = "none";
-    //             moveCounterDisplay.style.display = "none";
-    //             sentenceCounterDisplay.style.display = "block";
-    //             sentenceToggle[0].style.display = "none";
-    //         } else {
-    //             container.fadeOut(100);
-    //             // errorCounterDisplay.style.display = "block";
-    //             moveCounterDisplay.style.display = "block";
-    //             sentenceToggle[0].style.display = "block";
-    //         }
-    //     });        
-    // }
-
-    // sentenceToggle[1].addEventListener('click', () => {
-    //     var container = jQuery('#sentence-list-container');
-    //     if (container.css('display') == 'none') {
-    //         container.fadeIn(200);
-    //         //moveCounterDisplay.style.display = "none";
-    //         sentenceCounterDisplay.style.display = "block";
-    //         sentenceToggle[1].style.display = "none";
-    //     } else {
-    //         container.fadeOut(100);
-    //         sentenceCounterDisplay.style.display = "none";
-    //         sentenceToggle[1].style.display = "block";
-    //     }
-    // });
     closeSentenceToggle.addEventListener('click', () => {
         var container = jQuery('#sentence-list-container');
         container.fadeOut(150);
@@ -277,8 +257,9 @@ function startGame(puzzleCounterValue, isAcdamy = false) {
     if(isAcdamy){
         ispuzzleAcdamy = isAcdamy;
         url = localVars.ajax_url + '?action=wallawords_get_puzzle_data&is_acdamy=' + isAcdamy + '&nonce=' + localVars.nonce;
-        if (completedSessionPuzzlesAcademy) {
-            url += '&completed=' + completedSessionPuzzlesAcademy;
+        puzzleAcdamyLevel = GameStorageService.getItem('puzzle-acdamy-level');
+        if(puzzleAcdamyLevel){
+            url += '&level=' + puzzleAcdamyLevel;
         }
     }else{
         if (jQuery('#puzzle_id').length) {
@@ -745,19 +726,7 @@ function checkPuzzleCompletion(originalPositions) {
         startConfetti();
         document.getElementById('confetti-canvas').style.opacity = '1';
         showFinalScoreScreen();
-        if(ispuzzleAcdamy){
-            if (completedSessionPuzzlesAcademy.includes(currentPuzzleID) === false) {
-                completedSessionPuzzlesAcademy.push(currentPuzzleID);
-            }
-            if (GameStorageService.getItem('ww-session-games-academy')) {
-                if (GameStorageService.getItem('ww-session-games-academy').indexOf(completedSessionPuzzlesAcademy) == -1) { //only update local storage if this puzzle ID isnt marked complete
-                    GameStorageService.setItem('ww-session-games-academy', completedSessionPuzzlesAcademy, 365);
-                }
-            } else {
-                GameStorageService.setItem('ww-session-games-academy', completedSessionPuzzlesAcademy, 365);
-            }
-        }
-        else{
+        if(!ispuzzleAcdamy){
             if (completedSessionPuzzles.includes(currentPuzzleID) === false) {
                 completedSessionPuzzles.push(currentPuzzleID);
             }
@@ -883,23 +852,22 @@ function finalScoreResizer(mode) {
 
 // **Show the Final Score Screen After Puzzle Completion**
 function showFinalScoreScreen() {
-        puzzleCounter++;
-        if(isFailed){
-            setTimeout(() => {
-                gameRow.style.display = 'none';
-                titleDisplay.removeAttribute('style');
-                kicker.removeAttribute('style');
-                finalScoreScreen.style.display = 'flex';
-                document.body.classList.add('final-result', 'final-result-faild');
-                resultSentenceCounterDisplay.removeAttribute('style');
-                moveCounterDisplay.innerHTML = `Health:`;
-                finalScoreSentence.innerHTML = ' ';
-                finalScoreScreen.classList.add('final-result-faild');
-                document.getElementById("share-button")?.style.setProperty('display', 'none');
-
-                var failedHTML= `<div id="resultFailed">
-                    <div class="overlay-title">Not Quite This Time</div>
-                    <div class="overlay-subtitle">Every mistake is a step closer to mastery. Try again!</div>
+    if(isFailed){
+        setTimeout(() => {
+            gameRow.style.display = 'none';
+            titleDisplay.removeAttribute('style');
+            kicker.removeAttribute('style');
+            finalScoreScreen.style.display = 'flex';
+            document.body.classList.add('final-result', 'final-result-faild');
+            resultSentenceCounterDisplay.removeAttribute('style');
+            moveCounterDisplay.innerHTML = `Health:`;
+            finalScoreSentence.innerHTML = ' ';
+            finalScoreScreen.classList.add('final-result-faild');
+            document.getElementById("share-button")?.style.setProperty('display', 'none');
+            
+            var failedHTML= `<div id="resultFailed">
+            <div class="overlay-title">Not Quite This Time</div>
+            <div class="overlay-subtitle">Every mistake is a step closer to mastery. Try again!</div>
                     <a id="replay-game" class="site-btn btn-replay">Replay</a>
                 </div>`;
                 finalScoreScreen.insertAdjacentHTML('beforeend',failedHTML); 
@@ -907,16 +875,17 @@ function showFinalScoreScreen() {
                 replayGame?.addEventListener('click', () => startGameAgain(false));
             }, 1000);
         }else{
+            puzzleCounter++;
             setTimeout(() => {
-                document.getElementById('resultFailed')?.remove();
-                gameRow.style.display = 'none';
-                titleDisplay.removeAttribute('style');
-                kicker.removeAttribute('style');
                 if(!ispuzzleAcdamy){
+                    titleDisplay.removeAttribute('style');
+                    kicker.removeAttribute('style');
+                    gameRow.style.display = 'none';
                     //gameScreen.style.display = 'none';
                     moveCounterDisplay.innerHTML = `Health:`;
                     finalScoreScreen.style.display = 'flex';
                     document.body.classList.add('final-result');
+                    document.getElementById('resultFailed')?.remove();
                     document.body.classList.remove('final-result-faild');
                     finalScoreScreen.classList.remove('final-result-faild');
                     // finalScoreToggle.style.display = 'flex';
@@ -975,6 +944,34 @@ function showFinalScoreScreen() {
                     });
                 }else{
                     finalAcdamyPuzzlePopup.removeAttribute('style');
+                    puzzleAcdamyLevel = GameStorageService.getItem('puzzle-acdamy-level');
+
+                    var popupTitle = 'Well <span>done</span>';
+                    var popupContent = `You’ve completed Level ${puzzleAcdamyLevel}! <br>Get ready for Level ${puzzleAcdamyLevel+1} and challenge yourself even more.`;
+                    var popupBtnTitle = 'Next Level';
+                    if(puzzleAcdamyLevel == 3){
+                        popupTitle = 'You <span>did it!</span>';
+                        popupContent = `You’ve mastered all 3 levels! Great job on completing the challenge.`;
+                        popupBtnTitle = 'Play Again'; 
+                    }
+                    finalAcdamyPuzzlePopup.querySelector('.popuptitle').innerHTML = popupTitle;
+                    finalAcdamyPuzzlePopup.querySelector('.popupcontent').innerHTML = popupContent;;
+                    nextLevel.innerText = popupBtnTitle;
+
+                    levelDone.innerText = `${puzzleAcdamyLevel}/3`;
+                    var prew = `level-${puzzleAcdamyLevel-1}`;
+                    console.log(prew);
+                    if (levelBadge.classList.contains(prew)) {
+                        levelBadge.classList.remove(prew);
+                        levelBadge.classList.add(`level-${puzzleAcdamyLevel}`);
+                    }
+                    if(puzzleAcdamyLevel <= 3){
+                        puzzleAcdamyLevel = puzzleAcdamyLevel + 1;
+                        if(puzzleAcdamyLevel > 3){
+                            puzzleAcdamyLevel = 1;
+                        }
+                        GameStorageService.setItem('puzzle-acdamy-level', puzzleAcdamyLevel, 1);
+                    }
                 }
             }, 1000); 
             

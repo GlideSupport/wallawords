@@ -50,9 +50,16 @@ function wallawords_get_puzzle_data() {
     $today_puzzle = false;
     $is_acdamy = isset($_GET['is_acdamy']) ? array(intval($_GET['is_acdamy'])) : []; 
     $gameID = isset($_GET['gameID']) ? array(intval($_GET['gameID'])) : []; 
-
+    $completed = isset($_GET['completed']) ? sanitize_text_field($_GET['completed']) : '';
+    for($level =1; $level<= 3; $level++){
+        $level_key = "select_level_".$level."_puzzle";
+        $acdamyPluzzle[$level] = get_field($level_key ,'options');
+    }
+    
     if($is_acdamy){
-        $gameID = array(1144, 1143, 1255);
+        $level = $_GET['level'] ?? 1;
+        $level_key = "select_level_".$level."_puzzle";
+        $gameID[] = $acdamyPluzzle[$level];//get_field($level_key ,'options');
     }else{
         $today_puzzle = true;
     }
@@ -65,7 +72,6 @@ function wallawords_get_puzzle_data() {
         'orderby'        => 'date',
     ];
   
-   
     if ($gameID) {
         $get_puzzle_args['post__in'] = $gameID;
         $get_puzzle_args['orderby'] = 'post__in';
@@ -80,7 +86,6 @@ function wallawords_get_puzzle_data() {
     }else{
         // Get gameID and completed status if present
        
-        $completed = isset($_GET['completed']) ? sanitize_text_field($_GET['completed']) : '';
 
         // Handle the "completed" parameter
         if ($completed !== '') {
@@ -89,9 +94,13 @@ function wallawords_get_puzzle_data() {
             $get_puzzle_args['post__not_in'] = $gameID;
         }
     }
+   
     // echo '<pre>';
     // print_r($get_puzzle_args);
     // Fetch puzzles based on the prepared arguments
+
+
+
     $get_puzzle_posts = new WP_Query($get_puzzle_args);
 
     // If no posts found, fallback to retrieving all puzzles
@@ -287,7 +296,7 @@ function render_custom_puzzle_form($post) {
     <p id="word-count">Word Count: 0</p>';
 
     //$output .= get_field($post->ID,'full_poem_directions');
-
+    
     $has_correct_words = get_post_meta($post->ID, 'correct_words', true);
 
     if(!$has_correct_words || (is_array($has_correct_words) && count($has_correct_words == 0))):
