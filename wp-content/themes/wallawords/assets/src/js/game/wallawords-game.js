@@ -949,14 +949,18 @@ function showFinalScoreScreen() {
                     var popupTitle = 'Well <span>done</span>';
                     var popupContent = `You’ve completed Level ${puzzleAcdamyLevel}! <br>Get ready for Level ${puzzleAcdamyLevel+1} and challenge yourself even more.`;
                     var popupBtnTitle = 'Next Level';
+                    var pupupNote = `Remember to limit moves and avoid mistakesto get the highest score!`;
                     if(puzzleAcdamyLevel == 3){
                         popupTitle = 'You <span>did it!</span>';
                         popupContent = `You’ve mastered all 3 levels! Great job on completing the challenge.`;
                         popupBtnTitle = 'Play Again'; 
+                        pupupNote = `Can you beat your best score? Limit your moves and aim for perfection!`;
                     }
                     finalAcdamyPuzzlePopup.querySelector('.popuptitle').innerHTML = popupTitle;
-                    finalAcdamyPuzzlePopup.querySelector('.popupcontent').innerHTML = popupContent;;
+                    finalAcdamyPuzzlePopup.querySelector('.popupcontent').innerHTML = popupContent;
                     nextLevel.innerText = popupBtnTitle;
+                    finalAcdamyPuzzlePopup.querySelector('.note').innerHTML = pupupNote;
+
 
                     levelDone.innerText = `${puzzleAcdamyLevel}/3`;
                     var prew = `level-${puzzleAcdamyLevel-1}`;
