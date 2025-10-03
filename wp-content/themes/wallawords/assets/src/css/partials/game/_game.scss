@@ -258,8 +258,12 @@ body {
             text-align: left;
 
             #sentence-counter {
-
-                @include font(rubik, med);
+                @include font(rubik, reg);
+                color: var(--ww_regular_text);
+                span{
+                    @include font(rubik, med);
+                    color:var(--ww-white);
+                }
             }
         }
 
@@ -856,7 +860,12 @@ body {
 
     .move-counter {
         &.p1 {
-            color: var(--ww_regular_text);
+               @include font(rubik, reg);
+                color: var(--ww_regular_text);
+                span{
+                    @include font(rubik, med);
+                    color:var(--ww-white);
+                }
         }
 
     }
