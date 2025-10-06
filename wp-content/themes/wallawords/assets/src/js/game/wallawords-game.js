@@ -958,7 +958,7 @@ function showFinalScoreScreen() {
                     var pupupNote = `Remember to limit moves and avoid mistakesto get the highest score!`;
                     if(puzzleAcadamyLevel == 3){
                         popupTitle = 'You <span>did it!</span>';
-                        popupContent = `You’ve mastered all 3 levels! Great job on completing the challenge.`;
+                        popupContent = `You’ve mastered all 3 levels! <br> Great job on completing the challenge.`;
                         popupBtnTitle = 'Play Again'; 
                         pupupNote = `Can you beat your best score? Limit your moves and aim for perfection!`;
                     }
