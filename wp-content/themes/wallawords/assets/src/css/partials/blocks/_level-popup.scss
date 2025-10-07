@@ -1,3 +1,8 @@
+body.final-acadamy-result{
+	 position: fixed;
+	 top: 0;
+	 width: 100%;
+}
 .level-finish-popup {
 	margin: 0;
 	max-width: 100%;
@@ -26,7 +31,7 @@
 		text-align: center;
 		width: 100%;
 		margin: 100px auto 0;
-		max-width: 375px;
+		max-width: 660px;
 		box-sizing: border-box;
 
 		&:before {
@@ -236,6 +241,7 @@
 		margin: 0;
 		padding: 15px 0;
 		height: 100vh;
+		overflow-y: auto;
 		background-color: rgba(0,0,0,.9);
 		align-items: center;
 		box-sizing: border-box;
@@ -259,6 +265,7 @@
 			 }
 			 .popupcontent{
 				 margin-bottom: 94px;
+				
 			 }
 			 .ins-text{
 				 max-width: 327px;
