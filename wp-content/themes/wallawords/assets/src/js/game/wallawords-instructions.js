@@ -53,12 +53,12 @@ helpButton.addEventListener('click', () => {
     } 
 });
 showAcademyPuzzlePopup.addEventListener('click', () => {
-    document.body.classList.add('final-acadamy-result');
     var helpScreen = jQuery('#instruction-screen-wrapper');
     helpScreen.fadeOut(250);
     helpScreen.removeClass('active');
     instructionScreen.style.display = 'none';
     setTimeout(() => {
+        document.body.classList.add('final-acadamy-result');
         var acadamyPopup = jQuery('#start-puzzle-acadamy-popup');
         acadamyPopup.fadeIn(500);
         acadamyPopup.addClass('active');
