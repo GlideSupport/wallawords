@@ -78,11 +78,60 @@ function wallawords_get_puzzle_data() {
     }
    
     if($today_puzzle){
-        $get_puzzle_args['posts_per_page'] = 1;
-        if (!$gameID) {
-            $get_puzzle_args['orderby'] = 'date';
-            $get_puzzle_args['order'] = 'DESC';
+                
+        $shown_posts = get_option('shown_posts');
+        if (!is_array($shown_posts)) {
+            $shown_posts = array();
         }
+
+        // Retrieve the last shown time
+        $last_shown_time = get_option('last_shown_time');
+        $post_type = 'puzzle';
+
+        // Arguments to get the latest game post excluding the ones that have already been shown
+        $game_args = array(
+            'post_type'      => $post_type, 
+            'posts_per_page' => 1,
+            'post_status'    => 'publish',
+            'orderby'        => 'date',
+            'order'          => 'DESC',
+            'fields'         => 'ids',
+            'post__not_in'   => $shown_posts,
+        );
+
+        // Fetch the post IDs based on the above query
+        $post_ids = get_posts($game_args);
+        $current_time = current_time('timestamp');
+
+        // Check if more than 24 hours have passed since the last shown time
+        if ($last_shown_time && is_numeric($last_shown_time) && ($current_time - $last_shown_time) > 86400) { 
+            // If we have posts to show, update the shown posts list
+            if ($post_ids) {
+                $shown_posts = array_merge($shown_posts, $post_ids);
+                $shown_posts = array_unique($shown_posts); // Avoid duplicates
+                update_option('shown_posts', $shown_posts);
+            }
+
+            // Update the last shown time
+            update_option('last_shown_time', $current_time); 
+        }
+
+        // Prepare query for displaying the current game post
+        if (!empty($post_ids) && isset($post_ids[0])) {
+            // If there's a post ID, fetch the specific post
+            $get_puzzle_args = array(
+                'p'              => $post_ids[0],
+                'post_type'      => $post_type,
+                'posts_per_page' => 1,
+            );
+        } else {
+            // If no posts to display, use the original query arguments without filtering out shown posts
+            $get_puzzle_args = array_merge($game_args, array(
+                'fields'       => null,
+                'post__not_in' => null,
+            ));
+        }
+
     }else{
         // Get gameID and completed status if present
        
