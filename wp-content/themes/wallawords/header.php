@@ -337,11 +337,10 @@ $page_template = basename(get_page_template());
                     <?php endforeach;?>
 
                     <div class="button-container flex-column-button">
+                        <a id="show-academy-puzzle-popup" class="site-btn">Start Puzzle Academy</a>
                         <?php if(is_home() || is_front_page()): ?>
-                            <a id="play-puzzle-academy" class="site-btn">Start Puzzle Academy</a>
                             <a id="play-button" class="site-btn-only-link">Skip to Today's Puzzle</a>
                         <?php else: ?>
-                            <a href="<?= home_url( '/' );  ?>?start_puzzle_academy=true" class="site-btn">Start Puzzle Academy</a>
                             <a href="<?= home_url( '/' );  ?>?start_puzzle=true" class="site-btn-only-link">Skip to Today's Puzzle</a>
                         <?php endif ?>
                     </div>
@@ -363,6 +362,33 @@ $page_template = basename(get_page_template());
         </div>
 
         <div class="instruction-screen-overlay"></div>
+
+    </div>
+
+        <div id="start-puzzle-acadamy-popup" class="level-finish-popup instruction-popup" style="display: none;">
+        <div class="popup-card">
+            <div class="piece piece-one"></div>
+            <div class="piece piece-two"></div>
+            <div class="piece piece-three"></div>
+            <div class="piece piece-four"></div>
+            <div class="content-area">
+                <div class="subtitle">Puzzle Academy</div>
+                <div class="popuptitle heading-1">Your <span>mission</span></div>
+                <div class="popupcontent">Compete 3 levels as <br>difficulty increases.</div>
+                <div class="ins-text">
+                    <div class="ins-text-ttl">Tips</div>
+                    <ul>
+                        <li>Limit moves</li>
+                        <li>Avoid mistakes</li>
+                    </ul>
+                </div>
+                <?php if(is_home() || is_front_page()): ?>
+                    <a id="play-puzzle-academy"  class="site-btn" role="button" aria-label="Next Level">Start</a>
+                <?php else: ?>
+                    <a href="<?= home_url( '/' );  ?>?start_puzzle_academy=true"  class="site-btn" role="button" aria-label="Next Level">Start</a>
+                <?php endif ?>
+            </div>
+        </div>
 
     </div>
 

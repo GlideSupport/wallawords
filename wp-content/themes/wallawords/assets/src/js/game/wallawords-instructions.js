@@ -10,8 +10,7 @@ const nextButton = document.getElementById('next-button');
 const backButton = document.getElementById('back-button');
 const playButton = document.getElementById('play-button');
 const playPuzzleAcademy = document.getElementById('play-puzzle-academy');
-
-
+const showAcademyPuzzlePopup = document.getElementById('show-academy-puzzle-popup');
 
 let totalSlides = 0;
 let instructionSlide = 1;
@@ -53,6 +52,22 @@ helpButton.addEventListener('click', () => {
         jQuery('#instruction-screen-overlay').css('z-index','999');
     } 
 });
+showAcademyPuzzlePopup.addEventListener('click', () => {
+    document.body.style.overflow = 'hidden';
+    var helpScreen = jQuery('#instruction-screen-wrapper');
+    helpScreen.fadeOut(250);
+    helpScreen.removeClass('active');
+    instructionScreen.style.display = 'none';
+     
+    setTimeout(() => {
+        var acadamyPopup = jQuery('#start-puzzle-acadamy-popup');
+        acadamyPopup.fadeIn(500);
+        acadamyPopup.addClass('active');
+    }, 50);
+
+
+});
+
 
 skipButton.addEventListener('click', () => {
     document.body.style.overflow = 'auto';
@@ -87,7 +102,12 @@ const startGameAgain = (currentCount, isAcadamy = false) => {
 };
 
 playButton?.addEventListener('click', () => startGameAgain(puzzleCounter, false));
-playPuzzleAcademy?.addEventListener('click',() => startGameAgain(puzzleAcadamyLevel, true));
+playPuzzleAcademy?.addEventListener('click',() => {
+    var acadamyPopup = jQuery('#start-puzzle-acadamy-popup');
+    acadamyPopup.fadeOut(250);
+    acadamyPopup.removeClass('active');
+    startGameAgain(puzzleAcadamyLevel, true)
+});
 
 document.addEventListener('DOMContentLoaded', function () {
   // Get the query parameters from the URL
