@@ -242,6 +242,10 @@
 			 max-width:660px;
 			 padding: 30px;
 			 margin: 0 auto;
+			 border-radius: 30px;
+			 &:before{
+				 border-radius: 30px;
+			 }
 			 .subtitle{
 				@include font(inter, reg);
 				color:var(--ww_grey_1);
