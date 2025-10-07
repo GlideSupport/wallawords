@@ -953,6 +953,7 @@ function showFinalScoreScreen() {
                         });
                     });
                 }else{
+                    document.body.classList.add('final-acadamy-result');
                     finalAcadamyPuzzlePopup.removeAttribute('style');
                     puzzleAcadamyLevel = GameStorageService.getItem('puzzle-acadamy-level');
                     

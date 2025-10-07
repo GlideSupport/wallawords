@@ -87,7 +87,7 @@ const startGameAgain = (currentCount, isAcadamy = false) => {
     finalScoreScreen.style.display = 'none';
     gameScreen.removeAttribute('style');
     gameRow.removeAttribute('style');
-    document.body.classList.remove('final-result', 'final-result-faild');
+    document.body.classList.remove('final-result','final-acadamy-result',  'final-result-faild');
     finalScoreScreen.classList.remove('final-result-faild');
     document.getElementById('resultFailed')?.remove();
     const hideElements = (...elementIds) => {
