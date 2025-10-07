@@ -878,7 +878,11 @@ function showFinalScoreScreen() {
                 </div>`;
                 finalScoreScreen.insertAdjacentHTML('beforeend',failedHTML); 
                 let replayGame = document.getElementById('replay-game');
-                replayGame?.addEventListener('click', () => startGameAgain(false));
+                if(!ispuzzleAcadamy){
+                    replayGame?.addEventListener('click', () => startGameAgain(puzzleCounter, false));
+                }else{
+                    replayGame?.addEventListener('click', () => startGameAgain(puzzleAcadamyLevel, true));
+                }
             }, 1000);
         }else{
             puzzleCounter++;
@@ -955,7 +959,7 @@ function showFinalScoreScreen() {
                     var popupTitle = 'Well <span>done</span>';
                     var popupContent = `You’ve completed Level ${puzzleAcadamyLevel}! <br>Get ready for Level ${puzzleAcadamyLevel+1} and challenge yourself even more.`;
                     var popupBtnTitle = 'Next Level';
-                    var pupupNote = `Remember to limit moves and avoid mistakesto get the highest score!`;
+                    var pupupNote = `Remember to limit moves and avoid mistakes to get the highest score!`;
                     if(puzzleAcadamyLevel == 3){
                         popupTitle = 'You <span>did it!</span>';
                         popupContent = `You’ve mastered all 3 levels! <br> Great job on completing the challenge.`;
@@ -970,7 +974,6 @@ function showFinalScoreScreen() {
 
                     levelDone.innerText = `${puzzleAcadamyLevel}/3`;
                     var prew = `level-${puzzleAcadamyLevel-1}`;
-                    console.log(prew);
                     if (levelBadge.classList.contains(prew)) {
                         levelBadge.classList.remove(prew);
                         levelBadge.classList.add(`level-${puzzleAcadamyLevel}`);
