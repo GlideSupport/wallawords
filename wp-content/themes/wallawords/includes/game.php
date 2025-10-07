@@ -111,9 +111,9 @@ function wallawords_get_puzzle_data() {
                 $shown_posts = array_unique($shown_posts); // Avoid duplicates
                 update_option('shown_posts', $shown_posts);
             }
-
+            $midnight_timestamp = strtotime('midnight', $current_time);
             // Update the last shown time
-            update_option('last_shown_time', $current_time); 
+            update_option('last_shown_time', $midnight_timestamp); 
         }
 
         // Prepare query for displaying the current game post
