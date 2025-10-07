@@ -258,7 +258,7 @@ body {
             text-align: left;
 
             #sentence-counter {
-                @include font(rubik, reg);
+                @include font(inter, reg);
                 color: var(--ww_regular_text);
                 span{
                     @include font(rubik, med);

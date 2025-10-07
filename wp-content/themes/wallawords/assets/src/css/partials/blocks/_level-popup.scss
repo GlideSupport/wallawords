@@ -216,6 +216,7 @@
 			@include font(rubik, med);
 			text-align: center;
 			max-width: 327px;
+			letter-spacing: -0.18px;
 			margin: 0 auto 30px;
 		}
 
@@ -240,7 +241,7 @@
 		box-sizing: border-box;
 		 .popup-card{
 			 max-width:660px;
-			 padding: 30px;
+			 padding: 32px 24px 30px 24px;
 			 margin: 0 auto;
 			 border-radius: 30px;
 			 &:before{
@@ -262,9 +263,9 @@
 			 .ins-text{
 				 max-width: 327px;
 				 border-radius: 24px;
-				 margin: 0 auto 35px;
+				 margin: 0 auto 30px;
 				 background: rgba(26, 24, 40, 1);
-				 padding: 0 5px 5px;
+				 padding: 0 4px 5px;
 				 .ins-text-ttl{
 					background: linear-gradient(88deg, #2BC016 0.88%, #26A96C 99.12%);
 
@@ -275,7 +276,7 @@
 					text-align: left;
 					font-size: 16px;
 					@include font(rubik, med);
-					padding: 24px 16px 12px;
+					padding: 16px 20px 12px;
 					line-height: 110%; /* 17.6px */
 					letter-spacing: -0.16px;
 				 }
@@ -285,12 +286,13 @@
 					 border: 1px solid var(--ww_black_3);
 					 border-radius: 22px;
 					 list-style-type: none;
-					  padding: 0 20px;
+					  padding: 4px 24px;
 					  	@include font(rubik, reg);
 					   li{
 							text-align: left;
-							padding: 17px 0 17px 16px;
+							padding: 20px 0 20px 16px;
 							margin: 0;
+							line-height: 110%;
 							position: relative;
 							border-bottom: 1px solid #1A1828;
 							&:last-child{
