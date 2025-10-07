@@ -160,6 +160,7 @@ function initializeGame() {
     }
     if(nextLevel){
         nextLevel.addEventListener('click', () => {
+             document.body.classList.remove('final-acadamy-result');
             finalAcadamyPuzzlePopup.style.display = 'none';
             gameGridElement.innerHTML = `<span></span><img src="${localVars.site_url}/wp-content/themes/wallawords/assets/src/images/spinner.svg" class="loading"><span></span>`;
             puzzleAcadamyLevel = GameStorageService.getItem('puzzle-acadamy-level');
