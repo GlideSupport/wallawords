@@ -63,7 +63,7 @@ skipButton.addEventListener('click', () => {
 
 });
 
-const startGameAgain = (isAcadamy = false) => {
+const startGameAgain = (currentCount, isAcadamy = false) => {
     document.body.style.overflow = 'auto';
     titleScreen.style.display = 'none';
     instructionScreen.style.display = 'none';
@@ -83,14 +83,11 @@ const startGameAgain = (isAcadamy = false) => {
     };
     hideElements('result-sentence-counter', 'kicker', 'puzzle-title');
     gameGridElement.innerHTML = `<span></span><img src="${localVars.site_url}/wp-content/themes/wallawords/assets/src/images/spinner.svg" class="loading"><span></span>`;
-    //switchInstructionsSlide(instructionSlide);
-    console.log(isAcadamy);
-    isAcadamy ? console.log("test") : console.log("el test");
-    startGame(puzzleCounter, isAcadamy);
+    startGame(currentCount, isAcadamy);
 };
 
-playButton?.addEventListener('click', () => startGameAgain(false));
-playPuzzleAcademy?.addEventListener('click',() => startGameAgain(true));
+playButton?.addEventListener('click', () => startGameAgain(puzzleCounter, false));
+playPuzzleAcademy?.addEventListener('click',() => startGameAgain(puzzleAcadamyLevel, true));
 
 document.addEventListener('DOMContentLoaded', function () {
   // Get the query parameters from the URL

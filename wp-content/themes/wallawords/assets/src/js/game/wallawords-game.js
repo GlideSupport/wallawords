@@ -878,7 +878,11 @@ function showFinalScoreScreen() {
                 </div>`;
                 finalScoreScreen.insertAdjacentHTML('beforeend',failedHTML); 
                 let replayGame = document.getElementById('replay-game');
-                replayGame?.addEventListener('click', () => startGameAgain(false));
+                if(!ispuzzleAcadamy){
+                    replayGame?.addEventListener('click', () => startGameAgain(puzzleCounter, false));
+                }else{
+                    replayGame?.addEventListener('click', () => startGameAgain(puzzleAcadamyLevel, true));
+                }
             }, 1000);
         }else{
             puzzleCounter++;
@@ -970,7 +974,6 @@ function showFinalScoreScreen() {
 
                     levelDone.innerText = `${puzzleAcadamyLevel}/3`;
                     var prew = `level-${puzzleAcadamyLevel-1}`;
-                    console.log(prew);
                     if (levelBadge.classList.contains(prew)) {
                         levelBadge.classList.remove(prew);
                         levelBadge.classList.add(`level-${puzzleAcadamyLevel}`);
