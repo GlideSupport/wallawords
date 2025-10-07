@@ -232,9 +232,16 @@
 
 	}
 	&.instruction-popup{
+		margin: 0;
+		padding: 15px 0;
+		height: 100vh;
+		background-color: rgba(0,0,0,.9);
+		align-items: center;
+		box-sizing: border-box;
 		 .popup-card{
 			 max-width: 100%;
 			 padding: 30px;
+			 margin: 0;
 			 .subtitle{
 				@include font(inter, reg);
 				color:var(--ww_grey_1);
