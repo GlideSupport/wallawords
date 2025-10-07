@@ -110,6 +110,8 @@ function wallawords_get_puzzle_data() {
                 $shown_posts = array_merge($shown_posts, $post_ids);
                 $shown_posts = array_unique($shown_posts); // Avoid duplicates
                 update_option('shown_posts', $shown_posts);
+                $game_args['post__not_in'] =  get_option('shown_posts');
+                $post_ids = get_posts($game_args);
             }
             $midnight_timestamp = strtotime('midnight', $current_time);
             // Update the last shown time
