@@ -1,5 +1,5 @@
-body.final-acadamy-result{
-	 position: fixed;
+body{
+	overflow: visible !important;
 	 top: 0;
 	 width: 100%;
 }
@@ -16,12 +16,6 @@ body.final-acadamy-result{
 	display: flex;
 	align-items: end;
 	overflow-y: auto;
-
-	@media(max-height:560px) {
-		display: block;
-		height: calc(100vh + 10px);
-	}
-
 	.popup-card {
 
 		background: #090719;
@@ -238,12 +232,7 @@ body.final-acadamy-result{
 
 	}
 	&.instruction-popup{
-		margin: 0;
-		padding: 0;
-		height: 100vh;
-		overflow-y: auto;
-		background-color: rgba(0,0,0,.9);
-		align-items: center;
+     	align-items: center;
 		box-sizing: border-box;
 		 .popup-card{
 			 max-width:660px;
