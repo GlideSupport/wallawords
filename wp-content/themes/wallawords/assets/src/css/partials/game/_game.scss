@@ -522,8 +522,11 @@ body {
                     .num {
                         color: var(--ww_grey_1);
                         @include font(inter, reg);
-                        font-size: 14px;
+                        font-size: 18px;
                         line-height: 170%;
+                        @media(max-width:767px){
+                             font-size: 14px;
+                        }
                     }
                 }
 
