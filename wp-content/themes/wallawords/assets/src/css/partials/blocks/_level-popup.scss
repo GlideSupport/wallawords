@@ -1,5 +1,5 @@
 body.final-acadamy-result {
-	overflow: hidden;
+	overflow: hidden !important;
 }
 
 .level-finish-popup {
@@ -183,12 +183,15 @@ body.final-acadamy-result {
 		}
 
 		.popupcontent {
-			font-size: 18px;
+			font-size: 22px;
 			@include font(rubik, med);
 			text-align: center;
 			max-width: 327px;
 			letter-spacing: -0.18px;
 			margin: 0 auto 30px;
+			@media(max-width:767px){
+					font-size: 18px;
+			}
 		}
 
 		.site-btn {
@@ -217,13 +220,16 @@ body.final-acadamy-result {
 			&:before {
 				border-radius: 30px;
 			}
-
+            .content-area{
+				 padding: 0
+			}
 			.subtitle {
 				@include font(inter, reg);
 				color: var(--ww_grey_1);
 				margin-bottom: 32px;
-				font-size: 14px;
+				font-size: 18px;
 				line-height: 170%;
+				@media(max-width:767px){ font-size: 14px;}
 			}
 
 			.popuptitle {
