@@ -608,7 +608,6 @@ body {
         //color: ww_black_2;
         margin-bottom: 20px;
         text-transform: uppercase;
-        @include font(rubik, bold);
 
         span {
             //color: var(--ww_color_primary);
@@ -2117,6 +2116,10 @@ body .game-wrapper {
         display: flex;
         justify-content: center;
         align-items: center;
+        @media(max-height:700px){
+             height: 100%;
+             padding: 40px 0;
+        }
     }
 }
 
