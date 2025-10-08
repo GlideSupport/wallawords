@@ -51,6 +51,7 @@ function wallawords_get_puzzle_data() {
     $is_acadamy = isset($_GET['is_acadamy']) ? array(intval($_GET['is_acadamy'])) : []; 
     $gameID = isset($_GET['gameID']) ? array(intval($_GET['gameID'])) : []; 
     $completed = isset($_GET['completed']) ? sanitize_text_field($_GET['completed']) : '';
+    $acadamyPluzzle = [];
     for($level =1; $level<= 3; $level++){
         $level_key = "select_level_".$level."_puzzle";
         $acadamyPluzzle[$level] = get_field($level_key ,'options');
@@ -77,13 +78,15 @@ function wallawords_get_puzzle_data() {
         $get_puzzle_args['orderby'] = 'post__in';
     }
    
-    if($today_puzzle){
-                
+    if($today_puzzle){ 
+        
         $shown_posts = get_option('shown_posts');
         if (!is_array($shown_posts)) {
             $shown_posts = array();
         }
 
+        $shown_posts = array_merge($shown_posts, $acadamyPluzzle);
+        $shown_posts = array_unique($shown_posts);
         // Retrieve the last shown time
         $last_shown_time = get_option('last_shown_time');
         $post_type = 'puzzle';

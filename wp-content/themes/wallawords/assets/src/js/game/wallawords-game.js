@@ -160,7 +160,8 @@ function initializeGame() {
     }
     if(nextLevel){
         nextLevel.addEventListener('click', () => {
-             document.body.classList.remove('final-acadamy-result');
+            document.body.classList.remove('final-acadamy-result');
+            finalAcadamyPuzzlePopup.classList.remove('active');
             finalAcadamyPuzzlePopup.style.display = 'none';
             gameGridElement.innerHTML = `<span></span><img src="${localVars.site_url}/wp-content/themes/wallawords/assets/src/images/spinner.svg" class="loading"><span></span>`;
             puzzleAcadamyLevel = GameStorageService.getItem('puzzle-acadamy-level');
@@ -955,37 +956,39 @@ function showFinalScoreScreen() {
                 });
             }else{
                 document.body.classList.add('final-acadamy-result');
-                finalAcadamyPuzzlePopup.removeAttribute('style');
-                puzzleAcadamyLevel = GameStorageService.getItem('puzzle-acadamy-level');
-                
-                var popupTitle = 'Well <span>done</span>';
-                var popupContent = `You’ve completed Level ${puzzleAcadamyLevel}! <br>Get ready for Level ${puzzleAcadamyLevel+1} and challenge yourself even more.`;
-                var popupBtnTitle = 'Next Level';
-                var pupupNote = `Remember to limit moves and avoid mistakes to get the highest score!`;
-                if(puzzleAcadamyLevel == 3){
-                    popupTitle = 'You <span>did it!</span>';
-                    popupContent = `You’ve mastered all 3 levels! <br> Great job on completing the challenge.`;
-                    popupBtnTitle = 'Play Again'; 
-                    pupupNote = `Can you beat your best score? Limit your moves and aim for perfection!`;
-                }
-                finalAcadamyPuzzlePopup.querySelector('.popuptitle').innerHTML = popupTitle;
-                finalAcadamyPuzzlePopup.querySelector('.popupcontent').innerHTML = popupContent;
-                nextLevel.innerText = popupBtnTitle;
-                finalAcadamyPuzzlePopup.querySelector('.note').innerHTML = pupupNote;
-
-
-                levelDone.innerText = `${puzzleAcadamyLevel}/3`;
-                var prew = `level-${puzzleAcadamyLevel-1}`;
-                if (levelBadge.classList.contains(prew)) {
-                    levelBadge.classList.remove(prew);
-                    levelBadge.classList.add(`level-${puzzleAcadamyLevel}`);
-                }
-                if(puzzleAcadamyLevel <= 3){
-                    puzzleAcadamyLevel = puzzleAcadamyLevel + 1;
-                    if(puzzleAcadamyLevel > 3){
-                        puzzleAcadamyLevel = 1;
+                if(!finalAcadamyPuzzlePopup.classList.contains('active')){
+                    finalAcadamyPuzzlePopup.classList.add('active');
+                    finalAcadamyPuzzlePopup.removeAttribute('style');
+                    puzzleAcadamyLevel = GameStorageService.getItem('puzzle-acadamy-level');
+                    var popupTitle = 'Well <span>done</span>';
+                    var popupContent = `You’ve completed Level ${puzzleAcadamyLevel}! <br>Get ready for Level ${puzzleAcadamyLevel+1} and challenge yourself even more.`;
+                    var popupBtnTitle = 'Next Level';
+                    var pupupNote = `Remember to limit moves and avoid mistakes to get the highest score!`;
+                    if(puzzleAcadamyLevel == 3){
+                        popupTitle = 'You <span>did it!</span>';
+                        popupContent = `You’ve mastered all 3 levels! <br> Great job on completing the challenge.`;
+                        popupBtnTitle = 'Play Again'; 
+                        pupupNote = `Can you beat your best score? Limit your moves and aim for perfection!`;
                     }
-                    GameStorageService.setItem('puzzle-acadamy-level', puzzleAcadamyLevel, 1);
+                    finalAcadamyPuzzlePopup.querySelector('.popuptitle').innerHTML = popupTitle;
+                    finalAcadamyPuzzlePopup.querySelector('.popupcontent').innerHTML = popupContent;
+                    nextLevel.innerText = popupBtnTitle;
+                    finalAcadamyPuzzlePopup.querySelector('.note').innerHTML = pupupNote;
+
+
+                    levelDone.innerText = `${puzzleAcadamyLevel}/3`;
+                    var prew = `level-${puzzleAcadamyLevel-1}`;
+                    if (levelBadge.classList.contains(prew)) {
+                        levelBadge.classList.remove(prew);
+                        levelBadge.classList.add(`level-${puzzleAcadamyLevel}`);
+                    }
+                    if(puzzleAcadamyLevel <= 3){
+                        puzzleAcadamyLevel = puzzleAcadamyLevel + 1;
+                        if(puzzleAcadamyLevel > 3){
+                            puzzleAcadamyLevel = 1;
+                        }
+                        GameStorageService.setItem('puzzle-acadamy-level', puzzleAcadamyLevel, 1);
+                    }
                 }
             }
         }, 1500); 
