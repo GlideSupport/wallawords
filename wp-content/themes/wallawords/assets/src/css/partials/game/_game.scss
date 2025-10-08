@@ -2230,14 +2230,11 @@ body.final-result {
     }
     #game-screen {
         .game-stats {
-             padding: 0 24px 9px;
-             @media(max-width:767px){
-                 padding: 0 24px 1px;
-             }
+             padding: 0 24px;
             .move-container {
-                margin-bottom: 22px;
+                margin-bottom: 53px;
                 @media(max-width:767px){
-                     margin-bottom: 17px;
+                     margin-bottom: 46px;
                 }
 
                 #puzzle-title {
