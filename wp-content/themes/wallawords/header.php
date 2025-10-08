@@ -130,7 +130,7 @@ $page_template = basename(get_page_template());
 						if ( $ww_var_tbar_btn ) {
 							echo BaseTheme::button( $ww_var_tbar_btn, '' );
 						}
-						?>
+						?>  
         </div>
 
         <div class="top-bar-cross">
@@ -163,7 +163,7 @@ $page_template = basename(get_page_template());
 
         <div class="header-wrapper">
             <div class="game-menu-ctn">
-                <div id="game-menu-btn" class="game-menu-btn icon" role="button" aria-label="Main Menu" tabindex="1">
+                <div id="game-menu-btn" class="game-menu-btn icon" role="button" aria-label="Main Menu" tabindex="0">
                     <svg id="menu-icon-open" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                         viewBox="0 0 24 24" fill="none" alt="Main Menu" role="presentation">
                         <path
@@ -181,7 +181,7 @@ $page_template = basename(get_page_template());
                     </svg>
                 </div>
                 <div class="game-skin-toggle icon" id="skin-toggle-button" role="button" aria-label="Toggle game colors"
-                    tabindex="2">
+                    tabindex="1">
 
                     <div class="dark">
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none"
@@ -230,8 +230,8 @@ $page_template = basename(get_page_template());
             </div>
             <?php ?>
 
-            <div class="header-logo logo" role="button" aria-label="Logo - Return to Home" tabindex="3">
-                <a href="<?php echo site_url(); ?> ">
+            <div class="header-logo logo" role="button" aria-label="Logo - Return to Home" tabindex="2">
+                <a href="<?php echo site_url(); ?>">
                     <svg width="302" height="127" viewBox="0 0 302 127" fill="none" xmlns="http://www.w3.org/2000/svg"
                         alt="Logo - Return to Home" role="presentation">
                         <path
@@ -265,7 +265,7 @@ $page_template = basename(get_page_template());
            
         
                     <div id="help-button" class="game-help icon-help icon" role="button" aria-label="Help menu"
-                        tabindex="5"><svg width="38" height="37" viewBox="0 0 38 37" fill="none"
+                        tabindex="4"><svg width="38" height="37" viewBox="0 0 38 37" fill="none"
                             xmlns="http://www.w3.org/2000/svg">
                             <path
                                 d="M15.5661 2.53334C17.2344 0.148736 20.7656 0.148736 22.4339 2.53334C23.4445 3.97796 25.2513 4.63556 26.9541 4.17855C29.7648 3.42418 32.4699 5.694 32.2151 8.59306C32.0607 10.3493 33.022 12.0144 34.6202 12.7589C37.2583 13.9877 37.8715 17.4653 35.8128 19.5223C34.5656 20.7685 34.2317 22.6619 34.9775 24.2595C36.2085 26.8966 34.4429 29.9547 31.5436 30.2072C29.7872 30.3601 28.3143 31.596 27.8587 33.2991C27.1066 36.1105 23.7884 37.3183 21.4051 35.6481C19.9613 34.6362 18.0387 34.6362 16.5949 35.6481C14.2116 37.3183 10.8934 36.1105 10.1413 33.2991C9.68566 31.596 8.2128 30.3601 6.45639 30.2072C3.55713 29.9547 1.79152 26.8966 3.02251 24.2595C3.76826 22.6619 3.43439 20.7685 2.18722 19.5223C0.128533 17.4653 0.741721 13.9877 3.37979 12.7589C4.97796 12.0144 5.93931 10.3493 5.78493 8.59306C5.53011 5.694 8.23518 3.42418 11.0459 4.17855C12.7487 4.63556 14.5555 3.97796 15.5661 2.53334Z"
