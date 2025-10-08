@@ -325,7 +325,7 @@ function startGame(puzzleCounterValue, isAcadamy = false) {
                 currentPuzzleID = selectedPoem.id; //poem ID
                 title = selectedPoem.title; // Store the puzzle title
                 originalPositions = selectedPoem.correctWords.slice(); // Store the original positions
-                console.log(selectedPoem.correctWords);
+                // console.log(selectedPoem.correctWords);
                 lockedWords = selectedPoem.lockedWords.slice(); // Store the locked positions
                 sentences = selectedPoem.sentences; // Store sentences from JSON
                 columns = selectedPoem.columns; //store column rows
@@ -863,11 +863,13 @@ function showFinalScoreScreen() {
     if(isFailed){
         setTimeout(() => {
             gameRow.style.display = 'none';
-            titleDisplay.removeAttribute('style');
-            kicker.removeAttribute('style');
+           
             finalScoreScreen.style.display = 'flex';
-            document.body.classList.add('final-result', 'final-result-faild');
+            document.body.classList.add('final-result-faild');
             if(!ispuzzleAcadamy){
+                document.body.classList.add('final-result');
+                titleDisplay.removeAttribute('style');
+                kicker.removeAttribute('style');
                 sentenceCounterDisplay.style.display = 'none';
                 resultSentenceCounterDisplay.removeAttribute('style');
                 moveCounterDisplay.innerHTML = `Health:`;
