@@ -418,6 +418,10 @@ body {
             width: 1px;
             background: var(--ww_black_3);
             overflow: hidden;
+            @media(max-height:420px){
+                   height: 40px;
+                    margin: 0 auto 10px;
+            }
 
             /* Progress fill */
             #progress-bar {
