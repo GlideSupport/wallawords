@@ -44,7 +44,7 @@ array(
 
 <section id="page-section" class="page-section">
 
-    <div class="game-pieces-animated">
+    <div role="game" class="game-pieces-animated">
 
         <div class="piece piece-am"></div>
         <div class="piece piece-I"></div>
@@ -65,7 +65,7 @@ array(
 
     <!-- Title Screen -->
     <div id="title-screen" class="title-screen">
-        <h1 role="heading">Welcome to<br> Walla<br><span class="">Words</span></h1>
+        <h1>Welcome to<br> Walla<br><span class="">Words</span></h1>
         <p>A WallaWords is a puzzle and a poem. Solve it to find meaning in two directions.</p>
         <div class="start-buttons">
             <a id="play-game" class="site-btn" role="button" aria-label="Let's Begin the Game">Let's Begin</a>
@@ -93,7 +93,7 @@ array(
                 <div id="sentence-list-container" class="sentence-list-container">
                 
                 <div class="close-button" id="close-sentences-button">
-					<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+					<svg role="presentation" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
 					<path d="M4.10745 15.8925C3.67288 15.458 3.65698 14.7717 4.07189 14.3568L14.3568 4.07187C14.7717 3.65697 15.458 3.67286 15.8926 4.10743C16.3271 4.54201 16.343 5.22832 15.9281 5.64322L5.64324 15.9281C5.22833 16.343 4.54203 16.3271 4.10745 15.8925Z" fill="white"/>
 					<path d="M4.10745 4.10745C4.54203 3.67288 5.22833 3.65698 5.64324 4.07189L15.9281 14.3568C16.343 14.7717 16.3271 15.458 15.8926 15.8926C15.458 16.3271 14.7717 16.343 14.3568 15.9281L4.07189 5.64324C3.65699 5.22833 3.67288 4.54203 4.10745 4.10745Z" fill="white"/>
 					</svg>
