@@ -143,9 +143,9 @@ function initializeGame() {
         GameStorageService.setItem('ww-played-before', 1, 1);
     }
     playGameButton.addEventListener('click', () => {
-        if (isFirstPlay == 1) {
-            jQuery('#help-button').trigger('click');
-        }
+        // if (isFirstPlay == 1) {
+        //     jQuery('#help-button').trigger('click');
+        // }
         titleScreen.style.display = 'none';
         //gameScreen.style.display = 'flex';
         startGame(puzzleCounter);
@@ -867,8 +867,13 @@ function showFinalScoreScreen() {
             kicker.removeAttribute('style');
             finalScoreScreen.style.display = 'flex';
             document.body.classList.add('final-result', 'final-result-faild');
+            sentenceCounterDisplay.style.display = 'none';
             resultSentenceCounterDisplay.removeAttribute('style');
-            moveCounterDisplay.innerHTML = `Health:`;
+            if(!ispuzzleAcadamy){
+                moveCounterDisplay.innerHTML = `Health:`;
+            }else{
+                moveCounterDisplay.innerHTML = `Health: <span>0<span>`;
+            }
             finalScoreSentence.innerHTML = ' ';
             finalScoreScreen.classList.add('final-result-faild');
             document.getElementById("share-button")?.style.setProperty('display', 'none');
@@ -878,14 +883,17 @@ function showFinalScoreScreen() {
             <div class="overlay-subtitle">Every mistake is a step closer to mastery. Try again!</div>
                     <a id="replay-game" class="site-btn btn-replay">Replay</a>
                 </div>`;
-                finalScoreScreen.insertAdjacentHTML('beforeend',failedHTML); 
-                let replayGame = document.getElementById('replay-game');
-                if(!ispuzzleAcadamy){
-                    replayGame?.addEventListener('click', () => startGameAgain(puzzleCounter, false));
-                }else{
-                    replayGame?.addEventListener('click', () => startGameAgain(puzzleAcadamyLevel, true));
-                }
-            }, 1000);
+            finalScoreScreen.insertAdjacentHTML('beforeend',failedHTML); 
+            let replayGame = document.getElementById('replay-game');
+            if(!ispuzzleAcadamy){
+                replayGame?.addEventListener('click', () => startGameAgain(puzzleCounter, false));
+            }else{
+                replayGame?.addEventListener('click', () => startGameAgain(puzzleAcadamyLevel, true));
+            }
+            
+
+        }, 1000);
+
     }else{
         puzzleCounter++;
         setTimeout(() => {
