@@ -125,15 +125,14 @@ array(
             <div class="piece piece-two"></div>
             <div class="piece piece-three"></div>
             <div class="piece piece-four"></div>
-            <div class="content-area">
-            <div id="level-badge" class="badge-box level-1">
-            <div class="arrows"></div>
-            <div class="hexagone-bg"></div>
+            <div  id="level-badge"  class="content-area  level-1">
+            <div class="badge-box">           
                 <div class="hexagone-txt">
                 <div class="p4">Level</div>
                 <div class="heading-5" id="level-done">1/3</div>
                 </div>
             </div>
+             <div class="arrows"></div>
             <div class="popuptitle heading-1">Well <span>done</span></div>
             <div class="popupcontent">You’ve completed Level 1! <br>Get ready for Level 2 and challenge yourself even more.</div>
 
