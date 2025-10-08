@@ -1201,6 +1201,10 @@ word-break: break-all;
         .game-container {
             padding: 96px 24px;
             transition: all 0.3s ease;
+            @media (orientation: landscape) and (max-height: 420px),
+	(max-height: 420px) {
+         padding: 20px 24px;
+    }
         }
     }
 
