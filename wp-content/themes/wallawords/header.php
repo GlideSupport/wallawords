@@ -231,7 +231,7 @@ $page_template = basename(get_page_template());
             <?php ?>
 
             <div class="header-logo logo" role="button" aria-label="Logo - Return to Home" tabindex="3">
-                <a href="/">
+                <a href="<?php echo site_url(); ?> ">
                     <svg width="302" height="127" viewBox="0 0 302 127" fill="none" xmlns="http://www.w3.org/2000/svg"
                         alt="Logo - Return to Home" role="presentation">
                         <path
