@@ -867,12 +867,10 @@ function showFinalScoreScreen() {
             kicker.removeAttribute('style');
             finalScoreScreen.style.display = 'flex';
             document.body.classList.add('final-result', 'final-result-faild');
-            sentenceCounterDisplay.style.display = 'none';
-            resultSentenceCounterDisplay.removeAttribute('style');
             if(!ispuzzleAcadamy){
+                sentenceCounterDisplay.style.display = 'none';
+                resultSentenceCounterDisplay.removeAttribute('style');
                 moveCounterDisplay.innerHTML = `Health:`;
-            }else{
-                moveCounterDisplay.innerHTML = `Health: <span>0<span>`;
             }
             finalScoreSentence.innerHTML = ' ';
             finalScoreScreen.classList.add('final-result-faild');
