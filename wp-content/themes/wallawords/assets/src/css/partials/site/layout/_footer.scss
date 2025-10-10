@@ -1,3 +1,17 @@
+#copyNotice{
+   display: none;
+	position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color:var(--ww_color_primary);
+    color: var(--ww_white);
+	@include font(rubik, med);
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 14px;
+    z-index: 9999;
+}
 .footer-section {
 	position: relative;
 	width: 100%;
