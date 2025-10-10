@@ -56,15 +56,6 @@ function wallawords_get_puzzle_data() {
         $level_key = "select_level_".$level."_puzzle";
         $acadamyPluzzle[$level] = get_field($level_key ,'options');
     }
-    
-    if($is_acadamy){
-        $level = $_GET['level'] ?? 1;
-        $level_key = "select_level_".$level."_puzzle";
-        $gameID[] = $acadamyPluzzle[$level];//get_field($level_key ,'options');
-    }else{
-        $today_puzzle = true;
-    }
-
     // Prepare base query arguments
     $get_puzzle_args = [
         'posts_per_page' => -1,
@@ -72,12 +63,20 @@ function wallawords_get_puzzle_data() {
         'post_type'      => 'puzzle',
         'orderby'        => 'date',
     ];
-  
-    if ($gameID) {
+     
+    if($is_acadamy){
+        $level = $_GET['level'] ?? 1;
+        $level_key = "select_level_".$level."_puzzle";
+        $gameID[] = $acadamyPluzzle[$level];//get_field($level_key ,'options');
+    }
+    elseif ($gameID) {
         $get_puzzle_args['post__in'] = $gameID;
         $get_puzzle_args['orderby'] = 'post__in';
     }
-   
+    else{
+        $today_puzzle = true;
+    }
+    
     if($today_puzzle){ 
         
         $shown_posts = get_option('shown_posts');
