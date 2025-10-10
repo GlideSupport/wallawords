@@ -373,7 +373,7 @@ body {
             left: 24px;
         }
 
-        #next-button {
+        #next-button { 
             right: 24px;
         }
 
@@ -387,6 +387,7 @@ body {
             background: transparent;
             margin-bottom: 24px;
             .popuptitle {
+                @include font(rubik, med);
                 font-size: 22px;
                 transition: all 0.3s ease;
                 line-height: 80%;
