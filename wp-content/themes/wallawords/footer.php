@@ -41,7 +41,9 @@ $ww_social_profiles = $ww_option_fields['ww_social_profiles'] ?? null;
 ?>
 
 <?php //get_template_part( 'partials/cta' ); ?>
-
+<div id="copyNotice">
+  Copied!
+</div>
 <footer id="footer-section" class="footer-section">
 	<!-- Footer Start -->
 	<div class="footer-ctn">
