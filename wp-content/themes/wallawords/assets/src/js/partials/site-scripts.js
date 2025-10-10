@@ -417,23 +417,42 @@ jQuery( function() {
 		
 		// console.log('WW skin set to:'+gameSkinSetting); 
 	});
-jQuery(document).ready(function () {
-    var $instructionText = jQuery('#instruction-text');
-    var $iscreen = jQuery('.instruction-screen');
+	
+	var $instructionText = jQuery('#instruction-text');
+	var $iscreen = jQuery('.instruction-screen');
 
-    $instructionText.on('scroll', function () {
+	$instructionText.on('scroll', function () {
 		adjustInstructionsHeight();
-        if ($instructionText.scrollTop() > 10) {  
-            // Add class when scrolling starts
-            $iscreen.addClass('scrolled');
-        } else {
-            // Remove class when scrolled back to top
-            $iscreen.removeClass('scrolled');
-        }
-    });
-});
+		if ($instructionText.scrollTop() > 10) {  
+			// Add class when scrolling starts
+			$iscreen.addClass('scrolled');
+		} else {
+			// Remove class when scrolled back to top
+			$iscreen.removeClass('scrolled');
+		}
+	});
 
-} );
+	
+	document.querySelectorAll('.copyUrlButton').forEach(function(button) {
+		button.addEventListener('click', function() {
+			const currentUrl = window.location.href;
+			navigator.clipboard.writeText(currentUrl)
+			.then(function() {
+				// Show the "Copied!" message
+				const notice = document.getElementById('copyNotice');
+				notice.style.display = 'block';
+				setTimeout(function() {
+				notice.style.display = 'none';
+				}, 2000);
+			})
+			.catch(function(error) {
+				console.error('Failed to copy URL:', error);
+			});
+		});
+	});
+	
+
+});
 
 document.addEventListener("click", function (event) {
 	const lightboxElement = event.target.closest("[data-lightbox]");
@@ -441,3 +460,4 @@ document.addEventListener("click", function (event) {
 		lity(event);
 	}
 });
+
