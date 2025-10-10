@@ -565,7 +565,7 @@ body {
     
 
             .game-container {
-                padding-top: 24px;
+                padding-top: 56px;
                 transition: all 0.3s ease;
             }
 
@@ -1195,12 +1195,12 @@ word-break: break-all;
         overflow: hidden;
 
         .game-container {
-            padding: 96px 24px;
+            padding: 56px 24px;
             transition: all 0.3s ease;
             @media (orientation: landscape) and (max-height: 420px),
-	(max-height: 420px) {
-         padding: 20px 24px;
-    }
+                (max-height: 420px) {
+                    padding: 20px 24px;
+                }
         }
     }
 
