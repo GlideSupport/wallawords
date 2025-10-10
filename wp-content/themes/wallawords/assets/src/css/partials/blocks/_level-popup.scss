@@ -30,7 +30,7 @@
 		margin: 100px auto 0;
 		max-width: 660px;
 		box-sizing: border-box;
-		    overflow: hidden;
+		
 
 		&:before {
 			content: "";
@@ -221,6 +221,7 @@
 			padding: 32px 24px 30px 24px;
 			margin: 60px auto;
 			border-radius: 30px;
+			    overflow: hidden;
 
 			&:before {
 				border-radius: 30px;
