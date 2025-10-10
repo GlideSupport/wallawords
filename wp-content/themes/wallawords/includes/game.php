@@ -56,36 +56,35 @@ function wallawords_get_puzzle_data() {
         $level_key = "select_level_".$level."_puzzle";
         $acadamyPluzzle[$level] = get_field($level_key ,'options');
     }
-    // Prepare base query arguments
+        // Prepare base query arguments
     $get_puzzle_args = [
         'posts_per_page' => -1,
         'post_status'    => 'publish',
         'post_type'      => 'puzzle',
         'orderby'        => 'date',
     ];
-     
     if($is_acadamy){
         $level = $_GET['level'] ?? 1;
         $level_key = "select_level_".$level."_puzzle";
-        $gameID[] = $acadamyPluzzle[$level];//get_field($level_key ,'options');
+        $gameID[] = $acadamyPluzzle[$level];
+        $get_puzzle_args['post__in'] = $gameID;
+        $get_puzzle_args['orderby'] = 'post__in';
     }
-    elseif ($gameID) {
+    elseif($gameID) {
         $get_puzzle_args['post__in'] = $gameID;
         $get_puzzle_args['orderby'] = 'post__in';
     }
     else{
         $today_puzzle = true;
     }
-    
+
     if($today_puzzle){ 
-        
         $shown_posts = get_option('shown_posts');
         if (!is_array($shown_posts)) {
             $shown_posts = array();
         }
-
-        $shown_posts = array_merge($shown_posts, $acadamyPluzzle);
-        $shown_posts = array_unique($shown_posts);
+        $post_not_in = array_merge($shown_posts, $acadamyPluzzle);
+        $post_not_in = array_unique($post_not_in);
         // Retrieve the last shown time
         $last_shown_time = get_option('last_shown_time');
         $post_type = 'puzzle';
@@ -98,9 +97,9 @@ function wallawords_get_puzzle_data() {
             'orderby'        => 'date',
             'order'          => 'DESC',
             'fields'         => 'ids',
-            'post__not_in'   => $shown_posts,
+            'post__not_in'   => $post_not_in,
         );
-
+        
         // Fetch the post IDs based on the above query
         $post_ids = get_posts($game_args);
         $current_time = current_time('timestamp');
@@ -112,7 +111,13 @@ function wallawords_get_puzzle_data() {
                 $shown_posts = array_merge($shown_posts, $post_ids);
                 $shown_posts = array_unique($shown_posts); // Avoid duplicates
                 update_option('shown_posts', $shown_posts);
-                $game_args['post__not_in'] =  get_option('shown_posts');
+                $shown_posts = get_option('shown_posts');
+                if (!is_array($shown_posts)) {
+                    $shown_posts = array();
+                }
+                $post_not_in = array_merge($shown_posts, $acadamyPluzzle);
+                $post_not_in = array_unique($post_not_in);
+                $game_args['post__not_in'] =  $post_not_in;
                 $post_ids = get_posts($game_args);
             }
             $midnight_timestamp = strtotime('midnight', $current_time);
@@ -136,21 +141,7 @@ function wallawords_get_puzzle_data() {
             ));
         }
 
-    }else{
-        // Get gameID and completed status if present
-       
-
-        // Handle the "completed" parameter
-        if ($completed !== '') {
-            $completed = stristr($completed, ',') ? explode(',', $completed) : [$completed];
-            $gameID = array_merge($gameID, $completed);
-            $get_puzzle_args['post__not_in'] = $gameID;
-        }
     }
-   
-    // echo '<pre>';
-    // print_r($get_puzzle_args);
-    // Fetch puzzles based on the prepared arguments
 
 
 
