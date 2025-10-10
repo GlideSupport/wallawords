@@ -1,16 +1,19 @@
 #copyNotice{
-   display: none;
-	position: fixed;
+background-color: var(--ww_color_primary);
     bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    background-color:var(--ww_color_primary);
     color: var(--ww_white);
-	@include font(rubik, med);
-    padding: 10px;
-    border-radius: 5px;
+    display: none;
+    font-family: Rubik-Medium, arial, sans-serif;
     font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    right:30px;
+	bottom:30px;
+    padding: 15px 23px;
+    position: fixed;
     z-index: 9999;
+    box-shadow: 0 0 40px 0 rgba(43, 191, 28, .5);
+    border-radius: 30px;
 }
 .footer-section {
 	position: relative;
