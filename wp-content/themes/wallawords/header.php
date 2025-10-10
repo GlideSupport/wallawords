@@ -313,7 +313,7 @@ $page_template = basename(get_page_template());
                         </svg>
                     </div>
 
-                    <div class="popuptitle heading-1" role="heading">How to <span>Play</span></div>
+                    <div class="popuptitle" role="heading">How to <span>Play</span></div>
                 </div>
                 
                 <?php
