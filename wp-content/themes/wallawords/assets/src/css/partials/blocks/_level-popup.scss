@@ -167,6 +167,15 @@
 
 
 		}
+			.subtitle {
+				@include font(inter, reg);
+				color: var(--ww_grey_1);
+				margin-bottom: 32px;
+				font-size: 18px;
+				line-height: 170%;
+				@media(max-width:767px){ font-size: 14px;}
+			}
+
 
 		.popuptitle {
 			width: 100%;
@@ -211,121 +220,10 @@
 
 	}
 
-	&.instruction-popup {
-		align-items: center;
-		box-sizing: border-box;
-		display: block;
 
-		.popup-card {
-			max-width: 660px;
-			padding: 32px 24px 30px 24px;
-			margin: 60px auto;
-			border-radius: 30px;
-			    overflow: hidden;
-
-			&:before {
-				border-radius: 30px;
-			}
-            .content-area{
-				 padding: 0
-			}
-			.subtitle {
-				@include font(inter, reg);
-				color: var(--ww_grey_1);
-				margin-bottom: 32px;
-				font-size: 18px;
-				line-height: 170%;
-				@media(max-width:767px){ font-size: 14px;}
-			}
-
-			.popuptitle {
-				margin: 0 0 20px 0;
-			}
-
-			.popupcontent {
-				margin-bottom: 94px;
-				@media(max-height:420px){
-					 margin-bottom: 30px;
-				}
-
-			}
-
-			.ins-text {
-				max-width: 327px;
-				border-radius: 24px;
-				margin: 0 auto 30px;
-				background: rgba(26, 24, 40, 1);
-				padding: 0 4px 5px;
-
-				.ins-text-ttl {
-					background: linear-gradient(88deg, #2BC016 0.88%, #26A96C 99.12%);
-
-					text-shadow: 0 0 32px #88D249;
-					background-clip: text;
-					-webkit-background-clip: text;
-					-webkit-text-fill-color: transparent;
-					text-align: left;
-					font-size: 16px;
-					@include font(rubik, med);
-					padding: 16px 20px 12px;
-					line-height: 110%;
-					/* 17.6px */
-					letter-spacing: -0.16px;
-				}
-
-				ul {
-					margin: 0;
-					background: var(--ww_black_3);
-					border: 1px solid var(--ww_black_3);
-					border-radius: 22px;
-					list-style-type: none;
-					padding: 4px 24px;
-					@include font(rubik, reg);
-
-					li {
-						text-align: left;
-						padding: 20px 0 20px 16px;
-						margin: 0;
-						line-height: 110%;
-						position: relative;
-						border-bottom: 1px solid #1A1828;
-
-						&:last-child {
-							border: 0;
-						}
-
-						&:before {
-							content: "";
-							position: absolute;
-							left: 0;
-							width: 6px;
-							height: 6px;
-							background-color: #8A8997;
-							border-radius: 100%;
-							top: 25px
-						}
-					}
-				}
-
-			}
-
-		}
-	}
 		@media (orientation: landscape) and (max-height: 500px),
 	(max-height: 500px) {
          display: block;
 	}
-	@media (orientation: landscape) and (max-height: 420px),
-	(max-height: 420px) {
-        
-		.instruction-popup {		
-		    	
-			.popup-card {
-			margin: 16px auto 0;
-			height: 100%;
-			min-height: 100%;
-			display: block;
-		}
-	}
-}
+
 }
