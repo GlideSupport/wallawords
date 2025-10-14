@@ -643,7 +643,13 @@ function checkColumnCompletion(originalPositions) {
             });
             let thisCol = document.getElementById('sentence_' + completeSentenceCount);
             if (thisCol) {
-                thisCol.innerHTML = sentenceCounter;
+                var sentence = sentenceCounter;
+                console.log(sentenceCounter);
+                if (sentence.endsWith(".")) {
+                    sentence = sentence.slice(0, -1);
+                }
+                thisCol.innerHTML = sentence;
+                // thisCol.innerHTML = sentenceCounter;
                 // thisCol.classList.add('active');
                 // let contentEl = thisCol.querySelector('.content');
                 // if (contentEl) {
@@ -701,7 +707,13 @@ function checkSentenceCompletion(originalPositions) {
             });
             let thisRow = document.getElementById('sentence_' + completeSentenceCount);
             if (thisRow) {
-                thisRow.innerHTML = sentenceCounter;
+                var sentence = sentenceCounter;
+                console.log(sentenceCounter);
+                if (sentence.endsWith(".")) {
+                    sentence = sentence.slice(0, -1);
+                }
+                thisCol.innerHTML = sentence;
+                // thisRow.innerHTML = sentenceCounter;
                 // thisRow.classList.add('active');
                 // let contentEl = thisRow.querySelector('.content');
                 // if (contentEl) {
