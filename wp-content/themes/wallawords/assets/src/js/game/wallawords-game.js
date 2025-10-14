@@ -641,17 +641,9 @@ function checkColumnCompletion(originalPositions) {
             counters.forEach((item) => {
                 item.classList.remove('active');
             });
-            console.log('test');
-            console.log(completeSentenceCount);
             let thisCol = document.getElementById('sentence_' + completeSentenceCount);
             if (thisCol) {
                 thisCol.innerHTML = sentenceCounter;
-                console.log(completeSentenceCount);
-                let sentenceLI = document.getElementById('sentence_' + completeSentenceCount);
-                let text = sentenceLI.innerText || sentenceLI.textContent;  // Get the text content of the element
-                if (text.endsWith('.')) {
-                    sentenceLI.innerText = text.slice(0, -1);  // Remove the last character (the period)
-                }
                 // thisCol.classList.add('active');
                 // let contentEl = thisCol.querySelector('.content');
                 // if (contentEl) {
@@ -707,17 +699,9 @@ function checkSentenceCompletion(originalPositions) {
             counters.forEach((item) => {
                 item.classList.remove('active');
             });
-            console.log('test');
-             console.log(completeSentenceCount);
             let thisRow = document.getElementById('sentence_' + completeSentenceCount);
             if (thisRow) {
                 thisRow.innerHTML = sentenceCounter;
-                console.log(completeSentenceCount);
-                let sentenceLI = document.getElementById('sentence_' + completeSentenceCount);
-                let text = sentenceLI.innerText || sentenceLI.textContent;  // Get the text content of the element
-                if (text.endsWith('.')) {
-                    sentenceLI.innerText = text.slice(0, -1);  // Remove the last character (the period)
-                }
                 // thisRow.classList.add('active');
                 // let contentEl = thisRow.querySelector('.content');
                 // if (contentEl) {
