@@ -641,9 +641,12 @@ function checkColumnCompletion(originalPositions) {
             counters.forEach((item) => {
                 item.classList.remove('active');
             });
+            console.log('test');
+            console.log(completeSentenceCount);
             let thisCol = document.getElementById('sentence_' + completeSentenceCount);
             if (thisCol) {
                 thisCol.innerHTML = sentenceCounter;
+                console.log(completeSentenceCount);
                 let sentenceLI = document.getElementById('sentence_' + completeSentenceCount);
                 let text = sentenceLI.innerText || sentenceLI.textContent;  // Get the text content of the element
                 if (text.endsWith('.')) {
@@ -704,9 +707,12 @@ function checkSentenceCompletion(originalPositions) {
             counters.forEach((item) => {
                 item.classList.remove('active');
             });
+            console.log('test');
+             console.log(completeSentenceCount);
             let thisRow = document.getElementById('sentence_' + completeSentenceCount);
             if (thisRow) {
                 thisRow.innerHTML = sentenceCounter;
+                console.log(completeSentenceCount);
                 let sentenceLI = document.getElementById('sentence_' + completeSentenceCount);
                 let text = sentenceLI.innerText || sentenceLI.textContent;  // Get the text content of the element
                 if (text.endsWith('.')) {
