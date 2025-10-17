@@ -1207,13 +1207,12 @@ letter-spacing: -0.16px;
 	}
 
 	.footer-section {
-
-
 		.menu-footer-nav-container {
-			display: none;
+			li.terms-nav-link{
+				display: none; 
+			}
 		}
 	}
-
 
 	.footer-socials {
 		position: initial;
