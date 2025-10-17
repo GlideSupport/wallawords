@@ -192,13 +192,13 @@ table.ui-datepicker_calendar {
 
 .validation_message {
 font-size: .78rem;
-	text-align: center;
+	text-align: left;
 	display: inline-block;
 	color: var(--ww_valiation_message_color);
 	position: absolute;
 	    left: 0;
     width: 100%;
-	top:100%;
+	top:calc(100% + 5px);
 	@media(max-width:1200px){
 		 font-size: .76rem;
 	}
