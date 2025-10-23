@@ -165,11 +165,7 @@ function initializeGame() {
             finalAcadamyPuzzlePopup.style.display = 'none';
             gameGridElement.innerHTML = `<span></span><img src="${localVars.site_url}/wp-content/themes/wallawords/assets/src/images/spinner.svg" class="loading"><span></span>`;
             puzzleAcadamyLevel = GameStorageService.getItem('puzzle-acadamy-level');
-            if(puzzleAcadamyLevel <= 3){
-                startGame(puzzleAcadamyLevel, true);
-            }else{
-                startGame(puzzleCounter);
-            }
+            startGame(puzzleAcadamyLevel, true);
         });
     }
     if(shareBtn){
@@ -647,7 +643,7 @@ function checkColumnCompletion(originalPositions) {
             });
             let thisCol = document.getElementById('sentence_' + completeSentenceCount);
             if (thisCol) {
-                thisCol.innerHTML =  sentenceCounter.replace(/\./g, "");
+                thisCol.innerHTML = sentenceCounter.replace(/\./g, "");
                 // thisCol.classList.add('active');
                 // let contentEl = thisCol.querySelector('.content');
                 // if (contentEl) {
@@ -705,7 +701,7 @@ function checkSentenceCompletion(originalPositions) {
             });
             let thisRow = document.getElementById('sentence_' + completeSentenceCount);
             if (thisRow) {
-                thisRow.innerHTML = sentenceCounter.replace(/\./g, "");
+                thisRow.innerHTML = sentenceCounter.replace(/\./g, "");//sentenceCounter;
                 // thisRow.classList.add('active');
                 // let contentEl = thisRow.querySelector('.content');
                 // if (contentEl) {
@@ -979,7 +975,7 @@ function showFinalScoreScreen() {
                     if(puzzleAcadamyLevel == 3){
                         popupTitle = 'You <span>did it!</span>';
                         popupContent = `You’ve mastered all 3 levels! <br> Great job on completing the challenge.`;
-                        popupBtnTitle = `Play Today's Puzzle`; 
+                        popupBtnTitle = 'Play Again'; 
                         pupupNote = `Can you beat your best score? Limit your moves and aim for perfection!`;
                     }
                     finalAcadamyPuzzlePopup.querySelector('.popuptitle').innerHTML = popupTitle;
@@ -996,9 +992,9 @@ function showFinalScoreScreen() {
                     }
                     if(puzzleAcadamyLevel <= 3){
                         puzzleAcadamyLevel = puzzleAcadamyLevel + 1;
-                        // if(puzzleAcadamyLevel > 3){
-                        //     puzzleAcadamyLevel = 1;
-                        // }
+                        if(puzzleAcadamyLevel > 3){
+                            puzzleAcadamyLevel = 1;
+                        }
                         GameStorageService.setItem('puzzle-acadamy-level', puzzleAcadamyLevel, 1);
                     }
                 }
