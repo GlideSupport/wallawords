@@ -165,7 +165,11 @@ function initializeGame() {
             finalAcadamyPuzzlePopup.style.display = 'none';
             gameGridElement.innerHTML = `<span></span><img src="${localVars.site_url}/wp-content/themes/wallawords/assets/src/images/spinner.svg" class="loading"><span></span>`;
             puzzleAcadamyLevel = GameStorageService.getItem('puzzle-acadamy-level');
-            startGame(puzzleAcadamyLevel, true);
+            if(puzzleAcadamyLevel <= 3){
+                startGame(puzzleAcadamyLevel, true);
+            }else{
+                startGame(puzzleCounter);
+            }
         });
     }
     if(shareBtn){
