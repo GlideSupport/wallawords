@@ -170,7 +170,8 @@ function initializeGame() {
     }
     if(shareBtn){
         shareBtn.addEventListener('click', () => {
-            var message = `I just discovered the amazing game, WallaWords! I solved it in ${moveCounterValue} moves and earned the “${completedPuzzleIcon} ${completedPuzzleRank}” level. Think you can beat me? Try it here - https://wallawords.com/play`;
+            var message = `Check out my latest Walla score! I solved it on “hard” mode with “${health}” health left 🕵. Think you can beat me? Try it here - https://wallawords.com/play`;
+            // var message = `I just discovered the amazing game, WallaWords! I solved it in ${moveCounterValue} moves and earned the “${completedPuzzleIcon} ${completedPuzzleRank}” level. Think you can beat me? Try it here - https://wallawords.com/play`;
             let smsLink = `sms:?&body=${message}`;
             window.location.href = smsLink;
         });
