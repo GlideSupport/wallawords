@@ -2230,6 +2230,21 @@ body.final-result {
                 }
             }
         }
+        &.final-result-faild{
+                header {
+            &:before {
+                background-image: url(../images/header-bg-2.svg);
+                height: calc(100% + 109px);
+
+                @media(max-width:767px) {
+                    height: calc(100% + 101px);
+                }
+            }
+        }   
+        }
+        .game-wrapper{
+             height: auto !important;
+        }
     }
     #game-screen {
         .game-stats {
