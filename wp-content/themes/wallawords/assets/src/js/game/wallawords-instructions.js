@@ -105,10 +105,10 @@ playPuzzleAcademy?.addEventListener('click',() => {
     var acadamyPopup = jQuery('#start-puzzle-acadamy-popup');
     acadamyPopup.fadeOut(250);
     acadamyPopup.removeClass('active');
-    if(puzzleAcadamyLevel < 3){
+    if(puzzleAcadamyLevel <= 3){
         startGameAgain(puzzleAcadamyLevel, true)
     }else{
-        startGameAgain(currentCount);
+        startGame(puzzleCounter);
     }
 });
 

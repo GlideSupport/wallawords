@@ -992,9 +992,9 @@ function showFinalScoreScreen() {
                     }
                     if(puzzleAcadamyLevel <= 3){
                         puzzleAcadamyLevel = puzzleAcadamyLevel + 1;
-                        if(puzzleAcadamyLevel > 3){
-                            puzzleAcadamyLevel = 1;
-                        }
+                        // if(puzzleAcadamyLevel > 3){
+                        //     puzzleAcadamyLevel = 1;
+                        // }
                         GameStorageService.setItem('puzzle-acadamy-level', puzzleAcadamyLevel, 1);
                     }
                 }
