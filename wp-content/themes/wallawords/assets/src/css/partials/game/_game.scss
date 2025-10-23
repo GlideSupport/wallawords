@@ -2223,10 +2223,10 @@ body.final-result {
         header {
             &:before {
                 background-image: url(../images/header-bg-2.svg);
-                height: calc(100% + 137px);
+                height: calc(100% + 117px);
 
                 @media(max-width:767px) {
-                    height: calc(100% + 130px);
+                    height: calc(100% + 110px);
                 }
             }
         }
