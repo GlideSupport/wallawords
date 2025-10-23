@@ -49,7 +49,7 @@ array(
         <div class="piece piece-am"></div>
         <div class="piece piece-I"></div>
         <div class="piece piece-so"></div>
-        <div class="piece piece-be"></div>
+        <div class="piece piece-be"></div> 
 
         <div class="piece piece-think"></div>
         <div class="piece piece-joy"></div>
@@ -66,7 +66,7 @@ array(
     <!-- Title Screen -->
     <div id="title-screen" class="title-screen">
         <h1>Welcome to<br> Walla<br><span class="">Words</span></h1>
-        <p>A WallaWords is a puzzle and a poem. Solve it to find meaning in two directions.</p>
+        <p>A Walla is a puzzle and a poem. Solve it to find meaning in two directions.</p>
         <div class="start-buttons">
             <a id="play-game" class="site-btn" role="button" aria-label="Let's Begin the Game">Let's Begin</a>
         </div>
