@@ -975,7 +975,7 @@ function showFinalScoreScreen() {
                     if(puzzleAcadamyLevel == 3){
                         popupTitle = 'You <span>did it!</span>';
                         popupContent = `You’ve mastered all 3 levels! <br> Great job on completing the challenge.`;
-                        popupBtnTitle = 'Play Again'; 
+                        popupBtnTitle = `Play Today's Puzzle`; 
                         pupupNote = `Can you beat your best score? Limit your moves and aim for perfection!`;
                     }
                     finalAcadamyPuzzlePopup.querySelector('.popuptitle').innerHTML = popupTitle;
