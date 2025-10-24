@@ -165,7 +165,12 @@ function initializeGame() {
             finalAcadamyPuzzlePopup.style.display = 'none';
             gameGridElement.innerHTML = `<span></span><img src="${localVars.site_url}/wp-content/themes/wallawords/assets/src/images/spinner.svg" class="loading"><span></span>`;
             puzzleAcadamyLevel = GameStorageService.getItem('puzzle-acadamy-level');
-            startGame(puzzleAcadamyLevel, true);
+            console.log('puzzleAcadamyLevel : ' + puzzleAcadamyLevel);
+            if( puzzleAcadamyLevel == 'done' ){
+                startGame(puzzleCounter);
+            }else{
+                startGame(puzzleAcadamyLevel, true);
+            }
         });
     }
     if(shareBtn){
@@ -976,7 +981,7 @@ function showFinalScoreScreen() {
                     if(puzzleAcadamyLevel == 3){
                         popupTitle = 'You <span>did it!</span>';
                         popupContent = `You’ve mastered all 3 levels! <br> Great job on completing the challenge.`;
-                        popupBtnTitle = 'Play Again'; 
+                        popupBtnTitle = `Play Today's Puzzle`; 
                         pupupNote = `Can you beat your best score? Limit your moves and aim for perfection!`;
                     }
                     finalAcadamyPuzzlePopup.querySelector('.popuptitle').innerHTML = popupTitle;
@@ -994,7 +999,7 @@ function showFinalScoreScreen() {
                     if(puzzleAcadamyLevel <= 3){
                         puzzleAcadamyLevel = puzzleAcadamyLevel + 1;
                         if(puzzleAcadamyLevel > 3){
-                            puzzleAcadamyLevel = 1;
+                            puzzleAcadamyLevel = 'done';
                         }
                         GameStorageService.setItem('puzzle-acadamy-level', puzzleAcadamyLevel, 1);
                     }

@@ -105,7 +105,11 @@ playPuzzleAcademy?.addEventListener('click',() => {
     var acadamyPopup = jQuery('#start-puzzle-acadamy-popup');
     acadamyPopup.fadeOut(250);
     acadamyPopup.removeClass('active');
-    startGameAgain(puzzleAcadamyLevel, true)
+     if( puzzleAcadamyLevel == 'done' ){
+        startGameAgain(puzzleCounter);
+    }else{
+        startGameAgain(puzzleAcadamyLevel, true);
+    }
 });
 
 document.addEventListener('DOMContentLoaded', function () {
