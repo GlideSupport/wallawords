@@ -106,7 +106,9 @@ playPuzzleAcademy?.addEventListener('click',() => {
     acadamyPopup.fadeOut(250);
     acadamyPopup.removeClass('active');
      if( puzzleAcadamyLevel == 'done' ){
-        startGameAgain(3, true);
+        puzzleAcadamyLevel = 3;
+        GameStorageService.setItem('puzzle-acadamy-level', puzzleAcadamyLevel, 1);
+        startGameAgain(puzzleAcadamyLevel, true);
     }else{
         startGameAgain(puzzleAcadamyLevel, true);
     }
