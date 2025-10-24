@@ -2,6 +2,9 @@
  
 .main-section{
 	 overflow-x: hidden;
+	 @media(max-width:767px){
+		 height:  auto !important;
+	 }
 }
 .level-finish-popup {
 	margin: 0;

@@ -174,3 +174,14 @@
         margin-block-start: 50px !important;
     }
 }
+
+.puzzle-tab label:before {
+    content: '';
+    position: absolute;
+    top: 8px;
+    left: 0;
+    bottom: 8px;
+    right: 15px;
+    z-index: 99;
+    border-radius: 5px;
+}
