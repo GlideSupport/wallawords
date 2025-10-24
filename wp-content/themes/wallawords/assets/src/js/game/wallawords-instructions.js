@@ -106,7 +106,7 @@ playPuzzleAcademy?.addEventListener('click',() => {
     acadamyPopup.fadeOut(250);
     acadamyPopup.removeClass('active');
      if( puzzleAcadamyLevel == 'done' ){
-        startGameAgain(puzzleCounter);
+        startGameAgain(3, true);
     }else{
         startGameAgain(puzzleAcadamyLevel, true);
     }
