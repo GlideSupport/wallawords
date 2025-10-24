@@ -170,7 +170,8 @@ function initializeGame() {
     }
     if(shareBtn){
         shareBtn.addEventListener('click', () => {
-            var message = `I just discovered the amazing game, WallaWords! I solved it in ${moveCounterValue} moves and earned the “${completedPuzzleIcon} ${completedPuzzleRank}” level. Think you can beat me? Try it here - https://wallawords.com/play`;
+            var message = `Check out my latest Walla score! I solved it on “hard” mode with “${health}” health left 🕵. Think you can beat me? Try it here - https://wallawords.com/play`;
+            // var message = `I just discovered the amazing game, WallaWords! I solved it in ${moveCounterValue} moves and earned the “${completedPuzzleIcon} ${completedPuzzleRank}” level. Think you can beat me? Try it here - https://wallawords.com/play`;
             let smsLink = `sms:?&body=${message}`;
             window.location.href = smsLink;
         });
@@ -643,7 +644,7 @@ function checkColumnCompletion(originalPositions) {
             });
             let thisCol = document.getElementById('sentence_' + completeSentenceCount);
             if (thisCol) {
-                thisCol.innerHTML = sentenceCounter.replace(/\./g, "");
+                thisCol.innerHTML = sentenceCounter.replace(/[^\w\s]|_/g, '');
                 // thisCol.classList.add('active');
                 // let contentEl = thisCol.querySelector('.content');
                 // if (contentEl) {
@@ -701,7 +702,7 @@ function checkSentenceCompletion(originalPositions) {
             });
             let thisRow = document.getElementById('sentence_' + completeSentenceCount);
             if (thisRow) {
-                thisRow.innerHTML = sentenceCounter.replace(/\./g, "");//sentenceCounter;
+                thisRow.innerHTML = sentenceCounter.replace(/[^\w\s]|_/g, '');//sentenceCounter;
                 // thisRow.classList.add('active');
                 // let contentEl = thisRow.querySelector('.content');
                 // if (contentEl) {
