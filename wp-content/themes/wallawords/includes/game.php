@@ -87,6 +87,13 @@ function wallawords_get_puzzle_data() {
         $post_not_in = array_unique($post_not_in);
         // Retrieve the last shown time
         $last_shown_time = get_option('last_shown_time');
+        $current_time = current_time('timestamp');
+        // delete_option('last_shown_time');
+        // delete_option('shown_posts');
+        if(empty($last_shown_time)){
+            $midnight_timestamp = strtotime('midnight', $current_time);
+            update_option('last_shown_time', $midnight_timestamp);
+        }
         $post_type = 'puzzle';
 
         // Arguments to get the latest game post excluding the ones that have already been shown
@@ -102,8 +109,7 @@ function wallawords_get_puzzle_data() {
         
         // Fetch the post IDs based on the above query
         $post_ids = get_posts($game_args);
-        $current_time = current_time('timestamp');
-
+        
         // Check if more than 24 hours have passed since the last shown time
         if ($last_shown_time && is_numeric($last_shown_time) && ($current_time - $last_shown_time) > 86400) { 
             // If we have posts to show, update the shown posts list
