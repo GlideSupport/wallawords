@@ -231,6 +231,10 @@ jQuery(document).ready(function(){
     }
 
     jQuery('#full-poem').on('input change blur focus',function(){
+        var cleaned = jQuery(this).val().replace(/[^a-zA-Z\s!,.?]/g, '');
+        if (jQuery(this).val() !== cleaned) {
+            jQuery(this).val(cleaned);
+        }
         countWords();
     })
 
