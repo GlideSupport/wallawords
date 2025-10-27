@@ -1,8 +1,7 @@
 //constant vars
 let lockedWords = 0;
 let wordCountTtl = 0;
-let maxLocked = 5;
-var sortable;
+let maxLocked = 13;
 let isComplete = true;
 
 //count words in the textbox
@@ -59,10 +58,11 @@ function updateBlockIdsAndNames($container) {
             $label.attr('for',newLabel);
             $label.on('click', function (e) {
                 const $checkbox = jQuery(this).parent().find('input[type="checkbox"]');
-
                 if ($checkbox.is(':checked')) {
                     if(lockedWords < maxLocked){
                         $checkbox.closest('.block').addClass('locked');
+                    }else{
+                        $checkbox.prop('checked', false);
                     }
                 } else {
                     if(lockedWords > 0){
@@ -73,6 +73,7 @@ function updateBlockIdsAndNames($container) {
                 if(lockedWords == maxLocked) {
                     e.preventDefault();
                 }
+                
                     
             });
         }
@@ -172,11 +173,15 @@ function checkBlockPlacementStates() {
 
 function toggleLockedItem(item) {
     const $checkbox = item;
-    
+    console.log(`lockedWords : ${lockedWords}`);
+    console.log(`maxLocked   : ${maxLocked}`);
     if ($checkbox.is(':checked')) {
+        
         if(lockedWords < maxLocked){
             $checkbox.closest('.block').addClass('locked');
             lockedWords++;
+        }else{
+            $checkbox.prop('checked', false);
         }
     } else {
         if(lockedWords > 0){
