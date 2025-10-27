@@ -333,6 +333,7 @@ function startGame(puzzleCounterValue, isAcadamy = false) {
                 // console.log(selectedPoem.correctWords);
                 lockedWords = selectedPoem.lockedWords.slice(); // Store the locked positions
                 sentences = selectedPoem.sentences; // Store sentences from JSON
+                console.log(sentences)  ;
                 columns = selectedPoem.columns; //store column rows
                 totalSentenceCount = selectedPoem.sentences.length + 3; //add 3 because we always have 3 vertical sentences in a puzzle
                 const solvedState = originalPositions.slice(); // Assumes solved state is the initial state
@@ -885,9 +886,14 @@ function showFinalScoreScreen() {
             
             var failedHTML= `<div id="resultFailed">
             <div class="overlay-title">Not Quite This Time</div>
-            <div class="overlay-subtitle">Every mistake is a step closer to mastery. Try again!</div>
-                    <a id="replay-game" class="site-btn btn-replay">Replay</a>
-                </div>`;
+            <div class="overlay-subtitle">${activePoem.fullPoem}</div>
+            </div>`;
+
+            // var failedHTML= `<div id="resultFailed">
+            // <div class="overlay-title">Not Quite This Time</div>
+            // <div class="overlay-subtitle">Every mistake is a step closer to mastery. Try again!</div>
+            //     <a id="replay-game" class="site-btn btn-replay">Replay</a>
+            // </div>`;
             finalScoreScreen.insertAdjacentHTML('beforeend',failedHTML); 
             let replayGame = document.getElementById('replay-game');
             if(!ispuzzleAcadamy){
