@@ -112,6 +112,7 @@ array(
             <div id="final-score-screen" class="final-score-screen sentence-list-container final-result" style="display: none;">
                 <ol></ol>
                 <div class="finish-buttons">
+                    <a id="view-puzzle" class="site-btn"  role="button" aria-label="view puzzle">View Puzzle</a>
                     <a id="share-button" class="site-btn" role="button" aria-label="Share game results">Share Results</a>
                 </div>
             </div>
@@ -135,7 +136,6 @@ array(
              <div class="arrows"></div>
             <div class="popuptitle heading-1">Well <span>done</span></div>
             <div class="popupcontent">You’ve completed Level 1! <br>Get ready for Level 2 and challenge yourself even more.</div>
-
             <a class="site-btn" id="next-level" role="button" aria-label="Next Level">Next Level</a>
             <div class="note">Remember to limit moves and avoid mistakesto get the highest score!</div>
             </div>
