@@ -933,7 +933,9 @@ function showAcademyFailure() {
             <a id="replay-game" class="site-btn btn-replay">Replay</a>
         </div>`;
     finalScoreScreen.insertAdjacentHTML('beforeend', failedHTML);
-
+    backToPuzzle.style.display = 'none';
+    finalScoreSentence.innerHTML = '';
+    finalScoreSentence.style.display = 'none';
     const replayGame = document.getElementById('replay-game');
     replayGame?.addEventListener('click', () => {
         const level = GameStorageService.getItem('puzzle-acadamy-level');
@@ -952,7 +954,7 @@ function showRegularFailure() {
     resetUIForFinalScreen();
     document.body.classList.add('final-result');
     document.body.classList.remove('final-result-faild');
-
+    backToPuzzle.removeAttribute('style');
     document.getElementById("share-button").style.display = "none";
     saveOrLoadPuzzleStatus(false);
     highlightScoreRow();
@@ -971,6 +973,7 @@ function showRegularSuccess() {
     document.body.classList.remove('final-result-faild');
     finalScoreScreen.classList.remove('final-result-faild');
     document.getElementById("share-button").removeAttribute('style');
+    backToPuzzle.removeAttribute('style');
     
     saveOrLoadPuzzleStatus(true);
     highlightScoreRow();
