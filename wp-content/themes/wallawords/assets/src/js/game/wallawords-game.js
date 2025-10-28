@@ -67,7 +67,8 @@ const finalMoveCount = document.getElementById('final-move-count');
 const startButton = document.getElementById('start-button');
 const playGameButton = document.getElementById('play-game');
 const playAgain = document.getElementById('play-again');
-const viewPuzzle = document.getElementById('view-puzzle');
+const backToPuzzle = document.getElementById('back-to-puzzle');
+const backToResult = document.getElementById('back-to-result');
 const nextLevel = document.getElementById('next-level');
 const levelDone = document.getElementById('level-done');
 const levelBadge = document.getElementById('level-badge');
@@ -79,8 +80,6 @@ const errorCounterDisplay = document.getElementById('error-counter'); // Move co
 const moveCounterDisplay = document.getElementById('move-counter'); // Move counter element
 const sentenceCounterDisplay = document.getElementById('sentence-counter'); // Move counter element
 const resultSentenceCounterDisplay = document.getElementById('result-sentence-counter'); 
-// const counterContainer = document.getElementById('sentence-list-container');
-// const counterContainerContent = document.getElementById('sentence-list-text');
 const finalScoreSentence = document.querySelector('#final-score-screen ol');
 //const sentenceToggle = document.getElementById('sentence-toggle');
 const sentenceToggle = document.querySelectorAll('.sentence-toggle');
@@ -173,8 +172,8 @@ function initializeGame() {
             }
         });
     }
-    if(viewPuzzle){
-        viewPuzzle.addEventListener('click', () => {
+    if(backToPuzzle){
+        backToPuzzle.addEventListener('click', () => {
             document.body.classList.remove('final-acadamy-result', 'final-result');
             finalScoreScreen.style.display = 'none';
             document.body.style.overflow = 'auto';
@@ -183,8 +182,21 @@ function initializeGame() {
             resultSentenceCounterDisplay.style.display = 'none';
             sentenceCounterDisplay.removeAttribute('style');
             gameRow.removeAttribute('style');
+            backToResult.removeAttribute('style');
         });
     }
+     if(backToResult){
+        backToResult.addEventListener('click', () => {
+            document.body.classList.add('final-acadamy-result', 'final-result');
+            finalScoreScreen.removeAttribute('style');
+            titleDisplay.removeAttribute('style');
+            moveCounterDisplay.innerHTML = `Health:`;
+            resultSentenceCounterDisplay.removeAttribute('style');
+            sentenceCounterDisplay.style.display = 'none';
+            gameRow.style.display = 'none';
+        });
+    }
+    
     if(shareBtn){
         shareBtn.addEventListener('click', () => {
             var message = `Check out my latest Walla score! I solved it on “hard” mode with “${health}” health left 🕵. Think you can beat me? Try it here - https://wallawords.com/play`;
@@ -272,6 +284,7 @@ function startGame(puzzleCounterValue, isAcadamy = false) {
     finalScoreScreen.style.display = 'none';
     moveCounterDisplay.style.display = "block"; 
     sentenceCounterDisplay.style.display = "block";
+    backToResult.style.display = 'none';
     // errorCounterDisplay.style.display = "block";
     // errorCounterDisplay.innerHTML = '';
     ispuzzleAcadamy = isAcadamy;
@@ -891,7 +904,7 @@ function handleFailure(isAcademy) {
     document.body.classList.add('final-result-faild');
     finalScoreScreen.classList.add('final-result-faild');
     document.getElementById("share-button")?.style.setProperty('display', 'none');
-    finalScoreSentence.innerHTML = '';
+    finalScoreSentence.querySelectorAll("li:empty").forEach(li => li.remove());
 
     if (isAcademy) {
         showAcademyFailure();
