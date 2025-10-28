@@ -627,6 +627,9 @@ body {
     .puzzle-title {
         display: none;
     }
+    #back-to-result{
+         margin: 30px 0;
+    }
 
     .start-buttons,
     .finish-buttons {
@@ -669,7 +672,7 @@ body {
 
         #share-button,
         #play-again,
-        #view-puzzle {
+        #back-to-puzzle {
             flex: none;
             width: 100%;
             margin: 6px auto;
