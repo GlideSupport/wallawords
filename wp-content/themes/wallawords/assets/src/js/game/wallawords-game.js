@@ -883,7 +883,7 @@ function finalScoreResizer(mode) {
 
 function showFinalScoreScreen() {
     const isAcademy = ispuzzleAcadamy;
-    const delay = isFailed ? 1000 : 1500;
+    const delay = isFailed ? 1000 : 2000;
 
     setTimeout(() => {
         if (isFailed) {
