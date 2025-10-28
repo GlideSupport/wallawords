@@ -279,6 +279,10 @@ function startGame(puzzleCounterValue, isAcadamy = false) {
         if (completedSessionPuzzles) {
             url += '&completed=' + completedSessionPuzzles;
         }
+        const urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.get('preview') === 'true') {
+            url += '&preview=true';
+        }
     }
     gameScreen.style.display = 'flex';
     const floatingPieces = document.querySelectorAll('.piece');

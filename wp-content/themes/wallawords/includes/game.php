@@ -47,6 +47,10 @@ function wallawords_get_puzzle_data() {
         wp_send_json_error(['message' => 'Invalid nonce']);
         exit;
     }
+    $post_status = array('publish');
+    if(is_user_logged_in() && current_user_can('administrator')){
+        $post_status =  array('any');
+    }
     $today_puzzle = false;
     $is_acadamy = isset($_GET['is_acadamy']) ? array(intval($_GET['is_acadamy'])) : []; 
     $gameID = isset($_GET['gameID']) ? array(intval($_GET['gameID'])) : []; 
@@ -59,7 +63,7 @@ function wallawords_get_puzzle_data() {
         // Prepare base query arguments
     $get_puzzle_args = [
         'posts_per_page' => -1,
-        'post_status'    => 'publish',
+        'post_status'    => $post_status,
         'post_type'      => 'puzzle',
         'orderby'        => 'date',
     ];
@@ -148,8 +152,6 @@ function wallawords_get_puzzle_data() {
         }
 
     }
-
-
 
     $get_puzzle_posts = new WP_Query($get_puzzle_args);
 
