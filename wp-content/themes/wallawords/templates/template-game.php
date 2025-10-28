@@ -107,12 +107,13 @@ array(
             <div id="game-row" class="game-row">
                 <div id="sortable-grid" class="game-grid"></div>
                 <div id="game-prompt" class="game-prompt"></div>
+                <a id="back-to-result" class="site-btn"  role="button" aria-label="Back to puzzle" style="display: none;">Back To Result</a>
             </div>
             <!-- sentence-list-container -->
             <div id="final-score-screen" class="final-score-screen sentence-list-container final-result" style="display: none;">
                 <ol></ol>
                 <div class="finish-buttons">
-                    <a id="view-puzzle" class="site-btn"  role="button" aria-label="view puzzle">View Puzzle</a>
+                    <a id="back-to-puzzle" class="site-btn"  role="button" aria-label="Back to puzzle">Back To Puzzle</a>
                     <a id="share-button" class="site-btn" role="button" aria-label="Share game results">Share Results</a>
                 </div>
             </div>
