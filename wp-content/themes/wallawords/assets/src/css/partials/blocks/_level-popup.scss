@@ -20,12 +20,15 @@
 	align-items: center;
 	overflow-y: auto;      
    -webkit-overflow-scrolling: touch;
+   padding: 0 17px;
+    box-sizing: border-box;
 
 
 
 	.popup-card {
 		background: #090719;
 		border-radius: 30px;
+		overflow: hidden;
 		padding: 0;
 		position: relative;
 		text-align: center;
