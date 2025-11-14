@@ -374,8 +374,8 @@ function startGame(puzzleCounterValue, isAcadamy = false) {
                 // if(playStatus !== 'null' || playStatus !== 'undefine')
                 title = selectedPoem.title; // Store the puzzle title
 
-                console.log("Selected poem title:", title);
-                document.querySelector('#main-section').setAttribute('data-puzzle-title', title);
+                console.log("Selected poem title:", selectedPoem.fullPoem);
+                document.querySelector('#main-section').setAttribute('data-puzzle-title', selectedPoem.fullPoem);
 
                 originalPositions = selectedPoem.correctWords.slice(); // Store the original positions
                 // console.log(selectedPoem.correctWords);
