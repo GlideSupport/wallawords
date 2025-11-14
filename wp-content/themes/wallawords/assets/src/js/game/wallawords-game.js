@@ -512,7 +512,7 @@ function startGame(puzzleCounterValue, isAcadamy = false) {
                     }
                     incorrectCounterValue = GameStorageService.getItem(`helth${currentPuzzleID}`, );
                     updateMoveCounterDisplay();
-                    showFinalScoreScreen();
+                    showFinalScoreScreen(selectedPoem);
                 }else{
                     //remove intro animation classes
                     updateMoveCounterDisplay();
@@ -881,15 +881,15 @@ function finalScoreResizer(mode) {
 
 }
 
-function showFinalScoreScreen() {
+function showFinalScoreScreen(data = null) {
     const isAcademy = ispuzzleAcadamy;
     const delay = isFailed ? 1000 : 2000;
 
     setTimeout(() => {
         if (isFailed) {
-            handleFailure(isAcademy);
+            handleFailure(isAcademy, data);
         } else {
-            handleSuccess(isAcademy);
+            handleSuccess(isAcademy, data);
         }
     }, delay);
 }
@@ -898,7 +898,7 @@ function showFinalScoreScreen() {
    HANDLERS
 ----------------------------- */
 
-function handleFailure(isAcademy) {
+function handleFailure(isAcademy, data = null) {
     gameRow.style.display = 'none';
     finalScoreScreen.style.display = 'flex';
     document.body.classList.add('final-result-faild');
@@ -907,17 +907,17 @@ function handleFailure(isAcademy) {
     finalScoreSentence.querySelectorAll("li:empty").forEach(li => li.remove());
 
     if (isAcademy) {
-        showAcademyFailure();
+        showAcademyFailure(data);
     } else {
-        showRegularFailure();
+        showRegularFailure(data);
     }
 }
 
-function handleSuccess(isAcademy) {
+function handleSuccess(isAcademy, data = null) {
     if (!isAcademy) {
-        showRegularSuccess();
+        showRegularSuccess(data);
     } else {
-        showAcademySuccess();
+        showAcademySuccess(data);
     }
 }
 
@@ -925,11 +925,16 @@ function handleSuccess(isAcademy) {
    FAILURE SCREENS
 ----------------------------- */
 
-function showAcademyFailure() {
+function showAcademyFailure(data = null) {
+    let fullPoemHTML = '';
+    if(data !== null && data.fullPoem !== undefined){
+        fullPoemHTML = `<div class="overlay-current-poem"><span><strong>Correct Puzzle Sentence: </strong></span>${data.fullPoem}</div>`;
+    }
     const failedHTML = `
         <div id="resultFailed">
-            <div class="overlay-title">Not Quite This Time</div>
-            <div class="overlay-subtitle">Every mistake is a step closer to mastery. Try again!</div>
+            <div class="overlay-title">The Puzzle Wins This Round</div>
+            <div class="overlay-subtitle">Try a new Walla tomorrow!</div>
+            ${fullPoemHTML}
             <a id="replay-game" class="site-btn btn-replay">Replay</a>
         </div>`;
     finalScoreScreen.insertAdjacentHTML('beforeend', failedHTML);
@@ -943,11 +948,16 @@ function showAcademyFailure() {
     });
 }
 
-function showRegularFailure() {
+function showRegularFailure(data = null) {
+    let fullPoemHTML = '';
+    if(data !== null && data.fullPoem !== undefined){
+        fullPoemHTML = `<div class="overlay-current-poem"><span><strong>Correct Puzzle Sentence: </strong></span>${data.fullPoem}</div>`;
+    }
     const failedHTML = `
         <div id="resultFailed">
-            <div class="overlay-title">Not Quite This Time</div>
-            <div class="overlay-subtitle">Every mistake is a step closer to mastery.</div>
+            <div class="overlay-title">The Puzzle Wins This Round</div>
+            <div class="overlay-subtitle">Try a new Walla tomorrow!</div>
+            ${fullPoemHTML}
         </div>`;
     finalScoreScreen.insertAdjacentHTML('afterbegin', failedHTML);
 
