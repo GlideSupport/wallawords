@@ -979,6 +979,7 @@ body {
             width: 100%;
             max-width: 100%;
             background-color: transparent;
+            &.final-result-faild{ol{display: none;}}
 
 
             ol {
@@ -990,7 +991,7 @@ body {
                 margin-bottom: 78px;
                 max-width: 497px;
                 width: 100%;
-                display: none;
+         
 
 
                 li {
