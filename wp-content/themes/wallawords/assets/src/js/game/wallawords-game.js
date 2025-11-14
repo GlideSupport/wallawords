@@ -25,6 +25,11 @@ getCookie(name) {
 }
 */
 
+document.addEventListener("DOMContentLoaded", function () {
+    if (localStorage.getItem("puzzle-acadamy-level")) {
+        GameStorageService.setItem('puzzle-acadamy-level', 1, 1);
+    }
+});
 //replace cookies w/ local storage
 const GameStorageService = {
     setItem(name, value, days) {
@@ -333,16 +338,19 @@ function startGame(puzzleCounterValue, isAcadamy = false) {
         url: url,
         type: 'GET',
         success: async function (response) {
+           
             let data = response.data;
-            if (typeof response === "string") {
+            if (response.success === 'true') {
+                
                 try {
-                    data = JSON.parse(response);
+                    data = JSON.parse(response.data);
                 } catch (err) {
-                    console.error("JSON.parse failed:", err, response);
+                    console.error("JSON.parse failed:", err, response.data);
                     return;
                 }
             }
             if (data) {
+                
                 try {
                     await dpData(data, localVars.nonce);
                 } catch (err) {
@@ -365,6 +373,10 @@ function startGame(puzzleCounterValue, isAcadamy = false) {
                 }
                 // if(playStatus !== 'null' || playStatus !== 'undefine')
                 title = selectedPoem.title; // Store the puzzle title
+
+                console.log("Selected poem title:", selectedPoem.fullPoem);
+                document.querySelector('#main-section').setAttribute('data-puzzle-title', selectedPoem.fullPoem);
+
                 originalPositions = selectedPoem.correctWords.slice(); // Store the original positions
                 // console.log(selectedPoem.correctWords);
                 lockedWords = selectedPoem.lockedWords.slice(); // Store the locked positions
@@ -512,10 +524,26 @@ function startGame(puzzleCounterValue, isAcadamy = false) {
                     }
                     incorrectCounterValue = GameStorageService.getItem(`helth${currentPuzzleID}`, );
                     updateMoveCounterDisplay();
-                    showFinalScoreScreen(selectedPoem);
+                    showFinalScoreScreen();
+                    
                 }else{
+                     console.log('working not');
+
+                     let foundKey = null;
+
+                    for (let i = 0; i < localStorage.length; i++) {
+                        let key = localStorage.key(i);
+
+                        if (key.startsWith("puzzleStatus")) {
+                            foundKey = key;
+                            break;
+                        }
+                    }
+
+                    console.log("Matched Key:", foundKey);
                     //remove intro animation classes
                     updateMoveCounterDisplay();
+                    
                     setTimeout(() => {
                         removeAnimateInClass();
                         setTimeout(() => {
@@ -881,15 +909,15 @@ function finalScoreResizer(mode) {
 
 }
 
-function showFinalScoreScreen(data = null) {
+function showFinalScoreScreen() {
     const isAcademy = ispuzzleAcadamy;
     const delay = isFailed ? 1000 : 2000;
 
     setTimeout(() => {
         if (isFailed) {
-            handleFailure(isAcademy, data);
+            handleFailure(isAcademy);
         } else {
-            handleSuccess(isAcademy, data);
+            handleSuccess(isAcademy);
         }
     }, delay);
 }
@@ -898,7 +926,7 @@ function showFinalScoreScreen(data = null) {
    HANDLERS
 ----------------------------- */
 
-function handleFailure(isAcademy, data = null) {
+function handleFailure(isAcademy) {
     gameRow.style.display = 'none';
     finalScoreScreen.style.display = 'flex';
     document.body.classList.add('final-result-faild');
@@ -907,17 +935,17 @@ function handleFailure(isAcademy, data = null) {
     finalScoreSentence.querySelectorAll("li:empty").forEach(li => li.remove());
 
     if (isAcademy) {
-        showAcademyFailure(data);
+        showAcademyFailure();
     } else {
-        showRegularFailure(data);
+        showRegularFailure();
     }
 }
 
-function handleSuccess(isAcademy, data = null) {
+function handleSuccess(isAcademy) {
     if (!isAcademy) {
-        showRegularSuccess(data);
+        showRegularSuccess();
     } else {
-        showAcademySuccess(data);
+        showAcademySuccess();
     }
 }
 
@@ -925,10 +953,11 @@ function handleSuccess(isAcademy, data = null) {
    FAILURE SCREENS
 ----------------------------- */
 
-function showAcademyFailure(data = null) {
+function showAcademyFailure() {
+    let title =  document.querySelector('#main-section').getAttribute('data-puzzle-title') || ''; 
     let fullPoemHTML = '';
-    if(data !== null && data.fullPoem !== undefined){
-        fullPoemHTML = `<div class="overlay-current-poem"><span><strong>Correct Puzzle Sentence: </strong></span>${data.fullPoem}</div>`;
+    if(title != ''){
+        fullPoemHTML = `<div class="overlay-current-poem"><span><strong>Correct Puzzle Sentence: </strong></span>${title}</div>`;
     }
     const failedHTML = `
         <div id="resultFailed">
@@ -948,16 +977,17 @@ function showAcademyFailure(data = null) {
     });
 }
 
-function showRegularFailure(data = null) {
+function showRegularFailure() {
+    let title =  document.querySelector('#main-section').getAttribute('data-puzzle-title') || ''; 
     let fullPoemHTML = '';
-    if(data !== null && data.fullPoem !== undefined){
-        fullPoemHTML = `<div class="overlay-current-poem"><span><strong>Correct Puzzle Sentence: </strong></span>${data.fullPoem}</div>`;
+    if(title != ''){
+        fullPoemHTML = `<div class="overlay-current-poem"><span><strong>Correct Puzzle Sentence: </strong></span>${title}</div>`;
     }
-    const failedHTML = `
+        const failedHTML = `
         <div id="resultFailed">
             <div class="overlay-title">The Puzzle Wins This Round</div>
             <div class="overlay-subtitle">Try a new Walla tomorrow!</div>
-            ${fullPoemHTML}
+             ${fullPoemHTML}
         </div>`;
     finalScoreScreen.insertAdjacentHTML('afterbegin', failedHTML);
 
