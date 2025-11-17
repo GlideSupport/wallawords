@@ -399,6 +399,7 @@ function startGame(puzzleCounterValue, isAcadamy = false) {
                 gameGridElement.innerHTML = ''; // Clear previous words
                 health = selectedPoem.health;
                 originalPositions.forEach((word, index) => {
+                    
                     const div = document.createElement('div');
                     
                     div.classList.add('grid-item');
@@ -422,7 +423,7 @@ function startGame(puzzleCounterValue, isAcadamy = false) {
                 //get original placements as an array object to compare
                 document.querySelectorAll('.grid-item').forEach((tile) => {
                     let clean = tile.textContent.replace(/\s+/g, '');
-                    if(clean.length > 6){
+                    if(clean.length > 7){
                         console.log(clean, 'Added min-seven-characters class');
                         tile.classList.add('min-seven-characters');
                     }
@@ -544,6 +545,7 @@ function startGame(puzzleCounterValue, isAcadamy = false) {
                 }else{
                      console.log('working not');
 
+                     // TODO
                      let foundKey = null;
 
                     for (let i = 0; i < localStorage.length; i++) {
@@ -572,6 +574,7 @@ function startGame(puzzleCounterValue, isAcadamy = false) {
     });
 
 }
+
 
 // **Calculate Minimum Swaps Using Graph Method**
 function calculateMinSwapsUsingGraphMethod(solvedState) {
@@ -978,7 +981,6 @@ function showAcademyFailure() {
         <div id="resultFailed">
             <div class="overlay-title">The Puzzle Wins This Round</div>
             <div class="overlay-subtitle">Try a new Walla tomorrow!</div>
-            ${fullPoemHTML}
             <a id="replay-game" class="site-btn btn-replay">Replay</a>
         </div>`;
     finalScoreScreen.insertAdjacentHTML('beforeend', failedHTML);
@@ -993,6 +995,10 @@ function showAcademyFailure() {
 }
 
 function showRegularFailure() {
+    //TODO
+   
+    restartGame(0, false);
+    console.log('showRegularFailure');
     let title =  document.querySelector('#main-section').getAttribute('data-puzzle-title') || ''; 
     let fullPoemHTML = '';
     if(title != ''){
@@ -1002,7 +1008,6 @@ function showRegularFailure() {
         <div id="resultFailed">
             <div class="overlay-title">The Puzzle Wins This Round</div>
             <div class="overlay-subtitle">Try a new Walla tomorrow!</div>
-             ${fullPoemHTML}
         </div>`;
     finalScoreScreen.insertAdjacentHTML('afterbegin', failedHTML);
 
@@ -1014,6 +1019,134 @@ function showRegularFailure() {
     saveOrLoadPuzzleStatus(false);
     highlightScoreRow();
     initFinalScreenToggles();
+}
+
+function restartGame(puzzleCounterValue, isAcadamy = false) {
+    console.log('')
+    document.querySelector('#final-score-screen .finish-buttons').style.display = 'none';
+    pageHeader.classList.add('playing');
+    moveCounterDisplay.classList.remove('over');
+    finalScoreScreen.style.display = 'none';
+    moveCounterDisplay.style.display = "block"; 
+    sentenceCounterDisplay.style.display = "block";
+    backToResult.style.display = 'none';
+    // errorCounterDisplay.style.display = "block";
+    // errorCounterDisplay.innerHTML = '';
+    ispuzzleAcadamy = isAcadamy;
+    if(isAcadamy){
+        url = localVars.ajax_url + '?action=wallawords_get_puzzle_data&is_acadamy=' + isAcadamy + '&nonce=' + localVars.nonce;
+        puzzleAcadamyLevel = GameStorageService.getItem('puzzle-acadamy-level');
+        if(puzzleAcadamyLevel){
+            url += '&level=' + puzzleAcadamyLevel;
+        }
+    }else{
+        if (jQuery('#puzzle_id').length) {
+            hasID = jQuery('#puzzle_id').val();
+            url = localVars.ajax_url + '?action=wallawords_get_puzzle_data&gameID=' + hasID + '&nonce=' + localVars.nonce;
+            currentPuzzleID = hasID;
+        } else {
+            url = localVars.ajax_url + '?action=wallawords_get_puzzle_data&nonce=' + localVars.nonce;
+        }
+        if (completedSessionPuzzles) {
+            url += '&completed=' + completedSessionPuzzles;
+        }
+        const urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.get('preview') === 'true') {
+            url += '&preview=true';
+        }
+    }
+    gameScreen.style.display = 'flex';
+    const floatingPieces = document.querySelectorAll('.piece');
+    floatingPieces.forEach((piece) => {
+        piece.classList.add('blur'); //change floating elements
+    });
+    //reset values on start
+    moveCounterValue = 0;
+    completeSentenceCount = 0;
+    incorrectCounterValue = 0;
+    isFailed = 0;
+    completedSentences = [];
+    completedColumns = [];
+    if (gameGrid) {
+        gameGrid.destroy();
+        const resetSentenceCounter = document.querySelectorAll('.sentence-item');
+        resetSentenceCounter.forEach((row) => {
+            row.remove();
+        });
+    }
+    jQuery.ajax({
+        url: url,
+        type: 'GET',
+        success: async function (response) {
+           
+            let data = response.data;
+            if (response.success === 'true') {
+                
+                try {
+                    data = JSON.parse(response.data);
+                } catch (err) {
+                    console.error("JSON.parse failed:", err, response.data);
+                    return;
+                }
+            }
+            if (data) {
+                
+                try {
+                    await dpData(data, localVars.nonce);
+                } catch (err) {
+                    console.error("Puzzle failed:", err);
+                }
+                const puzzles = await dpData(data, localVars.nonce);
+                sentenceToggle.forEach(item => {
+                    item.style.display = "block";
+                });
+                document.body.classList.add('steps-page');
+                const originalDropPlacement = new Map();
+                puzzleCounterValue = puzzles.length > puzzleCounterValue ? puzzleCounterValue : puzzles.length - 1;
+                var selectedPoem = puzzles[puzzleCounterValue];
+                activePoem = selectedPoem;
+                currentPuzzleID = selectedPoem.id; //poem ID 
+                var playStatus = GameStorageService.getItem(`puzzleStatus${currentPuzzleID}`);
+                if(playStatus != null && !ispuzzleAcadamy){
+                    gameGridElement.innerHTML = `<span></span><img src="${localVars.site_url}/wp-content/themes/wallawords/assets/src/images/spinner.svg" class="loading"><span></span>`;
+                    gameRow.style.display = 'none';
+                }
+                // if(playStatus !== 'null' || playStatus !== 'undefine')
+                title = selectedPoem.title; // Store the puzzle title
+
+                originalPositions = selectedPoem.correctWords.slice(); // Store the original positions
+                // console.log(selectedPoem.correctWords);
+                lockedWords = selectedPoem.lockedWords.slice(); // Store the locked positions
+                sentences = selectedPoem.sentences; // Store sentences from JSON
+                columns = selectedPoem.columns; //store column rows
+                totalSentenceCount = selectedPoem.sentences.length + 3; //add 3 because we always have 3 vertical sentences in a puzzle
+                
+                
+                titleDisplay.textContent = selectedPoem.title;
+                gamePrompt.innerHTML = selectedPoem.prompt;
+                gameGridElement.innerHTML = ''; // Clear previous words
+                health = selectedPoem.health;
+                originalPositions.forEach((word, index) => {
+                    
+                    const div = document.createElement('div');
+                    
+                    div.classList.add('grid-item');
+                   
+                        div.textContent = word;
+                        div.classList.add('correct-position'); // Mark it as correctly placed
+                        div.classList.add('locked-position'); // Mark it as locked
+                        div.classList.add('intro1');
+                        div.style.animationDelay = `${parseInt(index) * .01}s`; //add delay to float in effect to stagger tiles  
+                     
+                    gameGridElement.appendChild(div);
+                });
+                document.querySelector('#final-score-screen .finish-buttons').style.display = 'block';
+                
+                
+            }
+        }
+    });
+
 }
 
 /* -----------------------------
