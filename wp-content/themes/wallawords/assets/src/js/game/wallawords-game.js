@@ -30,6 +30,13 @@ document.addEventListener("DOMContentLoaded", function () {
         GameStorageService.setItem('puzzle-acadamy-level', 1, 1);
     }
 });
+const showAcademyPuzzlePopupButton = document.getElementById('show-academy-puzzle-popup');
+showAcademyPuzzlePopupButton.addEventListener('click', () => {
+    console.log('showAcademyPuzzlePopupButton clicked');
+    if (localStorage.getItem("puzzle-acadamy-level")) {
+        GameStorageService.setItem('puzzle-acadamy-level', 1, 1);
+    }
+});  
 //replace cookies w/ local storage
 const GameStorageService = {
     setItem(name, value, days) {
@@ -393,6 +400,7 @@ function startGame(puzzleCounterValue, isAcadamy = false) {
                 health = selectedPoem.health;
                 originalPositions.forEach((word, index) => {
                     const div = document.createElement('div');
+                    
                     div.classList.add('grid-item');
                     if (lockedIndexes.includes(index)) {
                         div.textContent = word;
@@ -413,6 +421,13 @@ function startGame(puzzleCounterValue, isAcadamy = false) {
                 });
                 //get original placements as an array object to compare
                 document.querySelectorAll('.grid-item').forEach((tile) => {
+                    let clean = tile.textContent.replace(/\s+/g, '');
+                    if(clean.length > 6){
+                        console.log(clean, 'Added min-seven-characters class');
+                        tile.classList.add('min-seven-characters');
+                    }
+
+
                     const parent = tile.parentElement;
                     const index = Array.from(parent.children).indexOf(tile);
                     originalDropPlacement.set(tile, { parent, index });
