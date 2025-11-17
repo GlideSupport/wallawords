@@ -602,12 +602,15 @@
 		.grid-item {
 			height: 72px !important;
 			width: 102px !important;
-			font-size: clamp(13px, 2vw, 24px);
-			padding: 28px 12px;
+			font-size: 16px;
+			padding: 28px 5px;
 			border-bottom: 2px solid #999;
 			line-height: 110%; /* 17.6px */
-letter-spacing: -0.16px;
-		}
+				letter-spacing: -0.16px; 
+				&.min-seven-characters{
+					font-size: 13px;
+				}
+			}
 
 		.final-score-screen {
 			padding: 0 0 20px 0;
