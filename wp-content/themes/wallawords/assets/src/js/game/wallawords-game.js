@@ -1044,6 +1044,7 @@ function showRegularFailure() {
 function restartGame(puzzleCounterValue, isAcadamy = false) {
     console.log('')
     document.querySelector('#final-score-screen .finish-buttons').style.display = 'none';
+    document.querySelector('#game-prompt').style.display = 'none';
     pageHeader.classList.add('playing');
     moveCounterDisplay.classList.remove('over');
     finalScoreScreen.style.display = 'none';
