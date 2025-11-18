@@ -408,7 +408,7 @@ function startGame(puzzleCounterValue, isAcadamy = false) {
                         div.classList.add('correct-position'); // Mark it as correctly placed
                         div.classList.add('locked-position'); // Mark it as locked
                         div.classList.add('intro1');
-                        div.style.animationDelay = `${parseInt(index) * .01}s`; //add delay to float in effect to stagger tiles  
+                        // div.style.animationDelay = `${parseInt(index) * .01}s`; //add delay to float in effect to stagger tiles  
                     } else {
                         div.textContent = incorrectWords.shift(); // Populate with shuffled words
                         div.classList.add('intro2');
@@ -416,22 +416,43 @@ function startGame(puzzleCounterValue, isAcadamy = false) {
                         var rand = parseInt(Math.floor(Math.random() * (originalPositions.length - 0 + 1) + 0));
                         var randDelay = (rand * .01) + ((parseInt(index) * .01) * lockedIndexes.length);
                         //console.log(randDelay);
-                        div.style.animationDelay = `${randDelay}s`; //add delay to float in effect to stagger tiles                      
+                        // div.style.animationDelay = `${randDelay}s`; //add delay to float in effect to stagger tiles                      
                     }
                     gameGridElement.appendChild(div);
                 });
                 //get original placements as an array object to compare
+                
+                let lockcount = 0;
+                let normalcount = 0;
+
                 document.querySelectorAll('.grid-item').forEach((tile) => {
+
+                    // Remove spaces and line breaks
                     let clean = tile.textContent.replace(/\s+/g, '');
-                    if(clean.length > 8){
+
+                    // Add min-nine-characters class
+                    if (clean.length > 8) {
                         tile.classList.add('min-nine-characters');
                     }
 
+                    // Locked / normal delay handling
+                    if (tile.classList.contains('locked-position')) {
+                        lockcount++;
+                        tile.style.animationDelay = `${lockcount * 0.01}s`;
+                    } else {
+                        
+                        normalcount++;
+                        console.log(normalcount);
+                        tile.style.animationDelay = `${(normalcount / 10) + 0.25}s`;
+                    }
 
+                    // Save original placement (requires Map)
                     const parent = tile.parentElement;
                     const index = Array.from(parent.children).indexOf(tile);
+
                     originalDropPlacement.set(tile, { parent, index });
                 });
+
                 // Calculate the minimum number of moves required using cycle decomposition method
                 minimumMoves = calculateMinSwapsUsingGraphMethod(solvedState);
                 // Initialize SortableJS on the grid container with Swap plugin
