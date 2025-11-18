@@ -423,9 +423,8 @@ function startGame(puzzleCounterValue, isAcadamy = false) {
                 //get original placements as an array object to compare
                 document.querySelectorAll('.grid-item').forEach((tile) => {
                     let clean = tile.textContent.replace(/\s+/g, '');
-                    if(clean.length > 7){
-                        console.log(clean, 'Added min-seven-characters class');
-                        tile.classList.add('min-seven-characters');
+                    if(clean.length > 8){
+                        tile.classList.add('min-nine-characters');
                     }
 
 
@@ -1127,8 +1126,11 @@ function restartGame(puzzleCounterValue, isAcadamy = false) {
                 gameGridElement.innerHTML = ''; // Clear previous words
                 health = selectedPoem.health;
                 originalPositions.forEach((word, index) => {
-                    
                     const div = document.createElement('div');
+                    let clean = word.replace(/\s+/g, '');
+                    if(clean.length > 8){
+                        div.classList.add('min-nine-characters');
+                    }
                     
                     div.classList.add('grid-item');
                    
@@ -1140,6 +1142,7 @@ function restartGame(puzzleCounterValue, isAcadamy = false) {
                      
                     gameGridElement.appendChild(div);
                 });
+                
                 document.querySelector('#final-score-screen .finish-buttons').style.display = 'block';
                 
                 
