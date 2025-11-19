@@ -55,6 +55,9 @@ function wallawords_get_puzzle_data() {
     $is_acadamy = isset($_GET['is_acadamy']) ? array(intval($_GET['is_acadamy'])) : []; 
     $gameID = isset($_GET['gameID']) ? array(intval($_GET['gameID'])) : []; 
     $completed = isset($_GET['completed']) ? sanitize_text_field($_GET['completed']) : '';
+
+    $difficulty = isset($_GET['difficulty']) ? sanitize_text_field($_GET['difficulty']) : '';
+
     $acadamyPluzzle = [];
     for($level =1; $level<= 3; $level++){
         $level_key = "select_level_".$level."_puzzle";
@@ -82,6 +85,7 @@ function wallawords_get_puzzle_data() {
         $today_puzzle = true;
     }
 
+    
     if($today_puzzle){ 
         $shown_posts = get_option('shown_posts');
         if (!is_array($shown_posts)) {
@@ -109,6 +113,13 @@ function wallawords_get_puzzle_data() {
             'order'          => 'DESC',
             'fields'         => 'ids',
             'post__not_in'   => $post_not_in,
+            'meta_query'     => !empty($difficulty) ? array(
+                array(
+                    'key'     => 'wwp_difficulty_settings',
+                    'value'   => $difficulty,
+                    'compare' => '=',
+                ),
+            ) : array(),
         );
         
         // Fetch the post IDs based on the above query

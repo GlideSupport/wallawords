@@ -68,10 +68,62 @@ array(
         <h1>Welcome to<br> Walla<br><span class="">Words</span></h1>
         <p>A Walla is a puzzle and a poem. Solve it to find meaning in two directions.</p>
         <div class="start-buttons">
-            <a id="play-game" class="site-btn" role="button" aria-label="Let's Begin the Game">Let's Begin</a>
+            <!-- <a id="play-game" class="site-btn" role="button" aria-label="Let's Begin the Game">Let's Begin</a> -->
+            <a id="difficulty-play-game" class="site-btn" role="button" aria-label="Let's Begin the Game">Let's Begin</a>
         </div>
     </div>
 
+    <!-- Difficulty Popup -->
+    
+     <div id="difficulty-popup" class="difficulty-popup  level-finish-popup" style="display: none;">
+        <?php 
+        $classic_difficulty = get_field('classic_difficulty','options');
+        $pro_difficulty = get_field('pro_difficulty','options');
+        $genius_difficulty = get_field('genius_difficulty','options');
+
+        
+        $classic_difficulty_icon = get_field('classic_difficulty','options')['icon'] != '' ? get_field('classic_difficulty','options')['icon'] : get_template_directory_uri() .'/assets/src/images/classic-level.png';
+        $pro_difficulty_icon = get_field('pro_difficulty','options')['icon'] != '' ? get_field('pro_difficulty','options')['icon'] : get_template_directory_uri() .'/assets/src/images/pro-level.png';
+        $genius_difficulty_icon = get_field('genius_difficulty','options')['icon'] != '' ? get_field('genius_difficulty','options')['icon'] : get_template_directory_uri() .'/assets/src/images/genius-level.png';
+
+
+        ?>
+        <div class="popup-card">
+                <div class="piece piece-one blur"></div>
+                <div class="piece piece-two blur"></div>
+                <div class="piece piece-three blur"></div>
+                <div class="piece piece-four blur"></div>
+                <div id="level-badge" class="content-area level-1">
+                    <div class="badge-box">
+                        <div class="hexagone-icon">
+                            <div class="icon"><img src="<?php echo $classic_difficulty_icon ?>"></div>
+                        </div>
+                    </div>
+                    <div class="arrows"></div>
+
+                    <div class="popuptitle heading-1">Select <span>Difficulty</span></div>
+                    
+                    <div class="level-tabs">
+                        <div class="tab tab-1 active" data-level="classic" data-levelnumber="1" data-message="<?php echo $classic_difficulty['message'] ?>">
+                            <img src="<?php echo $classic_difficulty_icon ?>">
+                            <?php echo $classic_difficulty['label'] != '' ? $classic_difficulty['label'] : 'Classic' ?>
+                        </div>
+                     
+                        <div class="tab tab-2" data-level="pro" data-levelnumber="2" data-message="<?php echo $pro_difficulty['message'] ?>">
+                            <img src="<?php echo $pro_difficulty_icon ?>"> 
+                            <?php echo $pro_difficulty['label'] != '' ? $pro_difficulty['label'] : 'Pro' ?>
+                        </div>
+                        <div class="tab tab-3" data-level="genius" data-levelnumber="3" data-message="<?php echo $genius_difficulty['message'] ?>">
+                            <img src="<?php echo $genius_difficulty_icon ?>"> 
+                            <?php echo $genius_difficulty['label'] != '' ? $genius_difficulty['label'] : 'Genius' ?>
+                        </div>
+                    </div>
+                    <div class="popupcontent level-content"> <?php echo html_entity_decode($classic_difficulty['message']) ?></div>
+                    <a class="site-btn" id="play-game" role="button" aria-label="Next Level">Play</a>
+                  
+                </div>
+            </div>
+     </div>  
     <!-- Game Screen -->
     <div id="game-screen" class="wrapper" style="display: none;">
         <div class="game-container">

@@ -102,6 +102,8 @@ const fullPoem = document.getElementById('full-poem'); // Move counter element
 const poemColumn1 = document.getElementById('poem-column1'); // Move counter element
 const poemColumn2 = document.getElementById('poem-column2'); // Move counter element
 const poemColumn3 = document.getElementById('poem-column3'); // Move counter element
+const difficultyPopup = document.getElementById('difficulty-popup'); // Move counter element
+const difficultyPlayGameButton = document.getElementById('difficulty-play-game');
 
 // **Game State Variables**
 let currentPuzzleID = 0;
@@ -123,11 +125,15 @@ let title = ''; // Store the title of the puzzle
 let puzzleCounter = 0;
 let gameGrid = null;
 let completedSessionPuzzles = [];
+let difficultySessionPuzzles = [];
 
 let isSolved = 0;
 let isFailed = 0;
 if (GameStorageService.getItem('ww-session-games')) {
     completedSessionPuzzles = GameStorageService.getItem('ww-session-games');
+}
+if (GameStorageService.getItem('difficultySessionPuzzles')) {
+    difficultySessionPuzzles = GameStorageService.getItem('difficultySessionPuzzles');
 }
 
 let completedPuzzleRank = '';
@@ -147,6 +153,43 @@ if (GameStorageService.getItem('puzzle-acadamy-level')) {
 document.addEventListener('DOMContentLoaded', initializeGame);
 
 function initializeGame() {
+
+    // Difficulty popup tab click handling
+    const tabs = difficultyPopup.querySelectorAll('.tab');
+
+    tabs.forEach(tab => {
+        tab.addEventListener('click', function() {
+
+            // Optionally, add active class
+            tabs.forEach(t => t.classList.remove('active')); // remove active from all
+            this.classList.add('active'); // add active to clicked tab
+            const difficulty = this.getAttribute('data-difficulty');
+            const levelNumber = this.getAttribute('data-levelnumber');
+            const icon = this.querySelector('img').getAttribute('src');
+            const message = this.getAttribute('data-message');
+            if(icon){
+                this.closest('#difficulty-popup').querySelector('.badge-box .hexagone-icon .icon img').setAttribute('src', icon);
+                const badge = this.closest('#difficulty-popup').querySelector('#level-badge');
+                // Remove existing level classes
+                badge.classList.remove('level-1', 'level-2', 'level-3');
+
+                // Add the new level class
+                badge.classList.add('level-' + levelNumber);
+            }
+            if(message){
+                const badge = this.closest('#difficulty-popup').querySelector('.level-content');
+                badge.innerHTML = message;
+            }
+
+        });
+    });
+
+    difficultyPlayGameButton.addEventListener('click', () => {
+        difficultyPopup.style.display = 'flex';
+        difficultyPopup.querySelector('.level-tabs .tab-1').click();
+    });
+
+    // Difficulty popup tab click handling
     
     if (GameStorageService.getItem('ww-played-before')) {
         isFirstPlay = 0;
@@ -159,6 +202,7 @@ function initializeGame() {
         //     jQuery('#help-button').trigger('click');
         // }
         titleScreen.style.display = 'none';
+        difficultyPopup.style.display = 'none';
         //gameScreen.style.display = 'flex';
         startGame(puzzleCounter);
     });
@@ -291,6 +335,7 @@ async function dpData(encryptedDataWithIv, nonce) {
 
 // **Start the Game**
 function startGame(puzzleCounterValue, isAcadamy = false) {
+    const difficulty = difficultyPopup.querySelector('.level-tabs .active').getAttribute('data-level');
     pageHeader.classList.add('playing');
     moveCounterDisplay.classList.remove('over');
     finalScoreScreen.style.display = 'none';
@@ -307,15 +352,22 @@ function startGame(puzzleCounterValue, isAcadamy = false) {
             url += '&level=' + puzzleAcadamyLevel;
         }
     }else{
+        console.log('normal puzzle load');
         if (jQuery('#puzzle_id').length) {
+            console.log('with puzzle_id true');
+            console.log('with puzzle_id');
             hasID = jQuery('#puzzle_id').val();
             url = localVars.ajax_url + '?action=wallawords_get_puzzle_data&gameID=' + hasID + '&nonce=' + localVars.nonce;
             currentPuzzleID = hasID;
         } else {
-            url = localVars.ajax_url + '?action=wallawords_get_puzzle_data&nonce=' + localVars.nonce;
+            console.log('with puzzle_id false');
+            url = localVars.ajax_url + '?action=wallawords_get_puzzle_data&difficulty='+difficulty+'&nonce=' + localVars.nonce;
         }
         if (completedSessionPuzzles) {
-            url += '&completed=' + completedSessionPuzzles;
+            if (GameStorageService.getItem('difficultySessionPuzzles'+`${completedSessionPuzzles}`) && GameStorageService.getItem('difficultySessionPuzzles'+`${completedSessionPuzzles}`).includes(difficulty) ) {
+                console.log('already played this difficulty');
+                url += '&completed=' + completedSessionPuzzles;
+            }
         }
         const urlParams = new URLSearchParams(window.location.search);
         if (urlParams.get('preview') === 'true') {
@@ -770,8 +822,6 @@ function checkColumnCompletion(originalPositions) {
 }
 
 // **Check if a Sentence is Completed**
-
-
 function checkSentenceCompletion(originalPositions) {
     const items = document.querySelectorAll('.grid-item');
     const counters = document.querySelectorAll('.sentence-item');
@@ -838,10 +888,13 @@ function checkPuzzleCompletion(originalPositions) {
         startConfetti();
         document.getElementById('confetti-canvas').style.opacity = '1';
         showFinalScoreScreen();
+        
         if(!ispuzzleAcadamy){
             if (completedSessionPuzzles.includes(currentPuzzleID) === false) {
                 completedSessionPuzzles.push(currentPuzzleID);
             }
+
+            
             if (GameStorageService.getItem('ww-session-games')) {
                 if (GameStorageService.getItem('ww-session-games').indexOf(completedSessionPuzzles) == -1) { //only update local storage if this puzzle ID isnt marked complete
                     GameStorageService.setItem('ww-session-games', completedSessionPuzzles, 365);
@@ -849,6 +902,8 @@ function checkPuzzleCompletion(originalPositions) {
             } else {
                 GameStorageService.setItem('ww-session-games', completedSessionPuzzles, 365);
             }
+
+            
         }
         setTimeout(() => {
             document.getElementById('confetti-canvas').style.opacity = '0';
@@ -1241,6 +1296,20 @@ function saveOrLoadPuzzleStatus(status) {
         const sHTML = finalScoreSentence.innerHTML;
         finalScoreSentence.style.display = sHTML ? "" : "none";
         GameStorageService.setItem(key, status, 1);
+        // TODO
+
+        const difficulty = difficultyPopup.querySelector('.level-tabs .active').getAttribute('data-level');
+        if (difficultySessionPuzzles.includes(difficulty) === false) {
+            difficultySessionPuzzles.push(difficulty);
+        }
+        if (GameStorageService.getItem('difficultySessionPuzzles'+`${currentPuzzleID}`)) {
+            if (GameStorageService.getItem('difficultySessionPuzzles'+`${currentPuzzleID}`).indexOf(difficultySessionPuzzles) == -1) { 
+                GameStorageService.setItem('difficultySessionPuzzles'+`${currentPuzzleID}`, difficultySessionPuzzles, 365);
+            }
+        } else {
+            GameStorageService.setItem('difficultySessionPuzzles'+`${currentPuzzleID}`, difficultySessionPuzzles, 365);
+        }
+        
         GameStorageService.setItem(`finalScoreSentence${currentPuzzleID}`, sHTML, 1);
         GameStorageService.setItem(`helth${currentPuzzleID}`, incorrectCounterValue, 1);
         
