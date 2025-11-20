@@ -343,6 +343,27 @@
                     "step": "",
                     "prepend": "Min Tiles Filles",
                     "append": ""
+                },
+                {
+                    "key": "field_691d6a76ad567",
+                    "label": "Message",
+                    "name": "message",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "Normal mode starts you with 6 of 15 tiles in the correct position.",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": ""
                 }
             ]
         },
@@ -431,6 +452,27 @@
                     "step": "",
                     "prepend": "Min Tiles Filles",
                     "append": ""
+                },
+                {
+                    "key": "field_691d6a99ad568",
+                    "label": "Message",
+                    "name": "message",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "Pro mode starts you with 3 of 15\u2028tiles in the correct position.",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": ""
                 }
             ]
         },
@@ -518,6 +560,27 @@
                     "placeholder": "",
                     "step": "",
                     "prepend": "Min Tiles Filles",
+                    "append": ""
+                },
+                {
+                    "key": "field_691d6aabad569",
+                    "label": "Message",
+                    "name": "message",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "Beware: You're on your own!",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "prepend": "",
                     "append": ""
                 }
             ]
@@ -748,5 +811,5 @@
     "description": "",
     "show_in_rest": 0,
     "display_title": "",
-    "modified": 1763039514
+    "modified": 1763637782
 }
