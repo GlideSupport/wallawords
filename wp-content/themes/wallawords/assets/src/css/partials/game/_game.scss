@@ -2164,17 +2164,18 @@ body {
     &.home {
         .game-wrapper {
             .title-screen {
-                height: calc(100dvh - 137px);
+                height: calc(100dvh - 170px);
                 min-height: 10px;
-                @media(max-width:767px){
+                @media(max-width:550px){
+                       height: calc(100dvh - 137px);
                      .start-buttons{
                       margin-top: 10%;
-        position: relative;
-        bottom: 0; 
+                    position: relative;
+                    bottom: 0; 
                      }
                 }
                 @media(max-height:600px){
-                     height: auto;
+                     height: auto !important;
                      padding: 50px 0;
                 }
             }
