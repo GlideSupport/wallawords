@@ -188,6 +188,14 @@ function initializeGame() {
         difficultyPopup.style.display = 'flex';
         difficultyPopup.querySelector('.level-tabs .tab-1').click();
     });
+    
+    document.querySelector('#header-difficulty-play-game').addEventListener('click', (e) => {
+        difficultyPopup.style.display = 'flex';
+        difficultyPopup.querySelector('.level-tabs .tab-1').click();
+        if (e.target.closest('#instruction-screen')) {
+            document.querySelector('#instruction-screen .header .close-button').click();
+        }
+    });
 
     // Difficulty popup tab click handling
     
