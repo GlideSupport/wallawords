@@ -2166,6 +2166,12 @@ body {
             .title-screen {
                 height: 80vh;
                 min-height: 10px;
+                @media(max-width:767px){
+                     .start-buttons{
+                         position: relative;
+                         margin-top: 20px;   
+                     }
+                }
             }
         }
         footer{
