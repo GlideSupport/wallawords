@@ -2145,21 +2145,37 @@ body {
 
 }
 
+body {
+    .game-wrapper {
+        .title-screen {
+            height: calc(100vh - 147px);
+            min-height: 450px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
 
-body .game-wrapper {
-    .title-screen {
-        height: calc(100vh - 147px);
-        min-height: 450px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
+            @media(max-height:700px) {
 
-        @media(max-height:700px) {
-    
-            padding: 40px 0;
+                padding: 40px 0;
+            }
+        }
+    }
+
+    &.home {
+        .game-wrapper {
+            .title-screen {
+                height: 80vh;
+                min-height: 10px;
+            }
+        }
+        footer{
+             .footer-ctn{
+             padding: 0;
+             }
         }
     }
 }
+
 
 @keyframes pulseRed {
     0% {
