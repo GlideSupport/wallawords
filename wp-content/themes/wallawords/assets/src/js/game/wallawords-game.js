@@ -201,6 +201,7 @@ function initializeGame() {
         // if (isFirstPlay == 1) {
         //     jQuery('#help-button').trigger('click');
         // }
+        gameGridElement.innerHTML = `<span></span><img src="${localVars.site_url}/wp-content/themes/wallawords/assets/src/images/spinner.svg" class="loading"><span></span>`;
         titleScreen.style.display = 'none';
         difficultyPopup.style.display = 'none';
         //gameScreen.style.display = 'flex';
@@ -234,6 +235,12 @@ function initializeGame() {
             finalScoreScreen.style.display = 'none';
             document.body.style.overflow = 'auto';
             titleDisplay.style.display = 'none';
+            if(finalScoreSentence.querySelectorAll('li').length > 0){
+             document.querySelectorAll('.grid-item').forEach((item) => {
+                item.classList.remove('dimmed');
+             });
+            }
+
             moveCounterDisplay.innerHTML = `Health`;
             resultSentenceCounterDisplay.style.display = 'none';
             sentenceCounterDisplay.removeAttribute('style');
