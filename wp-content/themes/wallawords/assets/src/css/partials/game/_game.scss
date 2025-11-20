@@ -2164,8 +2164,14 @@ body {
     &.home {
         .game-wrapper {
             .title-screen {
-                height: 80vh;
+                height: calc(100dvh - 137px);
                 min-height: 10px;
+                @media(max-width:767px){
+                     .start-buttons{
+                         position: relative;
+                         margin-top: 20%;   
+                     }
+                }
             }
         }
         footer{
