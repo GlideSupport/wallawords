@@ -2168,9 +2168,14 @@ body {
                 min-height: 10px;
                 @media(max-width:767px){
                      .start-buttons{
-                         position: relative;
-                         margin-top: 20%;   
+                      margin-top: 10%;
+        position: relative;
+        bottom: 0; 
                      }
+                }
+                @media(max-height:600px){
+                     height: auto;
+                     padding: 50px 0;
                 }
             }
         }
