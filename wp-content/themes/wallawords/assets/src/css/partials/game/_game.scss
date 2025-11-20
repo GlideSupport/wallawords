@@ -183,6 +183,9 @@ body {
                 top: 30%;
                 left: -3%;
                 animation-delay: 0.2s;
+                @media(max-width:767px){
+                    left: -107px;
+                }
             }
 
             &.piece-joy {
@@ -2145,14 +2148,14 @@ body {
 
 body .game-wrapper {
     .title-screen {
-        height: calc(100vh - 176px);
+        height: calc(100vh - 147px);
         min-height: 450px;
         display: flex;
         justify-content: center;
         align-items: center;
 
         @media(max-height:700px) {
-            height: 100%;
+    
             padding: 40px 0;
         }
     }
