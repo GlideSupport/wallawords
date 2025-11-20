@@ -66,7 +66,7 @@ array(
     <!-- Title Screen -->
     <div id="title-screen" class="title-screen">
         <h1>Welcome to<br> Walla<br><span class="">Words</span></h1>
-        <p>A Walla is a puzzle and a poem. Solve it to find meaning in two directions.</p>
+        <p>A Walla is a puzzle and a poem.<br> Solve it to find meaning in two directions.</p>
         <div class="start-buttons">
             <a id="play-game" class="site-btn" role="button" aria-label="Let's Begin the Game">Let's Begin</a>
         </div>
