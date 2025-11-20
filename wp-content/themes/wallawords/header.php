@@ -293,7 +293,8 @@ $page_template = basename(get_page_template());
                     <div class="button-container flex-column-button">
                         <a id="show-academy-puzzle-popup" class="site-btn" role="button" aria-label="Start Puzzle Academy">Start Puzzle Academy</a>
                         <?php if(is_home() || is_front_page()): ?>
-                            <a id="play-button" class="site-btn-only-link" role="button" aria-label="Skip to Today's Puzzle">Skip to Today's Puzzle</a>
+                            <!-- <a id="play-button" class="site-btn-only-link" role="button" aria-label="Skip to Today's Puzzle">Skip to Today's Puzzle</a> -->
+                            <a id="header-difficulty-play-game" class="site-btn-only-link" role="button" aria-label="Skip to Today's Puzzle">Skip to Today's Puzzle</a>
                         <?php else: ?>
                             <a href="<?= home_url( '/' );  ?>?start_puzzle=true" class="site-btn-only-link">Skip to Today's Puzzle</a>
                         <?php endif ?>
