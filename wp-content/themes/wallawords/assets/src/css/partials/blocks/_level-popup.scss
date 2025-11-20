@@ -236,48 +236,83 @@
 			 margin: 116px auto 15px;
 		 }
 	}
-	&.difficulty-popup{
-		 .popup-card{
-			 .popupcontent{
-				 @include font(rubik, reg);
-				 margin-bottom: 56px;
-				 strong{
-					  @include font(rubik, med);
-				 }
-			 }
-			 .level-tabs{
-				 background-color: var(--ww_black_3);
-				 border-radius: 32px;
-				 width: 100%;
-				 margin: 34px 0 26px;
-				 display: flex;
-				 justify-content: space-between;
-				 align-items: center;
-				 .tab{ 
-                    width: 33%;	
+	&.difficulty-popup {
+		.popup-card {
+			.popupcontent {
+				@include font(rubik, reg);
+				margin-bottom: 56px;
+
+				strong {
+					@include font(rubik, med);
+				}
+			}
+
+			.level-tabs {
+				background-color: var(--ww_black_3);
+				border-radius: 32px;
+				width: 100%;
+				margin: 34px 0 26px;
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				@media (max-width:360px) {
+					  flex-wrap: wrap;
+				}
+
+				.tab {
+					width: 33%;
 					display: flex;
 					justify-content: center;
 					align-items: center;
-					color:var(--ww_white);
+					color: var(--ww_white);
 					font-size: var(--ww_font_size_19);
 					line-height: 110%;
 					letter-spacing: -0.16px;
 					@include font(rubik, med);
 					padding: 15px;
-					gap:4px;
-					img{ width: 32px; height: auto}
-					&.active{ 
+					gap: 4px;
+					cursor: pointer; 
+
+					@media(max-width:767px) {
+						padding: 9px 18px;
+						width: auto;
+					}
+					@media (max-width:360px) {
+					 width: 100%;
+					}
+
+					img {
+						width: 32px;
+						height: auto;
+
+						@media(max-width:767px) {
+							width: 16px
+						}
+					}
+
+					&.active {
 						background-color: var(--ww_white);
 						border-radius: 50px;
-						color:var(--ww_color_background);
+						color: var(--ww_color_background);
 						padding: 19px 15px;
-                              margin: -4px 0;
+						margin: -4px 0;
+
+						@media(max-width:767px) {
+							padding: 11px 18px;
+							margin: -4px;
+						}
+							@media (max-width:360px) {
+					 margin: 0;
 					}
-				 }
-				
-			 }
-			  .content-area{ padding-bottom: 32px;}
-		 }
+					}
+				}
+
+			}
+
+			.content-area {
+				padding-bottom: 32px;
+			}
+		}
 	}
 
 }
