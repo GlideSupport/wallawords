@@ -2255,7 +2255,14 @@ body .game-wrapper {
 .grid-item.bounce {
     animation: itemBounce 0.5s cubic-bezier(.36, .07, .19, .97);
 }
-
+body{
+    &.steps-page{
+        &.final-acadamy-result{
+             overflow: hidden !important;
+        }
+    }
+     
+}
 body.final-result {
     &.steps-page {
         header {
