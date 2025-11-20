@@ -2144,7 +2144,6 @@ body {
     }
 
 }
-
 body {
     .game-wrapper {
         .title-screen {
@@ -2167,28 +2166,36 @@ body {
             .title-screen {
                 height: calc(100dvh - 170px);
                 min-height: 10px;
-                @media(max-width:550px){
-                       height: calc(100dvh - 137px);
-                     .start-buttons{
-                      margin-top: 10%;
-                    position: relative;
-                    bottom: 0; 
-                     }
+                @media(max-width:767px){
+                      .start-buttons {
+                                   bottom: 0;
+                                position: relative;
+                                margin-top: 20%;
+                      }
                 }
-                @media(max-height:550px){
-                     height: auto !important;
-                     padding: 50px 0;
+                @media(max-width:550px) {
+                    height: calc(100dvh - 137px);
+
+                    .start-buttons {
+                        margin-top: 10%;
+                      
+                    }
+                }
+
+                @media(max-height:550px) {
+                    height: auto !important;
+                    padding: 50px 0;
                 }
             }
         }
-        footer{
-             .footer-ctn{
-             padding: 0;
-             }
+
+        footer {
+            .footer-ctn {
+                padding: 0;
+            }
         }
     }
 }
-
 
 @keyframes pulseRed {
     0% {
