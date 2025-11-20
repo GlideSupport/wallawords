@@ -2161,7 +2161,8 @@ body {
         }
     }
 
-    &.home {
+    &.home,
+    &.puzzle-detail-single {
         .game-wrapper {
             .title-screen {
                 height: calc(100dvh - 170px);
