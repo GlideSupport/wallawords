@@ -36,6 +36,7 @@ showAcademyPuzzlePopupButton.addEventListener('click', () => {
     if (localStorage.getItem("puzzle-acadamy-level")) {
         GameStorageService.setItem('puzzle-acadamy-level', 1, 1);
     }
+    document.getElementById('final-puzzle-acadamy-popup').classList.remove('active');
     document.getElementById('start-puzzle-acadamy-popup').style.display = 'flex';
     document.getElementById('difficulty-popup').style.display = 'none';
 });  
