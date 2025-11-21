@@ -258,7 +258,7 @@ function initializeGame() {
     }
      if(backToResult){
         backToResult.addEventListener('click', () => {
-            document.body.classList.add('final-acadamy-result', 'final-result');
+            document.body.classList.add('final-result');
             finalScoreScreen.removeAttribute('style');
             titleDisplay.removeAttribute('style');
             moveCounterDisplay.innerHTML = `Health:`;
