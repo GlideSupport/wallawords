@@ -225,7 +225,7 @@ function initializeGame() {
         playAgain.addEventListener('click', () => {
             instructionScreen.style.display = 'none';
             finalScoreScreen.style.display = 'none';
-            gameGridElement.innerHTML = '<span></span><img src="/wp-content/themes/wallawords/assets/build/images/spinner.svg" class="loading"><span></span>';
+            gameGridElement.innerHTML = `<span></span><img src="${localVars.site_url}/wp-content/themes/wallawords/assets/src/images/spinner.svg" class="loading"><span></span>`;
             startGame(puzzleCounter);
         });
     }
@@ -663,6 +663,9 @@ function startGame(puzzleCounterValue, isAcadamy = false) {
                         removeAnimateInClass();
                         setTimeout(() => {
                             removeBounceClass();
+                             document.body.classList.remove('final-acadamy-result', 'final-result');
+                             gameRow.style.display = 'block';
+                             titleDisplay.style.display = 'none';
                         }, 1500);
                     }, 2200);
                 }
