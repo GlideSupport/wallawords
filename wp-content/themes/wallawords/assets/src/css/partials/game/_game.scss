@@ -507,7 +507,7 @@ body {
 
                 .text {
                     @include font(rubik, med);
-                    max-width: 327px;
+                    max-width: 344px;
                     margin: 0 auto;
                     text-align: center;
                     color: var(--ww-white);
@@ -1217,6 +1217,9 @@ body {
         .game-container {
             padding: 56px 24px;
             transition: all 0.3s ease;
+            @media(max-width:370px){
+                 padding: 56px 20px;
+            }
 
             @media (orientation: landscape) and (max-height: 420px),
             (max-height: 420px) {
