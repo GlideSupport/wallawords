@@ -107,6 +107,7 @@ const difficultyPlayGameButton = document.getElementById('difficulty-play-game')
 
 // **Game State Variables**
 let currentPuzzleID = 0;
+let lastPuzzleID = 0;
 const totalTiles = 15;
 let moveCounterValue = 0; // Track the number of total moves
 let health = 7; // Track the number of health moves
@@ -894,6 +895,7 @@ function checkSentenceCompletion(originalPositions) {
 // **Check if the Puzzle is Completed**
 
 function checkPuzzleCompletion(originalPositions) {
+    lastPuzzleID = currentPuzzleID;
     const items = document.querySelectorAll('.grid-item');
     const isSolved = Array.from(items).every(
         (item, index) => item.textContent === originalPositions[index]
@@ -1145,6 +1147,9 @@ function restartGame(puzzleCounterValue, isAcadamy = false) {
         if (urlParams.get('preview') === 'true') {
             url += '&preview=true';
         }
+    }
+    if (lastPuzzleID !== 0) {
+        url += '&lastPuzzleID=' + lastPuzzleID;
     }
     gameScreen.style.display = 'flex';
     const floatingPieces = document.querySelectorAll('.piece');
