@@ -39,6 +39,9 @@ showAcademyPuzzlePopupButton.addEventListener('click', () => {
     document.getElementById('start-puzzle-acadamy-popup').style.display = 'flex';
     document.getElementById('difficulty-popup').style.display = 'none';
 });  
+
+
+
 //replace cookies w/ local storage
 const GameStorageService = {
     setItem(name, value, days) {
@@ -226,16 +229,21 @@ function initializeGame() {
             startGame(puzzleCounter);
         });
     }
+
     if(nextLevel){
         nextLevel.addEventListener('click', () => {
-            document.body.classList.remove('final-acadamy-result');
-            finalAcadamyPuzzlePopup.classList.remove('active');
-            finalAcadamyPuzzlePopup.style.display = 'none';
-            gameGridElement.innerHTML = `<span></span><img src="${localVars.site_url}/wp-content/themes/wallawords/assets/src/images/spinner.svg" class="loading"><span></span>`;
+            
             puzzleAcadamyLevel = GameStorageService.getItem('puzzle-acadamy-level');
+            console.log('nextLevel clicked, puzzleAcadamyLevel:', puzzleAcadamyLevel);
             if( puzzleAcadamyLevel == 'done' ){
-                startGame(puzzleCounter);
+                //startGame(puzzleCounter);
+                document.getElementById('final-puzzle-acadamy-popup').style.display = 'none';
+                document.getElementById('difficulty-popup').style.display = 'flex';
             }else{
+                document.body.classList.remove('final-acadamy-result');
+                finalAcadamyPuzzlePopup.classList.remove('active');
+                finalAcadamyPuzzlePopup.style.display = 'none';
+                gameGridElement.innerHTML = `<span></span><img src="${localVars.site_url}/wp-content/themes/wallawords/assets/src/images/spinner.svg" class="loading"><span></span>`;
                 startGame(puzzleAcadamyLevel, true);
             }
         });
