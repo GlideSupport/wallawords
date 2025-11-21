@@ -180,7 +180,7 @@ $page_template = basename(get_page_template());
                             fill="#fff" />
                     </svg>
                 </div>
-                <div class="game-level-icon icon">
+                <div class="game-level-icon icon" style="display:none">
                      <img src="https://playground1stg.wpengine.com/wp-content/themes/wallawords/assets/src/images/classic-level.png" width="16">
                 </div>
              
