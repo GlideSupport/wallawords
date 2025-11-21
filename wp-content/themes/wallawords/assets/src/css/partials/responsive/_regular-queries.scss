@@ -502,7 +502,7 @@
 
 		.instruction-screen {
 			left: 0;
-			margin-left: 0;
+			        margin: auto;
 			top: 20px;
 			//bottom: 5px;
 			//height: 90vh;
@@ -1767,9 +1767,6 @@
 			padding: 16px 24px;
 		}
 
-		.logo {
-			width: 190px !important;
-		}
 
 	}
 

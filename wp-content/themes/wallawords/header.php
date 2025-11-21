@@ -180,6 +180,9 @@ $page_template = basename(get_page_template());
                             fill="#fff" />
                     </svg>
                 </div>
+                <div class="game-level-icon icon">
+                     <img src="https://playground1stg.wpengine.com/wp-content/themes/wallawords/assets/src/images/classic-level.png" width="16">
+                </div>
              
             </div>
             <?php ?>
@@ -207,7 +210,7 @@ $page_template = basename(get_page_template());
 
             <?php ?>
 
-            <div class="game-menu-ctn">
+            <div class="game-menu-ctn hdr-right-block">
                 <div class="doller icon" role="button" aria-label="Doller" tabindex="0" style="display: none;">
                     <svg role="presentation" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path
