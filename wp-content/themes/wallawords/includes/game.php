@@ -371,6 +371,21 @@ function render_custom_puzzle_form($post) {
     $output .= '</div>';
 
     $has_locked_words = get_post_meta($post->ID, 'locked_words', true);
+    $difficulty_level = get_post_meta($post->ID, 'wwp_difficulty_settings', true);
+    $classic_difficulty = get_field('classic_difficulty','options');
+    $pro_difficulty = get_field('pro_difficulty','options');
+    $genius_difficulty = get_field('genius_difficulty','options');
+
+
+    $difficulty = get_field('classic_difficulty','options');
+    if($difficulty_level == 'pro'){
+        $difficulty = get_field('pro_difficulty','options');
+    }
+    if($difficulty_level == 'genius'){
+        $difficulty = get_field('genius_difficulty','options');
+    }
+
+    $min_feel_tiles = $difficulty['min_feel_tiles'];
 
     $showBlock = 'none';
     $showRand = 'none';
@@ -383,9 +398,9 @@ function render_custom_puzzle_form($post) {
         $showRand = 'inline-block';      
     endif;  
 
-    $output .= '<div id="tab-2" class="puzzle-tab" style="display:'.$showBlock.';">
+    $output .= '<div data-classic_block_tiles="'.$classic_difficulty['min_feel_tiles'].'" data-pro_block_tiles="'.$pro_difficulty['min_feel_tiles'].'" data-genius_block_tiles="'.$genius_difficulty['min_feel_tiles'].'"  id="tab-2" class="puzzle-tab" style="display:'.$showBlock.';">
     <h2>Configure Game Board</h2>
-    <p style="color:#c00;">Select at least 2 tiles to lock</p>';    
+    '.($min_feel_tiles != 0 ? '<p style="color:#c00;" class="min_feel_tiles">Select at least <span >'.$min_feel_tiles.'</span> tiles to lock</p>' : '').'';    
     $output .= '<p><a id="randomize" class="button button-primary button-large" style="display:'.$showRand.';">Randomize <i class="dashicons dashicons-randomize"></i></a></p>';
     $output .= '<div class="game-grid">';
     if($full_poem):

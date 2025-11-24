@@ -185,7 +185,7 @@
             "conditional_logic": 0,
             "wrapper": {
                 "width": "",
-                "class": "",
+                "class": "hidden",
                 "id": ""
             },
             "layout": "block",
@@ -811,5 +811,5 @@
     "description": "",
     "show_in_rest": 0,
     "display_title": "",
-    "modified": 1763637782
+    "modified": 1763983604
 }

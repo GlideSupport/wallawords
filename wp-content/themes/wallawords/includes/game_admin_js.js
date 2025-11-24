@@ -190,11 +190,16 @@ function toggleLockedItem(item) {
         }
     }
 
-    if(lockedWords > 1) {
-        jQuery('#randomize').fadeIn(500);
-    } else {
-        jQuery('#randomize').fadeOut(500);
+    if(getBlockTilesBaseDifficulty() == 0){
+         jQuery('#randomize').fadeIn(500);
+    }else{
+         if(lockedWords >= getBlockTilesBaseDifficulty()) {
+            jQuery('#randomize').fadeIn(500);
+        } else {
+            jQuery('#randomize').fadeOut(500);
+        }   
     }
+   
 
     updateSortableState(sortable);
 
@@ -205,7 +210,7 @@ function confirmReset() {
 }
 
 function updateSortableState(sortableInstance) {
-    if (lockedWords >= 2) {
+    if (lockedWords >= getBlockTilesBaseDifficulty()) {
         isComplete = true;
         sortableInstance.option("disabled", false); // Enable sorting
         jQuery('#publishing-action .publish-lock').fadeOut(250);
@@ -216,8 +221,46 @@ function updateSortableState(sortableInstance) {
     }
 }
 
-//init function
-jQuery(document).ready(function(){
+function getBlockTilesBaseDifficulty() {
+
+    difficulty = jQuery('.acf-field[data-name="wwp_difficulty_settings"] input:checked').val();
+    blockCount = jQuery('#tab-2').data(difficulty+'_block_tiles');
+    blockCount = parseInt(blockCount);
+    return blockCount;
+}
+
+    //init function
+    jQuery(document).ready(function(){
+        jQuery(document).on('click', '.acf-field[data-name="wwp_difficulty_settings"] input', function () {
+        console.log("Clicked:", this.value, getBlockTilesBaseDifficulty());
+
+        if(this.value == 'genius' ){
+            jQuery('#randomize').fadeIn(500);
+            jQuery('#publishing-action .publish-lock').fadeOut(250);
+            jQuery('.min_feel_tiles').fadeOut(250);
+        }else{
+            if(jQuery('.block.locked').length) {
+            lockedWords = jQuery('.block.locked').length;
+            }
+            console.log("Locked Words:", lockedWords);
+            if(lockedWords >= getBlockTilesBaseDifficulty()) {
+                console.log('fadeOut');
+                jQuery('#publishing-action .publish-lock').fadeOut(250);
+                jQuery('#randomize').fadeIn(250);
+            }else{
+                console.log('fadeIn');
+                jQuery('#randomize').fadeOut(250);
+                jQuery('#publishing-action .publish-lock').fadeIn(250);
+            }
+
+            if(getBlockTilesBaseDifficulty() != 0){
+                jQuery('.min_feel_tiles').fadeIn(250);
+                jQuery('.min_feel_tiles span').text(getBlockTilesBaseDifficulty());
+            }else{
+                jQuery('.min_feel_tiles').fadeOut(250);
+            }
+        }
+    });
 
     //add div layer to control publisher box visibles
     const publishLocked = document.createElement('div');
@@ -238,14 +281,14 @@ jQuery(document).ready(function(){
         countWords();
     })
 
-    if (isComplete == false || lockedWords < 2) {
+    if (isComplete == false || lockedWords <= getBlockTilesBaseDifficulty()) {
        jQuery('.publish-lock').css('display','block');
     }
 
     //run a validation first before allowing to submit
     jQuery('#publish').on('click',function(e) {
 
-        if (isComplete == false || lockedWords < 2) {
+        if (isComplete == false || lockedWords <= getBlockTilesBaseDifficulty()) {
             jQuery('.publish-lock').css('display','block');
          } else {
         
