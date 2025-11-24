@@ -290,7 +290,7 @@ function initializeGame() {
                     .querySelector('.level-tabs .active')
                     .getAttribute('data-level');
 
-                message = `I couldn’t solve the Walla on “${difficulty}” today, but maybe you can! Try it here - https://wallawords.com/play`;
+                message = `I couldn’t solve the Walla on ${difficulty} today, but maybe you can! Try it here - https://wallawords.com/play`;
             }
 
             let smsLink = `sms:?&body=${encodeURIComponent(message)}`;
