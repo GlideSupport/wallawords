@@ -462,6 +462,7 @@ function startGame(puzzleCounterValue, isAcadamy = false) {
 
                 console.log("Selected poem title:", selectedPoem.fullPoem);
                 document.querySelector('#main-section').setAttribute('data-puzzle-title', selectedPoem.fullPoem);
+                document.querySelector('#main-section').setAttribute('data-puzzle-id', selectedPoem.id);
 
                 originalPositions = selectedPoem.correctWords.slice(); // Store the original positions
                 // console.log(selectedPoem.correctWords);
@@ -1102,8 +1103,9 @@ function showAcademyFailure() {
 
 function showRegularFailure() {
     //TODO
+    puzzleId = document.querySelector('#main-section').getAttribute('data-puzzle-id');
    
-    restartGame(0, false);
+    restartGame(puzzleId , 0, false);
     console.log('showRegularFailure');
     let title =  document.querySelector('#main-section').getAttribute('data-puzzle-title') || ''; 
     let fullPoemHTML = '';
@@ -1127,8 +1129,8 @@ function showRegularFailure() {
     initFinalScreenToggles();
 }
 
-function restartGame(puzzleCounterValue, isAcadamy = false) {
-    console.log('')
+function restartGame(puzzleId =0 , puzzleCounterValue, isAcadamy = false) {
+    console.log('restartGame called');
     document.querySelector('#final-score-screen .finish-buttons').style.display = 'none';
     document.querySelector('#game-prompt').style.display = 'none';
     pageHeader.classList.add('playing');
@@ -1147,8 +1149,8 @@ function restartGame(puzzleCounterValue, isAcadamy = false) {
             url += '&level=' + puzzleAcadamyLevel;
         }
     }else{
-        if (jQuery('#puzzle_id').length) {
-            hasID = jQuery('#puzzle_id').val();
+        if (puzzleId !== 0 ) {
+            hasID = puzzleId;
             url = localVars.ajax_url + '?action=wallawords_get_puzzle_data&gameID=' + hasID + '&nonce=' + localVars.nonce;
             currentPuzzleID = hasID;
         } else {
