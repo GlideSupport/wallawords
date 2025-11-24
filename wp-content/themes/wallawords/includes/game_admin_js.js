@@ -173,8 +173,7 @@ function checkBlockPlacementStates() {
 
 function toggleLockedItem(item) {
     const $checkbox = item;
-    console.log(`lockedWords : ${lockedWords}`);
-    console.log(`maxLocked   : ${maxLocked}`);
+    
     if ($checkbox.is(':checked')) {
         
         if(lockedWords < maxLocked){
@@ -244,11 +243,11 @@ function getBlockTilesBaseDifficulty() {
             }
             console.log("Locked Words:", lockedWords);
             if(lockedWords >= getBlockTilesBaseDifficulty()) {
-                console.log('fadeOut');
+                
                 jQuery('#publishing-action .publish-lock').fadeOut(250);
                 jQuery('#randomize').fadeIn(250);
             }else{
-                console.log('fadeIn');
+                
                 jQuery('#randomize').fadeOut(250);
                 jQuery('#publishing-action .publish-lock').fadeIn(250);
             }
