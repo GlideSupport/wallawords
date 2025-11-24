@@ -282,7 +282,8 @@ function initializeGame() {
     
     if(shareBtn){
         shareBtn.addEventListener('click', () => {
-            var message = `Check out my latest Walla score! I solved it with “${health}” health left 🕵. Think you can beat me? Try it here - https://wallawords.com/play`;
+            const difficulty = difficultyPopup.querySelector('.level-tabs .active').getAttribute('data-level');
+            var message = `Check out my latest Walla score! I solved it with “${difficulty}” health left 🕵. Think you can beat me? Try it here - https://wallawords.com/play`;
             // var message = `I just discovered the amazing game, WallaWords! I solved it in ${moveCounterValue} moves and earned the “${completedPuzzleIcon} ${completedPuzzleRank}” level. Think you can beat me? Try it here - https://wallawords.com/play`;
             let smsLink = `sms:?&body=${message}`;
             window.location.href = smsLink;
@@ -1139,6 +1140,8 @@ function showRegularFailure() {
 function restartGame(puzzleId =0 , puzzleCounterValue, isAcadamy = false) {
     console.log('restartGame called');
     document.querySelector('#final-score-screen .finish-buttons').style.display = 'none';
+    document.querySelector('#final-score-screen .finish-buttons #share-button').style.display = 'none';
+
     document.querySelector('#game-prompt').style.display = 'none';
     pageHeader.classList.add('playing');
     moveCounterDisplay.classList.remove('over');
@@ -1264,6 +1267,11 @@ function restartGame(puzzleId =0 , puzzleCounterValue, isAcadamy = false) {
                 });
                 
                 document.querySelector('#final-score-screen .finish-buttons').style.display = 'block';
+                const shareResultBtn = document.querySelector('#final-score-screen .finish-buttons #share-button');
+
+                if (getComputedStyle(shareResultBtn).display === 'none') {
+                    shareResultBtn.style.display = 'block';
+                }
                 
                 
             }
