@@ -281,13 +281,11 @@ function initializeGame() {
     }
     
     if(shareBtn){
-        shareBtn.addEventListener('click', (event) => {
-
-            const btn = event.target; // clicked element
+        shareBtn.addEventListener('click', () => {
 
             let message = `Check out my latest Walla score! I solved it with “${health}” health left 🕵. Think you can beat me? Try it here - https://wallawords.com/play`;
 
-            if (btn.closest('#final-result-faild').classList.contains('final-result-faild')) {
+            if (document.querySelector('#final-result-faild').classList.contains('final-result-faild')) {
                 const difficulty = difficultyPopup
                     .querySelector('.level-tabs .active')
                     .getAttribute('data-level');
