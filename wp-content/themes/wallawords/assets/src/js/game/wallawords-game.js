@@ -1180,13 +1180,13 @@ function restartGame(puzzleId =0 , puzzleCounterValue, isAcadamy = false) {
     isFailed = 0;
     completedSentences = [];
     completedColumns = [];
-    if (gameGrid) {
-        gameGrid.destroy();
-        const resetSentenceCounter = document.querySelectorAll('.sentence-item');
-        resetSentenceCounter.forEach((row) => {
-            row.remove();
-        });
-    }
+    // if (gameGrid) {
+    //     gameGrid.destroy();
+    //     const resetSentenceCounter = document.querySelectorAll('.sentence-item');
+    //     resetSentenceCounter.forEach((row) => {
+    //         row.remove();
+    //     });
+    // }
     jQuery.ajax({
         url: url,
         type: 'GET',
@@ -1414,6 +1414,14 @@ function getAcademyPopupData(level) {
             content: `You’ve mastered all 3 levels! <br> Great job on completing the challenge.`,
             button: `Play Today's Puzzle`,
             note: `Can you beat your best score? Limit your moves and aim for perfection!`
+        };
+    }
+    if (level === 1) {
+        return {
+            title: 'Well <span>done</span>',
+            content: `You’ve completed Level ${level}! <br>Get ready for Level ${level + 1} and challenge yourself even more.`,
+            button: 'Next Level',
+            note: `Take your time. Walla is about strategy, not quickness!`
         };
     }
     return {
