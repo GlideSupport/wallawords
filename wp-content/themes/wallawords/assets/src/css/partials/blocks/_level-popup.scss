@@ -231,13 +231,23 @@
 
 	@media (orientation: landscape) and (max-height: 750px),
 	(max-height: 750px) {
-         display: block;
+         display: block !important;
 		 .popup-card{
-			 margin: 116px auto 15px;
+			 margin: 140px auto 0;
 		 }
 	}
 	&.difficulty-popup {
 		.popup-card {
+			margin: 50px auto 0;
+			border-radius: 30px 30px 0 0;
+			&:before{ border-radius: 30px 30px 0 0; }
+			.piece{
+				&.piece-three,
+				 &.piece-four{
+					 border-radius: 0
+				 }
+			}
+	
 			.popupcontent {
 				@include font(rubik, reg);
 				margin-bottom: 56px;
