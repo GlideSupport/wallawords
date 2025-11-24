@@ -289,6 +289,7 @@ function enqueue_custom_admin_scripts($hook) {
         wp_enqueue_script(
             'game-admin-scripts', // Handle
             get_bloginfo('template_directory') . '/includes/game_admin_js.js', // Path to the JS file
+            time(),
             'jquery', // Dependencies
             true // Load in footer
         );
@@ -397,10 +398,14 @@ function render_custom_puzzle_form($post) {
     if($has_locked_words):
         $showRand = 'inline-block';      
     endif;  
+    
+    $msg = '';
+    if($min_feel_tiles != 0){
+        $msg = 'Select at least <span >'.$min_feel_tiles.'</span> tiles to lock';
+    }
 
     $output .= '<div data-classic_block_tiles="'.$classic_difficulty['min_feel_tiles'].'" data-pro_block_tiles="'.$pro_difficulty['min_feel_tiles'].'" data-genius_block_tiles="'.$genius_difficulty['min_feel_tiles'].'"  id="tab-2" class="puzzle-tab" style="display:'.$showBlock.';">
-    <h2>Configure Game Board</h2>
-    '.($min_feel_tiles != 0 ? '<p style="color:#c00;" class="min_feel_tiles">Select at least <span >'.$min_feel_tiles.'</span> tiles to lock</p>' : '').'';    
+    <h2>Configure Game Board</h2><p style="color:#c00;" class="min_feel_tiles">'.$msg.'</p>'; 
     $output .= '<p><a id="randomize" class="button button-primary button-large" style="display:'.$showRand.';">Randomize <i class="dashicons dashicons-randomize"></i></a></p>';
     $output .= '<div class="game-grid">';
     if($full_poem):
@@ -540,6 +545,8 @@ function save_custom_puzzle_data($post_id) {
                 unset($sentences[$key]);
             endif;
         }
+
+     
     
         //reloop for counts
         foreach ($sentences as $sentence) {
@@ -562,16 +569,16 @@ function save_custom_puzzle_data($post_id) {
         
         }
 
-        /*
+        
         // Output the sentence start and end positions
-        echo "Sentence positions:\n";
-        print_r($sentence_values);
+        // echo "Sentence positions:\n";
+        // print_r($sentence_values);
 
-        // Output the results
-        echo "Sentences: \n";
-        print_r(json_encode($sentences));
-        exit;
-        */
+        // // Output the results
+        // echo "Sentences: \n";
+        // print_r(json_encode($sentences));
+        // exit;
+        
         
         update_post_meta($post_id, 'sentences', json_encode($sentence_values,JSON_HEX_APOS));
 
@@ -600,6 +607,13 @@ function save_custom_puzzle_data($post_id) {
             endif;
 
         endfor;
+
+        // // Output the sentence start and end positions
+        // echo "incorrect_words count:\n" . count($incorrect_words);
+        // echo "locked_words count:\n" . count($locked_words);
+        
+        // exit;
+        
         
         update_post_meta($post_id, 'correct_words', json_encode($correct_words,JSON_HEX_APOS));
         
@@ -607,9 +621,9 @@ function save_custom_puzzle_data($post_id) {
             update_post_meta($post_id, 'incorrect_words', json_encode($incorrect_words,JSON_HEX_APOS));
         endif;
 
-        if(count($locked_words) > 0):
+        // if(count($locked_words) > 0):
             update_post_meta($post_id, 'locked_words', json_encode($locked_words));
-        endif;
+        // endif;
 
         //set difficulty level
         $levels = get_field('difficulty_settings','options');

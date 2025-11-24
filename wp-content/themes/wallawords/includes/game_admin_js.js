@@ -254,13 +254,14 @@ function getBlockTilesBaseDifficulty() {
 
             if(getBlockTilesBaseDifficulty() != 0){
                 jQuery('.min_feel_tiles').fadeIn(250);
-                jQuery('.min_feel_tiles span').text(getBlockTilesBaseDifficulty());
+                jQuery('.min_feel_tiles').html('').html('Select at least <span>'+getBlockTilesBaseDifficulty()+'</span> tiles to lock');
             }else{
                 jQuery('.min_feel_tiles').fadeOut(250);
             }
         }
     });
 
+     jQuery(document).ready(function(){
     //add div layer to control publisher box visibles
     const publishLocked = document.createElement('div');
     publishLocked.classList.add('publish-lock');   
@@ -286,10 +287,14 @@ function getBlockTilesBaseDifficulty() {
 
     //run a validation first before allowing to submit
     jQuery('#publish').on('click',function(e) {
-
-        if (isComplete == false || lockedWords <= getBlockTilesBaseDifficulty()) {
+         
+         difficulty = jQuery('.acf-field[data-name="wwp_difficulty_settings"] input:checked').val();
+         
+        if (isComplete == false || (lockedWords < getBlockTilesBaseDifficulty() && getBlockTilesBaseDifficulty() != 0)) {
             jQuery('.publish-lock').css('display','block');
+            console.log('true');
          } else {
+            console.log('false');
         
             let validated = checkBlockPlacementStates();
 
@@ -315,10 +320,11 @@ function getBlockTilesBaseDifficulty() {
                     }, 15000);
                 }
 
-                e.preventDefault();
+                
                 return;
             }
         }
+        
             
     });
     
@@ -373,7 +379,7 @@ function getBlockTilesBaseDifficulty() {
 
                 if(confirm == true) {
                     jQuery('.game-grid').html('');
-                    jQuery('#randomize').fadeOut(300);
+                    
                     lockedWords = 0;
                     jQuery('#generate-puzzle .dashicons').css('display','inline-block');
                     //needs to do a full reset
@@ -426,10 +432,19 @@ function getBlockTilesBaseDifficulty() {
             return;
         }
 
+        difficulty = jQuery('.acf-field[data-name="wwp_difficulty_settings"] input:checked').val();
+        if(difficulty != 'genius'){
+            jQuery('#randomize').fadeOut(300);
+        }else{
+            jQuery('#randomize').fadeIn(300);
+
+        }
+
     });
     
     jQuery('.game-grid input[type=checkbox]').on('change', function () {
         toggleLockedItem(jQuery(this));
     })   
 
+});
 });
