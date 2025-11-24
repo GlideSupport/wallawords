@@ -1085,6 +1085,9 @@ function showAcademyFailure() {
     if(title != ''){
         fullPoemHTML = `<div class="overlay-current-poem"><span><strong>Correct Puzzle Sentence: </strong></span>${title}</div>`;
     }
+    if(document.getElementById('resultFailed')){
+        document.getElementById('resultFailed').remove();
+    }
     const failedHTML = `
         <div id="resultFailed">
             <div class="overlay-title">The Puzzle Wins This Round</div>
@@ -1112,6 +1115,9 @@ function showRegularFailure() {
     let fullPoemHTML = '';
     if(title != ''){
         fullPoemHTML = `<div class="overlay-current-poem"><span><strong>Correct Puzzle Sentence: </strong></span>${title}</div>`;
+    }
+    if(document.getElementById('resultFailed')){
+        document.getElementById('resultFailed').remove();
     }
         const failedHTML = `
         <div id="resultFailed">
