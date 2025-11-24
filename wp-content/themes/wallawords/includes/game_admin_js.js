@@ -287,6 +287,7 @@ function getBlockTilesBaseDifficulty() {
 
     //run a validation first before allowing to submit
     jQuery('#publish').on('click',function(e) {
+
          
          difficulty = jQuery('.acf-field[data-name="wwp_difficulty_settings"] input:checked').val();
          
@@ -319,8 +320,8 @@ function getBlockTilesBaseDifficulty() {
                         });
                     }, 15000);
                 }
-
-                
+                e.preventDefault();
+            
                 return;
             }
         }
