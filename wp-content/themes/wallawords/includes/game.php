@@ -289,8 +289,8 @@ function enqueue_custom_admin_scripts($hook) {
         wp_enqueue_script(
             'game-admin-scripts', // Handle
             get_bloginfo('template_directory') . '/includes/game_admin_js.js', // Path to the JS file
-            time(),
             'jquery', // Dependencies
+            time(),
             true // Load in footer
         );
 
