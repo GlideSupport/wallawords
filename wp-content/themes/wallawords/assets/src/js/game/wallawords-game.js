@@ -281,17 +281,21 @@ function initializeGame() {
     }
     
     if(shareBtn){
-        shareBtn.addEventListener('click', () => {
+        shareBtn.addEventListener('click', (event) => {
+
+            const btn = event.target; // clicked element
 
             let message = `Check out my latest Walla score! I solved it with “${health}” health left 🕵. Think you can beat me? Try it here - https://wallawords.com/play`;
-            
-            if (this.closest('#final-result-faild').classList.contains('final-result-faild')) {
-                const difficulty = difficultyPopup.querySelector('.level-tabs .active').getAttribute('data-level');
+
+            if (btn.closest('#final-result-faild').classList.contains('final-result-faild')) {
+                const difficulty = difficultyPopup
+                    .querySelector('.level-tabs .active')
+                    .getAttribute('data-level');
+
                 message = `I couldn’t solve the Walla on “${difficulty}” today, but maybe you can! Try it here - https://wallawords.com/play`;
             }
-            
-            // var message = `I just discovered the amazing game, WallaWords! I solved it in ${moveCounterValue} moves and earned the “${completedPuzzleIcon} ${completedPuzzleRank}” level. Think you can beat me? Try it here - https://wallawords.com/play`;
-            let smsLink = `sms:?&body=${message}`;
+
+            let smsLink = `sms:?&body=${encodeURIComponent(message)}`;
             window.location.href = smsLink;
         });
     }
