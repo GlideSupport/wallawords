@@ -413,6 +413,7 @@ function startGame(puzzleCounterValue, isAcadamy = false) {
     isFailed = 0;
     completedSentences = [];
     completedColumns = [];
+    console.log('destroying previous sortable instance', gameGrid);
     if (gameGrid) {
         gameGrid.destroy();
         const resetSentenceCounter = document.querySelectorAll('.sentence-item');
