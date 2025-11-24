@@ -107,8 +107,8 @@ new WP_Theme_CPT(
 		 break;
 
 		case 'difficulty':			 
-			$rank = getPuzzleDifficultyRating($post_id);
-			echo strtoupper(str_replace('difficulty_','',$rank[0])).' ['.$rank[1].']';			 
+			$rank = get_field('wwp_difficulty_settings', $post_id)?? '-';
+			echo strtoupper($rank);			 
 		break;
  		 
 	 }
