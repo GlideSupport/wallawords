@@ -192,7 +192,7 @@ function initializeGame() {
     });
 
     difficultyPlayGameButton.addEventListener('click', () => {
-        difficultyPopup.style.display = 'flex';
+        difficultyPopup.style.display = 'block';
         difficultyPopup.querySelector('.level-tabs .tab-1').click();
     });
     
@@ -239,7 +239,7 @@ function initializeGame() {
             if( puzzleAcadamyLevel == 'done' ){
                 //startGame(puzzleCounter);
                 document.getElementById('final-puzzle-acadamy-popup').style.display = 'none';
-                document.getElementById('difficulty-popup').style.display = 'flex';
+                document.getElementById('difficulty-popup').style.display = 'block';
             }else{
                 document.body.classList.remove('final-acadamy-result');
                 finalAcadamyPuzzlePopup.classList.remove('active');
