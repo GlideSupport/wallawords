@@ -176,7 +176,7 @@ function initializeGame() {
             el.classList.add('show-tooltip');
             document.body.classList.add('activated-tooltip');
         }
-    }, true); // capture phase
+    }, true);
 
 
     document.addEventListener('mouseleave', function(e) {
@@ -1146,8 +1146,7 @@ function showAcademyFailure() {
     }
     const failedHTML = `
         <div id="resultFailed">
-            <div class="overlay-title">Good News</div>
-            <div class="overlay-title">You Can Retry Academy Puzzles</div>
+            <div class="overlay-title">Good News<br>You Can Retry Academy Puzzles</div>
             <div class="overlay-subtitle">Give it another go</div>
             <a id="replay-game" class="site-btn btn-replay">Replay</a>
         </div>`;
