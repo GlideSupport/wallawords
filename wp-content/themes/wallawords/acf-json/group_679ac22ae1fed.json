@@ -350,7 +350,7 @@
                     "name": "message",
                     "aria-label": "",
                     "type": "text",
-                    "instructions": "",
+                    "instructions": "This content is displayed in a popup.",
                     "required": 0,
                     "conditional_logic": 0,
                     "wrapper": {
@@ -359,6 +359,27 @@
                         "id": ""
                     },
                     "default_value": "Normal mode starts you with 6 of 15 tiles in the correct position.",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": ""
+                },
+                {
+                    "key": "field_69257dc447787",
+                    "label": "Message",
+                    "name": "message_tootip",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "This content is displayed in a header tooltip.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
                     "maxlength": "",
                     "allow_in_bindings": 0,
                     "placeholder": "",
@@ -459,7 +480,7 @@
                     "name": "message",
                     "aria-label": "",
                     "type": "text",
-                    "instructions": "",
+                    "instructions": "This content is displayed in a popup.",
                     "required": 0,
                     "conditional_logic": 0,
                     "wrapper": {
@@ -468,6 +489,27 @@
                         "id": ""
                     },
                     "default_value": "Pro mode starts you with 3 of 15\u2028tiles in the correct position.",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": ""
+                },
+                {
+                    "key": "field_69257dde47788",
+                    "label": "Message",
+                    "name": "message_tootip",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "This content is displayed in a header tooltip.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
                     "maxlength": "",
                     "allow_in_bindings": 0,
                     "placeholder": "",
@@ -568,7 +610,7 @@
                     "name": "message",
                     "aria-label": "",
                     "type": "text",
-                    "instructions": "",
+                    "instructions": "This content is displayed in a popup.",
                     "required": 0,
                     "conditional_logic": 0,
                     "wrapper": {
@@ -577,6 +619,27 @@
                         "id": ""
                     },
                     "default_value": "Beware: You're on your own!",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": ""
+                },
+                {
+                    "key": "field_69257e0447789",
+                    "label": "Message",
+                    "name": "message_tootip",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "This content is displayed in a header tooltip.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
                     "maxlength": "",
                     "allow_in_bindings": 0,
                     "placeholder": "",
@@ -811,5 +874,5 @@
     "description": "",
     "show_in_rest": 0,
     "display_title": "",
-    "modified": 1763983604
+    "modified": 1764065814
 }
