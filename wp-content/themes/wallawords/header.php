@@ -180,10 +180,46 @@ $page_template = basename(get_page_template());
                             fill="#fff" />
                     </svg>
                 </div>
-                <div class="game-level-icon icon" style="display:none">
-                     <img src="https://playground1stg.wpengine.com/wp-content/themes/wallawords/assets/src/images/classic-level.png" width="16">
+                
+                <div class="game-level-icon icon custom-tt-btn" style="display:none">
+                    <img src="https://playground1stg.wpengine.com/wp-content/themes/wallawords/assets/src/images/classic-level.png" width="16" alt="Level Icon">
+
+                    <div class="custom-tooltip-content"></div>
                 </div>
-             
+        <style>
+            .custom-tooltip-content {
+                position: absolute;
+                top: 100%; /* tooltip above the icon */
+                margin-top:10px;
+                left: 0%;
+                line-height:1.5;
+                background: #333;
+                color: #fff;
+                padding: 8px 12px;
+                border-radius: 6px;
+                font-size: 12px;
+                width: max-content;
+                max-width: 200px;
+                opacity: 0;
+                visibility: hidden;
+                transition: opacity 0.3s ease;
+                pointer-events: none;
+                z-index: 100;
+                text-align:left;
+            }
+            .custom-tt-btn.show-tooltip{
+                position: relative;
+            }
+            .custom-tt-btn.show-tooltip .custom-tooltip-content {
+                opacity: 1;
+                visibility: visible;
+            }
+
+        </style>     
+
+
+
+
             </div>
             <?php ?>
 

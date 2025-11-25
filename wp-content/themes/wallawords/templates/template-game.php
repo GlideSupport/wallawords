@@ -104,16 +104,16 @@ array(
                     <div class="popuptitle heading-1">Select <span>Difficulty</span></div>
                     
                     <div class="level-tabs">
-                        <div class="tab tab-1 active" data-level="classic" data-levelnumber="1" data-message="<?php echo $classic_difficulty['message'] ?>">
+                        <div class="tab tab-1 active" data-level="classic" data-levelnumber="1" data-message="<?php echo $classic_difficulty['message'] ?>" data-message_tootip="<?php echo $classic_difficulty['message_tootip'] ?>">
                             <img src="<?php echo $classic_difficulty_icon ?>">
                             <?php echo $classic_difficulty['label'] != '' ? $classic_difficulty['label'] : 'Classic' ?>
                         </div>
                      
-                        <div class="tab tab-2" data-level="pro" data-levelnumber="2" data-message="<?php echo $pro_difficulty['message'] ?>">
+                        <div class="tab tab-2" data-level="pro" data-levelnumber="2" data-message="<?php echo $pro_difficulty['message'] ?>" data-message_tootip="<?php echo $pro_difficulty['message_tootip'] ?>">
                             <img src="<?php echo $pro_difficulty_icon ?>"> 
                             <?php echo $pro_difficulty['label'] != '' ? $pro_difficulty['label'] : 'Pro' ?>
                         </div>
-                        <div class="tab tab-3" data-level="genius" data-levelnumber="3" data-message="<?php echo $genius_difficulty['message'] ?>">
+                        <div class="tab tab-3" data-level="genius" data-levelnumber="3" data-message="<?php echo $genius_difficulty['message'] ?>" data-message_tootip="<?php echo $genius_difficulty['message_tootip'] ?>">
                             <img src="<?php echo $genius_difficulty_icon ?>"> 
                             <?php echo $genius_difficulty['label'] != '' ? $genius_difficulty['label'] : 'Genius' ?>
                         </div>

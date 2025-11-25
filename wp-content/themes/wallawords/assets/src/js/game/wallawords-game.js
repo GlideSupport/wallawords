@@ -111,6 +111,8 @@ const poemColumn3 = document.getElementById('poem-column3'); // Move counter ele
 const difficultyPopup = document.getElementById('difficulty-popup'); // Move counter element
 const difficultyPlayGameButton = document.getElementById('difficulty-play-game');
 
+const gameLevelIcon = document.querySelector('.header-wrapper .game-level-icon');
+
 // **Game State Variables**
 let currentPuzzleID = 0;
 let lastPuzzleID = 0;
@@ -161,6 +163,31 @@ document.addEventListener('DOMContentLoaded', initializeGame);
 
 function initializeGame() {
 
+    // header icon 
+   document.addEventListener('mouseenter', function(e) {
+        const el = e.target.closest('.custom-tt-btn');
+        if (!el) return;
+
+        const tooltipContent = el.querySelector('.custom-tooltip-content');
+        if (tooltipContent && tooltipContent.textContent.trim() !== '') {
+            el.classList.add('show-tooltip');
+            document.body.classList.add('actived-tooltip');
+        }
+    }, true); // use capture phase for mouseenter
+
+    document.addEventListener('mouseleave', function(e) {
+        const el = e.target.closest('.custom-tt-btn');
+        if (!el) return;
+
+        const tooltipContent = el.querySelector('.custom-tooltip-content');
+        if (tooltipContent && tooltipContent.textContent.trim() !== '') {
+            el.classList.remove('show-tooltip');
+            document.body.classList.remove('actived-tooltip');
+        }
+    }, true);
+
+    // header icon 
+
     // Difficulty popup tab click handling
     const tabs = difficultyPopup.querySelectorAll('.tab');
 
@@ -174,6 +201,7 @@ function initializeGame() {
             const levelNumber = this.getAttribute('data-levelnumber');
             const icon = this.querySelector('img').getAttribute('src');
             const message = this.getAttribute('data-message');
+            const message_tootip = this.getAttribute('data-message_tootip');
             if(icon){
                 this.closest('#difficulty-popup').querySelector('.badge-box .hexagone-icon .icon img').setAttribute('src', icon);
                 const badge = this.closest('#difficulty-popup').querySelector('#level-badge');
@@ -186,6 +214,10 @@ function initializeGame() {
             if(message){
                 const badge = this.closest('#difficulty-popup').querySelector('.level-content');
                 badge.innerHTML = message;
+            }
+            if(message_tootip){
+                const tootipbadge = document.querySelector('.game-level-icon .custom-tooltip-content');
+                tootipbadge.innerHTML = message_tootip;
             }
 
         });
@@ -212,7 +244,7 @@ function initializeGame() {
         //GameCookieService.setCookie('ww-played-before',1,365);
         GameStorageService.setItem('ww-played-before', 1, 1);
     }
-    playGameButton.addEventListener('click', () => {
+    playGameButton.addEventListener('click', (e) => {
         // if (isFirstPlay == 1) {
         //     jQuery('#help-button').trigger('click');
         // }
@@ -220,6 +252,14 @@ function initializeGame() {
         titleScreen.style.display = 'none';
         difficultyPopup.style.display = 'none';
         //gameScreen.style.display = 'flex';
+        const popup = e.target.closest('#difficulty-popup');
+        if (popup) {
+            popup.classList.add('active-difficulty-level-game');
+        }   
+        const icon = document.querySelector('#difficulty-popup .tab.active img').getAttribute('src');
+        gameLevelIcon.querySelector('img').setAttribute('src', icon)
+        gameLevelIcon.style.display= 'block';
+
         startGame(puzzleCounter);
     });
     if(playAgain){
@@ -1149,6 +1189,12 @@ function restartGame(puzzleId =0 , puzzleCounterValue, isAcadamy = false) {
     console.log('restartGame called');
     document.querySelector('#final-score-screen .finish-buttons').style.display = 'none';
     document.querySelector('#final-score-screen .finish-buttons #share-button').style.display = 'none';
+    
+    // Header icon hide
+    document.querySelector('#difficulty-popup').classList.remove('active-difficulty-level-game');
+    
+    gameLevelIcon.style.display= 'none';
+
 
     document.querySelector('#game-prompt').style.display = 'none';
     pageHeader.classList.add('playing');
