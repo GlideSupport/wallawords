@@ -112,6 +112,7 @@ playPuzzleAcademy?.addEventListener('click',() => {
     }else{
         startGameAgain(puzzleAcadamyLevel, true);
     }
+    document.querySelector('.game-level-icon').style.display = 'none';
 });
 
 document.addEventListener('DOMContentLoaded', function () {
