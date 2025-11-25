@@ -39,6 +39,7 @@ showAcademyPuzzlePopupButton.addEventListener('click', () => {
     document.getElementById('final-puzzle-acadamy-popup').classList.remove('active');
     document.getElementById('start-puzzle-acadamy-popup').style.display = 'flex';
     document.getElementById('difficulty-popup').style.display = 'none';
+    document.querySelector('.game-level-icon').style.display = 'none';
 });  
 
 
