@@ -164,28 +164,34 @@ document.addEventListener('DOMContentLoaded', initializeGame);
 
 function initializeGame() {
 
-    // header icon 
-   document.addEventListener('mouseenter', function(e) {
+  // header icon 
+    document.addEventListener('mouseenter', function(e) {
+
+        if (!(e.target instanceof Element)) return; // FIX
         const el = e.target.closest('.custom-tt-btn');
         if (!el) return;
 
         const tooltipContent = el.querySelector('.custom-tooltip-content');
         if (tooltipContent && tooltipContent.textContent.trim() !== '') {
             el.classList.add('show-tooltip');
-            document.body.classList.add('actived-tooltip');
+            document.body.classList.add('activated-tooltip');
         }
-    }, true); // use capture phase for mouseenter
+    }, true); // capture phase
+
 
     document.addEventListener('mouseleave', function(e) {
+
+        if (!(e.target instanceof Element)) return; // FIX
         const el = e.target.closest('.custom-tt-btn');
         if (!el) return;
 
         const tooltipContent = el.querySelector('.custom-tooltip-content');
         if (tooltipContent && tooltipContent.textContent.trim() !== '') {
             el.classList.remove('show-tooltip');
-            document.body.classList.remove('actived-tooltip');
+            document.body.classList.remove('activated-tooltip');
         }
     }, true);
+
 
     // header icon 
 
@@ -1140,8 +1146,9 @@ function showAcademyFailure() {
     }
     const failedHTML = `
         <div id="resultFailed">
-            <div class="overlay-title">The Puzzle Wins This Round</div>
-            <div class="overlay-subtitle">Try a new Walla tomorrow!</div>
+            <div class="overlay-title">Good News</div>
+            <div class="overlay-title">You Can Retry Academy Puzzles</div>
+            <div class="overlay-subtitle">Give it another go</div>
             <a id="replay-game" class="site-btn btn-replay">Replay</a>
         </div>`;
     finalScoreScreen.insertAdjacentHTML('beforeend', failedHTML);
