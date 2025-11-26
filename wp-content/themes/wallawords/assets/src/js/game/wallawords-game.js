@@ -967,6 +967,7 @@ function checkSentenceCompletion(originalPositions) {
 // **Check if the Puzzle is Completed**
 
 function checkPuzzleCompletion(originalPositions) {
+    
     lastPuzzleID = currentPuzzleID;
     const items = document.querySelectorAll('.grid-item');
     const isSolved = Array.from(items).every(
@@ -974,11 +975,11 @@ function checkPuzzleCompletion(originalPositions) {
     );
     if (isSolved) {
         // animateEffect(0, 'puzzle');
-        startConfetti();
-        document.getElementById('confetti-canvas').style.opacity = '1';
         showFinalScoreScreen();
-        
         if(!ispuzzleAcadamy){
+            startConfetti();
+            document.getElementById('confetti-canvas').style.opacity = '1';
+        
             if (completedSessionPuzzles.includes(currentPuzzleID) === false) {
                 completedSessionPuzzles.push(currentPuzzleID);
             }
@@ -993,13 +994,13 @@ function checkPuzzleCompletion(originalPositions) {
             }
 
             
-        }
-        setTimeout(() => {
-            document.getElementById('confetti-canvas').style.opacity = '0';
             setTimeout(() => {
-                stopConfetti();
+                document.getElementById('confetti-canvas').style.opacity = '0';
+                setTimeout(() => {
+                    stopConfetti();
+                }, 8000);
             }, 8000);
-        }, 8000);
+        }
     }
 }
 
@@ -1548,6 +1549,7 @@ async function animationQueued(elements) {
   }
 
   isRunning = false;
+
   checkPuzzleCompletion(originalPositions);
   
 }
