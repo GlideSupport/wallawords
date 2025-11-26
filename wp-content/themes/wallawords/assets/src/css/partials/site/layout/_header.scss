@@ -210,23 +210,25 @@ header {
 					opacity: 1;
 					visibility: visible;
 					position: absolute;
-					top: 100%;
+					top: calc(100% + 13px);
+    left: -43px;
 					/* tooltip above the icon */
 					left: 0%;
 					line-height: 1.5;
-					background: #333;
+					background: var(--ww_black_3);
+					font-size: var(--ww_font_size_5);
+					letter-spacing: -0.18px;
 					color: #fff;
-					padding: 8px 12px;
-					border-radius: 6px;
-					font-size: 12px;
-					width: max-content;
-					max-width: 200px;
+					padding: 20px 24px;
+					border-radius: 20px;
+	               width: 327px;
+				    text-align: left;
 					opacity: 0;
 					visibility: hidden;
 					transition: opacity 0.3s ease;
 					pointer-events: none;
 					z-index: 100;
-					text-align: left;
+		
 				}
 
 
@@ -522,9 +524,23 @@ body {
 			.game-menu-ctn {
 				.game-level-icon {
 					&.icon {
+						&.show-tooltip{
 						.custom-tooltip-content {
 							opacity: 1;
 							visibility: visible;
+							&:before{
+							width: 25px;
+    height: 25px;
+    border-radius: 4px;
+    content: "";
+    position: absolute;
+    top: -7px;
+    left: 50px;
+    background-color: var(--ww_black_3);
+    transform: rotate(45deg);
+    z-index: 0;
+							}
+						}
 						}
 
 						&.classic {
