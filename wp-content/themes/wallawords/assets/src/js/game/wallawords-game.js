@@ -165,12 +165,16 @@ document.addEventListener('DOMContentLoaded', initializeGame);
 function initializeGame() {
 
   // header icon 
-    document.addEventListener('mouseenter', function(e) {
+   document.addEventListener('mouseenter', function(e) {
 
-        const el = e.target.closest('.custom-tt-btn');
+        if (!(e.target instanceof Element)) return;
+
+        // Run only when the hovered element *is* .custom-tt-btn
+        if (!e.target.classList.contains('custom-tt-btn')) return;
+
+        const el = e.target;
+
         el.classList.add('hover-tooltip');
-        if (!(e.target instanceof Element)) return; // FIX
-        if (!el) return;
 
         const tooltipContent = el.querySelector('.custom-tooltip-content');
         if (tooltipContent && tooltipContent.textContent.trim() !== '') {
@@ -182,10 +186,14 @@ function initializeGame() {
 
     document.addEventListener('mouseleave', function(e) {
 
-        const el = e.target.closest('.custom-tt-btn');
+        if (!(e.target instanceof Element)) return;
+
+        // Run only when the left element *is* .custom-tt-btn
+        if (!e.target.classList.contains('custom-tt-btn')) return;
+
+        const el = e.target;
+
         el.classList.remove('hover-tooltip');
-        if (!(e.target instanceof Element)) return; // FIX
-        if (!el) return;
 
         const tooltipContent = el.querySelector('.custom-tooltip-content');
         if (tooltipContent && tooltipContent.textContent.trim() !== '') {
@@ -193,6 +201,7 @@ function initializeGame() {
             document.body.classList.remove('activated-tooltip');
         }
     }, true);
+
 
 
     // header icon 
