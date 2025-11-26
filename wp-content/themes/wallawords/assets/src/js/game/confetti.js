@@ -45,7 +45,7 @@ var removeConfetti; //call to stop the confetti animation and remove all confett
 			canvas = document.createElement("canvas");
 			canvas.setAttribute("id", "confetti-canvas");
 			canvas.setAttribute("style", "display:block;z-index:999999;pointer-events:none");
-			document.getElementById("final-score-screen").appendChild(canvas);
+			document.getElementById("game-row").appendChild(canvas);
 			canvas.width = width;
 			canvas.height = height;
 			window.addEventListener("resize", function() {

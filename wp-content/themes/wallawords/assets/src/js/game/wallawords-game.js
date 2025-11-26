@@ -1385,13 +1385,15 @@ function showAcademySuccess() {
 ----------------------------- */
 
 function resetUIForFinalScreen() {
-    titleDisplay.removeAttribute('style');
-    kicker.removeAttribute('style');
-    gameRow.style.display = 'none';
-    moveCounterDisplay.innerHTML = `Health:`;
-    finalScoreScreen.style.display = 'flex';
-    sentenceCounterDisplay.style.display = "none";
-    resultSentenceCounterDisplay.removeAttribute('style');
+    setTimeout(() => {
+        titleDisplay.removeAttribute('style');
+        kicker.removeAttribute('style');
+        gameRow.style.display = 'none';
+        moveCounterDisplay.innerHTML = `Health:`;
+        finalScoreScreen.style.display = 'flex';
+        sentenceCounterDisplay.style.display = "none";
+        resultSentenceCounterDisplay.removeAttribute('style');
+    }, 1000);
 }
 
 function saveOrLoadPuzzleStatus(status) {
@@ -1547,6 +1549,7 @@ async function animationQueued(elements) {
 
   isRunning = false;
   checkPuzzleCompletion(originalPositions);
+  
 }
 
 function outlineSegment(items) {
