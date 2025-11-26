@@ -184,9 +184,11 @@ header {
 		align-items: center;
 		text-align: center;
 		margin: 0;
-         @media(max-width:767px){
-			 min-width: 88px;
-		 }
+
+		@media(max-width:767px) {
+			min-width: 88px;
+		}
+
 		@media(max-width:370px) {
 			column-gap: 6px;
 			min-width: 56px;
@@ -199,11 +201,35 @@ header {
 				height: 40px;
 				line-height: 40px;
 				margin: 0;
-				border: 1.111px solid #232130;
+				border: 1px solid transparent;
 				border-radius: 50%;
 				cursor: pointer;
 				text-align: center;
-				transition: border 0.2s ease-in;
+
+				.custom-tooltip-content {
+					opacity: 1;
+					visibility: visible;
+					position: absolute;
+					top: 100%;
+					/* tooltip above the icon */
+					left: 0%;
+					line-height: 1.5;
+					background: #333;
+					color: #fff;
+					padding: 8px 12px;
+					border-radius: 6px;
+					font-size: 12px;
+					width: max-content;
+					max-width: 200px;
+					opacity: 0;
+					visibility: hidden;
+					transition: opacity 0.3s ease;
+					pointer-events: none;
+					z-index: 100;
+					text-align: left;
+				}
+
+
 
 				svg,
 				img {
@@ -224,15 +250,31 @@ header {
 					display: flex;
 					align-items: center;
 					justify-content: center;
+
 					.dark,
-					.light{
-						 height: 24px;
+					.light {
+						height: 24px;
 					}
 
 					svg,
 					img {
 						margin: auto;
 					}
+				}
+
+				&.classic {
+					background: linear-gradient(#0a0a0a, #0f0e16) padding-box, linear-gradient(88deg, #2BC016 0.88%, #26A96C 99.12%) border-box;
+					// background: linear-gradient(88deg, #2BC016 0.88%, #26A96C 99.12%);
+				}
+
+				&.pro {
+					background: linear-gradient(#0a0a0a, #0f0e16) padding-box, linear-gradient(119deg, #6B58FF 0%, #B902FA 100%) border-box;
+					//background: linear-gradient(119deg, #6B58FF 0%, #B902FA 100%);
+				}
+
+				&.genius {
+					background: linear-gradient(#0a0a0a, #0f0e16) padding-box, linear-gradient(98deg, #AA039F 0%, #ED014D 49.48%, #F67916 100%) border-box;
+					//background: linear-gradient(98deg, #AA039F 0%, #ED014D 49.48%, #F67916 100%);
 				}
 
 			}
@@ -261,8 +303,9 @@ header {
 			}
 
 		}
-		&.hdr-right-block{
-			 margin: 0 0 0 auto;
+
+		&.hdr-right-block {
+			margin: 0 0 0 auto;
 		}
 
 	}
@@ -277,11 +320,13 @@ header {
 		height: 36px;
 		transition: all 0.2s ease-in-out;
 		text-align: center;
-		@media(max-width:767px){
-			 max-width: calc(100% - 176px);
+
+		@media(max-width:767px) {
+			max-width: calc(100% - 176px);
 		}
-		@media(max-width:370px){
-			 max-width: calc(100% - 112px);
+
+		@media(max-width:370px) {
+			max-width: calc(100% - 112px);
 		}
 
 		svg {
@@ -448,21 +493,57 @@ body.logged-in.admin-bar {
 						width: 18px;
 						height: 18px;
 					}
-					.dark{
-						 height: 18px;
+
+					.dark {
+						height: 18px;
 					}
 				}
 			}
-			 .game-help {
+
+			.game-help {
 				height: 25px;
-					width: 25px;
-					line-height: 27px;
-				img,svg{
-					 	height: 25px;
+				width: 25px;
+				line-height: 27px;
+
+				img,
+				svg {
+					height: 25px;
 					width: 25px;
 				}
-			 }
-			 
+			}
+
+		}
+	}
+}
+
+body {
+	&.activated-toltip {
+		.header-wrapper {
+			.game-menu-ctn {
+				.game-level-icon {
+					&.icon {
+						.custom-tooltip-content {
+							opacity: 1;
+							visibility: visible;
+						}
+
+						&.classic {
+
+							background: linear-gradient(88deg, #2BC016 0.88%, #26A96C 99.12%);
+						}
+
+						&.pro {
+
+							background: linear-gradient(119deg, #6B58FF 0%, #B902FA 100%);
+						}
+
+						&.genius {
+
+							background: linear-gradient(98deg, #AA039F 0%, #ED014D 49.48%, #F67916 100%);
+						}
+					}
+				}
+			}
 		}
 	}
 }
