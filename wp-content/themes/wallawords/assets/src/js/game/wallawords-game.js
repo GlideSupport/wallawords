@@ -168,8 +168,8 @@ function initializeGame() {
     document.addEventListener('mouseenter', function(e) {
 
         const el = e.target.closest('.custom-tt-btn');
+        el.classList.add('hover-tooltip');
         if (!(e.target instanceof Element)) return; // FIX
-        classList.add('hover-tooltip');
         if (!el) return;
 
         const tooltipContent = el.querySelector('.custom-tooltip-content');
@@ -183,8 +183,8 @@ function initializeGame() {
     document.addEventListener('mouseleave', function(e) {
 
         const el = e.target.closest('.custom-tt-btn');
+        el.classList.remove('hover-tooltip');
         if (!(e.target instanceof Element)) return; // FIX
-        classList.remove('hover-tooltip');
         if (!el) return;
 
         const tooltipContent = el.querySelector('.custom-tooltip-content');
