@@ -321,7 +321,10 @@ function initializeGame() {
                 item.classList.remove('dimmed');
              });
             }
-
+            
+            document.getElementById('confetti-canvas').style.opacity = '0';
+            stopConfetti();
+            
             moveCounterDisplay.innerHTML = `Health`;
             resultSentenceCounterDisplay.style.display = 'none';
             sentenceCounterDisplay.removeAttribute('style');
