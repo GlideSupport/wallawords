@@ -167,8 +167,9 @@ function initializeGame() {
   // header icon 
     document.addEventListener('mouseenter', function(e) {
 
-        if (!(e.target instanceof Element)) return; // FIX
         const el = e.target.closest('.custom-tt-btn');
+        if (!(e.target instanceof Element)) return; // FIX
+        classList.add('hover-tooltip');
         if (!el) return;
 
         const tooltipContent = el.querySelector('.custom-tooltip-content');
@@ -181,8 +182,9 @@ function initializeGame() {
 
     document.addEventListener('mouseleave', function(e) {
 
-        if (!(e.target instanceof Element)) return; // FIX
         const el = e.target.closest('.custom-tt-btn');
+        if (!(e.target instanceof Element)) return; // FIX
+        classList.remove('hover-tooltip');
         if (!el) return;
 
         const tooltipContent = el.querySelector('.custom-tooltip-content');
@@ -263,8 +265,11 @@ function initializeGame() {
         if (popup) {
             popup.classList.add('active-difficulty-level-game');
         }   
+        
+        const difficulty_level = document.querySelector('#difficulty-popup .tab.active').getAttribute('data-level');
         const icon = document.querySelector('#difficulty-popup .tab.active img').getAttribute('src');
-        gameLevelIcon.querySelector('img').setAttribute('src', icon)
+        gameLevelIcon.classList.add(difficulty_level);
+        gameLevelIcon.querySelector('img').setAttribute('src', icon);
         gameLevelIcon.style.display= 'block';
 
         startGame(puzzleCounter);
