@@ -982,7 +982,11 @@ body {
             width: 100%;
             max-width: 100%;
             background-color: transparent;
-            &.final-result-faild{ol{display: none;}}
+            &.final-result-faild {
+                        ol {
+                        display: none;
+                    }
+                }
 
 
             ol {
@@ -1054,7 +1058,21 @@ body {
             }
 
         }
-
+        &.steps-page{
+                   &.final-result-faild {
+                    .main-section{
+                         height: auto !important;
+                    }
+                .game-wrapper{
+                     height: auto !important;
+                     min-height: 80vh;
+                     @media(max-height:600px){
+                         min-height: 100px;
+                     }
+                   }
+           
+                }
+        }
         .close-button {
             top: 32px !important;
             right: 24px !important;
@@ -1549,10 +1567,11 @@ body {
 
     #confetti-canvas {
         position: absolute;
-        width: 100%;
+           width: 200% !important;
         height: 100%;
         top: 0;
-        left: 0;
+        left: -50% !important;
+
         transition: all 0.5s ease-in-out;
     }
 
