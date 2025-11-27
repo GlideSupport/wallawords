@@ -322,7 +322,10 @@ function initializeGame() {
              });
             }
             
-            document.getElementById('confetti-canvas').style.opacity = '0';
+            const canvas = document.getElementById('confetti-canvas');
+            if (canvas) {
+                canvas.style.opacity = '0';
+            }
             stopConfetti();
             
             moveCounterDisplay.innerHTML = `Health`;
