@@ -220,7 +220,7 @@ function initializeGame() {
             const levelNumber = this.getAttribute('data-levelnumber');
             const icon = this.querySelector('img').getAttribute('src');
             const message = this.getAttribute('data-message');
-            const message_tootip = this.getAttribute('data-message_tootip');
+            const message_tooltip = this.getAttribute('data-message_tootip');
             if(icon){
                 this.closest('#difficulty-popup').querySelector('.badge-box .hexagone-icon .icon img').setAttribute('src', icon);
                 const badge = this.closest('#difficulty-popup').querySelector('#level-badge');
@@ -236,7 +236,7 @@ function initializeGame() {
             }
             
             const tootipbadge = document.querySelector('.game-level-icon .custom-tooltip-content');
-            tootipbadge.innerHTML = message_tootip;
+            tootipbadge.innerHTML = message_tooltip;
             
 
         });
@@ -281,10 +281,10 @@ function initializeGame() {
         }   
         
         const difficulty_level = document.querySelector('#difficulty-popup .tab.active').getAttribute('data-level');
-        const message_tootip = this.getAttribute('data-message_tootip');
+        const message_tooltip = document.querySelector('#difficulty-popup .tab.active').getAttribute('data-message_tootip');
            
         const tootipbadge = document.querySelector('.game-level-icon .custom-tooltip-content');
-        tootipbadge.innerHTML = message_tootip;
+        tootipbadge.innerHTML = message_tooltip;
         
         const icon = document.querySelector('#difficulty-popup .tab.active img').getAttribute('src');
         gameLevelIcon.classList.add(difficulty_level);
