@@ -243,12 +243,12 @@ function initializeGame() {
     });
 
     difficultyPlayGameButton.addEventListener('click', () => {
-        difficultyPopup.style.display = 'block';
+        difficultyPopup.style.display = 'flex';
         difficultyPopup.querySelector('.level-tabs .tab-1').click();
     });
-    
+
     difficultyCloseButton.addEventListener('click', () => {
-         difficultyPopup.style.display = 'none';
+        jQuery(difficultyPopup).fadeOut(500);
     });
     
     document.querySelector('#header-difficulty-play-game').addEventListener('click', (e) => {
