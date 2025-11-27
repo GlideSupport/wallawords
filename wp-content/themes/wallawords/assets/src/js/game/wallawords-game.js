@@ -111,6 +111,7 @@ const poemColumn2 = document.getElementById('poem-column2'); // Move counter ele
 const poemColumn3 = document.getElementById('poem-column3'); // Move counter element
 const difficultyPopup = document.getElementById('difficulty-popup'); // Move counter element
 const difficultyPlayGameButton = document.getElementById('difficulty-play-game');
+const difficultyCloseButton = document.getElementById('difficulty-popup-button');
 
 const gameLevelIcon = document.querySelector('.header-wrapper .game-level-icon');
 
@@ -244,6 +245,10 @@ function initializeGame() {
     difficultyPlayGameButton.addEventListener('click', () => {
         difficultyPopup.style.display = 'block';
         difficultyPopup.querySelector('.level-tabs .tab-1').click();
+    });
+    
+    difficultyCloseButton.addEventListener('click', () => {
+         difficultyPopup.style.display = 'none';
     });
     
     document.querySelector('#header-difficulty-play-game').addEventListener('click', (e) => {
