@@ -234,10 +234,10 @@ function initializeGame() {
                 const badge = this.closest('#difficulty-popup').querySelector('.level-content');
                 badge.innerHTML = message;
             }
-            if(message_tootip){
-                const tootipbadge = document.querySelector('.game-level-icon .custom-tooltip-content');
-                tootipbadge.innerHTML = message_tootip;
-            }
+            
+            const tootipbadge = document.querySelector('.game-level-icon .custom-tooltip-content');
+            tootipbadge.innerHTML = message_tootip;
+            
 
         });
     });
@@ -281,6 +281,11 @@ function initializeGame() {
         }   
         
         const difficulty_level = document.querySelector('#difficulty-popup .tab.active').getAttribute('data-level');
+        const message_tootip = this.getAttribute('data-message_tootip');
+           
+        const tootipbadge = document.querySelector('.game-level-icon .custom-tooltip-content');
+        tootipbadge.innerHTML = message_tootip;
+        
         const icon = document.querySelector('#difficulty-popup .tab.active img').getAttribute('src');
         gameLevelIcon.classList.add(difficulty_level);
         gameLevelIcon.querySelector('img').setAttribute('src', icon);
