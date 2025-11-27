@@ -246,6 +246,16 @@
 			bottom: 0;
 			left: 0;
 			right: 0;
+			@media(min-width:992px){
+				 border-radius: 30px;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+    position: absolute;
+    right: 0;
+    top: 94px;
+    height: 566px;
+			}
 			&:before{ border-radius: 30px 30px 0 0; }
 			
 			.piece{
@@ -330,8 +340,8 @@
 				padding-bottom: 32px;
 			}
 		}
-		@media (orientation: landscape) and (max-height: 613px),
-	(max-height: 613px) {
+		@media (orientation: landscape) and (max-height: 713px),
+	(max-height: 713px) {
          display: block;
 		 .popup-card{
 			 margin: 140px auto 0;
