@@ -340,6 +340,9 @@ body {
     }
     #difficulty-popup-button{
          background-color: var(--ww_white_7);
+         svg{
+             path{ color:var(--ww_black)}
+         }
     }
 
     #instruction-screen {
