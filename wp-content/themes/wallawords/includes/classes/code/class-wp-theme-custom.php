@@ -30,6 +30,44 @@ class WP_Theme_Custom extends \Boilerplate {
 	}
 
 
+	public static function get_rankings_data(){
+		$rankings = array('classic', 'pro', 'genius');
+
+		$final_array = [];
+
+		foreach ($rankings as $ranking) {
+			// get_field('classic_score_rankings', 'options'), etc.
+			$score_rankings = get_field($ranking . '_score_rankings', 'options');
+
+			$data_array = [];
+
+			// safety: ensure we have an array to iterate
+			if (is_array($score_rankings) && !empty($score_rankings)) {
+				foreach ($score_rankings as $item) {
+					// Use defaults in case keys are missing
+					$label = isset($item['label']) ? $item['label'] : '';
+					$range_array = array(
+						isset($item['score_range_from']) ? $item['score_range_from'] : null,
+						isset($item['score_range_to']) ? $item['score_range_to'] : null,
+					);
+
+					$range_array = array_unique($range_array);
+					// If you prefer numeric keys or don't want to key by label, adjust here
+					$data_array[$label] = array(
+						'range'         => $range_string = implode(' - ', $range_array),
+						'min'         => isset($item['score_range_from']) ? $item['score_range_from'] : null,
+						'max'         => isset($item['score_range_to']) ? $item['score_range_to'] : null,
+						'icon'        => isset($item['icon']) ? $item['icon'] : '',
+						'score_emoji' => isset($item['score_emoji']) ? $item['score_emoji'] : '',
+					);
+				}
+				$final_array[$ranking] = $data_array;
+			}
+
+		}
+
+		return $final_array;
+	}
 
 	/**
 	 * Helper function that builds button from ACF link object

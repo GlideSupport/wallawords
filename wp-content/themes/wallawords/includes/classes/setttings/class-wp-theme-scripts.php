@@ -97,6 +97,21 @@ class WP_Theme_Scripts {
 			'strategy'  => 'defer',
 		));
 
+
+		if ( is_page_template('templates/template-game.php') ) {
+			BaseTheme::enqueue_script(
+				'assets/build/game/wallawords-game.js', 
+				array( 'jquery' ), 
+				'gamelocalVars',
+				array(
+					'rankings_data' => BaseTheme::get_rankings_data(),
+				),
+				array(
+				'in_footer' => true,
+				'strategy'  => 'defer',
+				)
+			);
+		}
 	}
 	/**
 	 * Enqueue Backend Assets

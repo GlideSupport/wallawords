@@ -63,7 +63,29 @@ function wallawords_get_puzzle_data() {
         $level_key = "select_level_".$level."_puzzle";
         $acadamyPluzzle[$level] = get_field($level_key ,'options');
     }
-        // Prepare base query arguments
+
+    $helth_data_str = isset($_POST['helth_data']) ? sanitize_text_field($_POST['helth_data']) : '';
+
+    $final_array = [];
+
+    if (!empty($helth_data_str)) {
+
+        $pairs = explode(',', $helth_data_str); // Split each "helth1452=2"
+
+        foreach ($pairs as $pair) {
+            list($key, $value) = explode('=', $pair);
+
+            // Remove "helth" prefix
+            $clean_key = str_replace('helth', '', $key);
+
+            // Save into array
+            $helth_data_final_array[$clean_key] = $value;
+        }
+    }
+
+    
+
+    // Prepare base query arguments
     $get_puzzle_args = [
         'posts_per_page' => -1,
         'post_status'    => $post_status,
@@ -181,6 +203,11 @@ function wallawords_get_puzzle_data() {
 
         while ($get_puzzle_posts->have_posts()) {
             $get_puzzle_posts->the_post();
+            $spendhelth = 0;
+            
+            if(!empty($helth_data_final_array)){
+                $spendhelth = $helth_data_final_array['helth'.get_the_ID()];
+            }
             $puzzle_post_meta = get_post_meta(get_the_ID());
             // Gather puzzle data
             $default_prompt = get_field('wwp_default_prompt','options') ?? '';
@@ -191,13 +218,19 @@ function wallawords_get_puzzle_data() {
                 'fullPoem'    => $puzzle_post_meta['full_poem'][0] ?? '',
                 'prompt'      => !empty($game_prompt) ? $game_prompt : $default_prompt,
                 'health'      => get_field('wwp_health', get_the_ID()) ?? 7,
+                'remaning_helth'  => get_field('wwp_health', get_the_ID()) -  $spendhelth,
                 'correctWords' => isset($puzzle_post_meta['correct_words']) ? json_decode($puzzle_post_meta['correct_words'][0]) : [],
                 'sentences'   => isset($puzzle_post_meta['sentences']) ? json_decode($puzzle_post_meta['sentences'][0]) : [],
                 'lockedWords' => isset($puzzle_post_meta['locked_words']) ? array_map('intval', json_decode($puzzle_post_meta['locked_words'][0])) : [],
                 'incorrectWords' => isset($puzzle_post_meta['incorrect_words']) ? json_decode($puzzle_post_meta['incorrect_words'][0]) : [],
                 'columns'     => isset($puzzle_post_meta['columns']) ? array_values(json_decode($puzzle_post_meta['columns'][0])) : [],
+                'completed'     => $completed != '' ? 1 : 0  ,
             ];
         }
+
+        // echo "<pre>";
+        // print_r($output_data);
+        // echo "</pre>";
 
         // Optionally shuffle if no gameID filter was provided
         if (!isset($_GET['gameID'])) {

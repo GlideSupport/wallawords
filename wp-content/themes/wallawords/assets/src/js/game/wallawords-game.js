@@ -164,8 +164,8 @@ if (GameStorageService.getItem('puzzle-acadamy-level')) {
 document.addEventListener('DOMContentLoaded', initializeGame);
 
 function initializeGame() {
-
-  // header icon 
+    
+    // header icon 
    document.addEventListener('mouseenter', function(e) {
 
         if (!(e.target instanceof Element)) return;
@@ -446,6 +446,66 @@ async function dpData(encryptedDataWithIv, nonce) {
     return JSON.parse(jsonString);
 }
 
+function get_ranking_data(difficulty, number) {
+    const rankings = gamelocalVars.rankings_data[difficulty];
+    if (!rankings) return null;
+
+    number = Number(number);
+
+    for (let rankName in rankings) {
+        let { min, max } = rankings[rankName];
+
+        if (number >= Number(min) && number <= Number(max)) {
+            return { 
+                rank: rankName, 
+                ...rankings[rankName] 
+            };
+        }
+    }
+
+    return null;
+}
+
+function get_ranking_level_data(difficulty) {
+    const rankings = gamelocalVars.rankings_data[difficulty];
+    if (!rankings) return null;
+
+    // Convert object → array to sort
+    const sortable = Object.entries(rankings);
+
+    // Sort by min descending (7 → 5 → 3 → 1)
+    sortable.sort((a, b) => Number(b[1].min) - Number(a[1].min));
+
+    // Convert back to object
+    const sortedRankings = Object.fromEntries(sortable);
+
+    return sortedRankings;
+}
+
+function get_helth() {
+    let healthData = {};
+
+    // Get all localStorage keys starting with "helth"
+    for (let i = 0; i < localStorage.length; i++) {
+        let key = localStorage.key(i);
+
+        if (key.startsWith("helth")) {
+            let stored = localStorage.getItem(key);
+
+            // Parse JSON directly (no try/catch)
+            let parsed = JSON.parse(stored);  // {value:2, expiry:...}
+
+            healthData[key] = parsed.value; // Keep full key with "helth"
+        }
+    }
+
+    // Convert to: key=value,key=value
+    return Object.entries(healthData)
+        .map(([key, val]) => `${key}=${val}`)
+        .join(',');
+}
+
+
 // **Start the Game**
 function startGame(puzzleCounterValue, isAcadamy = false) {
     const difficulty = difficultyPopup.querySelector('.level-tabs .active').getAttribute('data-level');
@@ -485,6 +545,12 @@ function startGame(puzzleCounterValue, isAcadamy = false) {
         const urlParams = new URLSearchParams(window.location.search);
         if (urlParams.get('preview') === 'true') {
             url += '&preview=true';
+        }
+        if(get_helth() != ''){
+            url += '&heltharray='+get_helth();
+        }
+        if(difficulty){
+            url += '&difficultyLevel='+difficulty;
         }
     }
     gameScreen.style.display = 'flex';
@@ -719,7 +785,21 @@ function startGame(puzzleCounterValue, isAcadamy = false) {
                     li.innerHTML = '';
                     finalScoreSentence.appendChild(li);
                 }
-                // 
+
+                // Ranking Code
+                
+                if (completedSessionPuzzles) {
+                    if (GameStorageService.getItem('difficultySessionPuzzles'+`${completedSessionPuzzles}`) && GameStorageService.getItem('difficultySessionPuzzles'+`${completedSessionPuzzles}`).includes(difficulty) ) {
+                    // Ranking code
+                    console.log('completedSessionPuzzles Ranking code');
+                    console.log(selectedPoem.remaning_helth)
+                    console.log(selectedPoem.id)
+                    console.log(difficulty);
+                    console.log(selectedPoem.remaning_helth);
+                    console.log(get_ranking_data(difficulty, (selectedPoem.remaning_helth) ));
+                    }
+                }
+                
                 var playStatus = GameStorageService.getItem(`puzzleStatus${currentPuzzleID}`);
                 if(playStatus != null && !ispuzzleAcadamy){
                     if(!playStatus){
@@ -1431,6 +1511,7 @@ function resetUIForFinalScreen() {
 }
 
 function saveOrLoadPuzzleStatus(status) {
+
     const key = `puzzleStatus${currentPuzzleID}`;
     const existingStatus = GameStorageService.getItem(key);
     
@@ -1440,6 +1521,8 @@ function saveOrLoadPuzzleStatus(status) {
         if (savedHTML) finalScoreSentence.innerHTML = savedHTML;
         const gSavedHTML = GameStorageService.getItem(`gameGrid${currentPuzzleID}`);
         if (gSavedHTML) gameGridElement.innerHTML = gSavedHTML;
+
+       
     } else {
         const sHTML = finalScoreSentence.innerHTML;
         finalScoreSentence.style.display = sHTML ? "" : "none";
@@ -1460,6 +1543,11 @@ function saveOrLoadPuzzleStatus(status) {
         
         GameStorageService.setItem(`finalScoreSentence${currentPuzzleID}`, sHTML, 1);
         GameStorageService.setItem(`helth${currentPuzzleID}`, incorrectCounterValue, 1);
+
+        // Ranking Code
+        console.log(difficulty);
+        console.log(7 - incorrectCounterValue);
+        console.log(get_ranking_data(difficulty, (7 - incorrectCounterValue) ));
         
         const classesToRemove = ['zingle', 'warning', 'bounce'];
         gameGridElement.querySelectorAll('*').forEach(el => {
