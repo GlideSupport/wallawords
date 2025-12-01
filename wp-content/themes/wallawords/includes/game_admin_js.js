@@ -288,8 +288,9 @@ function getBlockTilesBaseDifficulty() {
     //run a validation first before allowing to submit
     jQuery('#publish').on('click',function(e) {
 
-         
-         difficulty = jQuery('.acf-field[data-name="wwp_difficulty_settings"] input:checked').val();
+        jQuery('#tab-2').find('#message').remove();
+ 
+        difficulty = jQuery('.acf-field[data-name="wwp_difficulty_settings"] input:checked').val();
          
         if (isComplete == false || (lockedWords < getBlockTilesBaseDifficulty() && getBlockTilesBaseDifficulty() != 0)) {
             jQuery('.publish-lock').css('display','block');
@@ -314,11 +315,9 @@ function getBlockTilesBaseDifficulty() {
                 if(!jQuery('#tab-2').find('#message').length){
                     jQuery('#tab-2').prepend(msg);
                     
-                    setTimeout(() => {
-                        jQuery('#tab-2 #message').fadeOut(500, function(){
-                            jQuery(this).remove();
-                        });
-                    }, 15000);
+                     jQuery('html, body').animate({
+                        scrollTop: jQuery('#tab-2').offset().top - 100
+                    }, 1500);
                 }
                 e.preventDefault();
             
