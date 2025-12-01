@@ -70,137 +70,128 @@ new WP_Theme_CPT(
 		'supports'  => array('title', 'author'),
 		'menu_icon' => 'dashicons-schedule',
 		'public'    => true,
-		'taxonomies'   => array(
-			array(
-				'slug'          => 'topic',
-				'name'          => 'Topic',
-				'singular_name' => 'Topic',
-				'plural_name'   => 'Topics',
-			)
-		)
+		// 'taxonomies'   => array(
+		// 	array(
+		// 		'slug'          => 'topic',
+		// 		'name'          => 'Topic',
+		// 		'singular_name' => 'Topic',
+		// 		'plural_name'   => 'Topics',
+		// 	)
+		// )
 	)
 );
 
 
 /**
- * Add custom column to display listing data
+ * ===============================
+ *  Admin Enhancements for Puzzle CPT
+ * ===============================
+ * Adds custom columns, sorting, and taxonomy filters
+ * for the 'puzzle' custom post type in the WordPress admin.
  */
 
-add_filter('manage_puzzle_posts_columns', 'set_cpt_puzzle_post_columns');
+/**
+ * Add custom columns to the Puzzle CPT list table.
+ */
+add_filter('manage_puzzle_posts_columns', function ($columns) {
+	// Remove unused default columns.
+	unset($columns['date']);
 
-function set_cpt_puzzle_post_columns($columns)
-{
-	//unset( $columns['author'] );
-	//  unset( $columns['date'] );
-	//unset( $columns['taxonomy-listing_location'] ); //swap default taxonomy behavior
-	//
-	$columns['difficulty'] = 'Difficulty';
-	//$columns['photo'] = 'Photo';
-	$columns['date-new'] = 'Last Updated Date';
+	// Add custom columns.
+	$columns['difficulty'] = __('Difficulty', 'textdomain');
+	$columns['date']       = __('Published Date', 'textdomain');
+	$columns['last_updated'] = __('Last Updated', 'textdomain');
+
 	return $columns;
-}
+});
 
-add_action('manage_puzzle_posts_custom_column', 'cpt_puzzle_custom_columns', 10, 2);
-
-function cpt_puzzle_custom_columns($column, $post_id)
-{
+/**
+ * Populate custom column content.
+ */
+add_action('manage_puzzle_posts_custom_column', function ($column, $post_id) {
 	switch ($column) {
-		case 'date-new':
-			echo '<b>Last Updated:</b> <br>' . get_the_modified_date('m/d/Y h:i:s a');
+		case 'last_updated':
+			echo '<strong>' . esc_html__('Last Updated:', 'textdomain') . '</strong><br>' . esc_html(get_the_modified_date('m/d/Y h:i:s a', $post_id));
 			break;
 
 		case 'difficulty':
-			$rank = get_field('wwp_difficulty_settings', $post_id) ?? '-';
-			echo strtoupper($rank);
+			$difficulty = get_field('wwp_difficulty_settings', $post_id);
+			echo esc_html(strtoupper($difficulty ?: '-'));
 			break;
 	}
-}
-
-add_filter('manage_edit-puzzle_sortable_columns', 'cpt_sortable_puzzle_column');
-
-function cpt_sortable_puzzle_column($columns)
-{
-	//$columns['difficulty'] = 'difficulty';   
-	$columns['date-new'] = 'date';
-	return $columns;
-}
-
-function ww_add_sort_manage_posts()
-{
-	global $typenow;
-	$args = array('public' => true, '_builtin' => false);
-	$post_types = get_post_types($args);
-	if (in_array($typenow, $post_types)) {
-		$filters = get_object_taxonomies($typenow);
-		foreach ($filters as $tax_slug) {
-			$tax_obj = get_taxonomy($tax_slug);
-			$tax_data = get_terms($tax_slug);
-
-			if (isset($_GET[$tax_obj->query_var])):
-				$selected = $_GET[$tax_obj->query_var];
-			else:
-				$selected = '';
-			endif;
-
-			if (count($tax_data) > 0):
-				wp_dropdown_categories(array(
-					'show_option_all' => __('Show All ' . $tax_obj->label),
-					'taxonomy' => $tax_slug,
-					'name' => $tax_obj->name,
-					'orderby' => 'slug',
-					'selected' => $selected,
-					'hierarchical' => $tax_obj->hierarchical,
-					'show_count' => false,
-					'hide_empty' => true
-				));
-			endif;
-		}
-	}
-}
+}, 10, 2);
 
 /**
- * Add additional sorting features for CPT
+ * Make custom columns sortable.
  */
+add_filter('manage_edit-puzzle_sortable_columns', function ($columns) {
+	$columns['last_updated'] = 'modified';
+	return $columns;
+});
 
-function ww_convert_sort($query)
-{
-	global $pagenow;
+/**
+ * Add taxonomy filter dropdowns in the admin list table for CPTs.
+ */
+add_action('restrict_manage_posts', function () {
 	global $typenow;
-	if ($pagenow == 'edit.php') {
-		$filters = get_object_taxonomies($typenow);
-		foreach ($filters as $tax_slug) {
-			$var = &$query->query_vars[$tax_slug];
-			if (isset($var)) {
-				$term = get_term_by('id', $var, $tax_slug);
-				if ($term):
-					$var = $term->slug;
-				endif;
+
+	// Only apply to custom post types.
+	if (!post_type_exists($typenow)) return;
+	$post_type = get_post_type_object($typenow);
+	if (empty($post_type) || $post_type->_builtin) return;
+
+	// Add taxonomy filters.
+	foreach (get_object_taxonomies($typenow) as $tax_slug) {
+		$tax_obj = get_taxonomy($tax_slug);
+		$terms = get_terms(['taxonomy' => $tax_slug, 'hide_empty' => true]);
+
+		if (empty($terms) || is_wp_error($terms)) continue;
+
+		$selected = $_GET[$tax_obj->query_var] ?? '';
+		wp_dropdown_categories([
+			'show_option_all' => sprintf(__('Show All %s', 'textdomain'), $tax_obj->label),
+			'taxonomy'        => $tax_slug,
+			'name'            => $tax_obj->name,
+			'orderby'         => 'slug',
+			'selected'        => $selected,
+			'hierarchical'    => $tax_obj->hierarchical,
+			'show_count'      => false,
+			'hide_empty'      => true,
+		]);
+	}
+});
+
+/**
+ * Convert taxonomy IDs to slugs for sorting/filtering.
+ */
+add_filter('parse_query', function ($query) {
+	global $pagenow, $typenow;
+
+	if ($pagenow !== 'edit.php' || !$typenow) return $query;
+
+	foreach (get_object_taxonomies($typenow) as $tax_slug) {
+		if (!empty($query->query_vars[$tax_slug])) {
+			$term = get_term_by('id', $query->query_vars[$tax_slug], $tax_slug);
+			if ($term) {
+				$query->query_vars[$tax_slug] = $term->slug;
 			}
 		}
 	}
+
 	return $query;
-}
+});
 
 /**
- * Change default sorting for CPT
+ * Set default sorting for the Puzzle CPT (by published date DESC).
  */
-
-function ww_set_sort_defaults($query)
-{
-	if (is_admin() && $query->is_main_query() && ($query->get('post_type') == 'puzzle')):
-
-		if (!isset($_GET['orderby'])):
-
-			if ($query->get('post_type') == 'puzzle'):
-				$query->set('order', 'DESC');
-				$query->set('orderby', 'date'); // Sort by published date instead of modified date
-			endif;
-
-		endif;
-
-	endif;
-}
-
-add_action('restrict_manage_posts', 'ww_add_sort_manage_posts');
-add_filter('parse_query', 'ww_convert_sort');
-add_action('pre_get_posts', 'ww_set_sort_defaults');
+add_action('pre_get_posts', function ($query) {
+	if (
+		is_admin() &&
+		$query->is_main_query() &&
+		$query->get('post_type') === 'puzzle' &&
+		!isset($_GET['orderby'])
+	) {
+		$query->set('orderby', 'date');
+		$query->set('order', 'DESC');
+	}
+});
