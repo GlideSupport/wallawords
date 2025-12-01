@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Functions for custom post types
  *
@@ -21,7 +22,7 @@ new WP_Theme_CPT(
 			'register_key'       => 'testimonial',
 			'slug'               => 'testimonial',
 		),
-		'supports'     => array( 'title', 'thumbnail', 'author', 'excerpt' ),
+		'supports'     => array('title', 'thumbnail', 'author', 'excerpt'),
 		'menu_icon'    => 'dashicons-format-quote',
 		'public'       => false,
 		'show_in_menu' => true,
@@ -49,7 +50,7 @@ new WP_Theme_CPT(
 			'register_key'       => 'team',
 			'slug'               => 'team',
 		),
-		'supports'  => array( 'title', 'editor', 'thumbnail', 'author', 'excerpt' ),
+		'supports'  => array('title', 'editor', 'thumbnail', 'author', 'excerpt'),
 		'menu_icon' => 'dashicons-businessperson',
 		'public'    => false,
 	)
@@ -66,7 +67,7 @@ new WP_Theme_CPT(
 			'register_key'       => 'puzzle',
 			'slug'               => 'puzzle',
 		),
-		'supports'  => array( 'title','author'),
+		'supports'  => array('title', 'author'),
 		'menu_icon' => 'dashicons-schedule',
 		'public'    => true,
 		'taxonomies'   => array(
@@ -82,120 +83,183 @@ new WP_Theme_CPT(
 
 
 /**
- * Add custom column to display listing data
+ * ===============================
+ *  Admin Enhancements for Puzzle CPT
+ * ===============================
+ * Adds custom columns, sorting, and taxonomy filters
+ * for the 'puzzle' custom post type in the WordPress admin.
  */
-
- add_filter( 'manage_puzzle_posts_columns', 'set_cpt_puzzle_post_columns' );
-
- function set_cpt_puzzle_post_columns($columns) {
-	 //unset( $columns['author'] );
-	 unset( $columns['date'] );
-	 //unset( $columns['taxonomy-listing_location'] ); //swap default taxonomy behavior
-	 //
-	 $columns['difficulty'] = 'Difficulty';
-	 //$columns['photo'] = 'Photo';
-	 $columns['date-new'] = 'Date';
-	 return $columns;
- }
- 
- add_action( 'manage_puzzle_posts_custom_column' , 'cpt_puzzle_custom_columns', 10, 2 );
- 
- function cpt_puzzle_custom_columns( $column, $post_id ) {
-	 switch ( $column ) {
-		 case 'date-new':			 
-			echo '<b>Last Updated:</b> <br>'.get_the_modified_date('m/d/Y h:i:s a');
-		 break;
-
-		case 'difficulty':			 
-			$rank = get_field('wwp_difficulty_settings', $post_id)?? '-';
-			echo strtoupper($rank);			 
-		break;
- 		 
-	 }
- }
- 
- add_filter( 'manage_edit-puzzle_sortable_columns', 'cpt_sortable_puzzle_column' );
- 
- function cpt_sortable_puzzle_column( $columns ) {
-     //$columns['difficulty'] = 'difficulty';   
-	 $columns['date-new'] = 'date';   
-	 return $columns;
- }
- 
-function ww_add_sort_manage_posts() {
-    global $typenow;
-    $args=array( 'public' => true, '_builtin' => false ); 
-    $post_types = get_post_types($args);
-    if ( in_array($typenow, $post_types) ) {
-    $filters = get_object_taxonomies($typenow);
-        foreach ($filters as $tax_slug) {
-            $tax_obj = get_taxonomy($tax_slug);
-			$tax_data = get_terms($tax_slug);
-
-			if(isset($_GET[$tax_obj->query_var])):
-				$selected = $_GET[$tax_obj->query_var]; 
-			else:
-				$selected = '';
-			endif;
-
-			if(count($tax_data) > 0):
-				wp_dropdown_categories(array(
-					'show_option_all' => __('Show All '.$tax_obj->label ),
-					'taxonomy' => $tax_slug,
-					'name' => $tax_obj->name,
-					'orderby' => 'slug',
-					'selected' => $selected,
-					'hierarchical' => $tax_obj->hierarchical,
-					'show_count' => false,
-					'hide_empty' => true
-				));
-			endif;
-        }
-    }
-}
 
 /**
- * Add additional sorting features for CPT
+ * Add custom columns to the Puzzle CPT list table.
  */
+add_filter('manage_puzzle_posts_columns', function ($columns) {
+	// Remove unused default columns.
+	unset($columns['date']);
 
-function ww_convert_sort($query) {
-    global $pagenow;
-    global $typenow;
-    if ($pagenow=='edit.php') {
-        $filters = get_object_taxonomies($typenow);
-        foreach ($filters as $tax_slug) {
-            $var = &$query->query_vars[$tax_slug];
-            if ( isset($var) ) {
-                $term = get_term_by('id',$var,$tax_slug);
-				if($term):
-                	$var = $term->slug;
-				endif;
-            }
-        }
-    }
-    return $query;
-}
+	// Add custom columns.
+	$columns['health'] = __('Health', 'wallawords_td');
+	$columns['difficulty'] = __('Difficulty', 'wallawords_td');
+	$columns['date']       = __('Published Date', 'wallawords_td');
+	$columns['last_updated'] = __('Last Updated', 'wallawords_td');
+
+	return $columns;
+});
 
 /**
- * Change default sorting for CPT
+ * Populate custom column content.
  */
+add_action('manage_puzzle_posts_custom_column', function ($column, $post_id) {
+	switch ($column) {
+		case 'last_updated':
+			echo '<strong>' . esc_html__('Last Updated:', 'wallawords_td') . '</strong><br>' . esc_html(get_the_modified_date('m/d/Y h:i:s a', $post_id));
+			break;
 
-function ww_set_sort_defaults($query) {
-	if (is_admin() && $query->is_main_query() && ($query->get('post_type') == 'puzzle')):
+		case 'health':
+			$health = get_field('wwp_health', $post_id);
+			echo esc_html($health);
+			break;
 
-		if(!isset($_GET['orderby'])):
+		case 'difficulty':
+			$difficulty = get_field('wwp_difficulty_settings', $post_id);
+			echo esc_html(strtoupper($difficulty ?: '-'));
+			break;
+	}
+}, 10, 2);
 
-			if($query->get('post_type') == 'puzzle'):
-				$query->set('order', 'DESC');
-				$query->set('orderby', 'modified');
-			endif;
+/**
+ * Make custom columns sortable.
+ */
+add_filter('manage_edit-puzzle_sortable_columns', function ($columns) {
+	$columns['last_updated'] = 'modified';
+	return $columns;
+});
 
-		endif;
-    
-	endif;
+/**
+ * Add taxonomy filter dropdowns in the admin list table for CPTs.
+ */
+add_action('restrict_manage_posts', function () {
+	global $typenow;
 
-}
+	// Only apply to custom post types.
+	if (!post_type_exists($typenow)) return;
+	$post_type = get_post_type_object($typenow);
+	if (empty($post_type) || $post_type->_builtin) return;
 
-add_action('restrict_manage_posts','ww_add_sort_manage_posts');
-add_filter('parse_query','ww_convert_sort');
-add_action('pre_get_posts','ww_set_sort_defaults');
+	// Add taxonomy filters.
+	foreach (get_object_taxonomies($typenow) as $tax_slug) {
+		$tax_obj = get_taxonomy($tax_slug);
+		$terms = get_terms(['taxonomy' => $tax_slug, 'hide_empty' => true]);
+
+		if (empty($terms) || is_wp_error($terms)) continue;
+
+		$selected = $_GET[$tax_obj->query_var] ?? '';
+		wp_dropdown_categories([
+			'show_option_all' => sprintf(__('Show All %s', 'wallawords_td'), $tax_obj->label),
+			'taxonomy'        => $tax_slug,
+			'name'            => $tax_obj->name,
+			'orderby'         => 'slug',
+			'selected'        => $selected,
+			'hierarchical'    => $tax_obj->hierarchical,
+			'show_count'      => false,
+			'hide_empty'      => true,
+		]);
+	}
+});
+
+/**
+ * Convert taxonomy IDs to slugs for sorting/filtering.
+ */
+add_filter('parse_query', function ($query) {
+	global $pagenow, $typenow;
+
+	if ($pagenow !== 'edit.php' || !$typenow) return $query;
+
+	foreach (get_object_taxonomies($typenow) as $tax_slug) {
+		if (!empty($query->query_vars[$tax_slug])) {
+			$term = get_term_by('id', $query->query_vars[$tax_slug], $tax_slug);
+			if ($term) {
+				$query->query_vars[$tax_slug] = $term->slug;
+			}
+		}
+	}
+
+	return $query;
+});
+
+/**
+ * Set default sorting for the Puzzle CPT (by published date DESC).
+ */
+add_action('pre_get_posts', function ($query) {
+	if (
+		is_admin() &&
+		$query->is_main_query() &&
+		$query->get('post_type') === 'puzzle' &&
+		!isset($_GET['orderby'])
+	) {
+		$query->set('orderby', 'date');
+		$query->set('order', 'DESC');
+	}
+});
+
+/**
+ * Add a Difficulty filter dropdown to the Puzzle admin list.
+ */
+add_action('restrict_manage_posts', function () {
+	global $typenow;
+
+	if ($typenow !== 'puzzle') {
+		return;
+	}
+
+	// Define your available difficulty levels (should match ACF field values).
+	$difficulty_levels = [
+		''       => __('All Difficulties', 'textdomain'),
+		'easy'   => __('Easy', 'textdomain'),
+		'medium' => __('Medium', 'textdomain'),
+		'hard'   => __('Hard', 'textdomain'),
+	];
+
+	$current = isset($_GET['filter_difficulty']) ? sanitize_text_field($_GET['filter_difficulty']) : '';
+
+	echo '<select name="filter_difficulty">';
+	foreach ($difficulty_levels as $value => $label) {
+		printf(
+			'<option value="%s"%s>%s</option>',
+			esc_attr($value),
+			selected($current, $value, false),
+			esc_html($label)
+		);
+	}
+	echo '</select>';
+});
+
+/**
+ * Filter the Puzzle CPT list based on selected Difficulty.
+ */
+add_action('pre_get_posts', function ($query) {
+	global $pagenow, $typenow;
+
+	if (
+		$pagenow !== 'edit.php' ||
+		!$query->is_main_query() ||
+		$typenow !== 'puzzle' ||
+		empty($_GET['filter_difficulty'])
+	) {
+		return;
+	}
+
+	$difficulty = sanitize_text_field($_GET['filter_difficulty']);
+
+	if (!empty($difficulty)) {
+		$meta_query = [
+			[
+				'key'     => 'wwp_difficulty_settings',
+				'value'   => $difficulty,
+				'compare' => '=',
+			],
+		];
+
+		$query->set('meta_query', $meta_query);
+	}
+});
