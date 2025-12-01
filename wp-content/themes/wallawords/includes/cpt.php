@@ -201,3 +201,65 @@ add_action('pre_get_posts', function ($query) {
 		$query->set('order', 'DESC');
 	}
 });
+
+/**
+ * Add a Difficulty filter dropdown to the Puzzle admin list.
+ */
+add_action('restrict_manage_posts', function () {
+	global $typenow;
+
+	if ($typenow !== 'puzzle') {
+		return;
+	}
+
+	// Define your available difficulty levels (should match ACF field values).
+	$difficulty_levels = [
+		''       => __('All Difficulties', 'textdomain'),
+		'easy'   => __('Easy', 'textdomain'),
+		'medium' => __('Medium', 'textdomain'),
+		'hard'   => __('Hard', 'textdomain'),
+	];
+
+	$current = isset($_GET['filter_difficulty']) ? sanitize_text_field($_GET['filter_difficulty']) : '';
+
+	echo '<select name="filter_difficulty">';
+	foreach ($difficulty_levels as $value => $label) {
+		printf(
+			'<option value="%s"%s>%s</option>',
+			esc_attr($value),
+			selected($current, $value, false),
+			esc_html($label)
+		);
+	}
+	echo '</select>';
+});
+
+/**
+ * Filter the Puzzle CPT list based on selected Difficulty.
+ */
+add_action('pre_get_posts', function ($query) {
+	global $pagenow, $typenow;
+
+	if (
+		$pagenow !== 'edit.php' ||
+		!$query->is_main_query() ||
+		$typenow !== 'puzzle' ||
+		empty($_GET['filter_difficulty'])
+	) {
+		return;
+	}
+
+	$difficulty = sanitize_text_field($_GET['filter_difficulty']);
+
+	if (!empty($difficulty)) {
+		$meta_query = [
+			[
+				'key'     => 'wwp_difficulty_settings',
+				'value'   => $difficulty,
+				'compare' => '=',
+			],
+		];
+
+		$query->set('meta_query', $meta_query);
+	}
+});
