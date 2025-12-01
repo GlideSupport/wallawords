@@ -100,6 +100,7 @@ const moveCounterDisplay = document.getElementById('move-counter'); // Move coun
 const sentenceCounterDisplay = document.getElementById('sentence-counter'); // Move counter element
 const resultSentenceCounterDisplay = document.getElementById('result-sentence-counter'); 
 const finalScoreSentence = document.querySelector('#final-score-screen ol');
+const finalRankingScoreSentence = document.querySelector('#final-score-screen ul');
 //const sentenceToggle = document.getElementById('sentence-toggle');
 const sentenceToggle = document.querySelectorAll('.sentence-toggle');
 const closeSentenceToggle = document.getElementById('close-sentences-button');
@@ -165,6 +166,7 @@ document.addEventListener('DOMContentLoaded', initializeGame);
 
 function initializeGame() {
     
+
     // header icon 
    document.addEventListener('mouseenter', function(e) {
 
@@ -207,6 +209,7 @@ function initializeGame() {
 
     // header icon 
 
+    
     // Difficulty popup tab click handling
     const tabs = difficultyPopup.querySelectorAll('.tab');
 
@@ -338,7 +341,7 @@ function initializeGame() {
             }
             stopConfetti();
             
-            moveCounterDisplay.innerHTML = `Health`;
+            // moveCounterDisplay.innerHTML = `Health`;
             resultSentenceCounterDisplay.style.display = 'none';
             sentenceCounterDisplay.removeAttribute('style');
             gameRow.removeAttribute('style');
@@ -350,7 +353,7 @@ function initializeGame() {
             document.body.classList.add('final-result');
             finalScoreScreen.removeAttribute('style');
             titleDisplay.removeAttribute('style');
-            moveCounterDisplay.innerHTML = `Health:`;
+            // moveCounterDisplay.innerHTML = `Health:`;
             resultSentenceCounterDisplay.removeAttribute('style');
             sentenceCounterDisplay.style.display = 'none';
             gameRow.style.display = 'none';
@@ -378,7 +381,7 @@ function initializeGame() {
         var container = jQuery('#sentence-list-container');
         container.fadeOut(150);
         if (finalScoreScreen.style.display == 'none') {
-            moveCounterDisplay.style.display = "block";
+            // moveCounterDisplay.style.display = "block";
             sentenceToggle.forEach(item => {
                 item.style.display = "block";
             });
@@ -451,20 +454,54 @@ function get_ranking_data(difficulty, number) {
     if (!rankings) return null;
 
     number = Number(number);
+    let matched = false;
 
-    for (let rankName in rankings) {
-        let { min, max } = rankings[rankName];
+    // Reset highlighted rows
+    const scoreTableElement = document.querySelector('.score-table');
+    document.querySelector('#final-move-count').innerHTML = number;
+    scoreTableElement.querySelectorAll('.score-row').forEach(row => {
+        row.classList.remove('highlighted');
+    });
+
+    // Sort rankings (descending by min)
+    const sortable = Object.entries(rankings);
+    sortable.sort((a, b) => Number(b[1].min) - Number(a[1].min));
+    const sortedRankings = Object.fromEntries(sortable);
+
+    let index = 0;
+    for (let rankName in sortedRankings) {
+        let { min, max } = sortedRankings[rankName];
 
         if (number >= Number(min) && number <= Number(max)) {
-            return { 
-                rank: rankName, 
-                ...rankings[rankName] 
-            };
+            matched = true;
+
+            finalMoveCount.classList.add('rank_' + index);
+
+            const row = document.querySelector('.score-table .rank_' + index);
+            if (row) row.classList.add('highlighted');
+
+            break;
         }
+        index++;
     }
 
-    return null;
+    // 🔥 If no match → use index 0
+    if (!matched) {
+        console.log("No match found → using index 0 fallback");
+
+        finalMoveCount.classList.add('rank_0');
+
+        const row = document.querySelector('.score-table .rank_0');
+        if (row) row.classList.add('highlighted');
+
+        return 0; // return index 0
+    }
+
+    return index;
 }
+
+
+
 
 function get_ranking_level_data(difficulty) {
     const rankings = gamelocalVars.rankings_data[difficulty];
@@ -479,8 +516,23 @@ function get_ranking_level_data(difficulty) {
     // Convert back to object
     const sortedRankings = Object.fromEntries(sortable);
 
-    return sortedRankings;
+    let html = '<p class="medium-text">How does your score stack up?</p>';
+
+    Object.entries(sortedRankings).forEach(([title, info], index) => {
+        html += `
+            <div id="rank_${index}" class="score-row rank_${index}" data-from="${info.min}" data-to="${info.max}">
+                <img src="${info.icon}" alt="${title}" class="score-icon">
+                <span class="score-title">${title}</span>
+                <span class="score-moves">${info.range} health</span>
+            </div>
+        `;
+    });
+
+    // Insert into target element
+    document.querySelector('.score-table').innerHTML = html;
+
 }
+
 
 function get_helth() {
     let healthData = {};
@@ -510,9 +562,9 @@ function get_helth() {
 function startGame(puzzleCounterValue, isAcadamy = false) {
     const difficulty = difficultyPopup.querySelector('.level-tabs .active').getAttribute('data-level');
     pageHeader.classList.add('playing');
-    moveCounterDisplay.classList.remove('over');
+    // moveCounterDisplay.classList.remove('over');
     finalScoreScreen.style.display = 'none';
-    moveCounterDisplay.style.display = "block"; 
+    // moveCounterDisplay.style.display = "block"; 
     sentenceCounterDisplay.style.display = "block";
     backToResult.style.display = 'none';
     // errorCounterDisplay.style.display = "block";
@@ -616,6 +668,7 @@ function startGame(puzzleCounterValue, isAcadamy = false) {
                 console.log("Selected poem title:", selectedPoem.fullPoem);
                 document.querySelector('#main-section').setAttribute('data-puzzle-title', selectedPoem.fullPoem);
                 document.querySelector('#main-section').setAttribute('data-puzzle-id', selectedPoem.id);
+                document.querySelector('#main-section').setAttribute('data-health', selectedPoem.health);
 
                 originalPositions = selectedPoem.correctWords.slice(); // Store the original positions
                 // console.log(selectedPoem.correctWords);
@@ -627,7 +680,7 @@ function startGame(puzzleCounterValue, isAcadamy = false) {
                 // Shuffle the remaining words using derangement
                 const lockedIndexes = selectedPoem.lockedWords;
                 const incorrectWords = selectedPoem.incorrectWords;
-                titleDisplay.textContent = selectedPoem.title;
+                // titleDisplay.textContent = selectedPoem.title;
                 gamePrompt.innerHTML = selectedPoem.prompt;
                 gameGridElement.innerHTML = ''; // Clear previous words
                 health = selectedPoem.health;
@@ -789,15 +842,17 @@ function startGame(puzzleCounterValue, isAcadamy = false) {
                 // Ranking Code
                 
                 if (completedSessionPuzzles) {
-                    if (GameStorageService.getItem('difficultySessionPuzzles'+`${completedSessionPuzzles}`) && GameStorageService.getItem('difficultySessionPuzzles'+`${completedSessionPuzzles}`).includes(difficulty) ) {
-                    // Ranking code
+                    
                     console.log('completedSessionPuzzles Ranking code');
                     console.log(selectedPoem.remaning_helth)
                     console.log(selectedPoem.id)
                     console.log(difficulty);
                     console.log(selectedPoem.remaning_helth);
-                    console.log(get_ranking_data(difficulty, (selectedPoem.remaning_helth) ));
-                    }
+                    // console.log(get_ranking_data(difficulty, (selectedPoem.remaning_helth) ));
+                    
+                    get_ranking_level_data(difficulty);
+                    get_ranking_data(difficulty, (selectedPoem.remaning_helth) );
+                    
                 }
                 
                 var playStatus = GameStorageService.getItem(`puzzleStatus${currentPuzzleID}`);
@@ -920,17 +975,26 @@ function updateMoveCounter(evt, originalPositions) {
 function updateMoveCounterDisplay() {
     if (moveCounterDisplay) {
         if (incorrectCounterValue > minimumMoves) {
-            moveCounterDisplay.classList.add('over');
+            //moveCounterDisplay.classList.add('over');
         }
-        moveCounterDisplay.innerHTML = `Health`;//<span>Moves</span> ${minimumMoves - incorrectCounterValue}  
+        //moveCounterDisplay.innerHTML = `Health`; //<span>Moves</span> ${minimumMoves - incorrectCounterValue}  
         // var health = minimumMoves - incorrectCounterValue;
         var currentHealth = health - incorrectCounterValue;
         if(ispuzzleAcadamy){
+            const body = document.querySelector('body');
+
+            body.classList.remove('ispuzzledifficultygameresult');
+            body.classList.add('ispuzzleacadamygameresult');
             puzzleAcadamyLevel = GameStorageService.getItem('puzzle-acadamy-level');
             moveCounterDisplay.innerHTML = `Health: <span>${currentHealth}<span>`;
             sentenceCounterDisplay.innerHTML = `Level: <span>${puzzleAcadamyLevel}/3</span>`;
         }else{
-            sentenceCounterDisplay.innerHTML = `<span>${currentHealth}</span>`;
+            const body = document.querySelector('body');
+
+            body.classList.add('ispuzzledifficultygameresult');
+            body.classList.remove('ispuzzleacadamygameresult');
+            moveCounterDisplay.innerHTML = `Health: <span>${currentHealth}<span>`;
+            // sentenceCounterDisplay.innerHTML = `<span>${currentHealth}</span>`;
             resultSentenceCounterDisplay.innerHTML = `<span>${currentHealth}</span>`;
         }
         var healthBar = '';
@@ -944,7 +1008,7 @@ function updateMoveCounterDisplay() {
         const healthBarSelctor = document.getElementById('health-bar');
         if (healthBarSelctor) {
             healthBarSelctor.innerHTML = healthBar;
-            healthBarSelctor.removeAttribute('style');
+            // healthBarSelctor.removeAttribute('style');
         }
     }
     // sentenceCounterDisplay.innerHTML = `<span>Sentences</span> ${completeSentenceCount}/${totalSentenceCount}`;
@@ -1318,9 +1382,9 @@ function restartGame(puzzleId =0 , puzzleCounterValue, isAcadamy = false) {
 
     document.querySelector('#game-prompt').style.display = 'none';
     pageHeader.classList.add('playing');
-    moveCounterDisplay.classList.remove('over');
+    // moveCounterDisplay.classList.remove('over');
     finalScoreScreen.style.display = 'none';
-    moveCounterDisplay.style.display = "block"; 
+    // moveCounterDisplay.style.display = "block"; 
     sentenceCounterDisplay.style.display = "block";
     backToResult.style.display = 'none';
     // errorCounterDisplay.style.display = "block";
@@ -1418,7 +1482,7 @@ function restartGame(puzzleId =0 , puzzleCounterValue, isAcadamy = false) {
                 totalSentenceCount = selectedPoem.sentences.length + 3; //add 3 because we always have 3 vertical sentences in a puzzle
                 
                 
-                titleDisplay.textContent = selectedPoem.title;
+                // titleDisplay.textContent = selectedPoem.title;
                 gamePrompt.innerHTML = selectedPoem.prompt;
                 gameGridElement.innerHTML = ''; // Clear previous words
                 health = selectedPoem.health;
@@ -1468,6 +1532,7 @@ function showRegularSuccess() {
     document.getElementById("share-button").removeAttribute('style');
     backToPuzzle.removeAttribute('style');
     
+    
     saveOrLoadPuzzleStatus(true);
     highlightScoreRow();
     initFinalScreenToggles();
@@ -1503,7 +1568,7 @@ function resetUIForFinalScreen() {
         titleDisplay.removeAttribute('style');
         kicker.removeAttribute('style');
         gameRow.style.display = 'none';
-        moveCounterDisplay.innerHTML = `Health:`;
+        // moveCounterDisplay.innerHTML = `Health:`;
         finalScoreScreen.style.display = 'flex';
         sentenceCounterDisplay.style.display = "none";
         resultSentenceCounterDisplay.removeAttribute('style');
@@ -1544,10 +1609,16 @@ function saveOrLoadPuzzleStatus(status) {
         GameStorageService.setItem(`finalScoreSentence${currentPuzzleID}`, sHTML, 1);
         GameStorageService.setItem(`helth${currentPuzzleID}`, incorrectCounterValue, 1);
 
+        const puzzlehealth = document.querySelector('#main-section').getAttribute('data-health');
         // Ranking Code
+       
         console.log(difficulty);
-        console.log(7 - incorrectCounterValue);
-        console.log(get_ranking_data(difficulty, (7 - incorrectCounterValue) ));
+        console.log('sdasdasdsdsdasdasdadsa');
+        console.log(incorrectCounterValue);
+        console.log(puzzlehealth);
+        // console.log(get_ranking_data(difficulty, (7 - incorrectCounterValue) ));
+        get_ranking_level_data(difficulty);
+        get_ranking_data(difficulty, (puzzlehealth - incorrectCounterValue) );
         
         const classesToRemove = ['zingle', 'warning', 'bounce'];
         gameGridElement.querySelectorAll('*').forEach(el => {
@@ -1560,36 +1631,39 @@ function saveOrLoadPuzzleStatus(status) {
 
 function highlightScoreRow() {
     const scoreTableElements = document.querySelectorAll('.score-row');
-    scoreTableElements.forEach(row => {
-        const from = parseInt(row.dataset.from);
-        const to = parseInt(row.dataset.to);
-        const moves = parseInt(moveCounterValue);
-        if (moves >= from && moves <= to) {
-            row.classList.add('highlighted', row.id);
-            finalMoveCount.classList.add(row.id);
+    // scoreTableElements.forEach(row => {
+    //     const from = parseInt(row.dataset.from);
+    //     const to = parseInt(row.dataset.to);
+    //     const moves = parseInt(moveCounterValue);
+    //     if (moves >= from && moves <= to) {
+    //         row.classList.add('highlighted', row.id);
+    //         finalMoveCount.classList.add(row.id);
 
-            const icon = row.querySelector(".score-icon")?.innerHTML.trim() || "";
-            const rank = row.querySelector(".score-title")?.innerHTML.trim() || "";
-            completedPuzzleIcon = icon;
-            completedPuzzleRank = rank;
-        }
-    });
+    //         const icon = row.querySelector(".score-icon")?.innerHTML.trim() || "";
+    //         const rank = row.querySelector(".score-title")?.innerHTML.trim() || "";
+    //         completedPuzzleIcon = icon;
+    //         completedPuzzleRank = rank;
+    //     }
+    // });
 }
 
 function initFinalScreenToggles() {
     const toggles = document.querySelectorAll('.final-page-toggle .toggle');
     const scoreTableElement = document.querySelector('.score-table');
+    const reviewTableElement = document.querySelector('.review-result-tab-content');
 
     toggles.forEach(toggle => {
         toggle.addEventListener('click', () => {
             toggles.forEach(t => t.classList.remove('active'));
             if (toggled === 'results') {
                 scoreTableElement.style.display = 'flex';
+                reviewTableElement.style.display = 'none';
                 toggled = 'review';
                 toggles[0].classList.add('active');
                 gameGridElement.classList.remove('active');
             } else {
                 scoreTableElement.style.display = 'none';
+                reviewTableElement.style.display = 'flex';
                 toggled = 'results';
                 toggles[1].classList.add('active');
                 gameGridElement.classList.add('active');
