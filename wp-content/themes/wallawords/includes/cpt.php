@@ -98,10 +98,10 @@ add_filter('manage_puzzle_posts_columns', function ($columns) {
 	unset($columns['date']);
 
 	// Add custom columns.
-	$columns['health'] = __('Health', 'textdomain');
-	$columns['difficulty'] = __('Difficulty', 'textdomain');
-	$columns['date']       = __('Published Date', 'textdomain');
-	$columns['last_updated'] = __('Last Updated', 'textdomain');
+	$columns['health'] = __('Health', 'wallawords_td');
+	$columns['difficulty'] = __('Difficulty', 'wallawords_td');
+	$columns['date']       = __('Published Date', 'wallawords_td');
+	$columns['last_updated'] = __('Last Updated', 'wallawords_td');
 
 	return $columns;
 });
@@ -112,7 +112,7 @@ add_filter('manage_puzzle_posts_columns', function ($columns) {
 add_action('manage_puzzle_posts_custom_column', function ($column, $post_id) {
 	switch ($column) {
 		case 'last_updated':
-			echo '<strong>' . esc_html__('Last Updated:', 'textdomain') . '</strong><br>' . esc_html(get_the_modified_date('m/d/Y h:i:s a', $post_id));
+			echo '<strong>' . esc_html__('Last Updated:', 'wallawords_td') . '</strong><br>' . esc_html(get_the_modified_date('m/d/Y h:i:s a', $post_id));
 			break;
 
 		case 'health':
@@ -155,7 +155,7 @@ add_action('restrict_manage_posts', function () {
 
 		$selected = $_GET[$tax_obj->query_var] ?? '';
 		wp_dropdown_categories([
-			'show_option_all' => sprintf(__('Show All %s', 'textdomain'), $tax_obj->label),
+			'show_option_all' => sprintf(__('Show All %s', 'wallawords_td'), $tax_obj->label),
 			'taxonomy'        => $tax_slug,
 			'name'            => $tax_obj->name,
 			'orderby'         => 'slug',
