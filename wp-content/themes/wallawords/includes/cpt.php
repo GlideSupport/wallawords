@@ -70,14 +70,14 @@ new WP_Theme_CPT(
 		'supports'  => array('title', 'author'),
 		'menu_icon' => 'dashicons-schedule',
 		'public'    => true,
-		// 'taxonomies'   => array(
-		// 	array(
-		// 		'slug'          => 'topic',
-		// 		'name'          => 'Topic',
-		// 		'singular_name' => 'Topic',
-		// 		'plural_name'   => 'Topics',
-		// 	)
-		// )
+		'taxonomies'   => array(
+			array(
+				'slug'          => 'topic',
+				'name'          => 'Topic',
+				'singular_name' => 'Topic',
+				'plural_name'   => 'Topics',
+			)
+		)
 	)
 );
 
@@ -98,6 +98,7 @@ add_filter('manage_puzzle_posts_columns', function ($columns) {
 	unset($columns['date']);
 
 	// Add custom columns.
+	$columns['health'] = __('Health', 'textdomain');
 	$columns['difficulty'] = __('Difficulty', 'textdomain');
 	$columns['date']       = __('Published Date', 'textdomain');
 	$columns['last_updated'] = __('Last Updated', 'textdomain');
@@ -112,6 +113,11 @@ add_action('manage_puzzle_posts_custom_column', function ($column, $post_id) {
 	switch ($column) {
 		case 'last_updated':
 			echo '<strong>' . esc_html__('Last Updated:', 'textdomain') . '</strong><br>' . esc_html(get_the_modified_date('m/d/Y h:i:s a', $post_id));
+			break;
+
+		case 'health':
+			$health = get_field('wwp_health', $post_id);
+			echo esc_html($health);
 			break;
 
 		case 'difficulty':

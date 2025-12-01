@@ -3,25 +3,29 @@
     "title": "Common Data",
     "fields": [
         {
-            "key": "field_68c2a5cb072c6",
-            "label": "Prompt",
-            "name": "wwp_prompt",
+            "key": "field_6915d49a94d77",
+            "label": "Difficulty Settings",
+            "name": "wwp_difficulty_settings",
             "aria-label": "",
-            "type": "textarea",
+            "type": "button_group",
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
-                "width": "75",
+                "width": "25",
                 "class": "",
                 "id": ""
             },
-            "default_value": "",
-            "maxlength": "",
+            "choices": {
+                "classic": "Classic",
+                "pro": "Pro",
+                "genius": "Genius"
+            },
+            "default_value": "classic",
+            "return_format": "value",
+            "allow_null": 0,
             "allow_in_bindings": 0,
-            "rows": 2,
-            "placeholder": "",
-            "new_lines": ""
+            "layout": "horizontal"
         },
         {
             "key": "field_68c2a63d072c7",
@@ -38,7 +42,7 @@
                 "id": ""
             },
             "default_value": 7,
-            "min": 1,
+            "min": 7,
             "max": "",
             "allow_in_bindings": 0,
             "placeholder": "",
@@ -47,29 +51,25 @@
             "append": ""
         },
         {
-            "key": "field_6915d49a94d77",
-            "label": "Difficulty Settings",
-            "name": "wwp_difficulty_settings",
+            "key": "field_68c2a5cb072c6",
+            "label": "Prompt",
+            "name": "wwp_prompt",
             "aria-label": "",
-            "type": "button_group",
+            "type": "textarea",
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
-                "width": "",
+                "width": "50",
                 "class": "",
                 "id": ""
             },
-            "choices": {
-                "classic": "Classic",
-                "pro": "Pro",
-                "genius": "Genius"
-            },
-            "default_value": "classic",
-            "return_format": "value",
-            "allow_null": 0,
+            "default_value": "",
+            "maxlength": "",
             "allow_in_bindings": 0,
-            "layout": "horizontal"
+            "rows": 2,
+            "placeholder": "",
+            "new_lines": ""
         }
     ],
     "location": [
