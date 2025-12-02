@@ -1011,7 +1011,7 @@ function updateMoveCounterDisplay() {
             body.classList.add('ispuzzledifficultygameresult');
             body.classList.remove('ispuzzleacadamygameresult');
             moveCounterDisplay.innerHTML = `Health: <span>${currentHealth}<span>`;
-            // sentenceCounterDisplay.innerHTML = `<span>${currentHealth}</span>`;
+            sentenceCounterDisplay.innerHTML = `<span>${currentHealth}</span>`;
             resultSentenceCounterDisplay.innerHTML = `<span>${currentHealth}</span>`;
         }
         var healthBar = '';
@@ -1583,7 +1583,9 @@ function resetUIForFinalScreen() {
     setTimeout(() => {
         document.body.classList.add('final-result-faild');
         titleDisplay.removeAttribute('style');
-        kicker.removeAttribute('style');
+        if(ispuzzleAcadamy){
+            kicker.removeAttribute('style');
+        }
         gameRow.style.display = 'none';
         // moveCounterDisplay.innerHTML = `Health:`;
         finalScoreScreen.style.display = 'flex';
