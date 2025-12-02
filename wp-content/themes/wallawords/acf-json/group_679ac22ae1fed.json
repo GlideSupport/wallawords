@@ -305,7 +305,7 @@
                     "required": 0,
                     "conditional_logic": 0,
                     "wrapper": {
-                        "width": "50",
+                        "width": "25",
                         "class": "",
                         "id": ""
                     },
@@ -320,6 +320,27 @@
                     "mime_types": "",
                     "allow_in_bindings": 0,
                     "preview_size": "medium"
+                },
+                {
+                    "key": "field_692ed5716ddb2",
+                    "label": "Emoji",
+                    "name": "emoji",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "25",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": ""
                 },
                 {
                     "key": "field_6915d816695e1",
@@ -435,7 +456,7 @@
                     "required": 0,
                     "conditional_logic": 0,
                     "wrapper": {
-                        "width": "50",
+                        "width": "25",
                         "class": "",
                         "id": ""
                     },
@@ -450,6 +471,27 @@
                     "mime_types": "",
                     "allow_in_bindings": 0,
                     "preview_size": "medium"
+                },
+                {
+                    "key": "field_692ed5886ddb3",
+                    "label": "Emoji",
+                    "name": "emoji",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "25",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": ""
                 },
                 {
                     "key": "field_6915d8bd695e2",
@@ -565,7 +607,7 @@
                     "required": 0,
                     "conditional_logic": 0,
                     "wrapper": {
-                        "width": "50",
+                        "width": "25",
                         "class": "",
                         "id": ""
                     },
@@ -580,6 +622,27 @@
                     "mime_types": "",
                     "allow_in_bindings": 0,
                     "preview_size": "medium"
+                },
+                {
+                    "key": "field_692ed59c6ddb4",
+                    "label": "Emoji",
+                    "name": "emoji",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "25",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": ""
                 },
                 {
                     "key": "field_6915d8e5695e3",
@@ -1315,5 +1378,5 @@
     "description": "",
     "show_in_rest": 0,
     "display_title": "",
-    "modified": 1764598818
+    "modified": 1764677609
 }

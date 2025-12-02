@@ -38,6 +38,11 @@ class WP_Theme_Custom extends \Boilerplate {
 		foreach ($rankings as $ranking) {
 			// get_field('classic_score_rankings', 'options'), etc.
 			$score_rankings = get_field($ranking . '_score_rankings', 'options');
+			$difficulty_data = get_field($ranking . '_difficulty', 'options');
+			$emoji = '';
+			if(!empty($difficulty_data) && $difficulty_data['emoji']){
+				$emoji = $difficulty_data['emoji'];
+			}
 
 			$data_array = [];
 
@@ -59,6 +64,7 @@ class WP_Theme_Custom extends \Boilerplate {
 						'max'         => isset($item['score_range_to']) ? $item['score_range_to'] : null,
 						'icon'        => isset($item['icon']) ? $item['icon'] : '',
 						'score_emoji' => isset($item['score_emoji']) ? $item['score_emoji'] : '',
+						'difficulty_emoji' => $emoji,
 					);
 				}
 				$final_array[$ranking] = $data_array;
