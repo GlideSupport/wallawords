@@ -359,12 +359,16 @@ function initializeGame() {
             gameRow.style.display = 'none';
         });
     }
-    
+
+    // Share Message Code
     if(shareBtn){
         shareBtn.addEventListener('click', () => {
 
             let message = `Check out my latest Walla score! I solved it with “${health}” health left 🕵. Think you can beat me? Try it here - https://wallawords.com/play`;
-
+            let customMsg = shareBtn.getAttribute('message');
+            if (customMsg && customMsg.trim() !== '') {
+                message = customMsg.trim();
+            }
             if (document.querySelector('#final-score-screen').classList.contains('final-result-faild')) {
                 const difficulty = difficultyPopup
                     .querySelector('.level-tabs .active')
@@ -377,6 +381,7 @@ function initializeGame() {
             window.location.href = smsLink;
         });
     }
+
     closeSentenceToggle.addEventListener('click', () => {
         var container = jQuery('#sentence-list-container');
         container.fadeOut(150);
@@ -456,14 +461,13 @@ function get_ranking_data(difficulty, number) {
     number = Number(number);
     let matched = false;
 
-    // Reset highlighted rows
     const scoreTableElement = document.querySelector('.score-table');
     document.querySelector('#final-move-count').innerHTML = number;
     scoreTableElement.querySelectorAll('.score-row').forEach(row => {
         row.classList.remove('highlighted');
     });
 
-    // Sort rankings (descending by min)
+    // Sort rankings
     const sortable = Object.entries(rankings);
     sortable.sort((a, b) => Number(b[1].min) - Number(a[1].min));
     const sortedRankings = Object.fromEntries(sortable);
@@ -476,6 +480,13 @@ function get_ranking_data(difficulty, number) {
             matched = true;
 
             finalMoveCount.classList.add('rank_' + index);
+            console.log("Matched data:", rankName, sortedRankings[rankName]);
+
+            // ✅ FIX HERE
+            let message = `Check out my latest Walla score! ${sortedRankings[rankName].score_emoji} ${number}. That makes me an ${rankName} 🧑‍🔬. Think you can beat me? Try it here - https://wallawords.com/play`;
+
+            console.log(message);
+            shareBtn.setAttribute('message', message);
 
             const row = document.querySelector('.score-table .rank_' + index);
             if (row) row.classList.add('highlighted');
@@ -485,20 +496,26 @@ function get_ranking_data(difficulty, number) {
         index++;
     }
 
-    // 🔥 If no match → use index 0
+    // If NOT matched → use first item
     if (!matched) {
-        console.log("No match found → using index 0 fallback");
+        const [firstKey, firstValue] = Object.entries(sortedRankings)[0];
+
+        let message = `Check out my latest Walla score! ${firstValue.score_emoji} ${firstValue.max}. That makes me an ${firstKey} 🧑‍🔬. Think you can beat me? Try it here - https://wallawords.com/play`;
+
+        console.log(message);
+        shareBtn.setAttribute('message', message);
 
         finalMoveCount.classList.add('rank_0');
 
         const row = document.querySelector('.score-table .rank_0');
         if (row) row.classList.add('highlighted');
 
-        return 0; // return index 0
+        return 0;
     }
 
     return index;
 }
+
 
 
 
