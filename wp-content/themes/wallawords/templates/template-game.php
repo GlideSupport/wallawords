@@ -41,16 +41,7 @@ array(
 ));
 */
 ?>
-<style>
-    
-    body.final-result #game-screen .game-stats{
-        display:none !important;
-    }
-    body.final-result.ispuzzleacadamygameresult #game-screen .game-stats{
-        display:block !important;
-    }
-    
-</style>
+
 <section id="page-section" class="page-section">
 
     <div role="game" class="game-pieces-animated">
