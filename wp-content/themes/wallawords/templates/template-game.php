@@ -213,7 +213,7 @@ array(
 <!-- Old Code -->
 
  <div class="finish-buttons">
-                    <a id="back-to-puzzle" class="site-btn"  role="button" aria-label="Back to puzzle">Back To Puzzle</a>
+                    <a id="back-to-puzzle" class="site-btn"  role="button" aria-label="Back to puzzle">Back to Puzzle</a>
                     <a id="share-button" class="site-btn" role="button" aria-label="Share game results">Share Results</a>
                 </div>
 
