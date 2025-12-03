@@ -540,7 +540,8 @@ function get_ranking_level_data(difficulty) {
     // Convert back to object
     const sortedRankings = Object.fromEntries(sortable);
 
-    let html = '<p class="medium-text">How does your score stack up?</p>';
+    // let html = '<p class="medium-text">How does your score stack up?</p>';
+    let html = '';
 
     Object.entries(sortedRankings).forEach(([title, info], index) => {
         html += `

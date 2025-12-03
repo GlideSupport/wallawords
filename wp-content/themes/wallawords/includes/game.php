@@ -64,9 +64,9 @@ function wallawords_get_puzzle_data() {
         $acadamyPluzzle[$level] = get_field($level_key ,'options');
     }
 
-    $helth_data_str = isset($_POST['helth_data']) ? sanitize_text_field($_POST['helth_data']) : '';
+    $helth_data_str = isset($_GET['heltharray']) ? $_GET['heltharray'] : '';
 
-    $final_array = [];
+    $helth_data_final_array = [];
 
     if (!empty($helth_data_str)) {
 
@@ -206,8 +206,10 @@ function wallawords_get_puzzle_data() {
             $spendhelth = 0;
             
             if(!empty($helth_data_final_array)){
-                $spendhelth = $helth_data_final_array['helth'.get_the_ID()];
+                $spendhelth = $helth_data_final_array[get_the_ID()];
             }
+
+           
             $puzzle_post_meta = get_post_meta(get_the_ID());
             // Gather puzzle data
             $default_prompt = get_field('wwp_default_prompt','options') ?? '';
