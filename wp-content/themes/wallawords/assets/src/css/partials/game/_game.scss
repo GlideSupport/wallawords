@@ -183,7 +183,8 @@ body {
                 top: 30%;
                 left: -3%;
                 animation-delay: 0.2s;
-                @media(max-width:767px){
+
+                @media(max-width:767px) {
                     left: -107px;
                 }
             }
@@ -338,11 +339,15 @@ body {
             */
         }
     }
-    #difficulty-popup-button{
-         background-color: var(--ww_white_7);
-         svg{
-             path{ fill:var(--ww_black)}
-         }
+
+    #difficulty-popup-button {
+        background-color: var(--ww_white_7);
+
+        svg {
+            path {
+                fill: var(--ww_black)
+            }
+        }
     }
 
     #instruction-screen {
@@ -988,11 +993,12 @@ body {
             width: 100%;
             max-width: 100%;
             background-color: transparent;
+
             &.final-result-faild {
-                        ol {
-                        display: none;
-                    }
+                ol {
+                    display: none;
                 }
+            }
 
 
             ol {
@@ -1004,7 +1010,7 @@ body {
                 margin-bottom: 78px;
                 max-width: 497px;
                 width: 100%;
-         
+
 
 
                 li {
@@ -1064,21 +1070,25 @@ body {
             }
 
         }
-        &.steps-page{
-                   &.final-result-faild {
-                    .main-section{
-                         height: auto !important;
-                    }
-                .game-wrapper{
-                     height: auto !important;
-                     min-height: 80vh;
-                     @media(max-height:600px){
-                         min-height: 100px;
-                     }
-                   }
-           
+
+        &.steps-page {
+            &.final-result-faild {
+                .main-section {
+                    height: auto !important;
                 }
+
+                .game-wrapper {
+                    height: auto !important;
+                    min-height: 80vh;
+
+                    @media(max-height:600px) {
+                        min-height: 100px;
+                    }
+                }
+
+            }
         }
+
         .close-button {
             top: 32px !important;
             right: 24px !important;
@@ -1241,8 +1251,9 @@ body {
         .game-container {
             padding: 56px 24px;
             transition: all 0.3s ease;
-            @media(max-width:370px){
-                 padding: 56px 20px;
+
+            @media(max-width:370px) {
+                padding: 56px 20px;
             }
 
             @media (orientation: landscape) and (max-height: 420px),
@@ -1380,15 +1391,15 @@ body {
         }
 
         .overlay-current-poem {
-           padding: 30px 0;
-                max-width: 450px;
-                margin: 0 auto 40px;
-                border-top: 1px solid var(--ww_white_3);
-                border-bottom: 1px solid var(--ww_white_3);
+            padding: 30px 0;
+            max-width: 450px;
+            margin: 0 auto 40px;
+            border-top: 1px solid var(--ww_white_3);
+            border-bottom: 1px solid var(--ww_white_3);
 
             span {
                 display: block;
-                color:var(--ww_color_primary);
+                color: var(--ww_color_primary);
             }
         }
     }
@@ -1403,13 +1414,7 @@ body {
         flex-wrap: wrap;
         justify-content: center;
         align-items: center;
-        border-radius: 0px 0px 50px 50px;
-        border-left: 1px solid #161425;
-        border-right: 1px solid #161425;
-        border-bottom: 1px solid #161425;
-        background: #121021;
         background-image: url('../images/wow-bg.svg');
-        //background-size: cover;
         background-repeat: no-repeat;
         background-position: bottom center;
 
@@ -1426,7 +1431,7 @@ body {
             flex-shrink: 0;
             fill: rgba(0, 0, 0, 0.00);
             margin-bottom: -16px;
-            color: #fff;
+            color: var(--ww-white);
 
             @include font(rubik, med);
             font-size: 60px;
@@ -1437,6 +1442,20 @@ body {
             white-space: nowrap;
             overflow: hidden;
             text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding-top: 40px;
+
+            &:before {
+                content: "Health";
+                @include font(rubik, reg);
+                font-size: 15px;
+                display: block;
+                line-height: 15px;
+                position: absolute;
+                top: 30px;
+            }
 
             span {
                 @include font(inter, med);
@@ -1573,7 +1592,7 @@ body {
 
     #confetti-canvas {
         position: absolute;
-           width: 200% !important;
+        width: 200% !important;
         height: 100%;
         top: 0;
         left: -50% !important;
@@ -2164,6 +2183,7 @@ body {
     }
 
 }
+
 body {
     .game-wrapper {
         .title-screen {
@@ -2186,19 +2206,21 @@ body {
             .title-screen {
                 height: calc(100dvh - 170px);
                 min-height: 10px;
-                @media(max-width:767px){
-                      .start-buttons {
-                                   bottom: 0;
-                                position: relative;
-                                margin-top: 20%;
-                      }
+
+                @media(max-width:767px) {
+                    .start-buttons {
+                        bottom: 0;
+                        position: relative;
+                        margin-top: 20%;
+                    }
                 }
+
                 @media(max-width:550px) {
                     height: calc(100dvh - 137px);
 
                     .start-buttons {
                         margin-top: 10%;
-                      
+
                     }
                 }
 
@@ -2311,25 +2333,31 @@ body {
 .grid-item.bounce {
     animation: itemBounce 0.5s cubic-bezier(.36, .07, .19, .97);
 }
-body{
-    &.steps-page{
-        &.final-acadamy-result{
-             overflow: hidden !important;
+
+body {
+    &.steps-page {
+        &.final-acadamy-result {
+            overflow: hidden !important;
         }
     }
-     
+
 }
+
 body.final-result {
     &.steps-page {
         header {
             &:before {
                 background-image: url(../images/header-bg-2.svg);
-                height: calc(100% + 117px);
+                height: calc(100% + 123px);
 
                 @media(max-width:767px) {
-                    height: calc(100% + 110px);
+                    height: calc(100% + 125px);
                 }
             }
+        }
+
+        .final-score-screen {
+            padding: 0;
         }
 
         &.final-result-faild {
