@@ -1327,6 +1327,7 @@ function handleFailure(isAcademy) {
 
 function handleSuccess(isAcademy) {
     finalScoreScreen.classList.remove('final-result-faild');
+    document.body.classList.add('final-result');
     if (!isAcademy) {
         showRegularSuccess();
     } else {
