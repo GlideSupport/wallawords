@@ -454,6 +454,13 @@ async function dpData(encryptedDataWithIv, nonce) {
     return JSON.parse(jsonString);
 }
 
+function checked_vowel_word(word) {
+    if (!word) return ''; // handle empty string
+    const firstLetter = word[0].toLowerCase();
+    const vowels = ['a', 'e', 'i', 'o', 'u'];
+    return vowels.includes(firstLetter) ? 'an' : 'a';
+}
+
 function get_ranking_data(difficulty, number) {
     const rankings = gamelocalVars.rankings_data[difficulty];
     if (!rankings) return null;
@@ -483,7 +490,7 @@ function get_ranking_data(difficulty, number) {
             console.log("Matched data:", rankName, sortedRankings[rankName]);
 
             // ✅ FIX HERE
-            let message = `Check out my latest Walla score! ${sortedRankings[rankName].score_emoji} ${number}. That makes me an ${rankName} ${sortedRankings[rankName].difficulty_emoji}. Think you can beat me? Try it here - https://wallawords.com/play`;
+            let message = `Check out my latest Walla score! ${sortedRankings[rankName].difficulty_emoji} ${number}. That makes me ${checked_vowel_word(rankName)} ${rankName} ${sortedRankings[rankName].score_emoji}. Think you can beat me? Try it here - https://wallawords.com/play`;
 
             console.log(message);
             shareBtn.setAttribute('message', message);
@@ -500,7 +507,7 @@ function get_ranking_data(difficulty, number) {
     if (!matched) {
         const [firstKey, firstValue] = Object.entries(sortedRankings)[0];
 
-        let message = `Check out my latest Walla score! ${firstValue.score_emoji} ${firstValue.max}. That makes me an ${firstKey}  ${firstValue.difficulty_emoji}. Think you can beat me? Try it here - https://wallawords.com/play`;
+        let message = `Check out my latest Walla score! ${firstValue.difficulty_emoji} ${firstValue.max}. That makes me ${checked_vowel_word(firstKey)} ${firstKey}  ${firstValue.score_emoji}. Think you can beat me? Try it here - https://wallawords.com/play`;
 
         console.log(message);
         shareBtn.setAttribute('message', message);
