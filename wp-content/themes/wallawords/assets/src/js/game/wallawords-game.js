@@ -590,7 +590,7 @@ function startGame(puzzleCounterValue, isAcadamy = false) {
     // moveCounterDisplay.classList.remove('over');
     finalScoreScreen.style.display = 'none';
     // moveCounterDisplay.style.display = "block"; 
-    sentenceCounterDisplay.style.display = "block";
+    sentenceCounterDisplay.style.display = "none";
     backToResult.style.display = 'none';
     // errorCounterDisplay.style.display = "block";
     // errorCounterDisplay.innerHTML = '';
@@ -670,7 +670,7 @@ function startGame(puzzleCounterValue, isAcadamy = false) {
                 sentenceToggle.forEach(item => {
                     item.style.display = "block";
                 });
-                document.body.classList.add('steps-page');
+                
                 const originalDropPlacement = new Map();
                 puzzleCounterValue = puzzles.length > puzzleCounterValue ? puzzleCounterValue : puzzles.length - 1;
                 var selectedPoem = puzzles[puzzleCounterValue];
@@ -750,7 +750,7 @@ function startGame(puzzleCounterValue, isAcadamy = false) {
                     // Save original placement (requires Map)
                     const parent = tile.parentElement;
                     const index = Array.from(parent.children).indexOf(tile);
-
+                    
                     originalDropPlacement.set(tile, { parent, index });
                 });
 
@@ -773,17 +773,20 @@ function startGame(puzzleCounterValue, isAcadamy = false) {
                         // updateMoveCounter(evt, originalPositions);
                         // Remove unnecessary classes to ensure draggable functionality
                         removeDragClasses();
+
                     },
                     onMove: function (evt) {
                         removeDropZoneClass();
                         if (evt.related && !evt.related.classList.contains('locked-position')) {
                             evt.related.classList.add('drop-zone');
+                            //console.log('trigger drop zone');
                         } else {
                             evt.related.classList.remove('drop-zone');
                         }
                     },
                     onUnchoose: function (evt) {
                         removeDropZoneClass();
+                        //console.log('unchosen');
                     },
                     onEnd: function (evt) {
                         const item = evt.item;
@@ -855,11 +858,11 @@ function startGame(puzzleCounterValue, isAcadamy = false) {
                 
                 if (completedSessionPuzzles) {
                     
-                    // console.log('completedSessionPuzzles Ranking code');
-                    // console.log(selectedPoem.remaning_helth)
-                    // console.log(selectedPoem.id)
-                    // console.log(difficulty);
-                    // console.log(selectedPoem.remaning_helth);
+                    console.log('completedSessionPuzzles Ranking code');
+                    console.log(selectedPoem.remaning_helth)
+                    console.log(selectedPoem.id)
+                    console.log(difficulty);
+                    console.log(selectedPoem.remaning_helth);
                     // console.log(get_ranking_data(difficulty, (selectedPoem.remaning_helth) ));
                     
                     get_ranking_level_data(difficulty);
@@ -877,7 +880,9 @@ function startGame(puzzleCounterValue, isAcadamy = false) {
                     showFinalScoreScreen();
                     
                 }else{
-                    let foundKey = null;
+                     console.log('working not');
+
+                     let foundKey = null;
 
                     for (let i = 0; i < localStorage.length; i++) {
                         let key = localStorage.key(i);
@@ -888,6 +893,7 @@ function startGame(puzzleCounterValue, isAcadamy = false) {
                         }
                     }
 
+                    console.log("Matched Key:", foundKey);
                     //remove intro animation classes
                     updateMoveCounterDisplay();
                     
@@ -1019,6 +1025,8 @@ function updateMoveCounterDisplay() {
             // healthBarSelctor.removeAttribute('style');
         }
     }
+
+    document.body.classList.add('steps-page');
     // sentenceCounterDisplay.innerHTML = `<span>Sentences</span> ${completeSentenceCount}/${totalSentenceCount}`;
 }
 
@@ -1276,7 +1284,7 @@ function finalScoreResizer(mode) {
 
 function showFinalScoreScreen() {
     const isAcademy = ispuzzleAcadamy;
-    const delay = isFailed ? 1000 : 2000;
+    const delay = isFailed ? 1000 : 100;
 
     setTimeout(() => {
         if (isFailed) {
@@ -1292,30 +1300,32 @@ function showFinalScoreScreen() {
 ----------------------------- */
 
 function handleFailure(isAcademy) {
-    gameRow.style.display = 'none';
-    setTimeout(() => {
-        finalScoreScreen.style.display = 'flex';
-        finalScoreScreen.classList.add('final-result-faild');
-        document.body.classList.add('final-result-faild');
-     }, 1000);
-    document.getElementById("share-button")?.style.setProperty('display', 'none');
-    finalScoreSentence.querySelectorAll("li:empty").forEach(li => li.remove());
-
     if (isAcademy) {
         showAcademyFailure();
     } else {
         showRegularFailure();
     }
+    gameRow.style.display = 'none';
+    setTimeout(() => {
+        // document.body.classList.add('steps-page');
+        finalScoreScreen.style.display = 'flex';
+        finalScoreScreen.classList.add('final-result-faild');
+        document.body.classList.add('final-result-faild');
+     }, 500);
+    document.getElementById("share-button")?.style.setProperty('display', 'none');
+    finalScoreSentence.querySelectorAll("li:empty").forEach(li => li.remove());
+
+    
 }
 
 function handleSuccess(isAcademy) {
     
-    document.body.classList.add('final-result');
     if (!isAcademy) {
         showRegularSuccess();
     } else {
         showAcademySuccess();
     }
+    document.body.classList.add('final-result');
 }
 
 /* -----------------------------
@@ -1349,7 +1359,7 @@ function showAcademyFailure() {
 }
 
 function showRegularFailure() {
-    
+    //TODO
     puzzleId = document.querySelector('#main-section').getAttribute('data-puzzle-id');
    
     restartGame(puzzleId , 0, false);
@@ -1573,6 +1583,7 @@ function showAcademySuccess() {
 ----------------------------- */
 
 function resetUIForFinalScreen() {
+    console.log('resetUIForFinalScreen');
     document.body.classList.add('final-result-faild');
     setTimeout(() => {
         titleDisplay.removeAttribute('style');
@@ -1582,9 +1593,10 @@ function resetUIForFinalScreen() {
         gameRow.style.display = 'none';
         // moveCounterDisplay.innerHTML = `Health:`;
         finalScoreScreen.style.display = 'flex';
+        document.body.classList.add('steps-page');
         sentenceCounterDisplay.style.display = "none";
         resultSentenceCounterDisplay.removeAttribute('style');
-    }, 1500);
+    }, 50);
 }
 
 function saveOrLoadPuzzleStatus(status) {
@@ -1604,6 +1616,7 @@ function saveOrLoadPuzzleStatus(status) {
         const sHTML = finalScoreSentence.innerHTML;
         finalScoreSentence.style.display = sHTML ? "" : "none";
         GameStorageService.setItem(key, status, 1);
+        // TODO
 
         const difficulty = difficultyPopup.querySelector('.level-tabs .active').getAttribute('data-level');
         if (difficultySessionPuzzles.includes(difficulty) === false) {
