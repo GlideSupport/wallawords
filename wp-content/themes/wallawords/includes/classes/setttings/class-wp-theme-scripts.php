@@ -95,7 +95,8 @@ class WP_Theme_Scripts {
 		args:array(
 			'in_footer' => true,
 			'strategy'  => 'defer',
-		));
+		)
+	);
 
 
 		if ( is_page_template('templates/template-game.php') ) {
@@ -111,6 +112,15 @@ class WP_Theme_Scripts {
 				'strategy'  => 'defer',
 				)
 			);
+
+			BaseTheme::enqueue_script('assets/build/game/sortable.min.js', array( 'jquery' ), args:array(
+			'in_footer' => true,
+			'strategy'  => 'defer',
+		));
+			BaseTheme::enqueue_script('assets/build/game/confetti.min.js', array( 'jquery' ), args:array(
+			'in_footer' => true,
+			'strategy'  => 'defer',
+		));
 		}
 	}
 	/**

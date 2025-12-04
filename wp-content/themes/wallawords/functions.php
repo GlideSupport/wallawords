@@ -21,6 +21,9 @@ if ( ! defined( 'BASETHEME_DEFAULT_IMAGE' ) ) {
 if ( ! defined( 'BLOCK_DIR' ) ) {
 	define( 'BLOCK_DIR', __DIR__ . '/blocks' );
 }
+if ( ! defined( 'DIR' ) ) {
+	define( 'DIR', __DIR__  );
+}
 
 //had to add INIT wrapper to ensure plugin-based functions work 
 
