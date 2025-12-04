@@ -1311,9 +1311,9 @@ function showFinalScoreScreen() {
 function handleFailure(isAcademy) {
     gameRow.style.display = 'none';
     setTimeout(() => {
-    finalScoreScreen.style.display = 'flex';
-    
-    finalScoreScreen.classList.add('final-result-faild');
+        finalScoreScreen.style.display = 'flex';
+        finalScoreScreen.classList.add('final-result-faild');
+        document.body.classList.add('final-result-faild');
      }, 1000);
     document.getElementById("share-button")?.style.setProperty('display', 'none');
     finalScoreSentence.querySelectorAll("li:empty").forEach(li => li.remove());
@@ -1326,7 +1326,7 @@ function handleFailure(isAcademy) {
 }
 
 function handleSuccess(isAcademy) {
-    finalScoreScreen.classList.remove('final-result-faild');
+    
     document.body.classList.add('final-result');
     if (!isAcademy) {
         showRegularSuccess();
@@ -1590,8 +1590,8 @@ function showAcademySuccess() {
 ----------------------------- */
 
 function resetUIForFinalScreen() {
+    document.body.classList.add('final-result-faild');
     setTimeout(() => {
-        document.body.classList.add('final-result-faild');
         titleDisplay.removeAttribute('style');
         if(ispuzzleAcadamy){
             kicker.removeAttribute('style');
