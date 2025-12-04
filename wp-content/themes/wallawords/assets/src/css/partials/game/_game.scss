@@ -1446,11 +1446,13 @@ body {
             align-items: center;
             justify-content: center;
             padding-top: 40px;
+              background-size: 260px 260px;
 
             &:before {
-                content: "Health";
+                content: "Score";
                 @include font(rubik, reg);
-                font-size: 15px;
+                font-size: 14px;
+                color:var(--ww_regular_text);
                 display: block;
                 line-height: 15px;
                 position: absolute;
@@ -1474,8 +1476,9 @@ body {
                 background: radial-gradient(#CA0474 0%, rgba(202, 4, 116, 0.00) 80%);
                 box-shadow: 6px 4px 8px #CA0474 inset;
                 */
-                background-image: url('../images/Badge_Purple_Dark.svg');
-                background-position: -65px -65px;
+                background-image: url('../images/Badge_Purple-new.png');
+                    background-position: -61px -66px;
+  
             }
 
             &.rank_1 {
@@ -1484,8 +1487,8 @@ body {
                 background: radial-gradient(#6FBD33 0%, rgba(202, 4, 116, 0.00) 80%);
                 box-shadow: 6px 4px 8px #6FBD33 inset;
                 */
-                background-image: url('../images/Badge_Green_Dark.svg');
-                background-position: -65px -65px;
+                background-image: url('../images/Badge_Green.png');
+                background-position: -61px -66px;
             }
 
             &.rank_2 {
@@ -1494,8 +1497,8 @@ body {
                 background: radial-gradient(#1D95DCE5 0%, rgba(202, 4, 116, 0.00) 80%);
                 box-shadow: 6px 4px 8px #1FA4F2 inset;
                 */
-                background-image: url('../images/Badge_Blue_Dark.svg');
-                background-position: -75px -65px;
+                background-image: url('../images/Badge_Blue.png');
+             background-position: -64px -64px;
             }
 
             &.rank_3 {
@@ -1504,8 +1507,8 @@ body {
                 background: radial-gradient(#FFAD00 0%, rgba(202, 4, 116, 0.00) 80%);
                 box-shadow: 6px 4px 16px #FFAD00 inset;
                 */
-                background-image: url('../images/Badge_Orange_Dark.svg');
-                background-position: -75px -65px;
+                background-image: url('../images/Badge_Orange.png');
+               background-position:-66px -60px;
             }
         }
 
@@ -1708,381 +1711,6 @@ body {
 
     /* Dark/Light Color toggles */
 
-    &.light {
-        background-color: #ECF1EF;
-        color: var(--ww_dark);
-
-        #instruction-screen .header {
-            // background: #EEF2F1;
-        }
-
-        #sentence-toggle {
-            background: rgba(0, 0, 0, .2);
-
-            svg path {
-                fill: var(--ww_black);
-            }
-        }
-
-        .sentence-list-container {
-            background: #F5F7F6;
-
-            .sentence-list-item {
-                background: #CDD4D3;
-
-                &.active {
-                    background: #fff;
-                }
-
-                .grid-cell {
-                    border: 0.3px solid rgba(117, 116, 131, 0.3);
-                }
-            }
-
-        }
-
-        #game-screen .game-stats {
-            //background: url('../images/play-bg-light.svg'), #F5F7F6;
-            background-repeat: no-repeat;
-            background-position: bottom center;
-            border-color: #E2F1EA;
-        }
-
-        .score-header {
-            background: url('../images/wow-bg-light.svg'), #F5F7F6;
-            background-repeat: no-repeat;
-            background-position: bottom center;
-            border-color: #E2F1EA;
-
-            #final-move-count {
-                color: #232130;
-
-                span {
-                    color: #232130;
-                }
-
-                &.rank_0 {
-                    /*
-                border: 1px solid #CA0474;
-                background: radial-gradient(#CA0474 0%, rgba(202, 4, 116, 0.00) 80%);
-                box-shadow: 6px 4px 8px #CA0474 inset;
-                */
-                    background-image: url('../images/Badge_Purple_Light.svg');
-                    background-position: -65px -45px;
-                }
-
-                &.rank_1 {
-                    /*
-                border: 1px solid #6FBD33;
-                background: radial-gradient(#6FBD33 0%, rgba(202, 4, 116, 0.00) 80%);
-                box-shadow: 6px 4px 8px #6FBD33 inset;
-                */
-                    background-image: url('../images/Badge_Green_Light.svg');
-                    background-position: -65px -65px;
-                }
-
-                &.rank_2 {
-                    /*
-                border: 1px solid #1FA4F2;
-                background: radial-gradient(#1D95DCE5 0%, rgba(202, 4, 116, 0.00) 80%);
-                box-shadow: 6px 4px 8px #1FA4F2 inset;
-                */
-                    background-image: url('../images/Badge_Blue_Light.svg');
-                    background-position: -65px -45px;
-                }
-
-                &.rank_3 {
-                    /*
-                border: 1px solid #FFAD00;
-                background: radial-gradient(#FFAD00 0%, rgba(202, 4, 116, 0.00) 80%);
-                box-shadow: 6px 4px 16px #FFAD00 inset;
-                */
-                    background-image: url('../images/Badge_Orange_Light.svg');
-                    background-position: -75px -45px;
-                }
-
-            }
-
-        }
-
-        .game-nav {
-            background: linear-gradient(228deg, #EEF2F1 0%, #FFF 76.24%), #EEF2F1;
-
-            .icon {
-                border-color: #CDD4D3;
-            }
-        }
-
-        .nav-button {
-            border: 1px solid #232130 !important;
-
-            &:hover {
-                background: #232130 !important;
-                color: #fff !important;
-                border: 1px solid #fff !important;
-            }
-        }
-
-        .game-container {
-            .piece {
-                opacity: 0.2;
-            }
-        }
-
-        #instruction-screen {
-            #progress-container {
-                #progress-bar {
-                    background: var(--ww_color_primary);
-                }
-            }
-        }
-
-        .instruction-screen {
-            background: #fff;
-
-            h1 {
-                color: var(--ww_black);
-            }
-
-        }
-
-        .instruction-screen-overlay {
-            background: rgba(255, 255, 255, .33);
-        }
-
-        #instruction-text {
-
-            .indicator:before {
-                background: #000 !important;
-            }
-
-            .content {
-                .text {
-                    color: var(--ww_dark) !important;
-
-                    span {
-                        color: var(--ww_black) !important;
-                    }
-                }
-
-            }
-
-            img.dark {
-                display: none !important;
-            }
-
-            img.light {
-                display: block !important;
-            }
-        }
-
-        .close-button {
-            border-color: #CDD4D3;
-
-            svg path {
-                fill: var(--ww_black) !important;
-            }
-
-            &:hover {
-                border-color: #090719;
-            }
-        }
-
-        .game-pieces-animated {
-
-            .piece-am {
-                background-image: url('../images/tile-am-light.svg');
-            }
-
-            .piece-I {
-                background-image: url('../images/tile-I-light.svg');
-            }
-
-            .piece-so {
-                background-image: url('../images/tile-so-light.svg');
-            }
-
-            .piece-be {
-                background-image: url('../images/tile-be-light.svg');
-            }
-
-            .piece-think {
-                background-image: url('../images/tile-think-light.svg');
-            }
-
-            .piece-joy {
-                background-image: url('../images/tile-joy-light.svg');
-            }
-
-            .piece-must {
-                background-image: url('../images/tile-must-light.svg');
-            }
-
-            .piece-dreams {
-                background-image: url('../images/tile-dreams-light.svg');
-            }
-        }
-
-        .header-section {
-
-            .icon path {
-                fill: var(--ww_dark);
-            }
-
-            .logo path:first-child {
-                fill: var(--ww_dark);
-            }
-
-            .icon {
-                &.icon-help {
-                    path {
-                        fill: var(--ww_dark);
-
-                        &:nth-child(2) {
-                            fill: #fff
-                        }
-                    }
-                }
-            }
-        }
-
-
-        .menu {
-
-            li {
-
-                a {
-                    color: var(--ww_black) !important;
-                }
-
-                &:hover a,
-                &.current_page_item a {
-                    color: var(--ww_color_primary) !important;
-                }
-            }
-        }
-
-        .start-buttons,
-        .finish-buttons {
-
-            .button {
-                color: #090719;
-
-                &:hover {
-                    color: #090719 !important;
-                }
-            }
-
-            #play-again {
-                background: #CDD4D3;
-                color: var(--ww_dark);
-
-                &:hover {
-                    background: #090719;
-                    color: var(--ww_white) !important;
-                }
-            }
-        }
-
-
-        .title-screen p,
-        .title-screen h1,
-        .move-counter,
-        .final-score-screen,
-        .close-button a {
-            color: var(--ww_dark);
-        }
-
-        .close-button {
-            svg {
-                margin: 6px 0;
-
-                path {
-                    fill: var(--ww_dark);
-                }
-            }
-        }
-
-        .instruction-steps .step {
-            background: rgba(0, 0, 0, 0.20) !important;
-
-            &.active {
-                background: var(--ww_black) !important;
-            }
-        }
-
-        .grid-item:not(.correct-position) {
-            border-bottom: 2px solid var(--light-word-boxes-back-global, #849D8C);
-            background: linear-gradient(214deg, rgba(255, 255, 255, 0.55) -2.08%, rgba(255, 255, 255, 0.00) 78.12%), #C3CFC7;
-            color: var(--ww_black_1);
-
-            &.drop-zone {
-                color: #6F28EB;
-                border: 2px solid #6F28EB !important;
-                background: #E0E7E3;
-                box-shadow: 0px 0px 30px 0px rgba(111, 40, 235, 0.60) inset;
-            }
-        }
-
-
-        .final-score-screen p,
-        .final-poem p {
-            color: var(--ww_dark);
-        }
-
-        .final-poem p {
-            background: #fff;
-        }
-
-        .final-page-toggle {
-            background-color: #CDD4D3;
-            color: var(--ww_dark);
-        }
-
-        .sortable-ghost {
-            background-color: #CDD4D3;
-        }
-
-        .highlighted {
-
-            &.rank_0 {
-                border-left: 2px solid #CA0474;
-                background: radial-gradient(82.26% 82.78% at 0% 56.25%, #CA0474 0%, rgba(202, 4, 116, 0.00) 80%), #fff;
-            }
-
-            &.rank_1 {
-                border-left: 2px solid #6FBD33;
-                background: radial-gradient(82.26% 82.78% at 0% 56.25%, #6FBD33 0%, rgba(202, 4, 116, 0.00) 80%), #fff;
-            }
-
-            &.rank_2 {
-                border-left: 2px solid #1FA4F2;
-                background: radial-gradient(82.26% 82.78% at 0% 56.25%, #1FA4F2 0%, rgba(202, 4, 116, 0.00) 80%), #fff;
-            }
-
-            &.rank_3 {
-                border-left: 2px solid #FFAD00;
-                background: radial-gradient(82.26% 82.78% at 0% 56.25%, #FFAD00 0%, rgba(202, 4, 116, 0.00) 80%), #fff;
-            }
-        }
-
-
-        .score-row {
-            color: var(--ww_dark);
-            background: #fff;
-            box-shadow: none;
-
-            span {
-                color: var(--ww_dark);
-            }
-        }
-
-        .copy-right {
-            color: var(--ww_dark);
-        }
-
-
-    }
 
 }
 
