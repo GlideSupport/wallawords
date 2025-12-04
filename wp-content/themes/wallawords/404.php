@@ -22,25 +22,16 @@ $bst_var_error_menu_bottom_text = $bst_option_fields['bst_var_error_menu_bottom_
 $bst_var_error_search           = $bst_option_fields['bst_var_error_search'] ?? false;
 
 ?>
-<section id="hero-section" class="hero-section hero-section-default">
-	<!-- Hero Start -->
-	<section class="m-section">
-		<div class="hero-ctn center-align error-page-hero">
-			<div class="wrapper">
-				<h1><?php echo html_entity_decode( $bst_var_error_headline ); ?></h1>
-				<div class="banner-text">
-					<p><?php echo html_entity_decode( $bst_var_error_sub_headline ); ?></p>
-				</div>
-			</div>
-		</div>
-	</section>
-	<!-- Hero End -->
-</section>
+
 <section id="page-section" class="page-section">
 	<!-- Page Content Start -->
 	<div class="m-section">
 		<div class="wrapper">
-			<section class="error-404 not-found">
+			<div class="error-404 not-found">
+				<h1><?php echo html_entity_decode( $bst_var_error_headline ); ?></h1>
+				<div class="banner-text">
+					<p><?php echo html_entity_decode( $bst_var_error_sub_headline ); ?></p>
+				</div>
 				<div class="page-content">
 					<?php
 					if ( $bst_var_error_text ) {
@@ -66,7 +57,7 @@ $bst_var_error_search           = $bst_option_fields['bst_var_error_search'] ?? 
 					</div>
 					<!--404-form-->
 				</div><!-- .page-content -->
-			</section><!-- .error-404 -->
+					</div><!-- .error-404 -->
 			<div class="ts-80"></div>
 		</div>
 	</div>

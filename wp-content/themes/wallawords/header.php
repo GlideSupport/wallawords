@@ -24,8 +24,8 @@ $ww_var_tbar_btn      = $ww_option_fields['ww_tbar_btn'] ?? null;
 // Page variables - Advanced custom fields variables.
 
 //page vars, misc
-$current_page = sanitize_post( $GLOBALS['wp_the_query']->get_queried_object() );
-$page_slug = $current_page->post_name;
+// $current_page = sanitize_post( $GLOBALS['wp_the_query']->get_queried_object() );
+// $page_slug = $current_page->post_name;
 
 $page_template = basename(get_page_template());
 ?>
