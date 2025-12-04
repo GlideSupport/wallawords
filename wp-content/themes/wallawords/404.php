@@ -27,6 +27,7 @@ $bst_var_error_search           = $bst_option_fields['bst_var_error_search'] ?? 
 	<!-- Page Content Start -->
 	<div class="m-section">
 		<div class="wrapper">
+			<div class="ts-80"></div>
 			<div class="error-404 not-found">
 				<h1><?php echo html_entity_decode( $bst_var_error_headline ); ?></h1>
 				<div class="banner-text">
@@ -44,6 +45,12 @@ $bst_var_error_search           = $bst_option_fields['bst_var_error_search'] ?? 
 						<?php
 					}
 					?>
+					<div class="back-btn">
+						<a href="<?php echo esc_url(home_url('/')); ?>" title="Back To Home" role="button" aria-label="Back To Home" class="site-btn is-style-site-arrow-btn">
+							Back To Home 
+						</a>
+					</div>
+					
 					<div class="form-404">
 
 						<?php
@@ -51,6 +58,7 @@ $bst_var_error_search           = $bst_option_fields['bst_var_error_search'] ?? 
 							echo html_entity_decode( $bst_var_error_menu_bottom_text );
 						}
 						if ( ! $bst_var_error_search ) {
+							echo '<div class="ts-80"></div>';
 							get_search_form();
 						}
 						?>
