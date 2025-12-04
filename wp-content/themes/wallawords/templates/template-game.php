@@ -15,8 +15,8 @@
 get_header();
 
 // BaseTheme::enqueue_script('assets/build/game/wallawords-game.js', array( 'jquery' ), filemtime(__DIR__. 'assets/build/game/wallawords-game.js'));
-BaseTheme::enqueue_script('assets/build/game/sortable.min.js', array( 'jquery' ), filemtime(__DIR__. 'assets/build/game/sortable.min.js'));
-BaseTheme::enqueue_script('assets/build/game/confetti.min.js', array( 'jquery' ), filemtime(__DIR__. 'assets/build/game/confetti.min.js'));
+BaseTheme::enqueue_script('assets/build/game/sortable.min.js', array( 'jquery' ), time());
+BaseTheme::enqueue_script('assets/build/game/confetti.min.js', array( 'jquery' ), time());
 
 /*
 BaseTheme::enqueue_script('assets/build/game/wallawords-game.js', 

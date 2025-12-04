@@ -32,7 +32,7 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 const showAcademyPuzzlePopupButton = document.getElementById('show-academy-puzzle-popup');
 showAcademyPuzzlePopupButton.addEventListener('click', () => {
-    console.log('showAcademyPuzzlePopupButton clicked');
+    // console.log('showAcademyPuzzlePopupButton clicked');
     if (localStorage.getItem("puzzle-acadamy-level")) {
         GameStorageService.setItem('puzzle-acadamy-level', 1, 1);
     }
@@ -309,7 +309,7 @@ function initializeGame() {
         nextLevel.addEventListener('click', () => {
             
             puzzleAcadamyLevel = GameStorageService.getItem('puzzle-acadamy-level');
-            console.log('nextLevel clicked, puzzleAcadamyLevel:', puzzleAcadamyLevel);
+            // console.log('nextLevel clicked, puzzleAcadamyLevel:', puzzleAcadamyLevel);
             if( puzzleAcadamyLevel == 'done' ){
                 //startGame(puzzleCounter);
                 document.getElementById('final-puzzle-acadamy-popup').style.display = 'none';
@@ -487,12 +487,12 @@ function get_ranking_data(difficulty, number) {
             matched = true;
 
             finalMoveCount.classList.add('rank_' + index);
-            console.log("Matched data:", rankName, sortedRankings[rankName]);
+            // console.log("Matched data:", rankName, sortedRankings[rankName]);
 
             // ✅ FIX HERE
             let message = `Check out my latest Walla score! ${sortedRankings[rankName].difficulty_emoji} ${number}. That makes me ${checked_vowel_word(rankName)} ${rankName} ${sortedRankings[rankName].score_emoji}. Think you can beat me? Try it here - https://wallawords.com/play`;
 
-            console.log(message);
+            // console.log(message);
             shareBtn.setAttribute('message', message);
 
             const row = document.querySelector('.score-table .rank_' + index);
@@ -509,7 +509,7 @@ function get_ranking_data(difficulty, number) {
 
         let message = `Check out my latest Walla score! ${firstValue.difficulty_emoji} ${firstValue.max}. That makes me ${checked_vowel_word(firstKey)} ${firstKey}  ${firstValue.score_emoji}. Think you can beat me? Try it here - https://wallawords.com/play`;
 
-        console.log(message);
+        // console.log(message);
         shareBtn.setAttribute('message', message);
 
         finalMoveCount.classList.add('rank_0');
@@ -602,20 +602,15 @@ function startGame(puzzleCounterValue, isAcadamy = false) {
             url += '&level=' + puzzleAcadamyLevel;
         }
     }else{
-        console.log('normal puzzle load');
         if (jQuery('#puzzle_id').length) {
-            console.log('with puzzle_id true');
-            console.log('with puzzle_id');
             hasID = jQuery('#puzzle_id').val();
             url = localVars.ajax_url + '?action=wallawords_get_puzzle_data&gameID=' + hasID + '&nonce=' + localVars.nonce;
             currentPuzzleID = hasID;
         } else {
-            console.log('with puzzle_id false');
             url = localVars.ajax_url + '?action=wallawords_get_puzzle_data&difficulty='+difficulty+'&nonce=' + localVars.nonce;
         }
         if (completedSessionPuzzles) {
             if (GameStorageService.getItem('difficultySessionPuzzles'+`${completedSessionPuzzles}`) && GameStorageService.getItem('difficultySessionPuzzles'+`${completedSessionPuzzles}`).includes(difficulty) ) {
-                console.log('already played this difficulty');
                 url += '&completed=' + completedSessionPuzzles;
             }
         }
@@ -642,7 +637,6 @@ function startGame(puzzleCounterValue, isAcadamy = false) {
     isFailed = 0;
     completedSentences = [];
     completedColumns = [];
-    console.log('destroying previous sortable instance', gameGrid);
     if (gameGrid) {
         gameGrid.destroy();
         const resetSentenceCounter = document.querySelectorAll('.sentence-item');
@@ -690,13 +684,11 @@ function startGame(puzzleCounterValue, isAcadamy = false) {
                 // if(playStatus !== 'null' || playStatus !== 'undefine')
                 title = selectedPoem.title; // Store the puzzle title
 
-                console.log("Selected poem title:", selectedPoem.fullPoem);
                 document.querySelector('#main-section').setAttribute('data-puzzle-title', selectedPoem.fullPoem);
                 document.querySelector('#main-section').setAttribute('data-puzzle-id', selectedPoem.id);
                 document.querySelector('#main-section').setAttribute('data-health', selectedPoem.health);
 
                 originalPositions = selectedPoem.correctWords.slice(); // Store the original positions
-                // console.log(selectedPoem.correctWords);
                 lockedWords = selectedPoem.lockedWords.slice(); // Store the locked positions
                 sentences = selectedPoem.sentences; // Store sentences from JSON
                 columns = selectedPoem.columns; //store column rows
@@ -726,7 +718,7 @@ function startGame(puzzleCounterValue, isAcadamy = false) {
                         div.classList.add('start-position');
                         var rand = parseInt(Math.floor(Math.random() * (originalPositions.length - 0 + 1) + 0));
                         var randDelay = (rand * .01) + ((parseInt(index) * .01) * lockedIndexes.length);
-                        //console.log(randDelay);
+                        
                         // div.style.animationDelay = `${randDelay}s`; //add delay to float in effect to stagger tiles                      
                     }
                     gameGridElement.appendChild(div);
@@ -751,9 +743,7 @@ function startGame(puzzleCounterValue, isAcadamy = false) {
                         lockcount++;
                         tile.style.animationDelay = `${lockcount * 0.01}s`;
                     } else {
-                        
                         normalcount++;
-                        console.log(normalcount);
                         tile.style.animationDelay = `${(normalcount / 10) + 0.25}s`;
                     }
 
@@ -783,20 +773,17 @@ function startGame(puzzleCounterValue, isAcadamy = false) {
                         // updateMoveCounter(evt, originalPositions);
                         // Remove unnecessary classes to ensure draggable functionality
                         removeDragClasses();
-                        //console.log('trigger sort');
                     },
                     onMove: function (evt) {
                         removeDropZoneClass();
                         if (evt.related && !evt.related.classList.contains('locked-position')) {
                             evt.related.classList.add('drop-zone');
-                            //console.log('trigger drop zone');
                         } else {
                             evt.related.classList.remove('drop-zone');
                         }
                     },
                     onUnchoose: function (evt) {
                         removeDropZoneClass();
-                        //console.log('unchosen');
                     },
                     onEnd: function (evt) {
                         const item = evt.item;
@@ -868,11 +855,11 @@ function startGame(puzzleCounterValue, isAcadamy = false) {
                 
                 if (completedSessionPuzzles) {
                     
-                    console.log('completedSessionPuzzles Ranking code');
-                    console.log(selectedPoem.remaning_helth)
-                    console.log(selectedPoem.id)
-                    console.log(difficulty);
-                    console.log(selectedPoem.remaning_helth);
+                    // console.log('completedSessionPuzzles Ranking code');
+                    // console.log(selectedPoem.remaning_helth)
+                    // console.log(selectedPoem.id)
+                    // console.log(difficulty);
+                    // console.log(selectedPoem.remaning_helth);
                     // console.log(get_ranking_data(difficulty, (selectedPoem.remaning_helth) ));
                     
                     get_ranking_level_data(difficulty);
@@ -890,10 +877,7 @@ function startGame(puzzleCounterValue, isAcadamy = false) {
                     showFinalScoreScreen();
                     
                 }else{
-                     console.log('working not');
-
-                     // TODO
-                     let foundKey = null;
+                    let foundKey = null;
 
                     for (let i = 0; i < localStorage.length; i++) {
                         let key = localStorage.key(i);
@@ -904,7 +888,6 @@ function startGame(puzzleCounterValue, isAcadamy = false) {
                         }
                     }
 
-                    console.log("Matched Key:", foundKey);
                     //remove intro animation classes
                     updateMoveCounterDisplay();
                     
@@ -1366,7 +1349,7 @@ function showAcademyFailure() {
 }
 
 function showRegularFailure() {
-    //TODO
+    
     puzzleId = document.querySelector('#main-section').getAttribute('data-puzzle-id');
    
     restartGame(puzzleId , 0, false);
@@ -1621,7 +1604,6 @@ function saveOrLoadPuzzleStatus(status) {
         const sHTML = finalScoreSentence.innerHTML;
         finalScoreSentence.style.display = sHTML ? "" : "none";
         GameStorageService.setItem(key, status, 1);
-        // TODO
 
         const difficulty = difficultyPopup.querySelector('.level-tabs .active').getAttribute('data-level');
         if (difficultySessionPuzzles.includes(difficulty) === false) {
@@ -1641,10 +1623,10 @@ function saveOrLoadPuzzleStatus(status) {
         const puzzlehealth = document.querySelector('#main-section').getAttribute('data-health');
         // Ranking Code
        
-        console.log(difficulty);
-        console.log('sdasdasdsdsdasdasdadsa');
-        console.log(incorrectCounterValue);
-        console.log(puzzlehealth);
+        // console.log(difficulty);
+        // console.log('sdasdasdsdsdasdasdadsa');
+        // console.log(incorrectCounterValue);
+        // console.log(puzzlehealth);
         // console.log(get_ranking_data(difficulty, (7 - incorrectCounterValue) ));
         get_ranking_level_data(difficulty);
         get_ranking_data(difficulty, (puzzlehealth - incorrectCounterValue) );

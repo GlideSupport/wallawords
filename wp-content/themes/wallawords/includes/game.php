@@ -318,9 +318,9 @@ function admin_custom_outputs() {
 
 function enqueue_custom_admin_scripts($hook) {
     global $post;
-
+    $screen = get_current_screen();
     // Load only for the edit screen of the 'puzzle' post type
-    if ($post->post_type === 'puzzle' && in_array($hook, ['post-new.php', 'post.php'])) {
+    if ($screen && $screen->post_type === 'puzzle' && in_array($hook, ['post-new.php', 'post.php'])) {
         wp_enqueue_script(
             'game-admin-scripts', // Handle
             get_bloginfo('template_directory') . '/includes/game_admin_js.js', // Path to the JS file

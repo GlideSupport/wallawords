@@ -35,9 +35,9 @@ class WP_Theme_Blocks {
 	 */
 	public function register_acf_blocks() {
 
-		register_block_type( BASETHEME_BLOCK_DIR . '/section-container' );
+		// register_block_type( BASETHEME_BLOCK_DIR . '/section-container' );
 		// Register a block - FAQ.
-		self::register_acf_block( 'faqs' );
+		// self::register_acf_block( 'faqs' );
 		// Register a block - Media Alongside Text.
 		self::register_acf_block( 'media-alongside-text' );
 		// [register_here].
