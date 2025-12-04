@@ -1311,9 +1311,9 @@ function showFinalScoreScreen() {
 function handleFailure(isAcademy) {
     gameRow.style.display = 'none';
     setTimeout(() => {
-    finalScoreScreen.style.display = 'flex';
-    
-    finalScoreScreen.classList.add('final-result-faild');
+        finalScoreScreen.style.display = 'flex';
+        finalScoreScreen.classList.add('final-result-faild');
+        document.body.classList.add('final-result-faild');
      }, 1000);
     document.getElementById("share-button")?.style.setProperty('display', 'none');
     finalScoreSentence.querySelectorAll("li:empty").forEach(li => li.remove());
