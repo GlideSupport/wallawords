@@ -613,6 +613,7 @@ function startGame(puzzleCounterValue, isAcadamy = false) {
             if (GameStorageService.getItem('difficultySessionPuzzles'+`${completedSessionPuzzles}`) && GameStorageService.getItem('difficultySessionPuzzles'+`${completedSessionPuzzles}`).includes(difficulty) ) {
                 url += '&completed=' + completedSessionPuzzles;
             }
+            
         }
         const urlParams = new URLSearchParams(window.location.search);
         if (urlParams.get('preview') === 'true') {
@@ -859,11 +860,6 @@ function startGame(puzzleCounterValue, isAcadamy = false) {
                 if (completedSessionPuzzles) {
                     
                     console.log('completedSessionPuzzles Ranking code');
-                    console.log(selectedPoem.remaning_helth)
-                    console.log(selectedPoem.id)
-                    console.log(difficulty);
-                    console.log(selectedPoem.remaning_helth);
-                    // console.log(get_ranking_data(difficulty, (selectedPoem.remaning_helth) ));
                     
                     get_ranking_level_data(difficulty);
                     get_ranking_data(difficulty, (selectedPoem.remaning_helth) );
@@ -876,10 +872,11 @@ function startGame(puzzleCounterValue, isAcadamy = false) {
                         isFailed = 1;
                     }
                     incorrectCounterValue = GameStorageService.getItem(`helth${currentPuzzleID}`, );
-                    updateMoveCounterDisplay();
+                    updateMoveCounterDisplay(1);
                     showFinalScoreScreen();
                     
                 }else{
+                    sentenceCounterDisplay.style.display = "flex";
                      console.log('working not');
 
                      let foundKey = null;
@@ -893,9 +890,9 @@ function startGame(puzzleCounterValue, isAcadamy = false) {
                         }
                     }
 
-                    console.log("Matched Key:", foundKey);
                     //remove intro animation classes
                     updateMoveCounterDisplay();
+                   
                     
                     setTimeout(() => {
                         removeAnimateInClass();
@@ -956,6 +953,7 @@ function calculateMinSwapsUsingGraphMethod(solvedState) {
 
 // **Update Move Counter and Track Game State**
 function updateMoveCounter(evt, originalPositions) {
+   
     // Reset flags for this move
     columnCompletedThisMove = false;
     sentenceCompletedThisMove = false;
@@ -986,7 +984,8 @@ function updateMoveCounter(evt, originalPositions) {
 }
 
 // **Update Move Counter Display in Real-Time**
-function updateMoveCounterDisplay() {
+function updateMoveCounterDisplay($status = 0) {
+    // console.log('updateMoveCounterDisplay');
     if (moveCounterDisplay) {
         if (incorrectCounterValue > minimumMoves) {
             //moveCounterDisplay.classList.add('over');
@@ -1003,13 +1002,22 @@ function updateMoveCounterDisplay() {
             moveCounterDisplay.innerHTML = `Health: <span>${currentHealth}<span>`;
             sentenceCounterDisplay.innerHTML = `Level: <span>${puzzleAcadamyLevel}/3</span>`;
         }else{
+            if($status == 1 ){
+                document.querySelector('.result-bar').style.display = 'none';
+                document.querySelector('.move-container .flex-container').style.display = 'none';
+                moveCounterDisplay.style.display = 'none';
+                sentenceCounterDisplay.style.display = 'none';
+            }else{
+                document.querySelector('.result-bar').removeAttribute('style');
+                document.querySelector('.move-container .flex-container').removeAttribute('style');
+            }
             const body = document.querySelector('body');
-
             body.classList.add('ispuzzledifficultygameresult');
             body.classList.remove('ispuzzleacadamygameresult');
             moveCounterDisplay.innerHTML = `Health: <span>${currentHealth}<span>`;
             sentenceCounterDisplay.innerHTML = `<span>${currentHealth}</span>`;
             resultSentenceCounterDisplay.innerHTML = `<span>${currentHealth}</span>`;
+
         }
         var healthBar = '';
         for (let i = 1; i <= health; i++) {
@@ -1024,9 +1032,11 @@ function updateMoveCounterDisplay() {
             healthBarSelctor.innerHTML = healthBar;
             // healthBarSelctor.removeAttribute('style');
         }
+        sentenceCounterDisplay.style.display = "flex";
+        
     }
-
     document.body.classList.add('steps-page');
+    // document.body.classList.add('steps-page');
     // sentenceCounterDisplay.innerHTML = `<span>Sentences</span> ${completeSentenceCount}/${totalSentenceCount}`;
 }
 
@@ -1283,8 +1293,9 @@ function finalScoreResizer(mode) {
 }
 
 function showFinalScoreScreen() {
+
     const isAcademy = ispuzzleAcadamy;
-    const delay = isFailed ? 1000 : 100;
+    const delay = isFailed ? 1000 : 1000;
 
     setTimeout(() => {
         if (isFailed) {
@@ -1597,6 +1608,8 @@ function resetUIForFinalScreen() {
         sentenceCounterDisplay.style.display = "none";
         resultSentenceCounterDisplay.removeAttribute('style');
     }, 50);
+
+   
 }
 
 function saveOrLoadPuzzleStatus(status) {
