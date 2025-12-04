@@ -2364,13 +2364,29 @@ body.final-result {
             header {
                 &:before {
                     background-image: url(../images/header-bg-2.svg);
-                    height: calc(100% + 109px);
+                    height: calc(100% + 48px);
 
                     @media(max-width:767px) {
-                        height: calc(100% + 101px);
+                        height: calc(100% + 46px);
                     }
                 }
             }
+            #game-screen {
+                 .game-stats{
+                     height: 50px;
+                 }
+            }
+            .final-score-screen{
+                 min-height: calc(100vh - 236px);
+    align-items: center;
+    justify-content: center;
+    @media screen and (max-height:580px) {
+        min-height: 400px;
+        
+    }
+            }
+
+
         }
 
         .game-wrapper {
