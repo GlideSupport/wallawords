@@ -325,9 +325,10 @@ function initializeGame() {
     }
     if(backToPuzzle){
         backToPuzzle.addEventListener('click', () => {
-            document.body.classList.remove('final-acadamy-result', 'final-result');
+            document.body.classList.remove('final-acadamy-result', 'final-result', 'steps-page');
             finalScoreScreen.style.display = 'none';
             document.body.style.overflow = 'auto';
+           
             titleDisplay.style.display = 'none';
             if(finalScoreSentence.querySelectorAll('li').length > 0){
              document.querySelectorAll('.grid-item').forEach((item) => {
@@ -350,7 +351,7 @@ function initializeGame() {
     }
      if(backToResult){
         backToResult.addEventListener('click', () => {
-            document.body.classList.add('final-result');
+            document.body.classList.add('final-result', 'steps-page');
             finalScoreScreen.removeAttribute('style');
             titleDisplay.removeAttribute('style');
             // moveCounterDisplay.innerHTML = `Health:`;
@@ -469,7 +470,8 @@ function get_ranking_data(difficulty, number) {
     let matched = false;
 
     const scoreTableElement = document.querySelector('.score-table');
-    document.querySelector('#final-move-count').innerHTML = number;
+    const gameLevelIconSRC = document.querySelector('.game-level-icon img').getAttribute('src');
+    document.querySelector('#final-move-count').innerHTML = '<div class="level-icon-result "><img src="'+gameLevelIconSRC+'" width="16" alt="Level Icon"></div>'+number;
     scoreTableElement.querySelectorAll('.score-row').forEach(row => {
         row.classList.remove('highlighted');
     });
@@ -1692,18 +1694,22 @@ function initFinalScreenToggles() {
     toggles.forEach(toggle => {
         toggle.addEventListener('click', () => {
             toggles.forEach(t => t.classList.remove('active'));
-            if (toggled === 'results') {
+            toggle.classList.add('active');
+            const value = toggle.getAttribute('data-value');
+            
+            console.log(toggled);
+            if (value === 'results') {
                 scoreTableElement.style.display = 'flex';
                 reviewTableElement.style.display = 'none';
-                toggled = 'review';
-                toggles[0].classList.add('active');
-                gameGridElement.classList.remove('active');
+                toggled = 'results';
+                // toggles[0].classList.add('active');
+                // gameGridElement.classList.remove('active');
             } else {
                 scoreTableElement.style.display = 'none';
                 reviewTableElement.style.display = 'flex';
-                toggled = 'results';
-                toggles[1].classList.add('active');
-                gameGridElement.classList.add('active');
+                toggled = value;
+                // toggles[1].classList.add('active');
+                // gameGridElement.classList.add('active');
             }
         });
     });
