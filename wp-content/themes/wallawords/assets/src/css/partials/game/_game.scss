@@ -1432,7 +1432,6 @@ body {
             fill: rgba(0, 0, 0, 0.00);
             margin-bottom: -16px;
             color: var(--ww-white);
-
             @include font(rubik, med);
             font-size: 60px;
             line-height: 1em;
@@ -1445,7 +1444,7 @@ body {
             display: flex;
             align-items: center;
             justify-content: center;
-            padding-top: 40px;
+            padding-top: 52px;
               background-size: 260px 260px;
 
             &:before {
@@ -1456,7 +1455,19 @@ body {
                 display: block;
                 line-height: 15px;
                 position: absolute;
-                top: 30px;
+                top: 50px;
+            }
+            .level-icon-result{
+                position: absolute;
+                top: 17px;
+                border-radius: 100%;
+                width: 30px;
+                height: 30px;
+                line-height: 30px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background: var(--ww_white);
             }
 
             span {
@@ -1589,7 +1600,7 @@ body {
 
         &.rank_3 {
             border-left: 2px solid #FFAD00;
-            background: radial-gradient(82.26% 82.78% at 0% 56.25%, #FFAD00 0%, rgba(202, 4, 116, 0.00) 80%), #232130;
+            background: radial-gradient(82.26% 82.78% at 0 56.25%, #ffad0091 0, rgba(202, 4, 116, 0) 80%), #232130;
         }
     }
 
