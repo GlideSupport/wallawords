@@ -325,9 +325,10 @@ function initializeGame() {
     }
     if(backToPuzzle){
         backToPuzzle.addEventListener('click', () => {
-            document.body.classList.remove('final-acadamy-result', 'final-result');
+            document.body.classList.remove('final-acadamy-result', 'final-result', 'steps-page');
             finalScoreScreen.style.display = 'none';
             document.body.style.overflow = 'auto';
+           
             titleDisplay.style.display = 'none';
             if(finalScoreSentence.querySelectorAll('li').length > 0){
              document.querySelectorAll('.grid-item').forEach((item) => {
@@ -350,7 +351,7 @@ function initializeGame() {
     }
      if(backToResult){
         backToResult.addEventListener('click', () => {
-            document.body.classList.add('final-result');
+            document.body.classList.add('final-result', 'steps-page');
             finalScoreScreen.removeAttribute('style');
             titleDisplay.removeAttribute('style');
             // moveCounterDisplay.innerHTML = `Health:`;
