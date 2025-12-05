@@ -469,7 +469,8 @@ function get_ranking_data(difficulty, number) {
     let matched = false;
 
     const scoreTableElement = document.querySelector('.score-table');
-    document.querySelector('#final-move-count').innerHTML = number;
+    const gameLevelIconSRC = document.querySelector('.game-level-icon img').getAttribute('src');
+    document.querySelector('#final-move-count').innerHTML = '<div class="level-icon-result "><img src="'+gameLevelIconSRC+'" width="16" alt="Level Icon"></div>'+number;
     scoreTableElement.querySelectorAll('.score-row').forEach(row => {
         row.classList.remove('highlighted');
     });
