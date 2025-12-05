@@ -1448,7 +1448,7 @@ body {
               background-size: 260px 260px;
 
             &:before {
-                content: "Score";
+                content: "Health";
                 @include font(rubik, reg);
                 font-size: 14px;
                 color:var(--ww_regular_text);
