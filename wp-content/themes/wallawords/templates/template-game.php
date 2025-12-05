@@ -194,8 +194,8 @@ array(
         </div>
 
         <div class="final-page-toggle" id="final-page-toggle">
-            <div class="toggle active">Results</div>
-            <div class="toggle">Review</div>
+            <div class="toggle active" data-value="results">Results</div>
+            <div class="toggle" data-value="review">Review</div>
         </div>
 
        

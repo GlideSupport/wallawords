@@ -1693,18 +1693,22 @@ function initFinalScreenToggles() {
     toggles.forEach(toggle => {
         toggle.addEventListener('click', () => {
             toggles.forEach(t => t.classList.remove('active'));
-            if (toggled === 'results') {
+            toggle.classList.add('active');
+            const value = toggle.getAttribute('data-value');
+            
+            console.log(toggled);
+            if (value === 'results') {
                 scoreTableElement.style.display = 'flex';
                 reviewTableElement.style.display = 'none';
-                toggled = 'review';
-                toggles[0].classList.add('active');
-                gameGridElement.classList.remove('active');
+                toggled = 'results';
+                // toggles[0].classList.add('active');
+                // gameGridElement.classList.remove('active');
             } else {
                 scoreTableElement.style.display = 'none';
                 reviewTableElement.style.display = 'flex';
-                toggled = 'results';
-                toggles[1].classList.add('active');
-                gameGridElement.classList.add('active');
+                toggled = value;
+                // toggles[1].classList.add('active');
+                // gameGridElement.classList.add('active');
             }
         });
     });
