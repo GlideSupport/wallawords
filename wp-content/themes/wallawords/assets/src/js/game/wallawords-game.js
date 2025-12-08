@@ -1190,7 +1190,7 @@ function checkPuzzleCompletion(originalPositions) {
                 document.getElementById('confetti-canvas').style.opacity = '0';
                 setTimeout(() => {
                     stopConfetti();
-                }, 8500);
+                }, 11000);
             }, 8000);
         }
     }
